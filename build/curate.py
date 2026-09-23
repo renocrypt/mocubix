@@ -12,6 +12,16 @@ UA = {'User-Agent': 'Mocubix/1.0 (https://github.com/renocrypt/mocubix)'}
 
 WORKS = [
  [
+  "buson",
+  "Departure",
+  "File:与謝蕪村《奥の細道画巻》1778、海の見える杜美術館 2.jpg"
+ ],
+ [
+  "buson",
+  "Fan",
+  "File:Yosa Buson 与謝蕪村 - Narrow Road to the Deep North (Oku no Hosomichi 奥の細道) - 2020-382 - Princeton University Art Museum.jpg"
+ ],
+ [
   "glacier",
   "Road 1941",
   "File:Jackson Glacier Distant in 1941 (54209695863).jpg"
@@ -560,10 +570,10 @@ def real_width(url):
 ONLY = set(sys.argv[1:])          # e.g. `python3 build/curate.py webb` fetches only that kind
 if ONLY: WORKS = [w for w in WORKS if w[0] in ONLY]
 # material shown large asks for the big buckets too
-WIDE = {'webb': (1920, 3840), 'glacier': (1920,)}
+WIDE = {'webb': (1920, 3840), 'glacier': (1920,), 'buson': (1920, 2560)}
 
 recs = {}
-for width in (330, 500, 640, 1024, 1600, 1920, 3840):   # 330, 500: tiles, thumbnails, pictures shown small
+for width in (330, 500, 640, 1024, 1600, 1920, 2560, 3840):   # 330, 500: tiles, thumbnails, pictures shown small
     titles = [w[2] for w in WORKS if width <= 1600 or width in WIDE.get(w[0], ())]
     if not titles: continue
     for i in range(0, len(titles), 4):

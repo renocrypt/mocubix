@@ -908,3 +908,33 @@ drag anywhere, click, arrow keys, screen readers. `showcase.js` (a dozen
 lines) hands its value to `--x`, and the first time a pair is seen the
 divider eases from the whole old picture back to the middle. The handle is
 clamped inside the frame with container units.
+
+## The fourth showcase: Vertical Writing Mode, the narrow road, 2026-09-23
+
+**The idea.** The opening of Bashō's *Oku no hosomichi* (1702), the preface
+and the departure with both haiku, set as a handscroll that the page's scroll
+unrolls from the right between two rolls: the unread part thins on the rod at
+the left while the read part gathers at the right. The scroll has its own
+front (an indigo cover with a title slip, then gold-flecked endpaper), the
+English runs sideways between the passages, Buson's 1778 painting of the
+leave-taking is mounted on paper of its own colour, and his fan painting of
+the two travellers walking on is cut from its mount and pasted on. A colophon
+sets its figures upright (`text-combine-upright`). All the characters are text.
+
+**The text.** Sugiura Shōichirō's edition (Iwanami bunko, 1957) as published by
+Aozora Bunko, with a selection of its readings as ruby and its repetition mark
+〻. Japanese Wikisource's text (a 1911 edition) was set aside: unpunctuated,
+and its 「行春や鳥は啼き魚の目は泪」 departs from the haiku as it is known. The
+face is Noto Serif JP (the Japanese Source Han Serif) from Fontsource, on this
+page only; the Lexicon's own Han face is the Chinese cut, whose shapes differ.
+
+**Craft notes.** A column is 13.4 em long by construction, so the size follows
+the scroll's height and the columns break the same everywhere; a haiku is set a
+size smaller so that it keeps to one column after its drop. The run's length is
+estimated from the text's column count so the scroll unrolls at about 1.4× its
+own pace; the translation itself needs no measure (`100cqw - 100%` to 0). The
+fan's mask is an annulus about the point its ribs meet, between its outer ribs,
+fitted to the scan (centre, radii, angles). The endpaper's gold is scattered by
+the build from a fixed seed. A class named `cover` collided with an old demo's
+absolute positioning; renamed. Without motion the scroll lies open as a native
+vertical-rl scroller, which starts at its right end by itself.
