@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Scoped Rotation — Mocubix Lexicon</title>
+<meta name="description" content="The same colour change, asked of a few elements or of a great many. Press the switch and watch the counter beside it.">
+<link rel="canonical" href="https://mocubix.renocrypt.com/lexicon/scoped-rotation/">
+<link rel="icon" href="../../favicon.ico" sizes="32x32">
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Mocubix">
+<meta property="og:title" content="Scoped Rotation — Mocubix Lexicon">
+<meta property="og:description" content="The same colour change, asked of a few elements or of a great many. Press the switch and watch the counter beside it.">
+<meta property="og:url" content="https://mocubix.renocrypt.com/lexicon/scoped-rotation/">
+<meta property="og:image" content="https://mocubix.renocrypt.com/share/lexicon.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="The Mocubix Lexicon: forty-one named interface effects">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preconnect" href="https://api.fontshare.com">
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="preconnect" href="https://upload.wikimedia.org">
+<link rel="preconnect" href="https://thumb.wikimedia.org">
+<!-- One request per family. A combined f[] request silently delivers only the first. -->
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f%5B%5D=melodrama@400,500&display=swap">
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f%5B%5D=switzer@400,500,600&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource-variable/geist-mono/index.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource-variable/geist/index.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cn-fontsource-source-han-serif-sc-vf/font.css">
+<link rel="stylesheet" href="../../house.css">
+<link rel="stylesheet" href="../../lexicon/lexicon.css">
+<script src="../../house.js"></script>
+<!-- Chrome readies a term while the pointer rests on its link, so turning the page is instant. -->
+<script type="speculationrules">{"prerender":[{"where":{"href_matches":"/lexicon/*"},"eagerness":"moderate"}]}</script>
+</head>
+<body>
+
+<div class="readbar" aria-hidden="true"></div>
+
+<nav class="topnav">
+  <div class="inner">
+    <a class="brand" href="../../">Mocubix</a><a class="brand" href="../../lexicon/"><i>Lexicon</i></a>
+    <a class="navfam" href="../../lexicon/scroll-driven/">Scroll-driven<i>13</i></a><a class="navfam" href="../../lexicon/scroll-behaviour/">Scroll behaviour<i>11</i></a><a class="navfam" href="../../lexicon/image/">Image<i>7</i></a><a class="navfam" href="../../lexicon/type/">Type<i>5</i></a><a class="navfam" href="../../lexicon/colour/" aria-current="true">Colour<i>5</i></a>
+    <span class="navtail">41 named effects</span>
+    <span data-theme-slot></span>
+  </div>
+</nav>
+
+<div class="wrap">
+<p class="crumb"><a href="../">Lexicon</a> / <a href="../colour/">Colour</a> · 2 of 5</p>
+<div class="termgrid">
+  <aside class="pillarnav" aria-label="Colour">
+    <h4><a href="../colour/">Colour</a><em>5</em></h4>
+    <ol><li><a href="../token-interpolation/"><b>37</b><span>Token Interpolation</span></a></li><li><a href="../scoped-rotation/" aria-current="page"><b>38</b><span>Scoped Rotation</span></a></li><li><a href="../gamut-arc/"><b>39</b><span>Gamut Arc</span></a></li><li><a href="../difference-inversion/"><b>40</b><span>Difference Inversion</span></a></li><li><a href="../threshold-flip/"><b>41</b><span>Threshold Flip</span></a></li></ol>
+    <p class="others"><a href="../scroll-driven/">Scroll-driven</a><a href="../scroll-behaviour/">Scroll behaviour</a><a href="../image/">Image</a><a href="../type/">Type</a></p>
+  </aside>
+  <article class="term">
+<section class="spec" id="scoped-rotation">
+  <div class="meta">
+    <span class="idx">38 / Colour</span>
+    <h1 class="name" style="view-transition-name:t-scoped-rotation">Scoped Rotation</h1>
+    <p class="gloss">The same colour change, asked of a few elements or of a great many. Press the switch and watch the counter beside it.</p>
+    <p class="aka">also called <i>custom property invalidation</i> · <i>style recalc scope</i></p>
+    <p class="note">Where the angle is declared decides what it costs. On the root, every element on the page re-resolves its colours each frame; on the stage, only the stage does. Scope is the whole difference between a palette that animates for free and one that eats the frame budget.</p>
+    <details class="how"><summary>How it is built</summary><code class="api">.stage { --rot: 0deg; animation: turn linear both; animation-timeline: scroll(root) }
+/* declared on .stage, not :root — only this subtree re-resolves each frame */</code></details>
+    
+  </div>
+  <div class="stage"><span class="tag">press the switch</span><div class="sc" id="sc"><div class="scgrid" id="scgrid"></div><button class="btn" id="scBtn">24 consumers</button><p class="scout"><span id="scMs">--</span> · <span id="scN">0</span> consumers</p></div></div>
+</section>
+  </article>
+</div>
+<nav class="pager" aria-label="Previous and next term"><a class="prev" href="../token-interpolation/"><small>← Previous</small><span>Token Interpolation</span></a><a class="next" href="../gamut-arc/"><small>Next →</small><span>Gamut Arc</span></a></nav>
+<footer>
+  <span>Material — Kamisaka Sekka 神坂雪佳, <i>Momoyogusa</i> 百々世草, 1909–10<br>Rijksmuseum scans via Wikimedia Commons, CC0. Anna Atkins cyanotypes, 1843.</span>
+  <span>Type — Melodrama · Switzer · Geist · Geist Mono · 思源宋体</span>
+  <span><a href="../../">The seven exhibits</a></span>
+</footer>
+</div>
+
+<script src="../../lexicon/material.js"></script>
+<script src="../../lexicon/lexicon.js"></script>
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Type — Mocubix Lexicon</title>
+<meta name="description" content="Type: letters that move. Split Text Reveal, Variable Font Animation, Text Mask, Vertical Writing Mode, Marquee — each named, explained and running.">
+<link rel="canonical" href="https://mocubix.renocrypt.com/lexicon/type/">
+<link rel="icon" href="../../favicon.ico" sizes="32x32">
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Mocubix">
+<meta property="og:title" content="Type — Mocubix Lexicon">
+<meta property="og:description" content="Type: letters that move. Split Text Reveal, Variable Font Animation, Text Mask, Vertical Writing Mode, Marquee — each named, explained and running.">
+<meta property="og:url" content="https://mocubix.renocrypt.com/lexicon/type/">
+<meta property="og:image" content="https://mocubix.renocrypt.com/share/lexicon.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="The Mocubix Lexicon: forty-one named interface effects">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preconnect" href="https://api.fontshare.com">
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="preconnect" href="https://upload.wikimedia.org">
+<link rel="preconnect" href="https://thumb.wikimedia.org">
+<!-- One request per family. A combined f[] request silently delivers only the first. -->
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f%5B%5D=melodrama@400,500&display=swap">
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f%5B%5D=switzer@400,500,600&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource-variable/geist-mono/index.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource-variable/geist/index.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cn-fontsource-source-han-serif-sc-vf/font.css">
+<link rel="stylesheet" href="../../house.css">
+<link rel="stylesheet" href="../../lexicon/lexicon.css">
+<script src="../../house.js"></script>
+<!-- Chrome readies a term while the pointer rests on its link, so turning the page is instant. -->
+<script type="speculationrules">{"prerender":[{"where":{"href_matches":"/lexicon/*"},"eagerness":"moderate"}]}</script>
+</head>
+<body>
+
+<div class="readbar" aria-hidden="true"></div>
+
+<nav class="topnav">
+  <div class="inner">
+    <a class="brand" href="../../">Mocubix</a><a class="brand" href="../../lexicon/"><i>Lexicon</i></a>
+    <a class="navfam" href="../../lexicon/scroll-driven/">Scroll-driven<i>13</i></a><a class="navfam" href="../../lexicon/scroll-behaviour/">Scroll behaviour<i>11</i></a><a class="navfam" href="../../lexicon/image/">Image<i>7</i></a><a class="navfam" href="../../lexicon/type/" aria-current="true">Type<i>5</i></a><a class="navfam" href="../../lexicon/colour/">Colour<i>5</i></a>
+    <span class="navtail">41 named effects</span>
+    <span data-theme-slot></span>
+  </div>
+</nav>
+
+<div class="wrap">
+<p class="crumb"><a href="../">Lexicon</a> / Type</p>
+<header class="pillarhead">
+  <h1>Type</h1>
+  <p class="blurb">Letters that move · 5 named effects, each running below</p>
+  <ol class="chips"><li><a href="#split-text-reveal"><b>32</b>Split Text Reveal</a></li><li><a href="#variable-font-animation"><b>33</b>Variable Font Animation</a></li><li><a href="#text-mask"><b>34</b>Text Mask</a></li><li><a href="#vertical-writing-mode"><b>35</b>Vertical Writing Mode</a></li><li><a href="#marquee"><b>36</b>Marquee</a></li></ol>
+</header>
+<section class="spec" id="split-text-reveal">
+  <div class="meta">
+    <span class="idx">32 / Type</span>
+    <h2 class="name"><a href="../split-text-reveal/" style="view-transition-name:t-split-text-reveal">Split Text Reveal</a></h2>
+    <p class="gloss">The lines rise up out of the page one after another, each a beat behind the last.</p>
+    <p class="aka">also called <i>staggered line reveal</i> · <i>line mask</i> · <i>SplitText</i></p>
+    <p class="note">The mask is what matters: a wrapper with <code>overflow:hidden</code> and a translated inner. That makes text rise <em>out of</em> the page instead of fading in on top of it.</p>
+    <details class="how"><summary>How it is built</summary><code class="api">.line { overflow: hidden }
+.line span { transform: translateY(110%) → none }</code></details>
+    <a class="deeper open" href="../split-text-reveal/">Open its page</a>
+  </div>
+  <div class="stage"><span class="tag">plays once</span><div class="reveal" id="reveal"><div class="ln"><span>A name you can say</span></div><div class="ln"><span>is a thing you can ask</span></div><div class="ln"><span>someone else to build.</span></div></div></div>
+</section>
+<section class="spec" id="variable-font-animation">
+  <div class="meta">
+    <span class="idx">33 / Type</span>
+    <h2 class="name"><a href="../variable-font-animation/" style="view-transition-name:t-variable-font-animation">Variable Font Animation</a></h2>
+    <p class="gloss">Weight is a dial here, not a set of steps. Drag it and the letterforms thicken without ever swapping to another file.</p>
+    <p class="aka">also called <i>axis interpolation</i> · <i>variable axes</i></p>
+    <p class="note">A variable font exposes continuous axes rather than fixed cuts, so weight can be animated instead of swapped. One file, the whole family, and no flash between weights.</p>
+    <details class="how"><summary>How it is built</summary><code class="api">font-variation-settings: 'wght' 340;
+transition: font-variation-settings .6s;</code></details>
+    <a class="deeper open" href="../variable-font-animation/">Open its page</a>
+  </div>
+  <div class="stage"><span class="tag">drag the slider</span><div class="vf"><p id="vfLine">Weight is a continuous axis</p><input class="rng" id="vfRange" type="range" min="100" max="900" value="400" aria-label="Weight"></div></div>
+</section>
+<section class="spec" id="text-mask">
+  <div class="meta">
+    <span class="idx">34 / Type</span>
+    <h2 class="name"><a href="../text-mask/" style="view-transition-name:t-text-mask">Text Mask</a></h2>
+    <p class="gloss">The picture shows only through the letters. The type is the window, not the caption.</p>
+    <p class="aka">also called <i>knockout text</i> · <i>background-clip</i> · <i>image-in-type</i></p>
+    <p class="note">The type becomes an aperture onto the image. It needs real weight to work — thin letterforms leave too little opening for the picture to read.</p>
+    <details class="how"><summary>How it is built</summary><code class="api">background-image: url(…);
+background-clip: text;
+color: transparent;</code></details>
+    <a class="deeper open" href="../text-mask/">Open its page</a>
+  </div>
+  <div class="stage"><span class="tag">look through the letters</span><div class="tmask"><h3 id="tmaskTxt">MOMOYOGUSA</h3></div></div>
+</section>
+<section class="spec" id="vertical-writing-mode">
+  <div class="meta">
+    <span class="idx">35 / Type</span>
+    <h2 class="name"><a href="../vertical-writing-mode/" style="view-transition-name:t-vertical-writing-mode">Vertical Writing Mode</a></h2>
+    <p class="gloss">Set down the page instead of across it, the way Chinese, Japanese and Korean have always been set. Each column is written downward, and they arrive right to left. Latin and figures turn sideways to follow — all but the year, held upright in a single square.</p>
+    <p class="aka">also called <i>竖排</i> · <i>tate-gumi</i> · <i>vertical typesetting</i></p>
+    <p class="note">Native in CSS and correct for CJK — the browser rotates Latin runs and places the punctuation itself. <code>text-combine-upright</code> is the piece almost nobody reaches for: it sets a two- to four-character number upright inside one em box, which is how a printed vertical page has always handled a date. This is the experimental lane: the writing here is material to look at, never the interface.</p>
+    <details class="how"><summary>How it is built</summary><code class="api">writing-mode: vertical-rl;
+text-orientation: mixed;
+.year { text-combine-upright: all }   /* 縦中横 */</code></details>
+    <a class="deeper open" href="../vertical-writing-mode/">Open its page</a>
+  </div>
+  <div class="stage"><span class="tag">scroll the page</span><div class="vert"><p class="vt1">滚动即时间轴</p><p class="vt2">名は体を表す</p><p class="vt3">이름이 곧 형태다</p><p class="vt4">神坂雪佳　百々世草　<span class="tcy">1909</span></p></div></div>
+</section>
+<section class="spec" id="marquee">
+  <div class="meta">
+    <span class="idx">36 / Type</span>
+    <h2 class="name"><a href="../marquee/" style="view-transition-name:t-marquee">Marquee</a></h2>
+    <p class="gloss">A band of text running sideways under its own power, whether or not you touch the page. Hover to stop it.</p>
+    <p class="aka">also called <i>ticker</i> · <i>infinite scroller</i> · <i>running band</i></p>
+    <p class="note">The one effect here that ignores scroll entirely — it gives a page a pulse when nothing else moves. Duplicate the content exactly once and travel <code>-50%</code>; that is what makes the loop seamless.</p>
+    <details class="how"><summary>How it is built</summary><code class="api">.row { width: max-content; animation: slide 26s linear infinite }
+@keyframes slide { to { transform: translateX(-50%) } }
+/* the content is duplicated once, so -50% lands exactly on the seam */</code></details>
+    <a class="deeper open" href="../marquee/">Open its page</a>
+  </div>
+  <div class="stage"><span class="tag">runs by itself</span><div class="marq"><div class="marqrow" id="marqrow"></div></div></div>
+</section>
+<nav class="pager" aria-label="Previous and next pillar"><a class="prev" href="../image/"><small>← Previous pillar</small><span>Image</span></a><a class="next" href="../colour/"><small>Next pillar →</small><span>Colour</span></a></nav>
+<footer>
+  <span>Material — Kamisaka Sekka 神坂雪佳, <i>Momoyogusa</i> 百々世草, 1909–10<br>Rijksmuseum scans via Wikimedia Commons, CC0. Anna Atkins cyanotypes, 1843.</span>
+  <span>Type — Melodrama · Switzer · Geist · Geist Mono · 思源宋体</span>
+  <span><a href="../../">The seven exhibits</a></span>
+</footer>
+</div>
+
+<script src="../../lexicon/material.js"></script>
+<script src="../../lexicon/lexicon.js"></script>
+</body>
+</html>

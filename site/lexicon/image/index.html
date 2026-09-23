@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Image — Mocubix Lexicon</title>
+<meta name="description" content="Image: what a picture can do. Blur-up (LQIP), Ken Burns, Duotone, Progressive Blur, Ordered Dithering, Clip-path Reveal, Image Comparison Slider — each named, explained and running.">
+<link rel="canonical" href="https://mocubix.renocrypt.com/lexicon/image/">
+<link rel="icon" href="../../favicon.ico" sizes="32x32">
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Mocubix">
+<meta property="og:title" content="Image — Mocubix Lexicon">
+<meta property="og:description" content="Image: what a picture can do. Blur-up (LQIP), Ken Burns, Duotone, Progressive Blur, Ordered Dithering, Clip-path Reveal, Image Comparison Slider — each named, explained and running.">
+<meta property="og:url" content="https://mocubix.renocrypt.com/lexicon/image/">
+<meta property="og:image" content="https://mocubix.renocrypt.com/share/lexicon.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="The Mocubix Lexicon: forty-one named interface effects">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preconnect" href="https://api.fontshare.com">
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="preconnect" href="https://upload.wikimedia.org">
+<link rel="preconnect" href="https://thumb.wikimedia.org">
+<!-- One request per family. A combined f[] request silently delivers only the first. -->
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f%5B%5D=melodrama@400,500&display=swap">
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f%5B%5D=switzer@400,500,600&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource-variable/geist-mono/index.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource-variable/geist/index.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cn-fontsource-source-han-serif-sc-vf/font.css">
+<link rel="stylesheet" href="../../house.css">
+<link rel="stylesheet" href="../../lexicon/lexicon.css">
+<script src="../../house.js"></script>
+<!-- Chrome readies a term while the pointer rests on its link, so turning the page is instant. -->
+<script type="speculationrules">{"prerender":[{"where":{"href_matches":"/lexicon/*"},"eagerness":"moderate"}]}</script>
+</head>
+<body>
+
+<div class="readbar" aria-hidden="true"></div>
+
+<nav class="topnav">
+  <div class="inner">
+    <a class="brand" href="../../">Mocubix</a><a class="brand" href="../../lexicon/"><i>Lexicon</i></a>
+    <a class="navfam" href="../../lexicon/scroll-driven/">Scroll-driven<i>13</i></a><a class="navfam" href="../../lexicon/scroll-behaviour/">Scroll behaviour<i>11</i></a><a class="navfam" href="../../lexicon/image/" aria-current="true">Image<i>7</i></a><a class="navfam" href="../../lexicon/type/">Type<i>5</i></a><a class="navfam" href="../../lexicon/colour/">Colour<i>5</i></a>
+    <span class="navtail">41 named effects</span>
+    <span data-theme-slot></span>
+  </div>
+</nav>
+
+<div class="wrap">
+<p class="crumb"><a href="../">Lexicon</a> / Image</p>
+<header class="pillarhead">
+  <h1>Image</h1>
+  <p class="blurb">What a picture can do · 7 named effects, each running below</p>
+  <ol class="chips"><li><a href="#blur-up-lqip"><b>25</b>Blur-up (LQIP)</a></li><li><a href="#ken-burns"><b>26</b>Ken Burns</a></li><li><a href="#duotone"><b>27</b>Duotone</a></li><li><a href="#progressive-blur"><b>28</b>Progressive Blur</a></li><li><a href="#ordered-dithering"><b>29</b>Ordered Dithering</a></li><li><a href="#clip-path-reveal"><b>30</b>Clip-path Reveal</a></li><li><a href="#image-comparison-slider"><b>31</b>Image Comparison Slider</a></li></ol>
+</header>
+<section class="spec" id="blur-up-lqip">
+  <div class="meta">
+    <span class="idx">25 / Image</span>
+    <h2 class="name"><a href="../blur-up-lqip/" style="view-transition-name:t-blur-up-lqip">Blur-up (LQIP)</a></h2>
+    <p class="gloss">A small blurred stand-in appears at once and the real picture fades in over it — in a box that was already the right size, so nothing jumps.</p>
+    <p class="aka">also called <i>low-quality image placeholder</i> · <i>progressive loading</i></p>
+    <p class="note">Two jobs at once: something to look at immediately, and a reserved box so nothing shifts when the real file lands. Layout shift is a ranked Core Web Vital, so the <code>aspect-ratio</code> is not decoration.</p>
+    <details class="how"><summary>How it is built</summary><code class="api">figure { aspect-ratio: 3 / 2 }   /* the box is reserved before the file lands */
+.placeholder { filter: blur(18px); transform: scale(1.1) }
+.full { opacity: 0; transition: opacity .9s }   /* → 1 once loaded */</code></details>
+    <a class="deeper open" href="../blur-up-lqip/">Open its page</a>
+  </div>
+  <div class="stage"><span class="tag">watch it load</span><div class="lqip" id="lqip"></div><button class="btn" id="lqipBtn">Replay load</button></div>
+</section>
+<section class="spec" id="ken-burns">
+  <div class="meta">
+    <span class="idx">26 / Image</span>
+    <h2 class="name"><a href="../ken-burns/" style="view-transition-name:t-ken-burns">Ken Burns</a></h2>
+    <p class="gloss">A still photograph is given a slow drift and a slow push in — just enough to feel like time passing.</p>
+    <p class="aka">also called <i>slow pan and zoom</i> · <i>documentary pan</i></p>
+    <p class="note">Named for the documentarian who made a career of it. The rule is that the move must be slower than the viewer's attention — if they notice the motion starting, it is too fast.</p>
+    <details class="how"><summary>How it is built</summary><code class="api">@keyframes kb { to { transform: scale(1.14) translate(-2%, 1.5%) } }
+animation: kb 18s ease-in-out infinite alternate;</code></details>
+    <a class="deeper open" href="../ken-burns/">Open its page</a>
+  </div>
+  <div class="stage"><span class="tag">runs by itself</span><div class="kb" id="kb"></div></div>
+</section>
+<section class="spec" id="duotone">
+  <div class="meta">
+    <span class="idx">27 / Image</span>
+    <h2 class="name"><a href="../duotone/" style="view-transition-name:t-duotone">Duotone</a></h2>
+    <p class="gloss">Any photograph, whatever it arrived wearing, comes out in one colour. Drag back to see what it came in as.</p>
+    <p class="aka">also called <i>two-tone mapping</i> · <i>bichromate</i></p>
+    <p class="note">A brand-colour treatment that survives any source image. Grayscale the base, then lay a single hue over it with <code>mix-blend-mode</code>.</p>
+    <details class="how"><summary>How it is built</summary><code class="api">background: var(--accent);
+mix-blend-mode: color;  /* over a grayscale base */</code></details>
+    <a class="deeper open" href="../duotone/">Open its page</a>
+  </div>
+  <div class="stage"><span class="tag">drag the slider</span><div class="duo" id="duo"><div class="duoBase"></div><div class="duoTint"></div></div><input class="rng" id="duoRange" type="range" min="0" max="100" value="100" aria-label="Duotone amount"></div>
+</section>
+<section class="spec" id="progressive-blur">
+  <div class="meta">
+    <span class="idx">28 / Image</span>
+    <h2 class="name"><a href="../progressive-blur/" style="view-transition-name:t-progressive-blur">Progressive Blur</a></h2>
+    <p class="gloss">The picture softens towards the bottom, so the caption sits on something readable without a black bar laid across it.</p>
+    <p class="aka">also called <i>gradient blur</i> · <i>layered blur</i> · <i>tapered blur</i></p>
+    <p class="note">Stacked layers, each blurring more than the last, each masked to a different band. Far more elegant than a scrim because the image stays legible while the text still reads.</p>
+    <details class="how"><summary>How it is built</summary><code class="api">backdrop-filter: blur(Npx);
+mask-image: linear-gradient(to top, #000, transparent);</code></details>
+    <a class="deeper open" href="../progressive-blur/">Open its page</a>
+  </div>
+  <div class="stage"><span class="tag">read the caption</span><div class="pblur" id="pblur"><div class="pbImg"></div><div class="pbL" style="--b:2px;--s:62%"></div><div class="pbL" style="--b:6px;--s:78%"></div><div class="pbL" style="--b:14px;--s:88%"></div><p class="pbTxt">Text sits on light</p></div></div>
+</section>
+<section class="spec" id="ordered-dithering">
+  <div class="meta">
+    <span class="idx">29 / Image</span>
+    <h2 class="name"><a href="../ordered-dithering/" style="view-transition-name:t-ordered-dithering">Ordered Dithering</a></h2>
+    <p class="gloss">The picture is cut down to a handful of tones, and the ones that are missing are made up out of a regular grain. Drag to take more away.</p>
+    <p class="aka">also called <i>Bayer dithering</i> · <i>halftone</i> · <i>posterize</i></p>
+    <p class="note">Real pixel work — it needs <code>crossorigin="anonymous"</code> and a CORS-clean host, otherwise the canvas is tainted and <code>getImageData</code> throws. Wikimedia sends the header; most museum CDNs do not.</p>
+    <details class="how"><summary>How it is built</summary><code class="api">const BAYER8 = [...];  // 8×8 threshold matrix
+v = v + (BAYER8[y%8][x%8]/64 - 0.5) * spread;</code></details>
+    <a class="deeper open" href="../ordered-dithering/">Open its page</a>
+  </div>
+  <div class="stage"><span class="tag">drag the slider</span><div class="dith"><canvas id="dithCv"></canvas></div><input class="rng" id="dithRange" type="range" min="2" max="16" value="4" aria-label="Levels"></div>
+</section>
+<section class="spec" id="clip-path-reveal">
+  <div class="meta">
+    <span class="idx">30 / Image</span>
+    <h2 class="name"><a href="../clip-path-reveal/" style="view-transition-name:t-clip-path-reveal">Clip-path Reveal</a></h2>
+    <p class="gloss">The picture is uncovered by an edge travelling across it, not by fading up underneath.</p>
+    <p class="aka">also called <i>mask reveal</i> · <i>wipe</i> · <i>shape reveal</i></p>
+    <p class="note">A wipe has a direction and an edge; a fade has neither. That edge is what makes the reveal feel authored rather than merely delayed.</p>
+    <details class="how"><summary>How it is built</summary><code class="api">clip-path: inset(0 100% 0 0)  →  inset(0 0 0 0);
+transition: clip-path .9s cubic-bezier(.16,.84,.24,1);</code></details>
+    <a class="deeper open" href="../clip-path-reveal/">Open its page</a>
+  </div>
+  <div class="stage"><span class="tag">hover</span><div class="clipr" id="clipr"><div class="clipImg"></div><div class="clipImg alt"></div></div></div>
+</section>
+<section class="spec" id="image-comparison-slider">
+  <div class="meta">
+    <span class="idx">31 / Image</span>
+    <h2 class="name"><a href="../image-comparison-slider/" style="view-transition-name:t-image-comparison-slider">Image Comparison Slider</a></h2>
+    <p class="gloss">Two versions of the same frame, one laid over the other. Drag the divider across to compare them.</p>
+    <p class="aka">also called <i>before/after</i> · <i>juxtapose</i></p>
+    <p class="note">One image clipped over another, the clip driven by pointer position. Keep both layers exactly registered or the comparison lies.</p>
+    <details class="how"><summary>How it is built</summary><code class="api">clip-path: inset(0 calc(100% - var(--x)) 0 0);</code></details>
+    <a class="deeper open" href="../image-comparison-slider/">Open its page</a>
+  </div>
+  <div class="stage"><span class="tag">drag across</span><div class="cmp" id="cmp"><div class="cmpA"></div><div class="cmpB"></div><div class="cmpBar"></div></div></div>
+</section>
+<nav class="pager" aria-label="Previous and next pillar"><a class="prev" href="../scroll-behaviour/"><small>← Previous pillar</small><span>Scroll behaviour</span></a><a class="next" href="../type/"><small>Next pillar →</small><span>Type</span></a></nav>
+<footer>
+  <span>Material — Kamisaka Sekka 神坂雪佳, <i>Momoyogusa</i> 百々世草, 1909–10<br>Rijksmuseum scans via Wikimedia Commons, CC0. Anna Atkins cyanotypes, 1843.</span>
+  <span>Type — Melodrama · Switzer · Geist · Geist Mono · 思源宋体</span>
+  <span><a href="../../">The seven exhibits</a></span>
+</footer>
+</div>
+
+<script src="../../lexicon/material.js"></script>
+<script src="../../lexicon/lexicon.js"></script>
+</body>
+</html>

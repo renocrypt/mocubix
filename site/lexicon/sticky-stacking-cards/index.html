@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sticky Stacking Cards — Mocubix Lexicon</title>
+<meta name="description" content="Cards catch at the top one after another and pile over each other as you keep going.">
+<link rel="canonical" href="https://mocubix.renocrypt.com/lexicon/sticky-stacking-cards/">
+<link rel="icon" href="../../favicon.ico" sizes="32x32">
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Mocubix">
+<meta property="og:title" content="Sticky Stacking Cards — Mocubix Lexicon">
+<meta property="og:description" content="Cards catch at the top one after another and pile over each other as you keep going.">
+<meta property="og:url" content="https://mocubix.renocrypt.com/lexicon/sticky-stacking-cards/">
+<meta property="og:image" content="https://mocubix.renocrypt.com/share/lexicon.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="The Mocubix Lexicon: forty-one named interface effects">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preconnect" href="https://api.fontshare.com">
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="preconnect" href="https://upload.wikimedia.org">
+<link rel="preconnect" href="https://thumb.wikimedia.org">
+<!-- One request per family. A combined f[] request silently delivers only the first. -->
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f%5B%5D=melodrama@400,500&display=swap">
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f%5B%5D=switzer@400,500,600&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource-variable/geist-mono/index.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource-variable/geist/index.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cn-fontsource-source-han-serif-sc-vf/font.css">
+<link rel="stylesheet" href="../../house.css">
+<link rel="stylesheet" href="../../lexicon/lexicon.css">
+<script src="../../house.js"></script>
+<!-- Chrome readies a term while the pointer rests on its link, so turning the page is instant. -->
+<script type="speculationrules">{"prerender":[{"where":{"href_matches":"/lexicon/*"},"eagerness":"moderate"}]}</script>
+</head>
+<body>
+
+<div class="readbar" aria-hidden="true"></div>
+
+<nav class="topnav">
+  <div class="inner">
+    <a class="brand" href="../../">Mocubix</a><a class="brand" href="../../lexicon/"><i>Lexicon</i></a>
+    <a class="navfam" href="../../lexicon/scroll-driven/" aria-current="true">Scroll-driven<i>13</i></a><a class="navfam" href="../../lexicon/scroll-behaviour/">Scroll behaviour<i>11</i></a><a class="navfam" href="../../lexicon/image/">Image<i>7</i></a><a class="navfam" href="../../lexicon/type/">Type<i>5</i></a><a class="navfam" href="../../lexicon/colour/">Colour<i>5</i></a>
+    <span class="navtail">41 named effects</span>
+    <span data-theme-slot></span>
+  </div>
+</nav>
+
+<div class="wrap">
+<p class="crumb"><a href="../">Lexicon</a> / <a href="../scroll-driven/">Scroll-driven</a> · 6 of 13</p>
+<div class="termgrid">
+  <aside class="pillarnav" aria-label="Scroll-driven">
+    <h4><a href="../scroll-driven/">Scroll-driven</a><em>13</em></h4>
+    <ol><li><a href="../scroll-progress-timeline/"><b>01</b><span>Scroll Progress Timeline</span></a></li><li><a href="../view-progress-timeline/"><b>02</b><span>View Progress Timeline</span></a></li><li><a href="../pinning-and-scrub/"><b>03</b><span>Pinning &amp; Scrub</span></a></li><li><a href="../parallax/"><b>04</b><span>Parallax</span></a></li><li><a href="../horizontal-scroll-section/"><b>05</b><span>Horizontal Scroll Section</span></a></li><li><a href="../sticky-stacking-cards/" aria-current="page"><b>06</b><span>Sticky Stacking Cards</span></a></li><li><a href="../scroll-velocity-skew/"><b>07</b><span>Scroll Velocity Skew</span></a></li><li><a href="../timeline-scope/"><b>08</b><span>Timeline Scope</span></a></li><li><a href="../path-drawing/"><b>09</b><span>Path Drawing</span></a></li><li><a href="../word-scrub/"><b>10</b><span>Word Scrub</span></a></li><li><a href="../curtain-overlap/"><b>11</b><span>Curtain Overlap</span></a></li><li><a href="../depth-of-field/"><b>12</b><span>Depth of Field</span></a></li><li><a href="../scroll-triggered-count/"><b>13</b><span>Scroll-Triggered Count</span></a></li></ol>
+    <p class="others"><a href="../scroll-behaviour/">Scroll behaviour</a><a href="../image/">Image</a><a href="../type/">Type</a><a href="../colour/">Colour</a></p>
+  </aside>
+  <article class="term">
+<section class="spec" id="sticky-stacking-cards">
+  <div class="meta">
+    <span class="idx">06 / Scroll-driven</span>
+    <h1 class="name" style="view-transition-name:t-sticky-stacking-cards">Sticky Stacking Cards</h1>
+    <p class="gloss">Cards catch at the top one after another and pile over each other as you keep going.</p>
+    <p class="aka">also called <i>card stack</i> · <i>sticky stack</i></p>
+    <p class="note">One property on a list. Each item sticks at the same offset so later items slide over earlier ones and the stack builds itself. No library, no measurement, no scroll listener.</p>
+    <details class="how"><summary>How it is built</summary><code class="api">li { position: sticky; top: 76px; }</code></details>
+    
+  </div>
+  <div class="stage"><span class="tag">scroll the page</span><ul class="stackrun" id="stackrun"></ul></div>
+</section>
+  </article>
+</div>
+<nav class="pager" aria-label="Previous and next term"><a class="prev" href="../horizontal-scroll-section/"><small>← Previous</small><span>Horizontal Scroll Section</span></a><a class="next" href="../scroll-velocity-skew/"><small>Next →</small><span>Scroll Velocity Skew</span></a></nav>
+<footer>
+  <span>Material — Kamisaka Sekka 神坂雪佳, <i>Momoyogusa</i> 百々世草, 1909–10<br>Rijksmuseum scans via Wikimedia Commons, CC0. Anna Atkins cyanotypes, 1843.</span>
+  <span>Type — Melodrama · Switzer · Geist · Geist Mono · 思源宋体</span>
+  <span><a href="../../">The seven exhibits</a></span>
+</footer>
+</div>
+
+<script src="../../lexicon/material.js"></script>
+<script src="../../lexicon/lexicon.js"></script>
+</body>
+</html>

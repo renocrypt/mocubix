@@ -1,10 +1,13 @@
 # -*- coding: utf-8 -*-
-"""Generate the Lexicon.
+"""Generate the Lexicon: an entrance at /lexicon/ and a page per term at
+/lexicon/<term>/, all from SPECS below. The demos' styles and script are
+hand-edited sources in site/lexicon/ (lexicon.css, lexicon.js); this writes
+the pages and site/lexicon/material.js.
 
 Every image URL comes from assets/curated.json, which holds only URLs the
 Wikimedia API actually returned. No URL is ever hand-typed or width-rewritten.
 """
-import json, io
+import html as html_lib, json, re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -365,88 +368,253 @@ SPECS = [
    "scroll inside ↓"),
 ]
 
-FAMILIES = [("scroll", "Scroll"), ("image", "Image"),
-            ("type", "Type"), ("colour", "Colour")]
 
+# The five pillars. Scroll is split in two: what scrolling plays, and how
+# scrolling itself behaves. Order within a pillar follows SPECS.
+PILLARS = [
+    ("scroll-driven", "Scroll-driven", "What scrolling plays", [
+        "Scroll Progress Timeline", "View Progress Timeline", "Pinning &amp; Scrub", "Parallax",
+        "Horizontal Scroll Section", "Sticky Stacking Cards", "Scroll Velocity Skew", "Timeline Scope",
+        "Path Drawing", "Word Scrub", "Curtain Overlap", "Depth of Field", "Scroll-Triggered Count"]),
+    ("scroll-behaviour", "Scroll behaviour", "How scrolling itself behaves", [
+        "Scroll Snap", "Snap Stop", "Scroll Markers", "Scroll Buttons", "Sticky State Query",
+        "Snapped State Query", "Direction State", "Infinite Loop Scroll", "Kinetic Drag", "Scrollspy",
+        "Overscroll Containment"]),
+    ("image", "Image", "What a picture can do", None),
+    ("type", "Type", "Letters that move", None),
+    ("colour", "Colour", "Colour as one system", None),
+]
 
-# Specimens that a full exhibit develops further. Keyed by name as in SPECS.
+# Terms that a full exhibit develops further, relative to the site root.
 EXHIBITS = {
-    "Pinning &amp; Scrub":        ("../annie-g/", "Exhibit 01 · Annie G."),
-    "Horizontal Scroll Section":  ("../night-side/",      "Exhibit 02 · Night side"),
-    "Scroll Velocity Skew":       ("../florence/",        "Exhibit 03 · Florence"),
-    "View Progress Timeline":     ("../urformen/",   "Exhibit 04 · Urformen"),
-    "Token Interpolation":        ("../kilauea/",  "Exhibit 07 · Kīlauea"),
-    "Threshold Flip":             ("../kilauea/",  "Exhibit 07 · Kīlauea"),
+    "Pinning &amp; Scrub":        ("annie-g/",    "Exhibit 01 · Annie G."),
+    "Horizontal Scroll Section":  ("night-side/", "Exhibit 02 · Night side"),
+    "Scroll Velocity Skew":       ("florence/",   "Exhibit 03 · Florence"),
+    "View Progress Timeline":     ("urformen/",   "Exhibit 04 · Urformen"),
+    "Token Interpolation":        ("kilauea/",    "Exhibit 07 · Kīlauea"),
+    "Threshold Flip":             ("kilauea/",    "Exhibit 07 · Kīlauea"),
 }
 
-def render_specs():
-    buf = io.StringIO()
-    n = 0
-    for fam, fam_en in FAMILIES:
-        items = [s for s in SPECS if s[0] == fam]
-        buf.write(f'\n<div class="famhead" id="fam-{fam}">'
-                  f'<h2>{fam_en}</h2>'
-                  f'<p>{len(items)} named effects</p></div>\n')
-        for (_, name, aka, gloss, api, note, stage, tag) in items:
-            n += 1
-            idx = f"{n:02d}"
-            akas = ' · '.join(f'<i>{a.strip()}</i>' for a in aka.split('·'))
-            # api is code, never markup — <angle> must survive as text
-            api = api.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;')
-            href, label = EXHIBITS.get(name, (None, None))
-            deeper = (f'<a class="deeper" href="{href}">{label}</a>' if href else '')
-            buf.write(f'''
-<section class="spec" id="s{idx}">
-  <div class="meta">
-    <span class="idx">{idx} / {fam}</span>
-    <h3 class="name">{name}</h3>
-    <p class="gloss">{gloss}</p>
-    <p class="aka">also called {akas}</p>
-    <p class="note">{note}</p>
-    <details class="how"><summary>How it is built</summary><code class="api">{api}</code></details>
-    {deeper}
+BASE = 'https://mocubix.renocrypt.com/'
+
+
+def plain(s):
+    return re.sub(r'<[^>]+>', '', html_lib.unescape(s))
+
+
+def attr(s):
+    return html_lib.escape(plain(s), quote=True)
+
+
+def slug(name):
+    return re.sub(r'[^a-z0-9]+', '-', plain(name).lower().replace('&', ' and ')).strip('-')
+
+
+by_name = {s[1]: s for s in SPECS}
+TERMS = []   # (pillar key, pillar name, spec), in reading order
+for key, pname, _, names in PILLARS:
+    specs = [by_name[n] for n in names] if names else [s for s in SPECS if s[0] == key]
+    TERMS += [(key, pname, s) for s in specs]
+assert len(TERMS) == len(SPECS) == len({t[2][1] for t in TERMS}), 'every term in exactly one pillar'
+NUM = {t[2][1]: i + 1 for i, t in enumerate(TERMS)}
+
+
+def shell(title, desc, path, rel, body, current=None):
+    url = BASE + path
+    nav = ''
+    for k, n, _, _ in PILLARS:
+        count = sum(1 for t in TERMS if t[0] == k)
+        mark = ' aria-current="true"' if k == current else ''
+        nav += f'<a class="navfam" href="{rel}lexicon/{k}/"{mark}>{n}<i>{count}</i></a>'
+    return (SHELL.replace('__TITLE__', title).replace('__TITLE_ATTR__', attr(title)).replace('__DESC__', attr(desc))
+            .replace('__URL__', url).replace('__NAV__', nav).replace('__COUNT__', str(len(TERMS)))
+            .replace('__BODY__', body).replace('__REL__', rel))
+
+
+SHELL = """<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>__TITLE__</title>
+<meta name="description" content="__DESC__">
+<link rel="canonical" href="__URL__">
+<link rel="icon" href="__REL__favicon.ico" sizes="32x32">
+<link rel="icon" href="__REL__favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="__REL__apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Mocubix">
+<meta property="og:title" content="__TITLE_ATTR__">
+<meta property="og:description" content="__DESC__">
+<meta property="og:url" content="__URL__">
+<meta property="og:image" content="https://mocubix.renocrypt.com/share/lexicon.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="The Mocubix Lexicon: forty-one named interface effects">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preconnect" href="https://api.fontshare.com">
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="preconnect" href="https://upload.wikimedia.org">
+<link rel="preconnect" href="https://thumb.wikimedia.org">
+<!-- One request per family. A combined f[] request silently delivers only the first. -->
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f%5B%5D=melodrama@400,500&display=swap">
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f%5B%5D=switzer@400,500,600&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource-variable/geist-mono/index.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource-variable/geist/index.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cn-fontsource-source-han-serif-sc-vf/font.css">
+<link rel="stylesheet" href="__REL__house.css">
+<link rel="stylesheet" href="__REL__lexicon/lexicon.css">
+<script src="__REL__house.js"></script>
+<!-- Chrome readies a term while the pointer rests on its link, so turning the page is instant. -->
+<script type="speculationrules">{"prerender":[{"where":{"href_matches":"/lexicon/*"},"eagerness":"moderate"}]}</script>
+</head>
+<body>
+
+<div class="readbar" aria-hidden="true"></div>
+
+<nav class="topnav">
+  <div class="inner">
+    <a class="brand" href="__REL__">Mocubix</a><a class="brand" href="__REL__lexicon/"><i>Lexicon</i></a>
+    __NAV__
+    <span class="navtail">__COUNT__ named effects</span>
+    <span data-theme-slot></span>
   </div>
-  <div class="stage"><span class="tag">{tag}</span>{stage}</div>
-</section>''')
-    return buf.getvalue()
+</nav>
 
-def render_nav():
-    """The pinned bar: one line of family jumps and a count. The full list is
-    render_index(), in the header."""
-    out = []
-    for fam, fam_en in FAMILIES:
-        n = len([s for s in SPECS if s[0] == fam])
-        out.append(f'<a class="navfam" href="#fam-{fam}">{fam_en}<i>{n}</i></a>')
-    out.append(f'<span class="navtail">{len(SPECS)} named effects</span>')
-    return ''.join(out)
+<div class="wrap">
+__BODY__
+<footer>
+  <span>Material — Kamisaka Sekka 神坂雪佳, <i>Momoyogusa</i> 百々世草, 1909–10<br>Rijksmuseum scans via Wikimedia Commons, CC0. Anna Atkins cyanotypes, 1843.</span>
+  <span>Type — Melodrama · Switzer · Geist · Geist Mono · 思源宋体</span>
+  <span><a href="__REL__">The seven exhibits</a></span>
+</footer>
+</div>
+
+<script src="__REL__lexicon/material.js"></script>
+<script src="__REL__lexicon/lexicon.js"></script>
+</body>
+</html>
+"""
 
 
-def render_index():
-    """The catalogue contents, in the header. Every name is a real DOM link —
-    this is the page's vocabulary, so it has to be readable and indexable."""
-    out = ['<div class="index">']
-    n = 0
-    for fam, fam_en in FAMILIES:
-        items = [s for s in SPECS if s[0] == fam]
-        wide = ' wide' if len(items) > 12 else ''   # a big family splits into two columns
-        out.append(f'<div class="idxcol{wide}"><h4>{fam_en}'
-                   f'<em>{len(items)}</em></h4><ol>')
-        for s in items:
-            n += 1
-            out.append(f'<li><a href="#s{n:02d}"><b>{n:02d}</b><span>{s[1]}</span></a></li>')
-        out.append('</ol></div>')
-    out.append('</div>')
-    return ''.join(out)
+def spec_html(pname, s, rel, level='term'):
+    """The card. On a term page it is the page's subject (h1); on a pillar page
+    it is one of several (h2) and links on to the term's own page."""
+    _, name, aka, gloss, api, note, stage, tag = s
+    akas = ' · '.join('<i>' + a.strip() + '</i>' for a in aka.split('·'))
+    api = api.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;')   # code, never markup
+    href, label = EXHIBITS.get(name, (None, None))
+    deeper = f'<a class="deeper" href="{rel}{href}">{label}</a>' if href else ''
+    n, sl = NUM[name], slug(name)
+    if level == 'term':
+        title = f'<h1 class="name" style="view-transition-name:t-{sl}">{name}</h1>'
+        opener = ''
+    else:
+        title = f'<h2 class="name"><a href="../{sl}/" style="view-transition-name:t-{sl}">{name}</a></h2>'
+        opener = f'<a class="deeper open" href="../{sl}/">Open its page</a>'
+    return (f'<section class="spec" id="{sl}">\n'
+            f'  <div class="meta">\n'
+            f'    <span class="idx">{n:02d} / {pname}</span>\n'
+            f'    {title}\n'
+            f'    <p class="gloss">{gloss}</p>\n'
+            f'    <p class="aka">also called {akas}</p>\n'
+            f'    <p class="note">{note}</p>\n'
+            f'    <details class="how"><summary>How it is built</summary><code class="api">{api}</code></details>\n'
+            f'    {opener}{deeper}\n'
+            f'  </div>\n'
+            f'  <div class="stage"><span class="tag">{tag}</span>{stage}</div>\n'
+            f'</section>')
 
-TEMPLATE = open(ROOT / 'build/lexicon.template.html', encoding='utf-8').read()
-html = (TEMPLATE
-        .replace('/*__SPECS__*/', render_specs())
-        .replace('/*__NAV__*/', render_nav())
-        .replace('/*__INDEX__*/', render_index())
-        .replace('/*__SEKKA__*/', js_plates(sekka))
-        .replace('/*__ATKINS__*/', js_plates(atkins))
-        .replace('__COUNT__', str(len(SPECS))))
 
-open(ROOT / 'site/lexicon/index.html', 'w', encoding='utf-8').write(html)
-print("wrote site/lexicon/index.html —", len(html), "bytes,", len(SPECS), "named effects,",
-      len(sekka), "Sekka plates,", len(atkins), "cyanotypes")
+def entrance():
+    cols = []
+    for key, pname, blurb, _ in PILLARS:
+        items = [t for t in TERMS if t[0] == key]
+        lis = ''
+        for t in items:
+            s = t[2]; sl = slug(s[1])
+            lis += (f'<li><a href="{sl}/" data-aka="{attr(s[2])}" data-gloss="{attr(s[3])}">'
+                    f'<b>{NUM[s[1]]:02d}</b><span style="view-transition-name:t-{sl}">{s[1]}</span></a></li>')
+        cols.append(f'<div class="idxcol"><h4><a href="{key}/">{pname}</a><em>{len(items)}</em></h4>'
+                    f'<p class="blurb">{blurb}</p><ol>{lis}</ol></div>')
+    body = (f'<header class="entrance">\n'
+            f'  <div class="mast">\n'
+            f'    <p class="kicker">{len(TERMS)} named effects · five pillars</p>\n'
+            f'    <h1>Every effect<br>has a <em>name</em></h1>\n'
+            f'  </div>\n'
+            f'  <div class="find">\n'
+            f'    <label class="sr" for="find">Name an effect</label>\n'
+            f'    <input id="find" type="search" placeholder="Name an effect…" autocomplete="off" spellcheck="false">\n'
+            f'    <p class="caption" aria-live="polite">You cannot ask for what you cannot name. Type any name an effect goes by: '
+            f'each of the {len(TERMS)} opens on its own page, running.</p>\n'
+            f'  </div>\n'
+            f'  <div class="index">{"".join(cols)}</div>\n'
+            f'  <p class="keys"><span>Type to find</span><span>↑ ↓ to choose</span><span>Enter to open</span>'
+            f'<span>A pillar’s name opens its cards</span><span>← → on a term to turn the page</span></p>\n'
+            f'</header>')
+    desc = (f'{len(TERMS)} interface effects in five pillars, each on its own page and running, under the name practitioners use: '
+            f'scroll-driven motion, scroll behaviour, image, type and colour.')
+    return shell('The Lexicon — Mocubix', desc, 'lexicon/', '../', body)
+
+
+def pillar_page(p):
+    key, pname, blurb, _ = PILLARS[p]
+    items = [t for t in TERMS if t[0] == key]
+    chips = ''.join(f'<li><a href="#{slug(t[2][1])}"><b>{NUM[t[2][1]]:02d}</b>{t[2][1]}</a></li>' for t in items)
+    cards = '\n'.join(spec_html(pname, t[2], '../../', level='pillar') for t in items)
+    prev, nxt = PILLARS[p - 1] if p else None, PILLARS[p + 1] if p + 1 < len(PILLARS) else None
+    pager = (f'<a class="prev" href="../{prev[0]}/"><small>← Previous pillar</small><span>{prev[1]}</span></a>' if prev else '<span></span>')
+    pager += (f'<a class="next" href="../{nxt[0]}/"><small>Next pillar →</small><span>{nxt[1]}</span></a>' if nxt else '<span></span>')
+    body = (f'<p class="crumb"><a href="../">Lexicon</a> / {pname}</p>\n'
+            f'<header class="pillarhead">\n'
+            f'  <h1>{pname}</h1>\n'
+            f'  <p class="blurb">{blurb} · {len(items)} named effects, each running below</p>\n'
+            f'  <ol class="chips">{chips}</ol>\n'
+            f'</header>\n'
+            f'{cards}\n'
+            f'<nav class="pager" aria-label="Previous and next pillar">{pager}</nav>')
+    desc = f'{pname}: {blurb.lower()}. ' + ', '.join(plain(t[2][1]) for t in items) + ' — each named, explained and running.'
+    return shell(f'{pname} — Mocubix Lexicon', desc, f'lexicon/{key}/', '../../', body, current=key)
+
+
+def term_page(i):
+    pkey, pname, s = TERMS[i]
+    name, rel = s[1], '../../'
+    items = [t for t in TERMS if t[0] == pkey]
+    lis = ''
+    for t in items:
+        mark = ' aria-current="page"' if t[2][1] == name else ''
+        lis += f'<li><a href="../{slug(t[2][1])}/"{mark}><b>{NUM[t[2][1]]:02d}</b><span>{t[2][1]}</span></a></li>'
+    others = ''.join(f'<a href="../{k}/">{n}</a>' for k, n, _, _ in PILLARS if k != pkey)
+    prev = TERMS[i - 1] if i else None
+    nxt = TERMS[i + 1] if i + 1 < len(TERMS) else None
+    pager = (f'<a class="prev" href="../{slug(prev[2][1])}/"><small>← Previous</small><span>{prev[2][1]}</span></a>' if prev else '<span></span>')
+    pager += (f'<a class="next" href="../{slug(nxt[2][1])}/"><small>Next →</small><span>{nxt[2][1]}</span></a>' if nxt else '<span></span>')
+    body = (f'<p class="crumb"><a href="../">Lexicon</a> / <a href="../{pkey}/">{pname}</a> · {items.index(TERMS[i]) + 1} of {len(items)}</p>\n'
+            f'<div class="termgrid">\n'
+            f'  <aside class="pillarnav" aria-label="{pname}">\n'
+            f'    <h4><a href="../{pkey}/">{pname}</a><em>{len(items)}</em></h4>\n'
+            f'    <ol>{lis}</ol>\n'
+            f'    <p class="others">{others}</p>\n'
+            f'  </aside>\n'
+            f'  <article class="term">\n{spec_html(pname, s, rel)}\n  </article>\n'
+            f'</div>\n'
+            f'<nav class="pager" aria-label="Previous and next term">{pager}</nav>')
+    return shell(f'{plain(name)} — Mocubix Lexicon', plain(s[3]), f'lexicon/{slug(name)}/', rel, body, current=pkey)
+
+
+out = ROOT / 'site' / 'lexicon'
+(out / 'material.js').write_text('/* Generated by build/build-lexicon.py from assets/curated.json: only URLs the Wikimedia API returned. */\n'
+                                 f'var SEKKA = {js_plates(sekka)};\nvar ATKINS = {js_plates(atkins)};\n', encoding='utf-8')
+(out / 'index.html').write_text(entrance(), encoding='utf-8')
+for p in range(len(PILLARS)):
+    d = out / PILLARS[p][0]
+    d.mkdir(exist_ok=True)
+    (d / 'index.html').write_text(pillar_page(p), encoding='utf-8')
+for i in range(len(TERMS)):
+    d = out / slug(TERMS[i][2][1])
+    d.mkdir(exist_ok=True)
+    (d / 'index.html').write_text(term_page(i), encoding='utf-8')
+print(f'wrote the Lexicon: an index, {len(PILLARS)} pillar pages and {len(TERMS)} term pages; '
+      f'{len(sekka)} Sekka plates, {len(atkins)} cyanotypes in material.js')

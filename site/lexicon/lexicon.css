@@ -1,40 +1,5 @@
-<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Mocubix — The Lexicon</title>
-<meta name="description" content="A named catalogue of frontier interface effects. Every specimen runs live on this page and carries the term practitioners actually use for it.">
-<link rel="canonical" href="https://mocubix.renocrypt.com/lexicon/">
-<link rel="icon" href="../favicon.ico" sizes="32x32">
-<link rel="icon" href="../favicon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="../apple-touch-icon.png">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="Mocubix">
-<meta property="og:title" content="Mocubix — The Lexicon">
-<meta property="og:description" content="A named catalogue of frontier interface effects. Every specimen runs live on this page and carries the term practitioners actually use for it.">
-<meta property="og:url" content="https://mocubix.renocrypt.com/lexicon/">
-<meta property="og:image" content="https://mocubix.renocrypt.com/share/lexicon.jpg">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="The Mocubix Lexicon: forty-one named interface effects">
-<meta name="twitter:card" content="summary_large_image">
-
-<link rel="preconnect" href="https://api.fontshare.com">
-<link rel="preconnect" href="https://cdn.jsdelivr.net">
-<link rel="preconnect" href="https://upload.wikimedia.org">
-<link rel="preconnect" href="https://thumb.wikimedia.org">
-
-<!-- One request per family. A combined f[] request silently delivers only the first. -->
-<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f%5B%5D=melodrama@400,500&display=swap">
-<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f%5B%5D=switzer@400,500,600&display=swap">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource-variable/geist-mono/index.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource-variable/geist/index.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cn-fontsource-source-han-serif-sc-vf/font.css">
-<link rel="stylesheet" href="../house.css">
-<script src="../house.js"></script>
-
-<style>
+/* The Lexicon: the demos, and the frame that holds them (entrance and term pages).
+   Every term page loads this one file; a demo's rules only match on its own page. */
 :root{
   /* A looping alternate pan needs a symmetric curve; the house curve's fast
      departure lurches when it reverses. */
@@ -94,12 +59,12 @@ h1,h2,h3{font-weight:400}
   display:flex;gap:9px;align-items:baseline}
 .idxcol h4 em{margin-left:auto;font-style:normal;color:var(--dim)}
 .idxcol ol{margin:0;padding:0;list-style:none;display:grid;gap:6px}
-.idxcol a{display:grid;grid-template-columns:21px minmax(0,1fr);gap:8px;align-items:baseline;
+.idxcol ol a{display:grid;grid-template-columns:21px minmax(0,1fr);gap:8px;align-items:baseline;
   font-size:12.5px;line-height:1.44;color:var(--mid);transition:color .3s var(--settle)}
-.idxcol a b{font-family:var(--mono);font-weight:400;font-size:9px;color:var(--dim);
+.idxcol ol a b{font-family:var(--mono);font-weight:400;font-size:9px;color:var(--dim);
   transition:color .3s var(--settle)}
-.idxcol a:hover{color:var(--ink)}
-.idxcol a:hover b{color:var(--accent)}
+.idxcol ol a:hover{color:var(--ink)}
+.idxcol ol a:hover b{color:var(--accent)}
 
 /* ── hero ──────────────────────────────────────────────────── */
 header{padding-block:clamp(64px,13vh,150px) clamp(34px,6vh,72px)}
@@ -750,707 +715,130 @@ footer a:hover{color:var(--accent)}
   /* this one does move, so it parks straddling the grey band instead */
   .dirun{animation:none;transform:translateX(-52%)}
 }
-</style>
-</head>
-<body>
 
-<div class="readbar" aria-hidden="true"></div>
-
-<nav class="topnav">
-  <div class="inner">
-    <a class="brand" href="../">Mocubix <i>Lexicon</i></a>
-    /*__NAV__*/
-    <span data-theme-slot></span>
-  </div>
-</nav>
-
-<div class="wrap">
-
-<header>
-  <p class="kicker">__COUNT__ named effects · every one live on this page</p>
-  <h1>Every effect<br>has a <em>name</em></h1>
-  <p class="lede">You cannot ask for what you cannot name. This is one page, not a folder — <b>__COUNT__ interface effects running side by side</b>, each labelled with the term practitioners actually use, so the next brief can just say “pin and scrub” or “progressive blur”.</p>
-  <div class="howto">
-    <span><b>Left</b> — what it is, and what to call it</span>
-    <span><b>Right</b> — the effect, running</span>
-    <span><b>Material</b> — Kamisaka Sekka, 1909, CC0</span>
-  </div>
-  /*__INDEX__*/
-</header>
-
-/*__SPECS__*/
-
-<footer>
-  <span>Material — Kamisaka Sekka 神坂雪佳, <i>Momoyogusa</i> 百々世草, 1909–10<br>Rijksmuseum scans via Wikimedia Commons, CC0. Anna Atkins cyanotypes, 1843.</span>
-  <span>Type — Melodrama · Switzer · Geist · Geist Mono · 思源宋体</span>
-  <span><a href="../">The seven exhibits</a></span>
-</footer>
-
-</div>
-
-<script>
-/* Material, generated from assets/curated.json. Every URL is one the Wikimedia
-   API returned; the widths are the buckets it really serves. */
-var SEKKA  = /*__SEKKA__*/;
-var ATKINS = /*__ATKINS__*/;
-
-var P = SEKKA;
-function bg(el, work){ el.style.backgroundImage = 'url("' + work.src + '")'; }
-
-/* ── 02 view progress timeline ─────────────────────────────── */
-(function(){
-  var host = document.getElementById('plates');
-  if (!host) return;
-  P.slice(0, 5).forEach(function(w, i){
-    var row = document.createElement('div');
-    row.className = 'plate';
-    row.innerHTML =
-      '<figure><img loading="lazy" decoding="async" alt="' + w.label + '" src="' + w.src +
-      '" srcset="' + w.srcset + '" sizes="76px"></figure>' +
-      '<div><span class="cap">' + String(i + 1).padStart(2, '0') + ' · ' + w.label +
-      '</span><div class="bar"><i></i></div></div>';
-    host.appendChild(row);
-  });
-})();
-
-/* ── 03 pin + scrub ────────────────────────────────────────── */
-(function(){
-  var img = document.getElementById('pinImg'), cover = document.getElementById('pinCover');
-  if (!img) return;
-  var w = P[1];
-  img.src = w.src; img.srcset = w.srcset;
-  img.sizes = '(max-width:880px) 76vw, 540px';
-  img.alt = 'Kamisaka Sekka — ' + w.label;
-  var run = document.querySelector('.pinrun');
-  function frame(){
-    var r = run.getBoundingClientRect();
-    var total = r.height - innerHeight;
-    var p = total > 0 ? Math.min(1, Math.max(0, -r.top / total)) : 0;
-    cover.style.transform = 'scaleX(' + (1 - p) + ')';
-  }
-  addEventListener('scroll', frame, { passive: true });
-  addEventListener('resize', frame, { passive: true });
-  frame();
-})();
-
-/* ── 04 parallax ───────────────────────────────────────────── */
-(function(){
-  var a = document.getElementById('paraL1'), b = document.getElementById('paraL2');
-  if (!a) return;
-  bg(a, P[4]); bg(b, P[2]);
-})();
-
-/* ── 05 horizontal track ───────────────────────────────────── */
-(function(){
-  var track = document.getElementById('htrack');
-  if (!track) return;
-  P.slice(0, 8).forEach(function(w, i){
-    var c = document.createElement('div');
-    c.className = 'hcard';
-    c.innerHTML = '<figure><img loading="lazy" decoding="async" alt="' + w.label +
-      '" src="' + w.src + '" sizes="310px"></figure><p>' +
-      String(i + 1).padStart(2, '0') + ' · ' + w.label + '</p>';
-    track.appendChild(c);
-  });
-  var run = document.querySelector('.hrun');
-  function frame(){
-    var r = run.getBoundingClientRect();
-    var total = r.height - innerHeight;
-    var p = total > 0 ? Math.min(1, Math.max(0, -r.top / total)) : 0;
-    var travel = Math.max(0, track.scrollWidth - innerWidth + 44);
-    track.style.transform = 'translateX(' + (-p * travel) + 'px)';
-  }
-  addEventListener('scroll', frame, { passive: true });
-  addEventListener('resize', frame, { passive: true });
-  frame();
-})();
-
-/* ── 07 stacking cards ─────────────────────────────────────── */
-(function(){
-  var host = document.getElementById('stackrun');
-  if (!host) return;
-  P.slice(0, 5).forEach(function(w, i){
-    var li = document.createElement('li');
-    li.innerHTML = '<div class="stackcard"><figure><img loading="lazy" decoding="async" alt="' +
-      w.label + '" src="' + w.src + '" sizes="52px"></figure>' +
-      '<div><h4>' + w.label + '</h4><p>card ' + String(i + 1).padStart(2, '0') +
-      ' · sticks at 72px</p></div></div>';
-    host.appendChild(li);
-  });
-})();
-
-/* ── 08 velocity bars ──────────────────────────────────────── */
-(function(){
-  var host = document.getElementById('skewinner');
-  if (!host) return;
-  [92, 64, 78, 46, 86, 58, 72, 40, 88].forEach(function(v){
-    var i = document.createElement('i');
-    i.style.width = v + '%';
-    host.appendChild(i);
-  });
-})();
-
-/* ── 01 + 08 · one rAF loop for position and velocity ──────── */
-(function(){
-  var root = document.documentElement;
-  var pctOut = document.getElementById('pctOut'), velOut = document.getElementById('velOut');
-  var last = scrollY, v = 0, queued = false;
-  /* Asymmetric filter: fast attack, slow release. A symmetric smooth either
-     lags the gesture or passes trackpad jitter through as visual noise. */
-  var ATTACK = 0.34, RELEASE = 0.055, SCALE = 80;
-  function frame(){
-    queued = false;
-    var max = root.scrollHeight - innerHeight;
-    if (pctOut) pctOut.textContent = Math.round((max > 0 ? scrollY / max : 0) * 100) + '%';
-    var target = Math.min(1, Math.abs(scrollY - last) / SCALE);
-    last = scrollY;
-    v += (target - v) * (target > v ? ATTACK : RELEASE);
-    if (v < 0.0008) v = 0;
-    root.style.setProperty('--vel', v.toFixed(4));
-    if (velOut) velOut.textContent = v.toFixed(2);
-    if (v > 0 && !queued) { queued = true; requestAnimationFrame(frame); }
-  }
-  addEventListener('scroll', function(){
-    if (!queued) { queued = true; requestAnimationFrame(frame); }
-  }, { passive: true });
-  frame();
-})();
-
-/* ── 09 blur-up ────────────────────────────────────────────── */
-(function(){
-  var host = document.getElementById('lqip'), btn = document.getElementById('lqipBtn');
-  if (!host) return;
-  var w = P[5];
-  host.innerHTML = '<div class="ph"></div><div class="full"></div>';
-  var ph = host.querySelector('.ph'), full = host.querySelector('.full');
-  /* The placeholder is the smallest bucket, deliberately upscaled and blurred. */
-  ph.style.backgroundImage = 'url("' + w.src + '")';
-  function load(){
-    host.classList.remove('done');
-    var img = new Image();
-    img.onload = function(){
-      full.style.backgroundImage = 'url("' + img.src + '")';
-      requestAnimationFrame(function(){ host.classList.add('done'); });
-    };
-    img.src = w.srcset.split(', ').pop().split(' ')[0] + '?r=' + Date.now();
-  }
-  btn.addEventListener('click', load);
-  load();
-})();
-
-/* ── 10 ken burns ──────────────────────────────────────────── */
-(function(){ var el = document.getElementById('kb'); if (el) bg(el, P[6]); })();
-
-/* ── 11 duotone ────────────────────────────────────────────── */
-(function(){
-  var host = document.getElementById('duo'), rng = document.getElementById('duoRange');
-  if (!host) return;
-  var w = P[7];
-  bg(host.querySelector('.duoBase'), w);
-  rng.addEventListener('input', function(){
-    host.style.setProperty('--duo', rng.value / 100);
-  });
-})();
-
-/* ── 12 progressive blur ───────────────────────────────────── */
-(function(){
-  var el = document.querySelector('#pblur .pbImg');
-  if (el) bg(el, P[8]);
-})();
-
-/* ── 13 ordered dithering ──────────────────────────────────── */
-(function(){
-  var cv = document.getElementById('dithCv'), rng = document.getElementById('dithRange');
-  if (!cv) return;
-  var ctx = cv.getContext('2d', { willReadFrequently: true });
-  var work = ATKINS.length ? ATKINS[1] : P[9];
-  /* 8x8 Bayer matrix: a fixed threshold pattern, so the grain is structured.
-     Needs crossorigin="anonymous" and a CORS-clean host, or the canvas taints. */
-  var B = [
-    [ 0,32, 8,40, 2,34,10,42],[48,16,56,24,50,18,58,26],
-    [12,44, 4,36,14,46, 6,38],[60,28,52,20,62,30,54,22],
-    [ 3,35,11,43, 1,33, 9,41],[51,19,59,27,49,17,57,25],
-    [15,47, 7,39,13,45, 5,37],[63,31,55,23,61,29,53,21]];
-  var img = new Image();
-  img.crossOrigin = 'anonymous';
-  var ready = false;
-  img.onload = function(){ ready = true; draw(); };
-  img.onerror = function(){
-    cv.width = 8; cv.height = 5;
-    ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--lift');
-    ctx.fillRect(0, 0, 8, 5);
-  };
-  img.src = work.src;
-
-  function draw(){
-    if (!ready) return;
-    var W = 380, H = Math.round(W * img.naturalHeight / img.naturalWidth);
-    cv.width = W; cv.height = H;
-    ctx.drawImage(img, 0, 0, W, H);
-    var d = ctx.getImageData(0, 0, W, H), px = d.data;
-    var levels = parseInt(rng.value, 10), step = 255 / (levels - 1);
-    for (var y = 0; y < H; y++){
-      for (var x = 0; x < W; x++){
-        var i = (y * W + x) * 4;
-        var lum = 0.299 * px[i] + 0.587 * px[i+1] + 0.114 * px[i+2];
-        var t = (B[y & 7][x & 7] / 64 - 0.5) * step;
-        var q = Math.max(0, Math.min(255, Math.round((lum + t) / step) * step));
-        /* tint the result into the house palette rather than flat grey */
-        px[i]   = q * 0.94 + 10;
-        px[i+1] = q * 0.90 + 9;
-        px[i+2] = q * 0.84 + 8;
-      }
-    }
-    ctx.putImageData(d, 0, 0);
-  }
-  rng.addEventListener('input', draw);
-})();
-
-/* ── 14 clip-path reveal ───────────────────────────────────── */
-(function(){
-  var host = document.getElementById('clipr');
-  if (!host) return;
-  var imgs = host.querySelectorAll('.clipImg');
-  bg(imgs[0], P[10]); bg(imgs[1], P[3]);
-})();
-
-/* ── 15 comparison slider ──────────────────────────────────── */
-(function(){
-  var host = document.getElementById('cmp');
-  if (!host) return;
-  bg(host.querySelector('.cmpA'), P[9]);
-  bg(host.querySelector('.cmpB'), P[0]);
-  function set(e){
-    var r = host.getBoundingClientRect();
-    var cx = (e.touches ? e.touches[0].clientX : e.clientX) - r.left;
-    host.style.setProperty('--x', Math.max(0, Math.min(r.width, cx)) + 'px');
-  }
-  host.addEventListener('pointermove', set);
-  host.addEventListener('pointerdown', set);
-})();
-
-/* ── 16 split reveal, fires once ───────────────────────────── */
-(function(){
-  var el = document.getElementById('reveal');
-  if (!el) return;
-  new IntersectionObserver(function(entries, obs){
-    entries.forEach(function(e){
-      if (e.isIntersecting) { el.classList.add('on'); obs.disconnect(); }
-    });
-  }, { threshold: 0.4 }).observe(el);
-})();
-
-/* ── 17 variable font ──────────────────────────────────────── */
-(function(){
-  var line = document.getElementById('vfLine'), rng = document.getElementById('vfRange');
-  if (!line) return;
-  function apply(){
-    line.style.setProperty('--w', rng.value);
-    line.parentElement.style.setProperty('--w', rng.value);
-  }
-  rng.addEventListener('input', apply); apply();
-})();
-
-/* ── 18 text mask ──────────────────────────────────────────── */
-(function(){
-  var el = document.getElementById('tmaskTxt');
-  if (el) el.style.backgroundImage = 'url("' + P[2].src + '")';
-})();
-
-/* ── marquee ───────────────────────────────────────────────── */
-(function(){
-  var row = document.getElementById('marqrow');
-  if (!row) return;
-  var words = ['Scrub','Pin','Parallax','Snap','Stack','Skew','Stuck','Snapped',
-               'Curtain','Kinetic','Dither','Duotone','Blur-up'];
-  /* Duplicate exactly once and travel -50%: that is what makes the loop seamless. */
-  words.concat(words).forEach(function(w){
-    var s = document.createElement('span');
-    s.textContent = w;
-    row.appendChild(s);
-  });
-})();
-
-/* ═══ scroll family · specimens 09–24 ════════════════════════ */
-
-function imgTag(w, sizes){
-  return '<img loading="lazy" decoding="async" alt="' + w.label + '" src="' + w.src +
-         '" srcset="' + w.srcset + '" sizes="' + sizes + '">';
+/* ── the Lexicon as a book: an entrance, and a page per term ─── */
+/* Between terms the page turns instead of reloading: the name and the stage
+   carry across and the rest cross-fades, on the house curve. */
+@view-transition{navigation:auto}
+::view-transition-group(*){animation-duration:.5s;animation-timing-function:var(--settle)}
+@media (prefers-reduced-motion:reduce){
+  ::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none}
 }
-function indexRow(w, i, cls){
-  var d = document.createElement('div');
-  d.className = cls || 'ssqrow';
-  d.innerHTML = '<figure>' + imgTag(w, '44px') + '</figure><span>' +
-    String(i + 1).padStart(2, '0') + ' · ' + w.label + '</span>';
-  return d;
+/* a term's title shares its transition name with its word in the index, so the word travels */
+.term .stage{view-transition-name:stage}
+.pillarnav{view-transition-name:pillarnav}
+
+.brand + .brand{margin-left:-20px}
+.navfam[aria-current]{color:var(--ink);border-bottom-color:var(--accent)}
+
+/* the entrance: five pillars, the whole vocabulary on one screen */
+.index{grid-template-columns:repeat(5,minmax(0,1fr))}
+.idxcol h4{margin-bottom:6px}
+.idxcol .blurb{margin:0 0 16px;font-size:12px;line-height:1.5;color:var(--dim);text-wrap:balance}
+.idxcol ol a{font-size:14.5px;grid-template-columns:24px minmax(0,1fr)}
+.idxcol ol a b{font-size:9.5px}
+.idxcol ol{gap:7px}
+
+/* a term page: where it sits, the term, its pillar beside it, and the way on */
+.crumb{margin:clamp(34px,6vh,64px) 0 clamp(22px,3.6vh,38px);font-family:var(--mono);font-size:9.5px;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--dim)}
+.crumb a{color:var(--mid);transition:color .3s var(--settle)}
+.crumb a:hover{color:var(--accent)}
+.termgrid{display:grid;grid-template-columns:196px minmax(0,1fr);gap:clamp(28px,4vw,60px);align-items:start}
+.term .spec{border-top:1px solid var(--line);padding-top:clamp(26px,4vh,40px)}
+.pillarnav{position:sticky;top:clamp(60px,9vh,84px);border-top:1px solid var(--accent);padding-top:14px}
+.pillarnav h4{margin:0 0 14px;font-weight:400;font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--accent);display:flex;align-items:baseline}
+.pillarnav h4 em{margin-left:auto;font-style:normal;color:var(--dim)}
+.pillarnav ol{margin:0;padding:0;list-style:none;display:grid;gap:5px}
+.pillarnav ol a{display:grid;grid-template-columns:22px minmax(0,1fr);gap:6px;align-items:baseline;
+  font-size:12.5px;line-height:1.4;color:var(--dim);transition:color .3s var(--settle)}
+.pillarnav ol a b{font-family:var(--mono);font-weight:400;font-size:9px}
+.pillarnav ol a:hover{color:var(--ink)}
+.pillarnav ol a[aria-current]{color:var(--ink)}
+.pillarnav ol a[aria-current] b{color:var(--accent)}
+.pillarnav .others{margin:22px 0 0;padding-top:12px;border-top:1px solid var(--line);display:grid;gap:5px;
+  font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase}
+.pillarnav .others a{display:block;color:var(--dim)}
+.pillarnav .others a:hover{color:var(--accent)}
+
+.pager{display:grid;grid-template-columns:1fr 1fr;gap:24px;border-top:1px solid var(--line);
+  margin-top:clamp(48px,8vh,96px);padding-top:22px}
+.pager a{display:grid;gap:8px;max-width:26ch}
+.pager a.next{justify-self:end;text-align:right}
+.pager small{font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim)}
+.pager span{font-family:var(--display);font-size:clamp(22px,2.6vw,34px);line-height:1.04;letter-spacing:-.02em;
+  color:var(--mid);transition:color .3s var(--settle);text-wrap:balance}
+.pager a:hover span{color:var(--accent)}
+
+@media (max-width:1180px){
+  .index{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media (max-width:1100px){
+  .termgrid{grid-template-columns:minmax(0,1fr)}
+  /* on a narrow screen the pillar becomes a row of stops to swipe through */
+  .pillarnav{position:static;order:2}
+  .pillarnav ol{display:flex;gap:8px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:10px}
+  .pillarnav li{flex:none;scroll-snap-align:start}
+  .pillarnav ol a{display:inline-flex;gap:7px;border:1px solid var(--line);padding:7px 11px;border-radius:2px;white-space:nowrap}
+}
+@media (max-width:760px){
+  .index{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .pager{grid-template-columns:minmax(0,1fr)}
+  .pager a.next{justify-self:start;text-align:left}
 }
 
-/* ── 09 sticky state query ─────────────────────────────────── */
-(function(){
-  var host = document.getElementById('ssqbody');
-  if (!host) return;
-  P.forEach(function(w, i){ host.appendChild(indexRow(w, i)); });
-})();
+/* ── the entrance: one screen; the vocabulary is the page ───── */
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.entrance{min-height:calc(100svh - 46px);display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);
+  column-gap:clamp(28px,5vw,84px);align-content:start;padding-block:clamp(30px,6.5vh,76px) clamp(18px,3vh,30px)}
+.entrance .kicker{margin-bottom:18px}
+.entrance h1{font-size:clamp(46px,6.2vw,98px);line-height:.86}
+.find{align-self:end;padding-bottom:4px}
+.find input{width:100%;background:none;border:0;border-bottom:1px solid var(--line);border-radius:0;
+  padding:0 0 12px;font-family:var(--display);font-size:clamp(28px,3.3vw,48px);letter-spacing:-.02em;line-height:1.1;
+  color:var(--ink);caret-color:var(--accent);outline:none;transition:border-color .35s var(--settle)}
+.find input::placeholder{color:var(--dim);opacity:.65}
+.find input:focus{border-bottom-color:var(--accent)}
+.find input::-webkit-search-cancel-button{appearance:none}
+.caption{margin:14px 0 0;min-height:3.2em;font-size:15px;line-height:1.55;color:var(--mid);max-width:54ch;text-wrap:pretty}
+.caption b{color:var(--ink);font-weight:500}
+.entrance .index{grid-column:1/-1;margin-top:clamp(26px,5vh,56px)}
+.keys{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:8px 28px;margin:clamp(18px,3vh,30px) 0 0;font-family:var(--mono);
+  font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim)}
+/* finding: the matches stay, the rest step back, and nothing moves */
+.idxcol ol a{transition:opacity .35s var(--settle),color .3s var(--settle)}
+.index.finding ol a:not(.hit){opacity:.15}
+.index a.hit span{color:var(--ink)}
+.index a.on span,.index a.on b{color:var(--accent)}
+.idxcol .aka-hit{grid-column:2;font-family:var(--mono);font-style:normal;font-size:9.5px;letter-spacing:.04em;color:var(--accent)}
+@media (max-width:900px){
+  .entrance{grid-template-columns:minmax(0,1fr);min-height:0}
+  .find{margin-top:28px}
+  .keys span:last-child{display:none}
+}
 
-/* ── 10 snapped state query ────────────────────────────────── */
-(function(){
-  var host = document.getElementById('snapq');
-  if (!host) return;
-  ['One','Two','Three','Four'].forEach(function(n){
-    var li = document.createElement('li');
-    li.innerHTML = '<div class="qcard"><b>Slide ' + n + '</b><i>snapped</i></div>';
-    host.appendChild(li);
-  });
-})();
+/* the index fits one screen: vertical rhythm scales with the window's height */
+.entrance{padding-block:clamp(22px,5vh,72px) clamp(14px,2.4vh,28px)}
+.entrance h1{font-size:clamp(44px,min(6.2vw,10.5vh),98px)}
+.entrance .kicker{margin-bottom:clamp(10px,2vh,18px)}
+.entrance .index{margin-top:clamp(18px,4vh,56px);padding-top:clamp(14px,2.4vh,21px)}
+.entrance .idxcol .blurb{margin-bottom:clamp(8px,1.6vh,16px)}
+.entrance .idxcol ol{gap:clamp(2px,.55vh,7px)}
+.idxcol h4 a,.pillarnav h4 a{color:inherit;border-bottom:1px solid transparent;transition:border-color .3s var(--settle)}
+.idxcol h4 a:hover,.pillarnav h4 a:hover{border-bottom-color:var(--accent)}
 
-/* ── 11 scroll markers ─────────────────────────────────────── */
-(function(){
-  var host = document.getElementById('cml');
-  if (!host) return;
-  P.slice(0, 6).forEach(function(w, i){
-    var li = document.createElement('li');
-    li.innerHTML = '<figure>' + imgTag(w, '186px') + '</figure><p>' +
-      String(i + 1).padStart(2, '0') + ' · ' + w.label + '</p>';
-    host.appendChild(li);
-  });
-})();
-
-/* ── 12 scroll buttons ─────────────────────────────────────── */
-(function(){
-  var host = document.getElementById('csb');
-  if (!host) return;
-  P.slice(0, 8).forEach(function(w){
-    var li = document.createElement('li');
-    li.innerHTML = '<figure>' + imgTag(w, '148px') + '</figure>';
-    host.appendChild(li);
-  });
-})();
-
-/* ── 13 timeline scope ─────────────────────────────────────── */
-(function(){
-  var box = document.getElementById('tscbox');
-  if (box) box.innerHTML = imgTag(P[3], '(max-width:880px) 78vw, 420px');
-})();
-
-/* ── 15 word scrub ─────────────────────────────────────────── */
-(function(){
-  var host = document.getElementById('wscrub');
-  if (!host) return;
-  var text = 'Scroll is the one gesture every reader already knows, ' +
-             'which is exactly why it is worth spending a whole vocabulary on.';
-  var p = document.createElement('p');
-  var words = text.split(' ');
-  /* Each word takes a different slice of one view timeline. START holds the
-     first word until the line is on screen; SPREAD is how much of the pass the
-     sentence occupies; WINDOW is the overlap — narrower strobes, wider arrives
-     all at once. */
-  var START = 12, SPREAD = 56, WINDOW = 22;
-  words.forEach(function(word, i){
-    var s = document.createElement('span');
-    s.className = 'w';
-    s.textContent = word;
-    var a = START + (words.length > 1 ? i * SPREAD / (words.length - 1) : 0);
-    s.style.animationRange = 'cover ' + a.toFixed(1) + '% cover ' + (a + WINDOW).toFixed(1) + '%';
-    p.appendChild(s);
-    p.appendChild(document.createTextNode(' '));
-  });
-  host.appendChild(p);
-})();
-
-/* ── 16 direction state ────────────────────────────────────── */
-(function(){
-  var pane = document.getElementById('dirs'), out = document.getElementById('dirOut'),
-      body = document.getElementById('dirsbody');
-  if (!pane) return;
-  P.concat(P).forEach(function(w, i){ body.appendChild(indexRow(w, i)); });
-  /* A dead zone is mandatory. Without it a trackpad flips the state every frame. */
-  var DEAD = 6, last = 0;
-  pane.dataset.dir = 'up';
-  pane.addEventListener('scroll', function(){
-    var y = pane.scrollTop, d = y - last;
-    if (Math.abs(d) < DEAD) return;
-    last = y;
-    var dir = (d > 0 && y > 40) ? 'down' : 'up';
-    if (pane.dataset.dir !== dir){ pane.dataset.dir = dir; out.textContent = dir; }
-  }, { passive: true });
-})();
-
-/* ── 17 curtain overlap ────────────────────────────────────── */
-(function(){ var el = document.getElementById('curtA'); if (el) bg(el, P[10]); })();
-
-/* ── 18 depth of field ─────────────────────────────────────── */
-(function(){
-  var host = document.getElementById('dof');
-  if (!host) return;
-  P.slice(0, 7).forEach(function(w, i){
-    var row = document.createElement('div');
-    row.className = 'dofrow';
-    row.innerHTML = '<div class="dofinner"><figure>' + imgTag(w, '64px') +
-      '</figure><span>' + String(i + 1).padStart(2, '0') + ' · ' + w.label + '</span></div>';
-    host.appendChild(row);
-  });
-})();
-
-/* ── 19 infinite loop scroll ───────────────────────────────── */
-(function(){
-  var pane = document.getElementById('loopx');
-  if (!pane) return;
-  /* Chrome's scroll anchoring would also try to correct for the moved row,
-     and the two corrections fight. Turn it off and do it by hand. */
-  pane.style.overflowAnchor = 'none';
-  function row(w, i){
-    var d = document.createElement('div');
-    d.className = 'lrow';
-    d.innerHTML = '<figure>' + imgTag(w, '50px') + '</figure><b>' + w.label +
-      '</b><em>' + String((i % P.length) + 1).padStart(2, '0') + '</em>';
-    return d;
-  }
-  for (var i = 0; i < P.length * 2; i++) pane.appendChild(row(P[i % P.length], i));
-  var busy = false;
-  pane.addEventListener('scroll', function(){
-    if (busy) return;
-    busy = true;
-    var first = pane.firstElementChild, last = pane.lastElementChild;
-    var edge = first.offsetHeight * 1.5;
-    if (pane.scrollTop < edge){
-      var lh = last.offsetHeight;
-      pane.insertBefore(last, first);
-      pane.scrollTop += lh;                    /* same frame, or the seam shows */
-    } else if (pane.scrollHeight - pane.scrollTop - pane.clientHeight < edge){
-      var fh = first.offsetHeight;
-      pane.appendChild(first);
-      pane.scrollTop -= fh;
-    }
-    busy = false;
-  }, { passive: true });
-  pane.scrollTop = pane.scrollHeight / 3;
-})();
-
-/* ── 20 kinetic drag ───────────────────────────────────────── */
-(function(){
-  var pane = document.getElementById('kin'), track = document.getElementById('kintrack');
-  if (!pane) return;
-  P.slice(0, 9).forEach(function(w, i){
-    var c = document.createElement('div');
-    c.className = 'kincard';
-    c.innerHTML = '<figure>' + imgTag(w, '172px') + '</figure><p>' +
-      String(i + 1).padStart(2, '0') + ' · ' + w.label + '</p>';
-    track.appendChild(c);
-  });
-  var x = 0, v = 0, dragging = false, lastX = 0, raf = 0, min = 0;
-  function bounds(){ min = Math.min(0, pane.clientWidth - track.scrollWidth - 32); }
-  function apply(){ track.style.transform = 'translateX(' + x.toFixed(2) + 'px)'; }
-  function glide(){
-    /* 0.94 per frame. 0.90 stops dead and feels cheap; 0.98 never settles. */
-    v *= 0.94; x += v;
-    if (x > 0){ x = 0; v = 0; }
-    if (x < min){ x = min; v = 0; }
-    apply();
-    raf = Math.abs(v) > 0.1 ? requestAnimationFrame(glide) : 0;
-  }
-  pane.addEventListener('pointerdown', function(e){
-    bounds(); dragging = true; v = 0; lastX = e.clientX;
-    pane.classList.add('drag'); pane.setPointerCapture(e.pointerId);
-    if (raf){ cancelAnimationFrame(raf); raf = 0; }
-  });
-  pane.addEventListener('pointermove', function(e){
-    if (!dragging) return;
-    var d = e.clientX - lastX; lastX = e.clientX;
-    v = d;
-    x = Math.max(min - 60, Math.min(60, x + d));   /* a little give at each end */
-    apply();
-  });
-  function release(){
-    if (!dragging) return;
-    dragging = false; pane.classList.remove('drag');
-    if (!raf) raf = requestAnimationFrame(glide);
-  }
-  pane.addEventListener('pointerup', release);
-  pane.addEventListener('pointercancel', release);
-  addEventListener('resize', bounds, { passive: true });
-  bounds(); apply();
-})();
-
-/* ── 21 scroll-triggered count ─────────────────────────────── */
-(function(){
-  var host = document.getElementById('cnt'), btn = document.getElementById('cntBtn');
-  if (!host) return;
-  var STATS = [
-    { to: 12,    suf: '',   cap: 'Sekka plates<br>Momoyogusa, 1909' },
-    { to: 10430, suf: 'px', cap: 'widest native scan<br>Rijksmuseum CC0' },
-    { to: 1843,  suf: '',   cap: 'Atkins cyanotypes<br>first photographic book' }
-  ];
-  STATS.forEach(function(s){
-    var d = document.createElement('div');
-    d.className = 'cntcell';
-    d.innerHTML = '<b data-to="' + s.to + '" data-suf="' + s.suf + '">0</b><span>' + s.cap + '</span>';
-    host.appendChild(d);
-  });
-  var cells = host.querySelectorAll('b');
-  function run(){
-    cells.forEach(function(el){
-      var to = +el.dataset.to, t0 = performance.now(), D = 1150;
-      (function step(t){
-        var p = Math.min(1, (t - t0) / D);
-        var e = 1 - Math.pow(1 - p, 3);                    /* ease-out cubic */
-        el.textContent = Math.round(to * e).toLocaleString() + el.dataset.suf;
-        if (p < 1) requestAnimationFrame(step);
-      })(t0);
-    });
-  }
-  /* Fires once. A counter that replays on every pass is a tell that nobody looked twice. */
-  new IntersectionObserver(function(entries, obs){
-    entries.forEach(function(e){ if (e.isIntersecting){ run(); obs.disconnect(); } });
-  }, { threshold: 0.6 }).observe(host);
-  btn.addEventListener('click', run);
-})();
-
-/* ── 22 scrollspy ──────────────────────────────────────────── */
-(function(){
-  var pane = document.getElementById('spy'), rail = document.getElementById('spyrail'),
-      body = document.getElementById('spybody');
-  if (!pane) return;
-  var SECS = [
-    ['Ground',  'The darkest surface on the page. Everything else is measured against it, which is why it is chosen first and changed last.'],
-    ['Ink',     'Three weights of text, not five. Every additional grey is a decision the reader has to make on your behalf.'],
-    ['Accent',  'Terra, held under half a percent of painted area. An accent stops being an accent the moment it gets comfortable.'],
-    ['Curve',   'One authored easing curve, used everywhere. Fast departure, long quiet arrival — the one thing every motion on these pages has in common.']
-  ];
-  SECS.forEach(function(s, i){
-    var a = document.createElement('a');
-    a.href = '#'; a.textContent = String(i + 1).padStart(2, '0') + ' ' + s[0];
-    a.addEventListener('click', function(e){
-      e.preventDefault();
-      var sec = body.children[i];
-      pane.scrollTo({ top: sec.offsetTop - body.offsetTop, behavior: 'smooth' });
-    });
-    rail.appendChild(a);
-    var sec = document.createElement('div');
-    sec.className = 'spysec';
-    sec.innerHTML = '<h5>' + s[0] + '</h5><p>' + s[1] + '</p>';
-    body.appendChild(sec);
-  });
-  var links = rail.querySelectorAll('a');
-  links[0].classList.add('on');
-  /* The margin collapses the scrollport to a thin band across its middle, so
-     "current" means what is at eye level, not what is merely on screen. */
-  var io = new IntersectionObserver(function(entries){
-    entries.forEach(function(e){
-      if (!e.isIntersecting) return;
-      var i = [].indexOf.call(body.children, e.target);
-      links.forEach(function(l, j){ l.classList.toggle('on', j === i); });
-    });
-  }, { root: pane, rootMargin: '-45% 0px -45% 0px' });
-  [].forEach.call(body.children, function(sec){ io.observe(sec); });
-})();
-
-/* ── 23 overscroll containment ─────────────────────────────── */
-(function(){
-  var a = document.getElementById('osbA'), b = document.getElementById('osbB');
-  if (!a) return;
-  var LINES = ['Scroll this panel to the bottom.', 'Then keep going.',
-               'Watch the page behind it.', 'The left panel hands the gesture on —',
-               'the page lurches.', 'The right panel absorbs it.',
-               'overscroll-behavior: contain', 'It is the same property that stops',
-               'a modal from scrolling the page behind it.', '— end —'];
-  [a, b].forEach(function(pane){
-    LINES.forEach(function(t){
-      var p = document.createElement('p'); p.textContent = t; pane.appendChild(p);
-    });
-  });
-})();
-
-
-/* ── 38 scoped rotation ────────────────────────────────────── */
-(function(){
-  var host = document.getElementById('scgrid'), btn = document.getElementById('scBtn');
-  var ms = document.getElementById('scMs'), nOut = document.getElementById('scN');
-  if (!host) return;
-  var big = false;   /* ships cheap; the expensive state is opt-in */
-  function fill(n){
-    host.innerHTML = '';
-    var frag = document.createDocumentFragment();
-    for (var i = 0; i < n; i++) frag.appendChild(document.createElement('i'));
-    host.appendChild(frag);
-    host.parentNode.style.setProperty('--cols', n > 100 ? 40 : 6);
-    nOut.textContent = n;
-  }
-  btn.addEventListener('click', function(){
-    big = !big; fill(big ? 960 : 24);
-    btn.textContent = big ? '960 consumers' : '24 consumers';
-  });
-  fill(24);
-
-  /* Frame cost while this stage is on screen — the subtree is the variable. */
-  var last = performance.now(), acc = [], live = false;
-  new IntersectionObserver(function(es){ live = es[0].isIntersecting; },
-    { threshold: 0.2 }).observe(host);
-  (function tick(t){
-    if (live){
-      var d = t - last;
-      if (d < 200){ acc.push(d); if (acc.length > 45) acc.shift(); }
-      if (acc.length > 8){
-        var sorted = acc.slice().sort(function(a, b){ return a - b; });
-        ms.textContent = sorted[sorted.length >> 1].toFixed(1) + 'ms';
-      }
-    }
-    last = t;
-    requestAnimationFrame(tick);
-  })(performance.now());
-})();
-
-/* ── 40 difference inversion ─────────────────────── */
-(function(){
-  var host = document.getElementById('dirun');
-  if (!host) return;
-  /* Fixed reference grounds rather than house tokens: the claim is about
-     photographs, white, black, saturated colour and mid-grey specifically.
-     Grey sits fourth so the words cross it mid-pan. */
-  var GROUND = [P[1].src, '#fff', '#000', '#808080', '#D4673F',
-                (ATKINS[0] || P[4]).src];
-  GROUND.forEach(function(m){
-    var i = document.createElement('i');
-    i.style.background = m.slice(0, 4) === 'http'
-      ? 'url("' + m + '") center/cover' : m;
-    host.appendChild(i);
-  });
-})();
-
-/* ── 41 threshold flip ─────────────────────────────────────── */
-(function(){
-  var pane = document.getElementById('tf'), host = document.getElementById('tfpanels');
-  if (!pane) return;
-  [['a', 'Ground', 'Ink on near-black, one warm accent.'],
-   ['b', 'Violet', 'A different set, not a turn of the last one.'],
-   ['c', 'Steel',  'And again, arriving whole at a single instant.']
-  ].forEach(function(t){
-    var d = document.createElement('div');
-    d.dataset.i = t[0];
-    d.innerHTML = '<b>' + t[1] + '</b><p>' + t[2] + '</p>'
-                + '<span class="tfchips"><i></i><i></i><i></i></span>';
-    host.appendChild(d);
-  });
-  [].forEach.call(host.children, function(panel){
-    new IntersectionObserver(function(es){
-      es.forEach(function(e){ if (e.isIntersecting) pane.dataset.flip = e.target.dataset.i; });
-    }, { root: pane, rootMargin: '-45% 0px -45% 0px' }).observe(panel);
-  });
-  pane.dataset.flip = 'a';
-})();
-
-/* ── 24 snap stop ──────────────────────────────────────────── */
-(function(){
-  var A = document.getElementById('snstA'), B = document.getElementById('snstB');
-  if (!A) return;
-  [A, B].forEach(function(track){
-    P.forEach(function(w, i){
-      var li = document.createElement('li');
-      li.innerHTML = imgTag(w, '118px') + '<b>' + String(i + 1).padStart(2, '0') + '</b>';
-      track.appendChild(li);
-    });
-  });
-})();
-</script>
-
-</body>
-</html>
+/* a pillar: its name, its terms as stops, then each term running */
+.pillarhead{padding:0 0 clamp(8px,2vh,20px)}
+.pillarhead h1{font-family:var(--display);font-size:clamp(48px,8vw,120px);line-height:.86;letter-spacing:-.03em;margin:0}
+.pillarhead .blurb{margin:18px 0 0;font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim)}
+.chips{margin:clamp(22px,4vh,36px) 0 0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:8px}
+.chips a{display:inline-flex;gap:8px;align-items:baseline;padding:7px 12px;border:1px solid var(--line);border-radius:2px;
+  font-size:13px;color:var(--mid);transition:color .3s var(--settle),border-color .3s var(--settle)}
+.chips a b{font-family:var(--mono);font-weight:400;font-size:9px;color:var(--dim)}
+.chips a:hover{color:var(--ink);border-color:var(--accent)}
+.spec h2.name a{color:inherit;transition:color .3s var(--settle)}
+.spec h2.name a:hover{color:var(--accent)}
+.meta .deeper + .deeper{margin-left:18px}
+.entrance .keys{margin-top:clamp(10px,2vh,30px)}
+@media (max-width:760px){.navtail{display:none}}

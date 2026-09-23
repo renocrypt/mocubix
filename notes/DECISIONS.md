@@ -787,3 +787,27 @@ Urformen plate's rail now reads the same `--p` as the number beside it (one
 clock, not two animations that could disagree). Both verified in Chrome:
 the counter reads 8011 km at 35% of the page; rails read 0.47 and 0.42
 against 47% and 42%; no overflow, no console messages.
+
+## The Lexicon in three layers, 2026-09-23
+
+The user's verdict on the one-page Lexicon: scrolling past 41 terms is too
+much, but the card format ("a quickie way to know what each effect is
+about") is good, and fuller individual pages should come gradually. So:
+
+- **Index** (`/lexicon/`): one screen. A find field in the display face
+  matches names and aliases from the start of words ("scrolltrigger" finds
+  Pinning & Scrub; "pin" no longer lights snapping), the rest step back
+  without anything moving, and hovering a term puts its meaning in a caption
+  line. The chosen word carries a cross-document `view-transition-name` into
+  the term page's title; speculation rules prerender on hover.
+- **Pillars** (`/lexicon/<pillar>/`): the cards, one pillar per page — five
+  pillars now, Scroll split into Scroll-driven (13) and Scroll behaviour (11).
+- **Terms** (`/lexicon/<term>/`): 41 pages with the pillar beside them, ← →
+  to turn, each to be elevated into its own showcase in turn.
+
+The demos moved out of the old template into `site/lexicon/lexicon.css` and
+`lexicon.js` (every block already returned when its demo was absent); two
+scoping slips (term-link styles catching pillar-name links) were caught in
+Chrome and fixed. Verified in Chrome through DevTools: all five pillar pages
+and sampled terms without console messages or overflow, index fitting one
+screen at 1324×725, phone at 390.

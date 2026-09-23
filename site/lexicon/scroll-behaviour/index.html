@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Scroll behaviour — Mocubix Lexicon</title>
+<meta name="description" content="Scroll behaviour: how scrolling itself behaves. Scroll Snap, Snap Stop, Scroll Markers, Scroll Buttons, Sticky State Query, Snapped State Query, Direction State, Infinite Loop Scroll, Kinetic Drag, Scrollspy, Overscroll Containment — each named, explained and running.">
+<link rel="canonical" href="https://mocubix.renocrypt.com/lexicon/scroll-behaviour/">
+<link rel="icon" href="../../favicon.ico" sizes="32x32">
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Mocubix">
+<meta property="og:title" content="Scroll behaviour — Mocubix Lexicon">
+<meta property="og:description" content="Scroll behaviour: how scrolling itself behaves. Scroll Snap, Snap Stop, Scroll Markers, Scroll Buttons, Sticky State Query, Snapped State Query, Direction State, Infinite Loop Scroll, Kinetic Drag, Scrollspy, Overscroll Containment — each named, explained and running.">
+<meta property="og:url" content="https://mocubix.renocrypt.com/lexicon/scroll-behaviour/">
+<meta property="og:image" content="https://mocubix.renocrypt.com/share/lexicon.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="The Mocubix Lexicon: forty-one named interface effects">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preconnect" href="https://api.fontshare.com">
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="preconnect" href="https://upload.wikimedia.org">
+<link rel="preconnect" href="https://thumb.wikimedia.org">
+<!-- One request per family. A combined f[] request silently delivers only the first. -->
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f%5B%5D=melodrama@400,500&display=swap">
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f%5B%5D=switzer@400,500,600&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource-variable/geist-mono/index.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource-variable/geist/index.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cn-fontsource-source-han-serif-sc-vf/font.css">
+<link rel="stylesheet" href="../../house.css">
+<link rel="stylesheet" href="../../lexicon/lexicon.css">
+<script src="../../house.js"></script>
+<!-- Chrome readies a term while the pointer rests on its link, so turning the page is instant. -->
+<script type="speculationrules">{"prerender":[{"where":{"href_matches":"/lexicon/*"},"eagerness":"moderate"}]}</script>
+</head>
+<body>
+
+<div class="readbar" aria-hidden="true"></div>
+
+<nav class="topnav">
+  <div class="inner">
+    <a class="brand" href="../../">Mocubix</a><a class="brand" href="../../lexicon/"><i>Lexicon</i></a>
+    <a class="navfam" href="../../lexicon/scroll-driven/">Scroll-driven<i>13</i></a><a class="navfam" href="../../lexicon/scroll-behaviour/" aria-current="true">Scroll behaviour<i>11</i></a><a class="navfam" href="../../lexicon/image/">Image<i>7</i></a><a class="navfam" href="../../lexicon/type/">Type<i>5</i></a><a class="navfam" href="../../lexicon/colour/">Colour<i>5</i></a>
+    <span class="navtail">41 named effects</span>
+    <span data-theme-slot></span>
+  </div>
+</nav>
+
+<div class="wrap">
+<p class="crumb"><a href="../">Lexicon</a> / Scroll behaviour</p>
+<header class="pillarhead">
+  <h1>Scroll behaviour</h1>
+  <p class="blurb">How scrolling itself behaves · 11 named effects, each running below</p>
+  <ol class="chips"><li><a href="#scroll-snap"><b>14</b>Scroll Snap</a></li><li><a href="#snap-stop"><b>15</b>Snap Stop</a></li><li><a href="#scroll-markers"><b>16</b>Scroll Markers</a></li><li><a href="#scroll-buttons"><b>17</b>Scroll Buttons</a></li><li><a href="#sticky-state-query"><b>18</b>Sticky State Query</a></li><li><a href="#snapped-state-query"><b>19</b>Snapped State Query</a></li><li><a href="#direction-state"><b>20</b>Direction State</a></li><li><a href="#infinite-loop-scroll"><b>21</b>Infinite Loop Scroll</a></li><li><a href="#kinetic-drag"><b>22</b>Kinetic Drag</a></li><li><a href="#scrollspy"><b>23</b>Scrollspy</a></li><li><a href="#overscroll-containment"><b>24</b>Overscroll Containment</a></li></ol>
+</header>
+<section class="spec" id="scroll-snap">
+  <div class="meta">
+    <span class="idx">14 / Scroll behaviour</span>
+    <h2 class="name"><a href="../scroll-snap/" style="view-transition-name:t-scroll-snap">Scroll Snap</a></h2>
+    <p class="gloss">Scrolling comes to rest on a whole item instead of halfway between two. It feels like turning pages.</p>
+    <p class="aka">also called <i>snap points</i> · <i>scroll snapping</i></p>
+    <p class="note">Two properties, and it inherits the platform's real scroll physics — momentum, rubber-banding, trackpad feel. Every JavaScript reimplementation is worse.</p>
+    <details class="how"><summary>How it is built</summary><code class="api">scroll-snap-type: y mandatory;
+scroll-snap-align: start;</code></details>
+    <a class="deeper open" href="../scroll-snap/">Open its page</a>
+  </div>
+  <div class="stage"><span class="tag">scroll inside ↓</span><div class="snap"><div><span>Snap 01</span></div><div><span>Snap 02</span></div><div><span>Snap 03</span></div><div><span>Snap 04</span></div></div></div>
+</section>
+<section class="spec" id="snap-stop">
+  <div class="meta">
+    <span class="idx">15 / Scroll behaviour</span>
+    <h2 class="name"><a href="../snap-stop/" style="view-transition-name:t-snap-stop">Snap Stop</a></h2>
+    <p class="gloss">Flick both tracks hard. The top one skips three or four items in one go; the bottom one stops at the very next one.</p>
+    <p class="aka">also called <i>scroll-snap-stop</i> · <i>no-skip snapping</i> · <i>mandatory stop</i></p>
+    <p class="note">Use it when every item must actually be seen, and leave it off for browsing. It is the difference between a catalogue and a queue.</p>
+    <details class="how"><summary>How it is built</summary><code class="api">scroll-snap-stop: always;</code></details>
+    <a class="deeper open" href="../snap-stop/">Open its page</a>
+  </div>
+  <div class="stage"><span class="tag">flick both</span><div class="snst"><p class="osbcap">normal — a hard flick skips</p><ul class="snstrack" id="snstA"></ul><p class="osbcap">always — one at a time</p><ul class="snstrack stop" id="snstB"></ul></div></div>
+</section>
+<section class="spec" id="scroll-markers">
+  <div class="meta">
+    <span class="idx">16 / Scroll behaviour</span>
+    <h2 class="name"><a href="../scroll-markers/" style="view-transition-name:t-scroll-markers">Scroll Markers</a></h2>
+    <p class="gloss">The dots under the strip are made by the strip itself, and follow wherever you are in it.</p>
+    <p class="aka">also called <i>::scroll-marker</i> · <i>CSS-only carousel dots</i> · <i>scroll-marker-group</i></p>
+    <p class="note">The dots are generated <em>by</em> the list and track it for free — including keyboard traversal and focus order, which hand-built dot navigation almost never gets right.</p>
+    <details class="how"><summary>How it is built</summary><code class="api">scroll-marker-group: after;
+li::scroll-marker { content: '' }
+li::scroll-marker:target-current { … }</code></details>
+    <a class="deeper open" href="../scroll-markers/">Open its page</a>
+  </div>
+  <div class="stage"><span class="tag">drag · or click a dot</span><ul class="cml" id="cml"></ul><span class="supp" data-f="sm"></span></div>
+</section>
+<section class="spec" id="scroll-buttons">
+  <div class="meta">
+    <span class="idx">17 / Scroll behaviour</span>
+    <h2 class="name"><a href="../scroll-buttons/" style="view-transition-name:t-scroll-buttons">Scroll Buttons</a></h2>
+    <p class="gloss">The back and forward arrows come out of the row of items itself, and go grey when there is nothing left that way.</p>
+    <p class="aka">also called <i>::scroll-button()</i> · <i>generated prev/next</i> · <i>CSS-only controls</i></p>
+    <p class="note">The same idea as the markers, for the arrows — and the <code>:disabled</code> state at each end arrives free, which is the part hand-rolled carousels forget. No JavaScript, and each one is a real button to a screen reader.</p>
+    <details class="how"><summary>How it is built</summary><code class="api">ul::scroll-button(left)  { content: '←' }
+ul::scroll-button(right) { content: '→' }
+ul::scroll-button(*):disabled { opacity: .25 }</code></details>
+    <a class="deeper open" href="../scroll-buttons/">Open its page</a>
+  </div>
+  <div class="stage"><span class="tag">press the arrows</span><div class="csbwrap"><ul class="csb" id="csb"></ul></div><span class="supp" data-f="sb"></span></div>
+</section>
+<section class="spec" id="sticky-state-query">
+  <div class="meta">
+    <span class="idx">18 / Scroll behaviour</span>
+    <h2 class="name"><a href="../sticky-state-query/" style="view-transition-name:t-sticky-state-query">Sticky State Query</a></h2>
+    <p class="gloss">The moment the bar catches at the top of its panel, it knows, and changes itself.</p>
+    <p class="aka">also called <i>stuck detection</i> · <i>scroll-state container query</i> · <i>sticky-aware header</i></p>
+    <p class="note">Until this shipped, every “shrink the header once it sticks” needed a scroll listener and a hand-picked pixel threshold that broke under zoom. Now the element is simply told what it <em>is</em>.</p>
+    <details class="how"><summary>How it is built</summary><code class="api">container-type: scroll-state;
+@container scroll-state(stuck: top) { … }</code></details>
+    <a class="deeper open" href="../sticky-state-query/">Open its page</a>
+  </div>
+  <div class="stage"><span class="tag">scroll inside ↓</span><div class="ssq"><div class="ssqhead"><div class="ssqbar"><span>Momoyogusa · plate index</span><b>stuck</b></div></div><div class="ssqbody" id="ssqbody"></div></div><span class="supp" data-f="ss"></span></div>
+</section>
+<section class="spec" id="snapped-state-query">
+  <div class="meta">
+    <span class="idx">19 / Scroll behaviour</span>
+    <h2 class="name"><a href="../snapped-state-query/" style="view-transition-name:t-snapped-state-query">Snapped State Query</a></h2>
+    <p class="gloss">Whichever slide is parked at the centre knows it is the one you are looking at, and lights up.</p>
+    <p class="aka">also called <i>snapped detection</i> · <i>active-slide styling</i> · <i>scroll-state(snapped)</i></p>
+    <p class="note">The companion query. A carousel always needed to know which slide is <em>current</em>, and every hand-rolled version computed it from offsets and got the edges wrong. This is the browser answering the question itself.</p>
+    <details class="how"><summary>How it is built</summary><code class="api">scroll-snap-align: center;
+@container scroll-state(snapped: block) { … }</code></details>
+    <a class="deeper open" href="../snapped-state-query/">Open its page</a>
+  </div>
+  <div class="stage"><span class="tag">scroll inside ↓</span><ul class="snapq" id="snapq"></ul><span class="supp" data-f="ss"></span></div>
+</section>
+<section class="spec" id="direction-state">
+  <div class="meta">
+    <span class="idx">20 / Scroll behaviour</span>
+    <h2 class="name"><a href="../direction-state/" style="view-transition-name:t-direction-state">Direction State</a></h2>
+    <p class="gloss">Going down puts the bar away so you can read. Going back up brings it straight back.</p>
+    <p class="aka">also called <i>auto-hide header</i> · <i>direction-aware nav</i> · <i>scroll-up reveal</i></p>
+    <p class="note">Position says where you are; direction says what you want. Descending reads as “reading, leave me alone”, ascending as “looking for something”. A few pixels of dead zone are mandatory, or a trackpad makes it flicker.</p>
+    <details class="how"><summary>How it is built</summary><code class="api">dir = y &gt; last ? "down" : "up";
+[data-dir="down"] .bar { transform: translateY(-100%) }</code></details>
+    <a class="deeper open" href="../direction-state/">Open its page</a>
+  </div>
+  <div class="stage"><span class="tag">scroll inside ↕</span><div class="dirs" id="dirs"><div class="dirshead"><span>Momoyogusa</span><b id="dirOut">up</b></div><div class="dirsbody" id="dirsbody"></div></div></div>
+</section>
+<section class="spec" id="infinite-loop-scroll">
+  <div class="meta">
+    <span class="idx">21 / Scroll behaviour</span>
+    <h2 class="name"><a href="../infinite-loop-scroll/" style="view-transition-name:t-infinite-loop-scroll">Infinite Loop Scroll</a></h2>
+    <p class="gloss">The list has no end. Keep going and it carries on, with no seam to catch on.</p>
+    <p class="aka">also called <i>endless scroll</i> · <i>recycled list</i> · <i>seamless wrap</i></p>
+    <p class="note">The correction must happen in the <em>same</em> frame as the move or the seam shows as a jump. Done right the list has no beginning and no end — and the scrollbar stops telling you where you are, which is the price.</p>
+    <details class="how"><summary>How it is built</summary><code class="api">el.append(el.firstElementChild);
+el.scrollTop -= rowHeight;   /* same frame, or it jumps */</code></details>
+    <a class="deeper open" href="../infinite-loop-scroll/">Open its page</a>
+  </div>
+  <div class="stage"><span class="tag">never ends ↓</span><div class="loopx" id="loopx"></div></div>
+</section>
+<section class="spec" id="kinetic-drag">
+  <div class="meta">
+    <span class="idx">22 / Scroll behaviour</span>
+    <h2 class="name"><a href="../kinetic-drag/" style="view-transition-name:t-kinetic-drag">Kinetic Drag</a></h2>
+    <p class="gloss">Grab it and throw it. It keeps going after you let go, then slows to a stop as though it had weight.</p>
+    <p class="aka">also called <i>drag-to-scroll</i> · <i>inertial scrolling</i> · <i>momentum decay</i></p>
+    <p class="note">Everything lives in the decay constant. 0.90 stops abruptly and feels cheap; 0.98 slides forever and feels broken. Around <b>0.94</b> is where it starts feeling like an object with mass.</p>
+    <details class="how"><summary>How it is built</summary><code class="api">v *= 0.94;                    /* per frame */
+if (Math.abs(v) &lt; 0.1) stop();</code></details>
+    <a class="deeper open" href="../kinetic-drag/">Open its page</a>
+  </div>
+  <div class="stage"><span class="tag">grab and throw</span><div class="kin" id="kin"><div class="kintrack" id="kintrack"></div></div></div>
+</section>
+<section class="spec" id="scrollspy">
+  <div class="meta">
+    <span class="idx">23 / Scroll behaviour</span>
+    <h2 class="name"><a href="../scrollspy/" style="view-transition-name:t-scrollspy">Scrollspy</a></h2>
+    <p class="gloss">Whatever has reached eye level is the thing the index marks as where you are.</p>
+    <p class="aka">also called <i>section tracking</i> · <i>active-anchor highlight</i> · <i>reading position</i></p>
+    <p class="note">That <code>rootMargin</code> collapses the viewport to a thin band across its middle, so “current” means <em>what is at eye level</em> rather than what merely happens to be on screen. The index pinned to the top of this page is one.</p>
+    <details class="how"><summary>How it is built</summary><code class="api">new IntersectionObserver(fn, {
+  rootMargin: '-45% 0px -45% 0px'
+})</code></details>
+    <a class="deeper open" href="../scrollspy/">Open its page</a>
+  </div>
+  <div class="stage"><span class="tag">scroll inside ↓</span><div class="spy" id="spy"><div class="spyrail" id="spyrail"></div><div class="spybody" id="spybody"></div></div></div>
+</section>
+<section class="spec" id="overscroll-containment">
+  <div class="meta">
+    <span class="idx">24 / Scroll behaviour</span>
+    <h2 class="name"><a href="../overscroll-containment/" style="view-transition-name:t-overscroll-containment">Overscroll Containment</a></h2>
+    <p class="gloss">Push both panels past their last line. One hands your gesture on to the page behind it; the other keeps it.</p>
+    <p class="aka">also called <i>scroll chaining</i> · <i>overscroll-behavior</i> · <i>gesture trapping</i></p>
+    <p class="note">One property, and it is the whole difference between a panel that feels solid and one that feels like a leak. The chaining default is right for a document and wrong for almost every overlay.</p>
+    <details class="how"><summary>How it is built</summary><code class="api">overscroll-behavior: contain;</code></details>
+    <a class="deeper open" href="../overscroll-containment/">Open its page</a>
+  </div>
+  <div class="stage"><span class="tag">scroll both to the end</span><div class="osb"><div><p class="osbcap">default — chains</p><div class="osbpane chain" id="osbA"></div></div><div><p class="osbcap">contain — absorbs</p><div class="osbpane keep" id="osbB"></div></div></div></div>
+</section>
+<nav class="pager" aria-label="Previous and next pillar"><a class="prev" href="../scroll-driven/"><small>← Previous pillar</small><span>Scroll-driven</span></a><a class="next" href="../image/"><small>Next pillar →</small><span>Image</span></a></nav>
+<footer>
+  <span>Material — Kamisaka Sekka 神坂雪佳, <i>Momoyogusa</i> 百々世草, 1909–10<br>Rijksmuseum scans via Wikimedia Commons, CC0. Anna Atkins cyanotypes, 1843.</span>
+  <span>Type — Melodrama · Switzer · Geist · Geist Mono · 思源宋体</span>
+  <span><a href="../../">The seven exhibits</a></span>
+</footer>
+</div>
+
+<script src="../../lexicon/material.js"></script>
+<script src="../../lexicon/lexicon.js"></script>
+</body>
+</html>

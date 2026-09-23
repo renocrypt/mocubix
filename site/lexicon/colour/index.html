@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Colour — Mocubix Lexicon</title>
+<meta name="description" content="Colour: colour as one system. Token Interpolation, Scoped Rotation, Gamut Arc, Difference Inversion, Threshold Flip — each named, explained and running.">
+<link rel="canonical" href="https://mocubix.renocrypt.com/lexicon/colour/">
+<link rel="icon" href="../../favicon.ico" sizes="32x32">
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Mocubix">
+<meta property="og:title" content="Colour — Mocubix Lexicon">
+<meta property="og:description" content="Colour: colour as one system. Token Interpolation, Scoped Rotation, Gamut Arc, Difference Inversion, Threshold Flip — each named, explained and running.">
+<meta property="og:url" content="https://mocubix.renocrypt.com/lexicon/colour/">
+<meta property="og:image" content="https://mocubix.renocrypt.com/share/lexicon.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="The Mocubix Lexicon: forty-one named interface effects">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preconnect" href="https://api.fontshare.com">
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="preconnect" href="https://upload.wikimedia.org">
+<link rel="preconnect" href="https://thumb.wikimedia.org">
+<!-- One request per family. A combined f[] request silently delivers only the first. -->
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f%5B%5D=melodrama@400,500&display=swap">
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f%5B%5D=switzer@400,500,600&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource-variable/geist-mono/index.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource-variable/geist/index.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cn-fontsource-source-han-serif-sc-vf/font.css">
+<link rel="stylesheet" href="../../house.css">
+<link rel="stylesheet" href="../../lexicon/lexicon.css">
+<script src="../../house.js"></script>
+<!-- Chrome readies a term while the pointer rests on its link, so turning the page is instant. -->
+<script type="speculationrules">{"prerender":[{"where":{"href_matches":"/lexicon/*"},"eagerness":"moderate"}]}</script>
+</head>
+<body>
+
+<div class="readbar" aria-hidden="true"></div>
+
+<nav class="topnav">
+  <div class="inner">
+    <a class="brand" href="../../">Mocubix</a><a class="brand" href="../../lexicon/"><i>Lexicon</i></a>
+    <a class="navfam" href="../../lexicon/scroll-driven/">Scroll-driven<i>13</i></a><a class="navfam" href="../../lexicon/scroll-behaviour/">Scroll behaviour<i>11</i></a><a class="navfam" href="../../lexicon/image/">Image<i>7</i></a><a class="navfam" href="../../lexicon/type/">Type<i>5</i></a><a class="navfam" href="../../lexicon/colour/" aria-current="true">Colour<i>5</i></a>
+    <span class="navtail">41 named effects</span>
+    <span data-theme-slot></span>
+  </div>
+</nav>
+
+<div class="wrap">
+<p class="crumb"><a href="../">Lexicon</a> / Colour</p>
+<header class="pillarhead">
+  <h1>Colour</h1>
+  <p class="blurb">Colour as one system · 5 named effects, each running below</p>
+  <ol class="chips"><li><a href="#token-interpolation"><b>37</b>Token Interpolation</a></li><li><a href="#scoped-rotation"><b>38</b>Scoped Rotation</a></li><li><a href="#gamut-arc"><b>39</b>Gamut Arc</a></li><li><a href="#difference-inversion"><b>40</b>Difference Inversion</a></li><li><a href="#threshold-flip"><b>41</b>Threshold Flip</a></li></ol>
+</header>
+<section class="spec" id="token-interpolation">
+  <div class="meta">
+    <span class="idx">37 / Colour</span>
+    <h2 class="name"><a href="../token-interpolation/" style="view-transition-name:t-token-interpolation">Token Interpolation</a></h2>
+    <p class="gloss">Every colour on the card is held to one dial. Scroll, and they all turn together, in step, never landing on a combination nobody chose.</p>
+    <p class="aka">also called <i>scroll-driven theme</i> · <i>animated custom properties</i> · <i>palette rotation</i></p>
+    <p class="note">The whole palette is one number. <code>@property</code> is what makes it animatable at all — an unregistered custom property has no interpolable type. Every token keeps its lightness and chroma and shares the angle, so nothing can drift out of step.</p>
+    <details class="how"><summary>How it is built</summary><code class="api">@property --rot { syntax: '&lt;angle&gt;'; inherits: true }
+--accent: oklch(0.637 0.145 calc(40.2deg + var(--rot)));</code></details>
+    <a class="deeper open" href="../token-interpolation/">Open its page</a><a class="deeper" href="../../kilauea/">Exhibit 07 · Kīlauea</a>
+  </div>
+  <div class="stage"><span class="tag">scroll the page</span><div class="ti" id="ti"><div class="tiface"><span class="tieye">Ledger</span><b>Momoyogusa</b><p>Twelve plates, one angle.</p><span class="tibtn">Open</span></div><div class="tibar"></div></div></div>
+</section>
+<section class="spec" id="scoped-rotation">
+  <div class="meta">
+    <span class="idx">38 / Colour</span>
+    <h2 class="name"><a href="../scoped-rotation/" style="view-transition-name:t-scoped-rotation">Scoped Rotation</a></h2>
+    <p class="gloss">The same colour change, asked of a few elements or of a great many. Press the switch and watch the counter beside it.</p>
+    <p class="aka">also called <i>custom property invalidation</i> · <i>style recalc scope</i></p>
+    <p class="note">Where the angle is declared decides what it costs. On the root, every element on the page re-resolves its colours each frame; on the stage, only the stage does. Scope is the whole difference between a palette that animates for free and one that eats the frame budget.</p>
+    <details class="how"><summary>How it is built</summary><code class="api">.stage { --rot: 0deg; animation: turn linear both; animation-timeline: scroll(root) }
+/* declared on .stage, not :root — only this subtree re-resolves each frame */</code></details>
+    <a class="deeper open" href="../scoped-rotation/">Open its page</a>
+  </div>
+  <div class="stage"><span class="tag">press the switch</span><div class="sc" id="sc"><div class="scgrid" id="scgrid"></div><button class="btn" id="scBtn">24 consumers</button><p class="scout"><span id="scMs">--</span> · <span id="scN">0</span> consumers</p></div></div>
+</section>
+<section class="spec" id="gamut-arc">
+  <div class="meta">
+    <span class="idx">39 / Colour</span>
+    <h2 class="name"><a href="../gamut-arc/" style="view-transition-name:t-gamut-arc">Gamut Arc</a></h2>
+    <p class="gloss">Two ways to get from terra to blue. The left field goes round the outside and is a full colour the whole way; the right one goes straight across and turns to mud halfway.</p>
+    <p class="aka">also called <i>hue path</i> · <i>chroma preservation</i> · <i>colour interpolation</i></p>
+    <p class="note">How much colour a screen can hold changes with hue: the space bulges towards violet and pinches near cyan, so it is not a cylinder. That makes the route between two colours a gamut question rather than a matter of taste — and the default route, a straight line through the middle of the space, is the one that passes closest to grey. The strips under each field are the whole journey at once.</p>
+    <details class="how"><summary>How it is built</summary><code class="api">/* round the outside */
+background: oklch(0.637 0.148 calc(40.2deg + var(--t) * -135.8deg));
+/* straight across — what you get by default */
+background: color-mix(in srgb, &lt;end&gt; calc(var(--t) * 100%), &lt;start&gt;);</code></details>
+    <a class="deeper open" href="../gamut-arc/">Open its page</a>
+  </div>
+  <div class="stage"><span class="tag">scroll the page</span><div class="ga" id="ga"><div class="gacol"><div class="gafield rim"></div><div class="gapath rim"></div><p class="galab">along the rim<i>full colour the whole way</i></p></div><div class="gacol"><div class="gafield chord"></div><div class="gapath chord"></div><p class="galab">straight across<i>grey in the middle</i></p></div></div></div>
+</section>
+<section class="spec" id="difference-inversion">
+  <div class="meta">
+    <span class="idx">40 / Colour</span>
+    <h2 class="name"><a href="../difference-inversion/" style="view-transition-name:t-difference-inversion">Difference Inversion</a></h2>
+    <p class="gloss">The words turn themselves into the opposite of whatever passes behind them, so they stay readable over a photograph, over white and over black — and then vanish over one particular grey.</p>
+    <p class="aka">also called <i>mix-blend-mode</i> · <i>invert on crossing</i> · <i>self-inverting overlay</i></p>
+    <p class="note">One property, no JavaScript, and the overlay never has to know what is behind it. What it cannot survive is mid-grey, where inverting a value returns very nearly the value you started from. Plan for that band rather than discovering it on the one slide that has it.</p>
+    <details class="how"><summary>How it is built</summary><code class="api">mix-blend-mode: difference;</code></details>
+    <a class="deeper open" href="../difference-inversion/">Open its page</a>
+  </div>
+  <div class="stage"><span class="tag">watch it cross the grey</span><div class="di"><div class="dirun" id="dirun"></div><p class="ditxt">Legible on anything</p></div></div>
+</section>
+<section class="spec" id="threshold-flip">
+  <div class="meta">
+    <span class="idx">41 / Colour</span>
+    <h2 class="name"><a href="../threshold-flip/" style="view-transition-name:t-threshold-flip">Threshold Flip</a></h2>
+    <p class="gloss">At one point on the way down, the whole panel changes its colours at once rather than easing between them.</p>
+    <p class="aka">also called <i>section theming</i> · <i>discrete palette swap</i> · <i>data-theme</i></p>
+    <p class="note">The common form, and the honest one when two palettes are unrelated rather than a rotation apart. Everything rests on the transition: without one it strobes, and much past a second it lags the scroll and reads as a bug.</p>
+    <details class="how"><summary>How it is built</summary><code class="api">new IntersectionObserver(fn, { rootMargin: '-45% 0px -45% 0px' })
+.flip { transition: background-color .7s var(--settle) }
+/* these three palettes are unrelated by design, so they are written out
+   rather than derived from the house tokens */</code></details>
+    <a class="deeper open" href="../threshold-flip/">Open its page</a><a class="deeper" href="../../kilauea/">Exhibit 07 · Kīlauea</a>
+  </div>
+  <div class="stage"><span class="tag">scroll inside ↓</span><div class="tf" id="tf"><div class="tfpanels" id="tfpanels"></div></div></div>
+</section>
+<nav class="pager" aria-label="Previous and next pillar"><a class="prev" href="../type/"><small>← Previous pillar</small><span>Type</span></a><span></span></nav>
+<footer>
+  <span>Material — Kamisaka Sekka 神坂雪佳, <i>Momoyogusa</i> 百々世草, 1909–10<br>Rijksmuseum scans via Wikimedia Commons, CC0. Anna Atkins cyanotypes, 1843.</span>
+  <span>Type — Melodrama · Switzer · Geist · Geist Mono · 思源宋体</span>
+  <span><a href="../../">The seven exhibits</a></span>
+</footer>
+</div>
+
+<script src="../../lexicon/material.js"></script>
+<script src="../../lexicon/lexicon.js"></script>
+</body>
+</html>
