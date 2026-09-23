@@ -17,8 +17,8 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource-variable/geist-mono/index.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource-variable/geist/index.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cn-fontsource-source-han-serif-sc-vf/font.css">
-<link rel="stylesheet" href="house.css">
-<script src="house.js"></script>
+<link rel="stylesheet" href="../house.css">
+<script src="../house.js"></script>
 
 <style>
 :root{
@@ -744,7 +744,7 @@ footer a:hover{color:var(--accent)}
 
 <nav class="topnav">
   <div class="inner">
-    <a class="brand" href="index.html">Mocubix <i>Lexicon</i></a>
+    <a class="brand" href="../">Mocubix <i>Lexicon</i></a>
     <a class="navfam" href="#fam-scroll">Scroll<i>24</i></a><a class="navfam" href="#fam-image">Image<i>7</i></a><a class="navfam" href="#fam-type">Type<i>5</i></a><a class="navfam" href="#fam-colour">Colour<i>5</i></a><span class="navtail">41 named effects</span>
     <span data-theme-slot></span>
   </div>
@@ -789,7 +789,7 @@ footer a:hover{color:var(--accent)}
     <details class="how"><summary>How it is built</summary><code class="api">view-timeline-name: --plate;
 animation-timeline: --plate;
 animation-range: entry 0% cover 45%;</code></details>
-    <a class="deeper" href="04-view-progress.html">Exhibit 04 · Urformen</a>
+    <a class="deeper" href="../urformen/">Exhibit 04 · Urformen</a>
   </div>
   <div class="stage"><span class="tag">scroll the page</span><div class="plates" id="plates"></div></div>
 </section>
@@ -802,7 +802,7 @@ animation-range: entry 0% cover 45%;</code></details>
     <p class="note"><b>Pin</b> holds the stage still while the page keeps scrolling. <b>Scrub</b> is the separate idea that progress follows scroll position rather than elapsed time, which is why it reverses exactly. Most “cinematic” sites are these two words.</p>
     <details class="how"><summary>How it is built</summary><code class="api">position: sticky; top: 0;
 /* GSAP */ ScrollTrigger({ pin: true, scrub: 1 })</code></details>
-    <a class="deeper" href="01-scroll-timeline.html">Exhibit 01 · Annie G.</a>
+    <a class="deeper" href="../annie-g/">Exhibit 01 · Annie G.</a>
   </div>
   <div class="stage"><span class="tag">scroll the page</span><div class="pinrun"><div class="pinstage"><div class="frame"><img id="pinImg" alt=""><div class="cover" id="pinCover"></div><span class="flabel">Scrub to wipe</span></div></div></div></div>
 </section>
@@ -829,7 +829,7 @@ animation: drift linear both; animation-timeline: view();
     <p class="note">Changing the axis changes what the content means: a stack implies rank, a track implies comparison. Travel must be measured from real content — a track that barely overflows reads as a glitch, not a journey.</p>
     <details class="how"><summary>How it is built</summary><code class="api">/* --travel is the track's overflow, measured from its content */
 transform: translateX(calc(-1 * var(--travel)));</code></details>
-    <a class="deeper" href="02-horizontal.html">Exhibit 02 · Night side</a>
+    <a class="deeper" href="../night-side/">Exhibit 02 · Night side</a>
   </div>
   <div class="stage"><span class="tag">scroll the page</span><div class="hrun"><div class="hstage"><div class="htrack" id="htrack"></div></div></div></div>
 </section>
@@ -867,7 +867,7 @@ scroll-snap-align: start;</code></details>
     <p class="note">Velocity is a genuinely separate signal from position. The asymmetry is the craft: it rises about six times faster than it falls, which is what makes it read as momentum rather than twitch.</p>
     <details class="how"><summary>How it is built</summary><code class="api">v += (target - v) * (target &gt; v ? 0.34 : 0.055);
 transform: skewY(calc(var(--vel) * -4deg));</code></details>
-    <a class="deeper" href="03-velocity.html">Exhibit 03 · Florence</a>
+    <a class="deeper" href="../florence/">Exhibit 03 · Florence</a>
   </div>
   <div class="stage"><span class="tag">throw the page</span><div class="skew"><div class="skewinner" id="skewinner"></div></div><p class="velout">velocity <span id="velOut">0.00</span></p></div>
 </section>
@@ -1259,7 +1259,7 @@ text-orientation: mixed;
     <p class="note">The whole palette is one number. <code>@property</code> is what makes it animatable at all — an unregistered custom property has no interpolable type. Every token keeps its lightness and chroma and shares the angle, so nothing can drift out of step.</p>
     <details class="how"><summary>How it is built</summary><code class="api">@property --rot { syntax: '&lt;angle&gt;'; inherits: true }
 --accent: oklch(0.637 0.145 calc(40.2deg + var(--rot)));</code></details>
-    <a class="deeper" href="07-theme-rotation.html">Exhibit 07 · Kīlauea</a>
+    <a class="deeper" href="../kilauea/">Exhibit 07 · Kīlauea</a>
   </div>
   <div class="stage"><span class="tag">scroll the page</span><div class="ti" id="ti"><div class="tiface"><span class="tieye">Ledger</span><b>Momoyogusa</b><p>Twelve plates, one angle.</p><span class="tibtn">Open</span></div><div class="tibar"></div></div></div>
 </section>
@@ -1314,7 +1314,7 @@ background: color-mix(in srgb, &lt;end&gt; calc(var(--t) * 100%), &lt;start&gt;)
 .flip { transition: background-color .7s var(--settle) }
 /* these three palettes are unrelated by design, so they are written out
    rather than derived from the house tokens */</code></details>
-    <a class="deeper" href="07-theme-rotation.html">Exhibit 07 · Kīlauea</a>
+    <a class="deeper" href="../kilauea/">Exhibit 07 · Kīlauea</a>
   </div>
   <div class="stage"><span class="tag">scroll inside ↓</span><div class="tf" id="tf"><div class="tfpanels" id="tfpanels"></div></div></div>
 </section>
@@ -1322,7 +1322,7 @@ background: color-mix(in srgb, &lt;end&gt; calc(var(--t) * 100%), &lt;start&gt;)
 <footer>
   <span>Material — Kamisaka Sekka 神坂雪佳, <i>Momoyogusa</i> 百々世草, 1909–10<br>Rijksmuseum scans via Wikimedia Commons, CC0. Anna Atkins cyanotypes, 1843.</span>
   <span>Type — Melodrama · Switzer · Geist · Geist Mono · 思源宋体</span>
-  <span><a href="index.html">The seven exhibits</a></span>
+  <span><a href="../">The seven exhibits</a></span>
 </footer>
 
 </div>

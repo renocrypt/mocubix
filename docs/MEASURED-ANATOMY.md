@@ -223,7 +223,7 @@ Authored curves do exist in the measurements, but only at the margins: Immersive
 
 ## Measured here, while building
 
-Platform behaviour established by probing Chrome directly during construction of `artifacts/`. Recorded because none of it is stated in the documentation, and each cost a debugging cycle.
+Platform behaviour established by probing Chrome directly during construction of `artifacts/` (now `site/`). Recorded because none of it is stated in the documentation, and each cost a debugging cycle.
 
 ### Feature support is not the problem
 
@@ -231,7 +231,7 @@ Confirmed live via `CSS.supports()` on 2026-09-15: `animation-timeline: scroll()
 
 ### `scroll()` is exact, and free
 
-Measured on `artifacts/01-scroll-timeline.html`: a rail bound to `animation-timeline: scroll(root)` tracked document progress to three decimals — `scaleX(0.2998)` at 30%, `0.6199` at 62%, `0.9498` at 95% — with **zero JavaScript**. Same result on the horizontal track in `02`: `translateX` hit −383, −766, −1149, −1532 px against a measured 1532 px of overflow, linear and exact.
+Measured on `artifacts/01-scroll-timeline.html` (now `site/annie-g/`): a rail bound to `animation-timeline: scroll(root)` tracked document progress to three decimals — `scaleX(0.2998)` at 30%, `0.6199` at 62%, `0.9498` at 95% — with **zero JavaScript**. Same result on the horizontal track in `02`: `translateX` hit −383, −766, −1149, −1532 px against a measured 1532 px of overflow, linear and exact.
 
 ### `view()` collapses on a subject with no usable extent
 

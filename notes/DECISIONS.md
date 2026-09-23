@@ -605,3 +605,57 @@ chrome can read it. Measured: the cut lands with the gauge's top at 29 px, at
 at 1440 and 390, scrolled end to end — no console messages, no horizontal
 overflow, no broken or stalled images. Evidence: `07-after-*`,
 `01-after-legend-1440`, `index-after-1440`, `03-before/after-day-chrome-1440`.
+
+## Out of sketch, 2026-09-22 — git, a permanent address per page, and what crawlers see
+
+**Stack.** Plain HTML, CSS and a little JavaScript; no framework, no bundler.
+Nothing here is app-like (no state, no data, no routing), readable source is
+part of what the site offers, and build-time static HTML is exactly what the
+discoverability research endorses. No animation library by default either:
+native motion is the exhibit, and it runs without our script working every
+frame. If an advanced piece needs springs with momentum, shape morphing, line
+splitting, long choreography or a 3D scene, anime.js (4.5.0, MIT, UMD build
+available) is the pick, loaded only on that page from a pinned copy.
+
+**Git.** `renocrypt/mocubix`, created private; it must turn public to publish
+(Pages on the org's free plan). Ignored: `.DS_Store`, `.claude/`,
+`notes/evidence/`. The Wikimedia User-Agent contact in `build/*.py` is now
+the repository URL, so no personal email is in the history.
+
+**Addresses.** `artifacts/` became `site/`, one folder per page:
+
+| was | now |
+| --- | --- |
+| `01-scroll-timeline.html` | `/annie-g/` |
+| `02-horizontal.html` | `/night-side/` |
+| `03-velocity.html` | `/florence/` |
+| `04-view-progress.html` | `/urformen/` |
+| `05-autonomous-time.html` | `/departures/` |
+| `06-live-teardown.html` | `/orrery/` |
+| `07-theme-rotation.html` | `/kilauea/` |
+| `lexicon.html` | `/lexicon/` |
+
+Permanent once published. Folder addresses do not open from disk, so preview
+is `python3 -m http.server 8765 --directory site`. The Lexicon generator was
+checked to reproduce the committed page byte for byte before the move and the
+rewritten page byte for byte after it. Verified over the local server: 52
+local references resolve, every page loads the shared files, 196 images, no
+overflow; the only 404 is `/favicon.ico`, which the site has never had.
+
+**What crawlers see.** Raw HTML text against the DOM after scripts, per page
+(headless Chrome `--dump-dom`): index, 01–04 and 07 carry every word in the
+HTML (scripts add only the switch's label; 06 adds its live date and
+readouts). **05 builds 145 words (~28% of its text, the boards' destinations
+and messages) in script, and the Lexicon 722 of 4,696** — a crawler that runs
+no JavaScript misses them. The charter now says it outright: a script may
+move what the HTML holds, never write it. Also missing site-wide: canonical
+addresses, share previews, favicon, sitemap, 404 page; the index has no
+description and is titled "Exhibition slice 01"; 07's five photographs and
+02's map carry `alt=""`. Sizes are 18–141 KB against Googlebot's 2 MB, titles
+at the top. Per the research (§5), no `llms.txt` and no schema aimed at AI.
+
+**The Lexicon plan changed with it.** One page with `#effect` links breaks
+hard constraint 11 (fragments are not addresses), so each effect gets a real
+page, bound like a book: the entrance shows every effect as a small moving
+preview, each page carries the contents and next/previous, and the next page
+is prepared in advance so turning is instant.

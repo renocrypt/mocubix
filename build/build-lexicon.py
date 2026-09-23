@@ -371,12 +371,12 @@ FAMILIES = [("scroll", "Scroll"), ("image", "Image"),
 
 # Specimens that a full exhibit develops further. Keyed by name as in SPECS.
 EXHIBITS = {
-    "Pinning &amp; Scrub":        ("01-scroll-timeline.html", "Exhibit 01 · Annie G."),
-    "Horizontal Scroll Section":  ("02-horizontal.html",      "Exhibit 02 · Night side"),
-    "Scroll Velocity Skew":       ("03-velocity.html",        "Exhibit 03 · Florence"),
-    "View Progress Timeline":     ("04-view-progress.html",   "Exhibit 04 · Urformen"),
-    "Token Interpolation":        ("07-theme-rotation.html",  "Exhibit 07 · Kīlauea"),
-    "Threshold Flip":             ("07-theme-rotation.html",  "Exhibit 07 · Kīlauea"),
+    "Pinning &amp; Scrub":        ("../annie-g/", "Exhibit 01 · Annie G."),
+    "Horizontal Scroll Section":  ("../night-side/",      "Exhibit 02 · Night side"),
+    "Scroll Velocity Skew":       ("../florence/",        "Exhibit 03 · Florence"),
+    "View Progress Timeline":     ("../urformen/",   "Exhibit 04 · Urformen"),
+    "Token Interpolation":        ("../kilauea/",  "Exhibit 07 · Kīlauea"),
+    "Threshold Flip":             ("../kilauea/",  "Exhibit 07 · Kīlauea"),
 }
 
 def render_specs():
@@ -447,6 +447,6 @@ html = (TEMPLATE
         .replace('/*__ATKINS__*/', js_plates(atkins))
         .replace('__COUNT__', str(len(SPECS))))
 
-open(ROOT / 'artifacts/lexicon.html', 'w', encoding='utf-8').write(html)
-print("wrote lexicon.html —", len(html), "bytes,", len(SPECS), "named effects,",
+open(ROOT / 'site/lexicon/index.html', 'w', encoding='utf-8').write(html)
+print("wrote site/lexicon/index.html —", len(html), "bytes,", len(SPECS), "named effects,",
       len(sekka), "Sekka plates,", len(atkins), "cyanotypes")
