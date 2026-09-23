@@ -1,0 +1,79 @@
+/* Scroll Markers, in full: a journey outward. Everything that navigates here
+   is the browser's own carousel — snap stops, ::scroll-marker thumbnails that
+   carry each stop's distance, ::scroll-button arrows — and no script. */
+
+.showhead{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,5vw,80px);align-items:end;
+  margin-bottom:clamp(18px,3vh,30px)}
+.showhead .name{font-family:var(--display);font-weight:400;font-size:clamp(40px,5.4vw,78px);line-height:.9;letter-spacing:-.025em;margin:0}
+.showhead .gloss{margin:14px 0 0;max-width:40ch;font-size:16.5px;line-height:1.52;text-wrap:pretty}
+.showhead .journey h2{font-family:var(--display);font-weight:400;font-size:clamp(22px,2.4vw,32px);line-height:1;letter-spacing:-.02em;margin:0;color:var(--accent)}
+.showhead .journey p{margin:10px 0 0;color:var(--mid);font-size:14.5px;line-height:1.55;max-width:54ch;text-wrap:pretty}
+
+/* the voyage: full bleed, deep black, the photographs' own light */
+.voyage{position:relative;width:100vw;margin-inline:calc(50% - 50vw);height:clamp(520px,calc(100svh - 110px),940px);
+  background:#020203;overflow:clip;color:var(--ink);border:0;border-radius:0}
+.reel{display:flex;height:100%;overflow-x:auto;overflow-y:clip;scroll-snap-type:x mandatory;scroll-behavior:smooth;
+  overscroll-behavior-x:contain;scrollbar-width:none;scroll-marker-group:after;outline:none}
+.stop{flex:0 0 100%;position:relative;margin:0;scroll-snap-align:center;overflow:clip}
+/* each picture drifts across the frame and settles as it arrives */
+.stop img{position:absolute;inset:0;width:100%;height:100%;object-fit:var(--fit,cover);object-position:var(--pos,50% 50%);
+  animation:drift linear both;animation-timeline:view(inline)}
+/* a subject shown whole takes its own shape, right of centre, and feathers into the dark:
+   its photograph's black is never quite the stage's black, so it has no edge to show */
+.stop.whole img{inset:0 7% 0 auto;width:auto;height:100%;max-width:64%;object-fit:contain;
+  -webkit-mask-image:radial-gradient(closest-side,#000 84%,transparent);mask-image:radial-gradient(closest-side,#000 84%,transparent)}
+@keyframes drift{from{scale:1.2;translate:10% 0}50%{scale:1.03;translate:0 0}to{scale:1.2;translate:-10% 0}}
+.stop::after{content:'';position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(90deg,rgb(2 2 3 / .78),rgb(2 2 3 / .2) 44%,transparent 68%),linear-gradient(0deg,rgb(2 2 3 / .7),transparent 34%)}
+.stop figcaption{position:absolute;z-index:2;left:clamp(20px,5vw,72px);bottom:clamp(118px,16vh,160px);max-width:min(520px,44vw);
+  animation:rise linear both;animation-timeline:view(inline)}
+@keyframes rise{from{opacity:0;translate:0 26px}38%,62%{opacity:1;translate:0 0}to{opacity:0;translate:0 -26px}}
+.stop .count{font-family:var(--mono);font-size:10px;letter-spacing:.16em;color:var(--dim)}
+.stop h2{font-family:var(--display);font-weight:400;font-size:clamp(40px,5vw,76px);line-height:.92;letter-spacing:-.025em;margin:10px 0 0;text-wrap:balance}
+.stop .what{margin:14px 0 0;font-size:clamp(15px,1.3vw,18px);line-height:1.5;color:var(--mid);max-width:38ch;text-wrap:pretty}
+.stop .far{margin:20px 0 0;font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--mid)}
+.stop .far b{display:block;font-family:var(--display);font-weight:400;font-size:clamp(36px,3.8vw,58px);line-height:1;letter-spacing:-.02em;
+  text-transform:none;color:var(--accent);margin-bottom:6px}
+.stop .light{margin:8px 0 0;font-size:13.5px;line-height:1.5;color:var(--mid)}
+.stop .cr{display:block;margin-top:16px;font-family:var(--mono);font-size:9px;letter-spacing:.06em;color:var(--dim)}
+
+/* the markers: a thumbnail per stop with its distance, the stop on screen lit */
+.reel::scroll-marker-group{position:absolute;z-index:3;left:clamp(20px,5vw,72px);right:clamp(20px,5vw,72px);
+  bottom:clamp(18px,3.2vh,32px);display:flex;justify-content:space-between;gap:10px}
+.stop::scroll-marker{content:attr(data-far);flex:1;max-width:136px;height:46px;box-sizing:border-box;padding:28px 7px 0;cursor:pointer;
+  background:linear-gradient(to top,rgb(2 2 3 / .82),rgb(2 2 3 / 0) 78%),var(--thumb) center/cover no-repeat;
+  border-top:2px solid rgb(242 237 229 / .18);border-radius:1px;text-decoration:none;white-space:nowrap;overflow:hidden;
+  font-family:var(--mono);font-size:9px;line-height:12px;letter-spacing:.1em;text-transform:uppercase;color:rgb(242 237 229 / .72);
+  opacity:.55;transition:opacity .35s var(--settle),color .35s var(--settle),border-color .35s var(--settle)}
+.stop::scroll-marker:hover{opacity:1;color:rgb(242 237 229 / .85)}
+.stop::scroll-marker:target-current{opacity:1;color:#F2EDE5;border-top-color:var(--accent)}
+.stop::scroll-marker:focus-visible{outline:1px solid var(--accent);outline-offset:4px}
+
+/* the arrows: the carousel pages itself */
+.reel::scroll-button(left),.reel::scroll-button(right){position:absolute;z-index:3;bottom:calc(clamp(18px,3.2vh,32px) + 64px);width:42px;height:42px;border-radius:50%;
+  border:1px solid rgb(242 237 229 / .3);background:rgb(2 2 3 / .35);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);
+  color:#F2EDE5;font-family:var(--mono);font-size:15px;cursor:pointer;
+  transition:border-color .35s var(--settle),color .35s var(--settle),opacity .35s var(--settle)}
+.reel::scroll-button(left){content:'←' / 'Back towards the Sun';right:calc(clamp(20px,5vw,72px) + 52px)}
+.reel::scroll-button(right){content:'→' / 'Further out';right:clamp(20px,5vw,72px)}
+.reel::scroll-button(left):hover,.reel::scroll-button(right):hover{border-color:var(--accent);color:var(--accent)}
+.reel::scroll-button(left):disabled,.reel::scroll-button(right):disabled{opacity:.2;cursor:default}
+
+@media (prefers-reduced-motion:reduce){
+  .stop img,.stop figcaption{animation:none}
+  .reel{scroll-behavior:auto}
+}
+@media (max-width:760px){
+  .showhead{grid-template-columns:minmax(0,1fr)}
+  .voyage{height:calc(100svh - 80px)}
+  .stop figcaption{max-width:none;right:20px;bottom:92px}
+  .stop h2{font-size:clamp(34px,10vw,48px)}
+  .reel::scroll-marker-group{gap:5px}
+  .stop::scroll-marker{content:'';padding-top:32px;background-size:100% 30px}
+  .reel::scroll-button(left),.reel::scroll-button(right){display:none}
+}
+
+/* the header is compact, and one scroll lands the voyage exactly under the bar */
+.showhead{padding-block:0 clamp(18px,3vh,30px)}
+html{scroll-snap-type:y proximity;scroll-padding-top:46px}
+.voyage{height:max(520px,calc(100svh - 46px));scroll-snap-align:start}

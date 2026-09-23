@@ -1457,5 +1457,175 @@
   },
   "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3d/Uranus2.jpg/960px-Uranus2.jpg 960w, https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3d/Uranus2.jpg/1280px-Uranus2.jpg 1280w",
   "default": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3d/Uranus2.jpg/1280px-Uranus2.jpg"
+ },
+ {
+  "title": "File:Jupiter (NIRCam Image) (2023-147).png",
+  "label": "Jupiter",
+  "kind": "webb",
+  "w": 1603,
+  "h": 1615,
+  "license": "Public domain",
+  "artist": "Image: NASA, ESA, CSA, STScI, Ricardo Hueso (UPV), Imke de Pater (UC Berkeley), ",
+  "credit": "Jupiter (NIRCam Image)",
+  "descurl": "https://commons.wikimedia.org/wiki/File:Jupiter_(NIRCam_Image)_(2023-147).png",
+  "sources": {
+   "960": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6f/Jupiter_%28NIRCam_Image%29_%282023-147%29.png/960px-Jupiter_%28NIRCam_Image%29_%282023-147%29.png",
+   "1280": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6f/Jupiter_%28NIRCam_Image%29_%282023-147%29.png/1280px-Jupiter_%28NIRCam_Image%29_%282023-147%29.png",
+   "1603": "https://upload.wikimedia.org/wikipedia/commons/6/6f/Jupiter_%28NIRCam_Image%29_%282023-147%29.png"
+  },
+  "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6f/Jupiter_%28NIRCam_Image%29_%282023-147%29.png/960px-Jupiter_%28NIRCam_Image%29_%282023-147%29.png 960w, https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6f/Jupiter_%28NIRCam_Image%29_%282023-147%29.png/1280px-Jupiter_%28NIRCam_Image%29_%282023-147%29.png 1280w, https://upload.wikimedia.org/wikipedia/commons/6/6f/Jupiter_%28NIRCam_Image%29_%282023-147%29.png 1603w",
+  "default": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6f/Jupiter_%28NIRCam_Image%29_%282023-147%29.png/1280px-Jupiter_%28NIRCam_Image%29_%282023-147%29.png"
+ },
+ {
+  "title": "File:Orion Bar (NIRCam Image) (2023-129).jpg",
+  "label": "Orion Bar",
+  "kind": "webb",
+  "w": 4049,
+  "h": 4500,
+  "license": "Public domain",
+  "artist": "Image",
+  "credit": "Orion Bar (NIRCam Image)",
+  "descurl": "https://commons.wikimedia.org/wiki/File:Orion_Bar_(NIRCam_Image)_(2023-129).jpg",
+  "sources": {
+   "960": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/67/Orion_Bar_%28NIRCam_Image%29_%282023-129%29.jpg/960px-Orion_Bar_%28NIRCam_Image%29_%282023-129%29.jpg",
+   "1280": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/67/Orion_Bar_%28NIRCam_Image%29_%282023-129%29.jpg/1280px-Orion_Bar_%28NIRCam_Image%29_%282023-129%29.jpg",
+   "1920": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/67/Orion_Bar_%28NIRCam_Image%29_%282023-129%29.jpg/1920px-Orion_Bar_%28NIRCam_Image%29_%282023-129%29.jpg",
+   "3840": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/67/Orion_Bar_%28NIRCam_Image%29_%282023-129%29.jpg/3840px-Orion_Bar_%28NIRCam_Image%29_%282023-129%29.jpg"
+  },
+  "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/67/Orion_Bar_%28NIRCam_Image%29_%282023-129%29.jpg/960px-Orion_Bar_%28NIRCam_Image%29_%282023-129%29.jpg 960w, https://thumb.wikimedia.org/wikipedia/commons/thumb/6/67/Orion_Bar_%28NIRCam_Image%29_%282023-129%29.jpg/1280px-Orion_Bar_%28NIRCam_Image%29_%282023-129%29.jpg 1280w, https://thumb.wikimedia.org/wikipedia/commons/thumb/6/67/Orion_Bar_%28NIRCam_Image%29_%282023-129%29.jpg/1920px-Orion_Bar_%28NIRCam_Image%29_%282023-129%29.jpg 1920w, https://thumb.wikimedia.org/wikipedia/commons/thumb/6/67/Orion_Bar_%28NIRCam_Image%29_%282023-129%29.jpg/3840px-Orion_Bar_%28NIRCam_Image%29_%282023-129%29.jpg 3840w",
+  "default": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/67/Orion_Bar_%28NIRCam_Image%29_%282023-129%29.jpg/1920px-Orion_Bar_%28NIRCam_Image%29_%282023-129%29.jpg"
+ },
+ {
+  "title": "File:Rho Ophiuchi (NIRCam Image) (2023-128).png",
+  "label": "Rho Ophiuchi",
+  "kind": "webb",
+  "w": 12778,
+  "h": 11968,
+  "license": "Public domain",
+  "artist": "Image",
+  "credit": "Rho Ophiuchi (NIRCam Image)",
+  "descurl": "https://commons.wikimedia.org/wiki/File:Rho_Ophiuchi_(NIRCam_Image)_(2023-128).png",
+  "sources": {
+   "960": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/85/Rho_Ophiuchi_%28NIRCam_Image%29_%282023-128%29.png/960px-Rho_Ophiuchi_%28NIRCam_Image%29_%282023-128%29.png",
+   "1280": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/85/Rho_Ophiuchi_%28NIRCam_Image%29_%282023-128%29.png/1280px-Rho_Ophiuchi_%28NIRCam_Image%29_%282023-128%29.png",
+   "1920": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/85/Rho_Ophiuchi_%28NIRCam_Image%29_%282023-128%29.png/1920px-Rho_Ophiuchi_%28NIRCam_Image%29_%282023-128%29.png",
+   "3840": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/85/Rho_Ophiuchi_%28NIRCam_Image%29_%282023-128%29.png/3840px-Rho_Ophiuchi_%28NIRCam_Image%29_%282023-128%29.png"
+  },
+  "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/85/Rho_Ophiuchi_%28NIRCam_Image%29_%282023-128%29.png/960px-Rho_Ophiuchi_%28NIRCam_Image%29_%282023-128%29.png 960w, https://thumb.wikimedia.org/wikipedia/commons/thumb/8/85/Rho_Ophiuchi_%28NIRCam_Image%29_%282023-128%29.png/1280px-Rho_Ophiuchi_%28NIRCam_Image%29_%282023-128%29.png 1280w, https://thumb.wikimedia.org/wikipedia/commons/thumb/8/85/Rho_Ophiuchi_%28NIRCam_Image%29_%282023-128%29.png/1920px-Rho_Ophiuchi_%28NIRCam_Image%29_%282023-128%29.png 1920w, https://thumb.wikimedia.org/wikipedia/commons/thumb/8/85/Rho_Ophiuchi_%28NIRCam_Image%29_%282023-128%29.png/3840px-Rho_Ophiuchi_%28NIRCam_Image%29_%282023-128%29.png 3840w",
+  "default": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/85/Rho_Ophiuchi_%28NIRCam_Image%29_%282023-128%29.png/1920px-Rho_Ophiuchi_%28NIRCam_Image%29_%282023-128%29.png"
+ },
+ {
+  "title": "File:Southern Ring Nebula (NIRCam Image).png",
+  "label": "Southern Ring Nebula",
+  "kind": "webb",
+  "w": 4833,
+  "h": 4501,
+  "license": "Public domain",
+  "artist": "Image: \n\nNational Aeronautics and Space Administration  (a U.S. federal governme",
+  "credit": "https://webbtelescope.org/contents/media/images/2022/033/01G70BGTSYBHS69T7K3N3AS",
+  "descurl": "https://commons.wikimedia.org/wiki/File:Southern_Ring_Nebula_(NIRCam_Image).png",
+  "sources": {
+   "960": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/29/Southern_Ring_Nebula_%28NIRCam_Image%29.png/960px-Southern_Ring_Nebula_%28NIRCam_Image%29.png",
+   "1280": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/29/Southern_Ring_Nebula_%28NIRCam_Image%29.png/1280px-Southern_Ring_Nebula_%28NIRCam_Image%29.png",
+   "1920": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/29/Southern_Ring_Nebula_%28NIRCam_Image%29.png/1920px-Southern_Ring_Nebula_%28NIRCam_Image%29.png",
+   "3840": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/29/Southern_Ring_Nebula_%28NIRCam_Image%29.png/3840px-Southern_Ring_Nebula_%28NIRCam_Image%29.png"
+  },
+  "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/29/Southern_Ring_Nebula_%28NIRCam_Image%29.png/960px-Southern_Ring_Nebula_%28NIRCam_Image%29.png 960w, https://thumb.wikimedia.org/wikipedia/commons/thumb/2/29/Southern_Ring_Nebula_%28NIRCam_Image%29.png/1280px-Southern_Ring_Nebula_%28NIRCam_Image%29.png 1280w, https://thumb.wikimedia.org/wikipedia/commons/thumb/2/29/Southern_Ring_Nebula_%28NIRCam_Image%29.png/1920px-Southern_Ring_Nebula_%28NIRCam_Image%29.png 1920w, https://thumb.wikimedia.org/wikipedia/commons/thumb/2/29/Southern_Ring_Nebula_%28NIRCam_Image%29.png/3840px-Southern_Ring_Nebula_%28NIRCam_Image%29.png 3840w",
+  "default": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/29/Southern_Ring_Nebula_%28NIRCam_Image%29.png/1920px-Southern_Ring_Nebula_%28NIRCam_Image%29.png"
+ },
+ {
+  "title": "File:Cartwheel Galaxy (NIRCam and MIRI Composite Image) (weic2211a).jpeg",
+  "label": "Cartwheel Galaxy",
+  "kind": "webb",
+  "w": 4685,
+  "h": 4312,
+  "license": "Public domain",
+  "artist": "NASA, ESA, CSA, STScI",
+  "credit": "This media was produced by the James Webb Space Telescope and shared by the Euro",
+  "descurl": "https://commons.wikimedia.org/wiki/File:Cartwheel_Galaxy_(NIRCam_and_MIRI_Composite_Image)_(weic2211a).jpeg",
+  "sources": {
+   "960": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7d/Cartwheel_Galaxy_%28NIRCam_and_MIRI_Composite_Image%29_%28weic2211a%29.jpeg/960px-Cartwheel_Galaxy_%28NIRCam_and_MIRI_Composite_Image%29_%28weic2211a%29.jpeg",
+   "1280": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7d/Cartwheel_Galaxy_%28NIRCam_and_MIRI_Composite_Image%29_%28weic2211a%29.jpeg/1280px-Cartwheel_Galaxy_%28NIRCam_and_MIRI_Composite_Image%29_%28weic2211a%29.jpeg",
+   "1920": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7d/Cartwheel_Galaxy_%28NIRCam_and_MIRI_Composite_Image%29_%28weic2211a%29.jpeg/1920px-Cartwheel_Galaxy_%28NIRCam_and_MIRI_Composite_Image%29_%28weic2211a%29.jpeg",
+   "3840": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7d/Cartwheel_Galaxy_%28NIRCam_and_MIRI_Composite_Image%29_%28weic2211a%29.jpeg/3840px-Cartwheel_Galaxy_%28NIRCam_and_MIRI_Composite_Image%29_%28weic2211a%29.jpeg"
+  },
+  "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7d/Cartwheel_Galaxy_%28NIRCam_and_MIRI_Composite_Image%29_%28weic2211a%29.jpeg/960px-Cartwheel_Galaxy_%28NIRCam_and_MIRI_Composite_Image%29_%28weic2211a%29.jpeg 960w, https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7d/Cartwheel_Galaxy_%28NIRCam_and_MIRI_Composite_Image%29_%28weic2211a%29.jpeg/1280px-Cartwheel_Galaxy_%28NIRCam_and_MIRI_Composite_Image%29_%28weic2211a%29.jpeg 1280w, https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7d/Cartwheel_Galaxy_%28NIRCam_and_MIRI_Composite_Image%29_%28weic2211a%29.jpeg/1920px-Cartwheel_Galaxy_%28NIRCam_and_MIRI_Composite_Image%29_%28weic2211a%29.jpeg 1920w, https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7d/Cartwheel_Galaxy_%28NIRCam_and_MIRI_Composite_Image%29_%28weic2211a%29.jpeg/3840px-Cartwheel_Galaxy_%28NIRCam_and_MIRI_Composite_Image%29_%28weic2211a%29.jpeg 3840w",
+  "default": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7d/Cartwheel_Galaxy_%28NIRCam_and_MIRI_Composite_Image%29_%28weic2211a%29.jpeg/1920px-Cartwheel_Galaxy_%28NIRCam_and_MIRI_Composite_Image%29_%28weic2211a%29.jpeg"
+ },
+ {
+  "title": "File:Cassiopeia A (NIRCam Image) (2023-149).png",
+  "label": "Cassiopeia A",
+  "kind": "webb",
+  "w": 11694,
+  "h": 13392,
+  "license": "Public domain",
+  "artist": "Image: NASA, ESA, CSA, STScI, Danny Milisavljevic (Purdue University), Ilse De L",
+  "credit": "Cassiopeia A (NIRCam Image)",
+  "descurl": "https://commons.wikimedia.org/wiki/File:Cassiopeia_A_(NIRCam_Image)_(2023-149).png",
+  "sources": {
+   "960": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/73/Cassiopeia_A_%28NIRCam_Image%29_%282023-149%29.png/960px-Cassiopeia_A_%28NIRCam_Image%29_%282023-149%29.png",
+   "1280": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/73/Cassiopeia_A_%28NIRCam_Image%29_%282023-149%29.png/1280px-Cassiopeia_A_%28NIRCam_Image%29_%282023-149%29.png",
+   "1920": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/73/Cassiopeia_A_%28NIRCam_Image%29_%282023-149%29.png/1920px-Cassiopeia_A_%28NIRCam_Image%29_%282023-149%29.png",
+   "3840": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/73/Cassiopeia_A_%28NIRCam_Image%29_%282023-149%29.png/3840px-Cassiopeia_A_%28NIRCam_Image%29_%282023-149%29.png"
+  },
+  "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/73/Cassiopeia_A_%28NIRCam_Image%29_%282023-149%29.png/960px-Cassiopeia_A_%28NIRCam_Image%29_%282023-149%29.png 960w, https://thumb.wikimedia.org/wikipedia/commons/thumb/7/73/Cassiopeia_A_%28NIRCam_Image%29_%282023-149%29.png/1280px-Cassiopeia_A_%28NIRCam_Image%29_%282023-149%29.png 1280w, https://thumb.wikimedia.org/wikipedia/commons/thumb/7/73/Cassiopeia_A_%28NIRCam_Image%29_%282023-149%29.png/1920px-Cassiopeia_A_%28NIRCam_Image%29_%282023-149%29.png 1920w, https://thumb.wikimedia.org/wikipedia/commons/thumb/7/73/Cassiopeia_A_%28NIRCam_Image%29_%282023-149%29.png/3840px-Cassiopeia_A_%28NIRCam_Image%29_%282023-149%29.png 3840w",
+  "default": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/73/Cassiopeia_A_%28NIRCam_Image%29_%282023-149%29.png/1920px-Cassiopeia_A_%28NIRCam_Image%29_%282023-149%29.png"
+ },
+ {
+  "title": "File:NASA’s Webb Reveals Cosmic Cliffs, Glittering Landscape of Star Birth.jpg",
+  "label": "Cosmic Cliffs",
+  "kind": "webb",
+  "w": 14575,
+  "h": 8441,
+  "license": "Public domain",
+  "artist": "Image: \n\nNational Aeronautics and Space Administration  (a U.S. federal governme",
+  "credit": "https://webbtelescope.org/contents/media/images/2022/031/01G77PKB8NKR7S8Z6HBXMYA",
+  "descurl": "https://commons.wikimedia.org/wiki/File:NASA%E2%80%99s_Webb_Reveals_Cosmic_Cliffs,_Glittering_Landscape_of_Star_Birth.jpg",
+  "sources": {
+   "960": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/44/NASA%E2%80%99s_Webb_Reveals_Cosmic_Cliffs%2C_Glittering_Landscape_of_Star_Birth.jpg/960px-NASA%E2%80%99s_Webb_Reveals_Cosmic_Cliffs%2C_Glittering_Landscape_of_Star_Birth.jpg",
+   "1280": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/44/NASA%E2%80%99s_Webb_Reveals_Cosmic_Cliffs%2C_Glittering_Landscape_of_Star_Birth.jpg/1280px-NASA%E2%80%99s_Webb_Reveals_Cosmic_Cliffs%2C_Glittering_Landscape_of_Star_Birth.jpg",
+   "1920": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/44/NASA%E2%80%99s_Webb_Reveals_Cosmic_Cliffs%2C_Glittering_Landscape_of_Star_Birth.jpg/1920px-NASA%E2%80%99s_Webb_Reveals_Cosmic_Cliffs%2C_Glittering_Landscape_of_Star_Birth.jpg",
+   "3840": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/44/NASA%E2%80%99s_Webb_Reveals_Cosmic_Cliffs%2C_Glittering_Landscape_of_Star_Birth.jpg/3840px-NASA%E2%80%99s_Webb_Reveals_Cosmic_Cliffs%2C_Glittering_Landscape_of_Star_Birth.jpg"
+  },
+  "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/44/NASA%E2%80%99s_Webb_Reveals_Cosmic_Cliffs%2C_Glittering_Landscape_of_Star_Birth.jpg/960px-NASA%E2%80%99s_Webb_Reveals_Cosmic_Cliffs%2C_Glittering_Landscape_of_Star_Birth.jpg 960w, https://thumb.wikimedia.org/wikipedia/commons/thumb/4/44/NASA%E2%80%99s_Webb_Reveals_Cosmic_Cliffs%2C_Glittering_Landscape_of_Star_Birth.jpg/1280px-NASA%E2%80%99s_Webb_Reveals_Cosmic_Cliffs%2C_Glittering_Landscape_of_Star_Birth.jpg 1280w, https://thumb.wikimedia.org/wikipedia/commons/thumb/4/44/NASA%E2%80%99s_Webb_Reveals_Cosmic_Cliffs%2C_Glittering_Landscape_of_Star_Birth.jpg/1920px-NASA%E2%80%99s_Webb_Reveals_Cosmic_Cliffs%2C_Glittering_Landscape_of_Star_Birth.jpg 1920w, https://thumb.wikimedia.org/wikipedia/commons/thumb/4/44/NASA%E2%80%99s_Webb_Reveals_Cosmic_Cliffs%2C_Glittering_Landscape_of_Star_Birth.jpg/3840px-NASA%E2%80%99s_Webb_Reveals_Cosmic_Cliffs%2C_Glittering_Landscape_of_Star_Birth.jpg 3840w",
+  "default": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/44/NASA%E2%80%99s_Webb_Reveals_Cosmic_Cliffs%2C_Glittering_Landscape_of_Star_Birth.jpg/1920px-NASA%E2%80%99s_Webb_Reveals_Cosmic_Cliffs%2C_Glittering_Landscape_of_Star_Birth.jpg"
+ },
+ {
+  "title": "File:Pillars of Creation (NIRCam Image).jpg",
+  "label": "Pillars of Creation",
+  "kind": "webb",
+  "w": 8423,
+  "h": 14589,
+  "license": "Public domain",
+  "artist": "SCIENCE: NASA, ESA, CSA, STScI; IMAGE PROCESSING: Joseph DePasquale (STScI), Ant",
+  "credit": "https://webbtelescope.org/contents/media/images/2022/052/01GF423GBQSK6ANC89NTFJW",
+  "descurl": "https://commons.wikimedia.org/wiki/File:Pillars_of_Creation_(NIRCam_Image).jpg",
+  "sources": {
+   "960": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f1/Pillars_of_Creation_%28NIRCam_Image%29.jpg/960px-Pillars_of_Creation_%28NIRCam_Image%29.jpg",
+   "1280": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f1/Pillars_of_Creation_%28NIRCam_Image%29.jpg/1280px-Pillars_of_Creation_%28NIRCam_Image%29.jpg",
+   "1920": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f1/Pillars_of_Creation_%28NIRCam_Image%29.jpg/1920px-Pillars_of_Creation_%28NIRCam_Image%29.jpg",
+   "3840": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f1/Pillars_of_Creation_%28NIRCam_Image%29.jpg/3840px-Pillars_of_Creation_%28NIRCam_Image%29.jpg"
+  },
+  "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f1/Pillars_of_Creation_%28NIRCam_Image%29.jpg/960px-Pillars_of_Creation_%28NIRCam_Image%29.jpg 960w, https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f1/Pillars_of_Creation_%28NIRCam_Image%29.jpg/1280px-Pillars_of_Creation_%28NIRCam_Image%29.jpg 1280w, https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f1/Pillars_of_Creation_%28NIRCam_Image%29.jpg/1920px-Pillars_of_Creation_%28NIRCam_Image%29.jpg 1920w, https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f1/Pillars_of_Creation_%28NIRCam_Image%29.jpg/3840px-Pillars_of_Creation_%28NIRCam_Image%29.jpg 3840w",
+  "default": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f1/Pillars_of_Creation_%28NIRCam_Image%29.jpg/1920px-Pillars_of_Creation_%28NIRCam_Image%29.jpg"
+ },
+ {
+  "title": "File:Webb's First Deep Field.jpg",
+  "label": "Webb's First Deep Field",
+  "kind": "webb",
+  "w": 4537,
+  "h": 4630,
+  "license": "Public domain",
+  "artist": "NASA, ESA, CSA, and STScI",
+  "credit": "https://webbtelescope.org/contents/media/images/2022/038/01G7JGTH21B5GN9VCYAHBXK",
+  "descurl": "https://commons.wikimedia.org/wiki/File:Webb%27s_First_Deep_Field.jpg",
+  "sources": {
+   "960": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bf/Webb%27s_First_Deep_Field.jpg/960px-Webb%27s_First_Deep_Field.jpg",
+   "1280": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bf/Webb%27s_First_Deep_Field.jpg/1280px-Webb%27s_First_Deep_Field.jpg",
+   "1920": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bf/Webb%27s_First_Deep_Field.jpg/1920px-Webb%27s_First_Deep_Field.jpg",
+   "3840": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bf/Webb%27s_First_Deep_Field.jpg/3840px-Webb%27s_First_Deep_Field.jpg"
+  },
+  "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bf/Webb%27s_First_Deep_Field.jpg/960px-Webb%27s_First_Deep_Field.jpg 960w, https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bf/Webb%27s_First_Deep_Field.jpg/1280px-Webb%27s_First_Deep_Field.jpg 1280w, https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bf/Webb%27s_First_Deep_Field.jpg/1920px-Webb%27s_First_Deep_Field.jpg 1920w, https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bf/Webb%27s_First_Deep_Field.jpg/3840px-Webb%27s_First_Deep_Field.jpg 3840w",
+  "default": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bf/Webb%27s_First_Deep_Field.jpg/1920px-Webb%27s_First_Deep_Field.jpg"
  }
 ]

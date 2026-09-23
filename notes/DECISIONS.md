@@ -811,3 +811,41 @@ scoping slips (term-link styles catching pillar-name links) were caught in
 Chrome and fixed. Verified in Chrome through DevTools: all five pillar pages
 and sampled terms without console messages or overflow, index fitting one
 screen at 1324×725, phone at 390.
+
+## The first showcase: Scroll Markers, a journey outward, 2026-09-23
+
+**Why this one first.** The user's bar: the most beautiful, dazzling, varied
+motion, and breadth of material. Webb's images are material the site had not
+touched, and Chrome's native carousel (`scroll-marker-group`,
+`::scroll-marker`, `:target-current`, `::scroll-button()`) is exactly the
+kind of capability the Lexicon exists to show — built entirely in CSS here.
+
+**The idea.** Nine public-domain Webb images in order of how far their light
+has come; the scroll markers are the stops, each a thumbnail carrying its
+distance. Every figure is sourced: Jupiter from NASA's Jupiter facts
+("sunlight takes 43 minutes"), Rho Ophiuchi 390 ly, Orion Bar 1,350 ly,
+Cassiopeia A 11,000 ly, Cartwheel 500 million ly and the Deep Field (cluster
+at 4.6 billion years, one galaxy's light 13.1 billion years) from NASA
+releases; the Southern Ring 2,500 ly from ESA/Webb; the Pillars 6,500 ly and
+the Cosmic Cliffs 7,600 ly from the images' NASA descriptions.
+
+**How showcases work (for all that follow).** A module in
+`build/showcases/<term>.py` gives TITLE, LEDE, optional GLOSS, HOW (the real
+code), NOTE and `render(works)`; styles sit beside the page in
+`site/lexicon/<term>/showcase.css`. The generator gives that term a showcase
+page (header, full-bleed stage, then details, pillar list, pager), marks it
+with a terracotta dot in the index and pillar pages, and keeps the quick card
+on the pillar page. `build/curate.py <kind>` now fetches just one kind, with
+the 1920 and 3840 buckets for material shown full-bleed.
+
+**Craft notes.** Subjects shown whole take their own shape right of centre
+and feather into the dark (their photographs' black is never the stage's
+black, so a contained image shows its frame otherwise). Marker thumbnails
+are cover-fitted with the distance set inside them. The arrows sit together
+at the lower right, clear of the captions.
+
+**Found on the way.** Japanese and Chinese in the Lexicon's footer, one alias
+and one code comment drew as boxes: the system's Han fallback is missing on
+this macOS 27 install (even Latin in "PingFang SC" drew boxes). The Lexicon's
+sans and mono stacks now fall to its own Source Han Serif webfont before the
+generic family, loading only the ranges used.

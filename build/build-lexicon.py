@@ -418,8 +418,16 @@ for key, pname, _, names in PILLARS:
 assert len(TERMS) == len(SPECS) == len({t[2][1] for t in TERMS}), 'every term in exactly one pillar'
 NUM = {t[2][1]: i + 1 for i, t in enumerate(TERMS)}
 
+# A term with a module in build/showcases/ (scroll-markers -> scroll_markers.py) gets a full
+# showcase page: the module renders its stage from the curated material and says how it is built.
+import importlib, sys
+sys.path.insert(0, str(ROOT / 'build' / 'showcases'))
+SHOWCASES = {slug(t[2][1]): importlib.import_module(slug(t[2][1]).replace('-', '_')) for t in TERMS
+             if (ROOT / 'build' / 'showcases' / (slug(t[2][1]).replace('-', '_') + '.py')).exists()}
+SHOW = ' <i class="shows" title="Has a full showcase"></i>'
 
-def shell(title, desc, path, rel, body, current=None):
+
+def shell(title, desc, path, rel, body, current=None, head=''):
     url = BASE + path
     nav = ''
     for k, n, _, _ in PILLARS:
@@ -428,7 +436,7 @@ def shell(title, desc, path, rel, body, current=None):
         nav += f'<a class="navfam" href="{rel}lexicon/{k}/"{mark}>{n}<i>{count}</i></a>'
     return (SHELL.replace('__TITLE__', title).replace('__TITLE_ATTR__', attr(title)).replace('__DESC__', attr(desc))
             .replace('__URL__', url).replace('__NAV__', nav).replace('__COUNT__', str(len(TERMS)))
-            .replace('__BODY__', body).replace('__REL__', rel))
+            .replace('__BODY__', body).replace('__HEAD__', head).replace('__REL__', rel))
 
 
 SHELL = """<!doctype html>
@@ -468,7 +476,7 @@ SHELL = """<!doctype html>
 <script src="__REL__house.js"></script>
 <!-- Chrome readies a term while the pointer rests on its link, so turning the page is instant. -->
 <script type="speculationrules">{"prerender":[{"where":{"href_matches":"/lexicon/*"},"eagerness":"moderate"}]}</script>
-</head>
+__HEAD__</head>
 <body>
 
 <div class="readbar" aria-hidden="true"></div>
@@ -512,7 +520,7 @@ def spec_html(pname, s, rel, level='term'):
         opener = ''
     else:
         title = f'<h2 class="name"><a href="../{sl}/" style="view-transition-name:t-{sl}">{name}</a></h2>'
-        opener = f'<a class="deeper open" href="../{sl}/">Open its page</a>'
+        opener = f'<a class="deeper open" href="../{sl}/">{"Open its showcase" if sl in SHOWCASES else "Open its page"}</a>'
     return (f'<section class="spec" id="{sl}">\n'
             f'  <div class="meta">\n'
             f'    <span class="idx">{n:02d} / {pname}</span>\n'
@@ -535,7 +543,7 @@ def entrance():
         for t in items:
             s = t[2]; sl = slug(s[1])
             lis += (f'<li><a href="{sl}/" data-aka="{attr(s[2])}" data-gloss="{attr(s[3])}">'
-                    f'<b>{NUM[s[1]]:02d}</b><span style="view-transition-name:t-{sl}">{s[1]}</span></a></li>')
+                    f'<b>{NUM[s[1]]:02d}</b><span style="view-transition-name:t-{sl}">{s[1]}{SHOW if sl in SHOWCASES else ""}</span></a></li>')
         cols.append(f'<div class="idxcol"><h4><a href="{key}/">{pname}</a><em>{len(items)}</em></h4>'
                     f'<p class="blurb">{blurb}</p><ol>{lis}</ol></div>')
     body = (f'<header class="entrance">\n'
@@ -551,7 +559,7 @@ def entrance():
             f'  </div>\n'
             f'  <div class="index">{"".join(cols)}</div>\n'
             f'  <p class="keys"><span>Type to find</span><span>↑ ↓ to choose</span><span>Enter to open</span>'
-            f'<span>A pillar’s name opens its cards</span><span>← → on a term to turn the page</span></p>\n'
+            f'<span>A pillar’s name opens its cards</span><span><i class="shows"></i>A full showcase</span><span>← → on a term to turn the page</span></p>\n'
             f'</header>')
     desc = (f'{len(TERMS)} interface effects in five pillars, each on its own page and running, under the name practitioners use: '
             f'scroll-driven motion, scroll behaviour, image, type and colour.')
@@ -591,17 +599,37 @@ def term_page(i):
     nxt = TERMS[i + 1] if i + 1 < len(TERMS) else None
     pager = (f'<a class="prev" href="../{slug(prev[2][1])}/"><small>← Previous</small><span>{prev[2][1]}</span></a>' if prev else '<span></span>')
     pager += (f'<a class="next" href="../{slug(nxt[2][1])}/"><small>Next →</small><span>{nxt[2][1]}</span></a>' if nxt else '<span></span>')
+    sc = SHOWCASES.get(slug(name))
+    if sc:
+        _, _, aka, gloss, _, note, _, _ = s
+        akas = ' · '.join('<i>' + a.strip() + '</i>' for a in aka.split('·'))
+        how = sc.HOW.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;')
+        feature = (f'<header class="showhead">\n'
+                   f'  <div><span class="idx">{NUM[name]:02d} / {pname}</span>\n'
+                   f'    <h1 class="name" style="view-transition-name:t-{slug(name)}">{name}</h1>\n'
+                   f'    <p class="gloss">{getattr(sc, "GLOSS", gloss)}</p></div>\n'
+                   f'  <div class="journey"><h2>{sc.TITLE}</h2><p>{sc.LEDE}</p></div>\n'
+                   f'</header>\n{sc.render(works)}\n')
+        detail = (f'<div class="meta showmeta">\n'
+                  f'    <p class="aka">also called {akas}</p>\n'
+                  f'    <p class="note">{note} {sc.NOTE}</p>\n'
+                  f'    <details class="how" open><summary>How it is built</summary><code class="api">{how}</code></details>\n'
+                  f'  </div>')
+    else:
+        feature, detail = '', spec_html(pname, s, rel)
     body = (f'<p class="crumb"><a href="../">Lexicon</a> / <a href="../{pkey}/">{pname}</a> · {items.index(TERMS[i]) + 1} of {len(items)}</p>\n'
+            f'{feature}'
             f'<div class="termgrid">\n'
             f'  <aside class="pillarnav" aria-label="{pname}">\n'
             f'    <h4><a href="../{pkey}/">{pname}</a><em>{len(items)}</em></h4>\n'
             f'    <ol>{lis}</ol>\n'
             f'    <p class="others">{others}</p>\n'
             f'  </aside>\n'
-            f'  <article class="term">\n{spec_html(pname, s, rel)}\n  </article>\n'
+            f'  <article class="term">\n{detail}\n  </article>\n'
             f'</div>\n'
             f'<nav class="pager" aria-label="Previous and next term">{pager}</nav>')
-    return shell(f'{plain(name)} — Mocubix Lexicon', plain(s[3]), f'lexicon/{slug(name)}/', rel, body, current=pkey)
+    head = '<link rel="stylesheet" href="showcase.css">\n' if sc else ''
+    return shell(f'{plain(name)} — Mocubix Lexicon', plain(s[3]), f'lexicon/{slug(name)}/', rel, body, current=pkey, head=head)
 
 
 out = ROOT / 'site' / 'lexicon'

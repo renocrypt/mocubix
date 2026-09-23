@@ -12,6 +12,51 @@ UA = {'User-Agent': 'Mocubix/1.0 (https://github.com/renocrypt/mocubix)'}
 
 WORKS = [
  [
+  "webb",
+  "Jupiter",
+  "File:Jupiter (NIRCam Image) (2023-147).png"
+ ],
+ [
+  "webb",
+  "Rho Ophiuchi",
+  "File:Rho Ophiuchi (NIRCam Image) (2023-128).png"
+ ],
+ [
+  "webb",
+  "Orion Bar",
+  "File:Orion Bar (NIRCam Image) (2023-129).jpg"
+ ],
+ [
+  "webb",
+  "Southern Ring Nebula",
+  "File:Southern Ring Nebula (NIRCam Image).png"
+ ],
+ [
+  "webb",
+  "Pillars of Creation",
+  "File:Pillars of Creation (NIRCam Image).jpg"
+ ],
+ [
+  "webb",
+  "Cosmic Cliffs",
+  "File:NASA’s Webb Reveals Cosmic Cliffs, Glittering Landscape of Star Birth.jpg"
+ ],
+ [
+  "webb",
+  "Cassiopeia A",
+  "File:Cassiopeia A (NIRCam Image) (2023-149).png"
+ ],
+ [
+  "webb",
+  "Cartwheel Galaxy",
+  "File:Cartwheel Galaxy (NIRCam and MIRI Composite Image) (weic2211a).jpeg"
+ ],
+ [
+  "webb",
+  "Webb's First Deep Field",
+  "File:Webb's First Deep Field.jpg"
+ ],
+ [
   "kilauea",
   "Glow within Halemaʻumaʻu",
   "File:Glow from lava within Halemaʻumaʻu (9b2a2aaf-08a6-4b78-9486-38936ffb3432).JPG"
@@ -367,9 +412,15 @@ def strip(v): return re.sub(r'<[^>]+>', '', v).strip() if v else None
 def real_width(url):
     m = re.search(r'/(\d+)px-', url or ''); return int(m.group(1)) if m else None
 
+ONLY = set(sys.argv[1:])          # e.g. `python3 build/curate.py webb` fetches only that kind
+if ONLY: WORKS = [w for w in WORKS if w[0] in ONLY]
+# material shown full-bleed on large screens asks for the big buckets
+WIDE = {'webb'}
+
 recs = {}
-for width in (640, 1024, 1600):
-    titles = [w[2] for w in WORKS]
+for width in (640, 1024, 1600, 1920, 3840):
+    titles = [w[2] for w in WORKS if width <= 1600 or w[0] in WIDE]
+    if not titles: continue
     for i in range(0, len(titles), 4):
         chunk = titles[i:i+4]
         d = api({'action':'query','format':'json','titles':'|'.join(chunk),'prop':'imageinfo',
@@ -397,7 +448,7 @@ for width in (640, 1024, 1600):
 # A map drawn across the full width at 2x needs the 3840 bucket; ask for it
 # only where it is needed, and only keep what Commons really serves.
 BIG = {"File:BlackMarble20161km.jpg", "File:Staring down a hurricane (44636242351).jpg"}
-d = api({'action':'query','format':'json','titles':'|'.join(BIG),'prop':'imageinfo','iiprop':'url','iiurlwidth':2560})
+d = api({'action':'query','format':'json','titles':'|'.join(BIG),'prop':'imageinfo','iiprop':'url','iiurlwidth':2560}) if not ONLY else {}
 for p in (d.get('query',{}).get('pages') or {}).values():
     r = recs.get(p['title'])
     url = re.sub(r"[?&]utm_[^&]*", "", ((p.get('imageinfo') or [{}])[0]).get("thumburl") or ""); rw = real_width(url)
