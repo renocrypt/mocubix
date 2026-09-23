@@ -12,6 +12,36 @@ UA = {'User-Agent': 'Mocubix/1.0 (https://github.com/renocrypt/mocubix)'}
 
 WORKS = [
  [
+  "monet",
+  "Brouillard",
+  "File:La Cathédrale dans le brouillard (1894) Claude Monet (W 1349).jpg"
+ ],
+ [
+  "monet",
+  "Effet du matin",
+  "File:Claude Monet - Rouen Cathedral Façade and Tour d'Albane (Morning Effect) - Google Art Project.jpg"
+ ],
+ [
+  "monet",
+  "Au soleil",
+  "File:Claude Monet, Rouen Cathedral, West Façade, Sunlight, 1894, NGA 46654.jpg"
+ ],
+ [
+  "monet",
+  "Midi",
+  "File:Claude Monet - Rouen Cathedral at noon (1894) - Pushkin Museum Ж-3313.jpg"
+ ],
+ [
+  "monet",
+  "Temps gris",
+  "File:Claude Monet - The Cathedral in Rouen. The portal, Grey Weather - Google Art Project.jpg"
+ ],
+ [
+  "monet",
+  "Fin de journée",
+  "File:Claude Monet - Rouen Cathedral in the evening (1894) - Pushkin Museum Ж-3312.jpg"
+ ],
+ [
   "morris",
   "Strawberry Thief",
   "File:Clevelandart 1937.696.jpg"
@@ -810,7 +840,7 @@ def real_width(url):
 ONLY = set(sys.argv[1:])          # e.g. `python3 build/curate.py webb` fetches only that kind
 if ONLY: WORKS = [w for w in WORKS if w[0] in ONLY]
 # material shown large asks for the big buckets too
-WIDE = {'webb': (1920, 3840), 'glacier': (1920,), 'buson': (1920, 2560), 'adams': (1920,), 'fsa': (1920, 3840), 'tabula': (1920, 3840), 'morris': (1920, 3840)}
+WIDE = {'webb': (1920, 3840), 'glacier': (1920,), 'buson': (1920, 2560), 'adams': (1920,), 'fsa': (1920, 3840), 'tabula': (1920, 3840), 'morris': (1920, 3840), 'monet': (1920,)}
 
 recs = {}
 for width in (330, 500, 640, 1024, 1600, 1920, 2560, 3840):   # 330, 500: tiles, thumbnails, pictures shown small

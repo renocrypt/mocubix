@@ -1,0 +1,44 @@
+{
+ "Brouillard": {
+  "ground": "#A0B3C8",
+  "accent": "#416590",
+  "ink": "#0F171F",
+  "mid": "#323E49",
+  "dark": false
+ },
+ "Effet du matin": {
+  "ground": "#2C3D5D",
+  "accent": "#8EACDE",
+  "ink": "#EBF2FF",
+  "mid": "#B3BCCC",
+  "dark": true
+ },
+ "Au soleil": {
+  "ground": "#DBD7C4",
+  "accent": "#776028",
+  "ink": "#18160C",
+  "mid": "#484536",
+  "dark": false
+ },
+ "Midi": {
+  "ground": "#443B34",
+  "accent": "#CCA273",
+  "ink": "#FCEFE5",
+  "mid": "#C8B8AB",
+  "dark": true
+ },
+ "Temps gris": {
+  "ground": "#3F3C3E",
+  "accent": "#CB98C0",
+  "ink": "#FBEDF7",
+  "mid": "#C6B5C1",
+  "dark": true
+ },
+ "Fin de journée": {
+  "ground": "#CDAA84",
+  "accent": "#825A2D",
+  "ink": "#1C140C",
+  "mid": "#453A2E",
+  "dark": false
+ }
+}

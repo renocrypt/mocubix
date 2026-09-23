@@ -1102,3 +1102,28 @@ the ground, so the letters simply dissolve into it. Each scan is scaled a little
 past cover so no mount or selvedge ever shows. The face (Zodiak 900, Fontshare)
 loads on this page only. 120 fps through the zoom (p99 10 ms), though the font
 size lays out each frame.
+
+## The eleventh showcase: Threshold Flip, one façade, six lights, 2026-09-23
+
+**The idea.** Six of Monet's Rouen Cathedral paintings (1892–94; the Getty,
+Boston, the National Gallery of Art, the Pushkin twice, the Musée d'Orsay, a
+private collection), each a room of the page. As a canvas reaches eye level,
+the whole stage takes its colours at once — ground, ink and accent — so the
+page turns from fog blue to deep morning blue, sunlit ivory, ochre noon,
+charcoal and lilac, evening tan. Each room names its light in Monet's own
+words (Brouillard, Effet du matin, Au soleil, Midi, Temps gris, Fin de
+journée), set against the painting like a gallery label.
+
+**The palettes are the paintings'.** `build/palette.py` quantises each
+painting (median cut, 500 px) and chooses in OKLab: the most common colour as
+the ground, moved out of the 0.36–0.76 lightness band where no type reads;
+the most colourful colour covering 3 % or more as the accent, moved in
+lightness to stand off the ground; the ground's own hue at the far end of
+lightness for the ink. Written to `assets/palettes.json`; the build writes the
+six `[data-light]` rules into the page's head from it, so the colours live in
+one place. The module guards its import-time read so the tool can run first.
+
+**How it is built.** Six lines of script: an IntersectionObserver with the
+`-45%` band names the canvas at eye level on the stage; the stylesheet holds
+the palettes and a .7 s transition. Museums checked on the Commons records
+(Boston's and Orsay's through their Google Art Project metadata).
