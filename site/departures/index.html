@@ -195,6 +195,7 @@ footer{padding-block:0 90px;display:flex;flex-wrap:wrap;gap:12px 44px;justify-co
   .dock{bottom:12px}
 }
 @media (prefers-reduced-motion:reduce){ .led .c{animation:none} }
+.nw{white-space:nowrap}
 </style>
 </head>
 <body>
@@ -221,7 +222,7 @@ footer{padding-block:0 90px;display:flex;flex-wrap:wrap;gap:12px 44px;justify-co
         <div class="cols hd" role="row"><span role="columnheader">Departs</span><span role="columnheader">To</span><span role="columnheader">Track</span><span role="columnheader">Status</span><span role="columnheader">Train</span><span role="columnheader">First stop</span><span role="columnheader">Second stop</span></div>
         <div class="rows sheet" role="rowgroup"></div>
       </div>
-      <p class="msg"></p>
+      <p class="msg"><span class="sr">TRANSFER AT SUMMIT FOR GLADSTONE BRANCH</span></p>
       <span class="maker" aria-hidden="true">solari udine</span>
     </div>
   </figure>
@@ -263,7 +264,7 @@ footer{padding-block:0 90px;display:flex;flex-wrap:wrap;gap:12px 44px;justify-co
           <div class="cols hd" role="row"><span role="columnheader">Departs</span><span role="columnheader">To</span><span role="columnheader">Track</span><span role="columnheader">Status</span><span role="columnheader">Train</span><span role="columnheader">First stop</span><span role="columnheader">Second stop</span></div>
           <div class="rows sheet" role="rowgroup"></div>
         </div>
-        <p class="msg"></p>
+        <p class="msg"><span class="sr">TRANSFER IN TRENTON TO RIVER LINE AND SEPTA</span></p>
         <span class="maker" aria-hidden="true">solari udine</span>
       </div>
     </figure>
@@ -278,7 +279,7 @@ footer{padding-block:0 90px;display:flex;flex-wrap:wrap;gap:12px 44px;justify-co
           <div class="cols hd" role="row"><span role="columnheader">Departs</span><span role="columnheader">To</span><span role="columnheader">Track</span><span role="columnheader">Status</span><span role="columnheader">Train</span><span role="columnheader">First stop</span><span role="columnheader">Second stop</span></div>
           <div class="rows sheet" role="rowgroup"></div>
         </div>
-        <p class="msg"></p>
+        <p class="msg"><span class="sr">TRANSFER IN LONG BRANCH FOR SHORE CONNECTIONS</span></p>
         <span class="maker" aria-hidden="true">solari udine</span>
       </div>
     </figure>
@@ -307,7 +308,7 @@ footer{padding-block:0 90px;display:flex;flex-wrap:wrap;gap:12px 44px;justify-co
           <div class="cols hd" role="row"><span role="columnheader">Departs</span><span role="columnheader">To</span><span role="columnheader">Track</span><span role="columnheader">Status</span><span role="columnheader">Train</span><span role="columnheader">First stop</span><span role="columnheader">Second stop</span></div>
           <div class="rows sheet" role="rowgroup"></div>
         </div>
-        <p class="msg"></p>
+        <p class="msg"><span class="sr">TRANSFER IN HOBOKEN TO HBLR AND NY WATERWAY</span></p>
         <span class="maker" aria-hidden="true">solari udine</span>
       </div>
     </figure>
@@ -316,7 +317,7 @@ footer{padding-block:0 90px;display:flex;flex-wrap:wrap;gap:12px 44px;justify-co
 
 <section class="real pad" aria-labelledby="real-h">
   <div class="copy">
-    <h2 id="real-h">The last <em>split&#8209;flap</em> boards</h2>
+    <h2 id="real-h">The last <em class="nw">split-flap</em> boards</h2>
     <p>Solari di Udine made boards like these for stations and airports from the 1950s on, and a hall full of them sounded like rain. Most have since been replaced by screens. At Secaucus Junction they still hang over the concourse, <b>and the boards on this page are drawn from them, flap for flap.</b></p>
   </div>
   <figure class="pics">
@@ -441,8 +442,9 @@ footer{padding-block:0 90px;display:flex;flex-wrap:wrap;gap:12px 44px;justify-co
       rows.appendChild(row);
       R.push({ mods, dep, num });
     }
-    const msg = fig.querySelector('.msg'), said = document.createElement('span'), M = [];
-    said.className = 'sr'; msg.appendChild(said);
+    const msg = fig.querySelector('.msg'), M = [];
+    let said = msg.querySelector('.sr');
+    if (!said){ said = document.createElement('span'); said.className = 'sr'; msg.appendChild(said); }
     for (let i = 0; i < 46; i++){ const f = flap(msg, 'chars', 'f-c', 62); f.setAttribute('aria-hidden', 'true'); M.push(f); }
     const led = fig.querySelector('.led');
     return { fig, L, R, M, said, led: led && led.querySelector('b'), ledSaid: led && led.querySelector('.sr'), cap: 46, shown: '', awake: false };
