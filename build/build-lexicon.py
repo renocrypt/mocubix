@@ -445,7 +445,8 @@ def ld(title, url, source):
     return json.dumps({'@context': 'https://schema.org', '@type': 'WebPage', 'name': plain(title), 'url': url,
                        'isPartOf': {'@type': 'WebSite', 'name': 'Mocubix', 'url': BASE},
                        'isBasedOn': {'@type': 'SoftwareSourceCode', 'url': source, 'codeRepository': REPO,
-                                     'programmingLanguage': ['HTML', 'CSS', 'JavaScript']}},
+                                     'programmingLanguage': ['HTML', 'CSS', 'JavaScript'],
+                                     'license': 'https://www.apache.org/licenses/LICENSE-2.0'}},
                       ensure_ascii=False, separators=(',', ':')).replace('</', '<\\/')
 
 

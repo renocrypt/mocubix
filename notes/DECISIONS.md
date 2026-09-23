@@ -1881,3 +1881,15 @@ sitemap and refuses to run while any page's link names another folder.
 
 The chrome's class names are now reserved: Scoped Rotation's thumbnail of
 the painting was `.source`, and became `.original`.
+
+## Licence, 2026-09-23
+
+Chosen by the user: the Apache License 2.0, the official text verbatim in
+`LICENSE` (its appendix keeps the placeholder copyright line, as the
+repository carries no personal details). It covers everything written for
+this repository, so the pages the source links point to can be taken as
+templates in fact, not only in spirit; Apache over MIT adds an explicit
+patent grant. The pictures are not ours to license and keep their own, as
+the README says, and the typefaces are only loaded. Machines are told too:
+each page's `SoftwareSourceCode` carries the licence, and `llms.txt` states
+it after the paragraph on sources.
