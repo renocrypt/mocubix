@@ -1835,3 +1835,26 @@ effort goes into `prefers-reduced-motion` variants (it moves no SEO signal,
 and a still showcase shows nothing); the rules already in place stay. And
 Google Fonts only as a convenience for script coverage (the Marquee's Noto),
 never for a curated choice of face; fonts may stay on CDNs.
+
+## The mark, 2026-09-23
+
+The old mark, a half-filled disc in a ring, read as any app's icon and pulled
+the site's look down. It is the site's only artwork of its own: the page
+chrome names Mocubix in text. Candidates were judged at 16 to 128 px and in
+light and dark tabs. A house curve, a rolling cube, an onion-skinned M and a
+streak went first; of a terra M, the M on a two-leaf split flap with hinge
+pins, the terra M cut by a split, and a speed stroke, the user chose the cut
+M: the institution's face in the one accent, with a seam that suggests a
+state about to change and none of the flap's parts that turn to noise at
+16 px.
+
+An SVG favicon renders as an image and loads no web font, so the M is
+Melodrama Bold's own outline: straight lines, twelve corners, taken once with
+fontTools and kept in font units in `build/mark.py`, which writes the SVG, the
+ICO (16, 32 and 48 px) and the 180 px apple-touch icon from one geometry. On
+its 32-unit grid a unit is a device pixel on a 16 px tab at 2x, so the M's top
+and baseline and the split's edges sit on whole units: the M from 7 to 24, the
+split from 15 to 16. The V's notch ends inside the split, so the upper half
+reads as two strokes and the lower as the V. The font's licence (name table,
+ID 13) asks that ITF faces be named and ITF credited in production credits;
+the README does.
