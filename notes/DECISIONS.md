@@ -1345,3 +1345,50 @@ answers 200 with the whole file, not 206.
 no overflow; a sweep runs at 120 fps (p99 10.2 ms); the console is clean.
 With reduced motion the run collapses to one screen and the cloth becomes an
 ordinary sideways scroller. The card is Harold's death with its titulus.
+
+## The eighteenth showcase: Variable Font Animation, twelve sizes and one file, 2026-09-23
+
+**The idea.** William Caslon's specimen sheet of 1734 (public domain) shows
+every size of his type as a separate font of metal, known by a name, from
+French Cannon (so spelt) down to Pearl, each set in the opening of Cicero's
+first speech against Catiline. It faces one variable font, Source Serif 4
+(Adobe, after the types of Pierre Simon Fournier, Caslon's French
+contemporary), with optical size and weight axes. A loupe walks down the
+sheet at the same scale as the live type and holds on each of Caslon's sizes
+in turn, framing the block. Beside it, "Quousque tandem abutere, Catilina,
+patientia nostra?" glides through every size in between as you scroll, its
+optical size following its size. Its weight is a dial, marked with the six
+weights a family once shipped as six files, swept once, 400 → 900 → 200 →
+the dial, as the frame pins. Bodoni's Manuale tipografico was the first
+choice, but Commons renders its PDF pages only at 500px, whatever width is
+asked, which is too small for type.
+
+**Measured, not assumed.** Each size's body on the scan was measured as the
+period of its rows (autocorrelation of the row-darkness profile, refined
+with a parabola). Taking Pica as 12 points gives French Cannon 47.8, Two
+Lines English 27.7, Brevier 7.9 and Pearl 4.8, so the sheet agrees with the
+traditional names. The live line glides through the sheet's own measured
+sizes, so at each step it is exactly the size of the metal beside it. No
+point values are claimed on the page: in 1734 sizes had names, and "their
+exact length would vary … from foundry to foundry".
+
+**How it is built.** One sticky frame on the run's named view timeline:
+`--t` 0→1, and `--lb` (the log of the size) through keyframes written from
+the measured sheet into the page's head, log-linear between steps.
+`font-size: calc(exp(var(--lb)) * var(--m) * 1px)`, where `--m` is CSS px per
+px of the scan, shared with the loupe. The loupe's walk is keyframes with a
+plateau at each block, clamped so the sheet never shows its edge. Block
+frames and the names light by distance: `opacity: clamp(…, 1 - abs(var(--t)
+* 11 - var(--i)) * k, 1)`. The weight readout is a CSS counter of the
+registered `--w` (`counter-reset: w calc(var(--w))` rounds), so it counts
+through the sweep. The `<output>` keeps the dial's value as text, set by a
+six-line showcase.js. A trap: a `timeline-trigger` with an anonymous
+`view()` has no inset, so a run taller than the screen only "covers" it once
+its top passes under the bar. The trigger uses the run's named timeline
+(`--arrive --size contain 0% contain 100%`) instead, which carries the inset.
+
+**Checked.** At 1324×725 and at 390×844: the sweep waits above the run and
+fires as the frame pins; the dial drives weight and readout; no overflow; a
+sweep runs at 120 fps (p99 10.3 ms, one 42 ms frame on the sheet's first
+decode); the console is clean. The card is French Cannon, metal against the
+file at weight 780.

@@ -4106,5 +4106,26 @@
   },
   "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/87/Bayeux_Tapestry_Scene_58.png/330px-Bayeux_Tapestry_Scene_58.png 330w, https://thumb.wikimedia.org/wikipedia/commons/thumb/8/87/Bayeux_Tapestry_Scene_58.png/500px-Bayeux_Tapestry_Scene_58.png 500w, https://thumb.wikimedia.org/wikipedia/commons/thumb/8/87/Bayeux_Tapestry_Scene_58.png/960px-Bayeux_Tapestry_Scene_58.png 960w, https://thumb.wikimedia.org/wikipedia/commons/thumb/8/87/Bayeux_Tapestry_Scene_58.png/1280px-Bayeux_Tapestry_Scene_58.png 1280w, https://thumb.wikimedia.org/wikipedia/commons/thumb/8/87/Bayeux_Tapestry_Scene_58.png/1920px-Bayeux_Tapestry_Scene_58.png 1920w",
   "default": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/87/Bayeux_Tapestry_Scene_58.png/960px-Bayeux_Tapestry_Scene_58.png"
+ },
+ {
+  "title": "File:A Specimen by William Caslon.jpg",
+  "label": "Specimen",
+  "kind": "caslon",
+  "w": 2898,
+  "h": 3807,
+  "license": "Public domain",
+  "artist": "William Caslon",
+  "credit": "[1], uploaded to the English Wikipedia by Janke as Image:Caslonsample.jpg (proba",
+  "descurl": "https://commons.wikimedia.org/wiki/File:A_Specimen_by_William_Caslon.jpg",
+  "sources": {
+   "330": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/45/A_Specimen_by_William_Caslon.jpg/330px-A_Specimen_by_William_Caslon.jpg",
+   "500": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/45/A_Specimen_by_William_Caslon.jpg/500px-A_Specimen_by_William_Caslon.jpg",
+   "960": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/45/A_Specimen_by_William_Caslon.jpg/960px-A_Specimen_by_William_Caslon.jpg",
+   "1280": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/45/A_Specimen_by_William_Caslon.jpg/1280px-A_Specimen_by_William_Caslon.jpg",
+   "1920": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/45/A_Specimen_by_William_Caslon.jpg/1920px-A_Specimen_by_William_Caslon.jpg",
+   "2898": "https://upload.wikimedia.org/wikipedia/commons/4/45/A_Specimen_by_William_Caslon.jpg"
+  },
+  "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/45/A_Specimen_by_William_Caslon.jpg/330px-A_Specimen_by_William_Caslon.jpg 330w, https://thumb.wikimedia.org/wikipedia/commons/thumb/4/45/A_Specimen_by_William_Caslon.jpg/500px-A_Specimen_by_William_Caslon.jpg 500w, https://thumb.wikimedia.org/wikipedia/commons/thumb/4/45/A_Specimen_by_William_Caslon.jpg/960px-A_Specimen_by_William_Caslon.jpg 960w, https://thumb.wikimedia.org/wikipedia/commons/thumb/4/45/A_Specimen_by_William_Caslon.jpg/1280px-A_Specimen_by_William_Caslon.jpg 1280w, https://thumb.wikimedia.org/wikipedia/commons/thumb/4/45/A_Specimen_by_William_Caslon.jpg/1920px-A_Specimen_by_William_Caslon.jpg 1920w, https://upload.wikimedia.org/wikipedia/commons/4/45/A_Specimen_by_William_Caslon.jpg 2898w",
+  "default": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/45/A_Specimen_by_William_Caslon.jpg/1280px-A_Specimen_by_William_Caslon.jpg"
  }
 ]

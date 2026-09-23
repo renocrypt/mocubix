@@ -1,0 +1,84 @@
+/* Variable Font Animation, in full: Caslon's sizes of 1734 against one variable font. One sticky frame on
+   the run's view timeline: --t runs 0→1 down the sheet; the loupe walks from block to block (keyframes
+   written from the measured sheet, in the page's head); the live line's size glides log-linearly through
+   the same sizes (--lb, the log of the sheet's line period) at the loupe's own scale (--m, CSS px per px
+   of the scan), so metal and file meet at every step. The weight is a dial (--dial, set by showcase.js),
+   swept once on arrival. */
+
+@property --t{syntax:'<number>';inherits:true;initial-value:0}
+@property --lb{syntax:'<number>';inherits:true;initial-value:4.84}
+@property --w{syntax:'<number>';inherits:true;initial-value:400}
+
+.specimen{position:relative;width:100vw;margin-inline:calc(50% - 50vw);border:0;border-radius:0;overflow:clip;
+  --paper:#E4DDCB;--ink:#2A2219;--dim:#7C6F5E;--rule:rgb(42 34 25 / .16);--accent:#A4452A;--dial:400;
+  --m:min(.62, 100vw / 2140px, 100svh / 1170px);
+  background:var(--paper);color:var(--ink)}
+.run{height:calc(100svh - var(--bar) + (var(--n) - 1) * 40svh);view-timeline:--size block;view-timeline-inset:var(--bar) 0px;
+  timeline-trigger:--arrive --size contain 0% contain 100%}   /* the sweep fires as the frame pins */
+.frame{position:sticky;top:var(--bar);height:calc(100svh - var(--bar));box-sizing:border-box;
+  display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,1fr) auto;gap:clamp(20px,3.4vw,56px);
+  padding:clamp(18px,4.5vh,44px) clamp(20px,5vw,80px);
+  animation:progress linear both,glide linear both;animation-timeline:--size;animation-range:contain 0% contain 100%}
+@keyframes progress{to{--t:1}}
+
+/* the metal: a loupe on the sheet, at the live type's own scale, holding on each size in turn */
+.loupe{position:relative;margin:0;min-height:0;container-type:size;overflow:clip;background:var(--paper);border-radius:2px;
+  box-shadow:0 0 0 1px var(--rule),0 30px 70px -40px rgb(70 45 10 / .55)}
+.sheet{position:absolute;left:0;top:0;width:calc(var(--sw) * var(--m) * 1px);height:calc(var(--sh) * var(--m) * 1px);
+  animation:walk linear both;animation-timeline:--size;animation-range:contain 0% contain 100%}
+.sheet img{display:block;width:100%;height:100%}
+.blocks i{position:absolute;left:calc(var(--x) * var(--m) * 1px - 10px);top:calc(var(--y) * var(--m) * 1px - 10px);
+  width:calc(var(--bw) * var(--m) * 1px + 20px);height:calc(var(--bh) * var(--m) * 1px + 20px);box-sizing:border-box;
+  border:1px solid var(--accent);opacity:clamp(0, 1 - abs(var(--t) * (var(--n) - 1) - var(--i)) * 2.4, 1)}
+.loupe figcaption{position:absolute;left:12px;bottom:10px;padding:5px 8px;border-radius:2px;
+  background:rgb(228 221 203 / .9);font:9.5px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--dim)}
+
+/* the file: one line of Cicero, every size between, any weight */
+.file{display:grid;grid-template-rows:auto minmax(0,1fr) auto;min-width:0;
+  animation:breathe 2.8s cubic-bezier(.45,0,.2,1) both;animation-trigger:--arrive play-once}
+@keyframes breathe{0%{--w:var(--dial)}38%{--w:900}74%{--w:200}100%{--w:var(--dial)}}
+.kicker{margin:0 0 clamp(12px,2.4vh,24px);font:9.5px/1.4 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--dim)}
+.line{margin:0;align-self:center;font-family:'Source Serif 4 Variable',Georgia,serif;font-optical-sizing:auto;
+  font-size:calc(exp(var(--lb)) * var(--m) * 1px);font-weight:var(--w);line-height:1.04;letter-spacing:-.005em;
+  text-wrap:pretty;overflow-wrap:break-word}
+
+.dial{display:grid;grid-template-columns:1fr auto;align-items:baseline;gap:10px 16px;padding-top:14px;border-top:1px solid var(--rule)}
+.dial label{font:9.5px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--dim)}
+/* the number follows the weight as it moves, the sweep included; the element's own text is the dial's value */
+.dial output{counter-reset:w calc(var(--w));font-size:0;color:var(--ink)}
+.dial output::before{content:counter(w);font:300 26px/1 'Source Serif 4 Variable',serif;font-variant-numeric:tabular-nums}
+.dial input{grid-column:1/-1;width:100%;margin:6px 0 0;height:22px;background:none;appearance:none;cursor:ew-resize}
+.dial input::-webkit-slider-runnable-track{height:1px;background:var(--ink)}
+.dial input::-webkit-slider-thumb{appearance:none;width:13px;height:13px;margin-top:-6px;border-radius:50%;
+  background:var(--accent);box-shadow:0 0 0 4px rgb(164 69 42 / .16)}
+.dial input:focus-visible{outline:none}
+.dial input:focus-visible::-webkit-slider-thumb{box-shadow:0 0 0 6px rgb(164 69 42 / .3)}
+/* the weights a family once shipped as separate files, as marks on the one dial */
+.marks{grid-column:1/-1;position:relative;height:44px;margin:0;padding:0;list-style:none}
+.marks li{position:absolute;left:calc(6.5px + var(--at) * (100% - 13px));translate:-50% 0;display:grid;justify-items:center;gap:3px;
+  font:9px/1.25 var(--mono);letter-spacing:.06em;color:var(--dim);text-align:center}
+.marks span{max-width:6ch}
+.marks li::before{content:'';width:1px;height:5px;background:var(--dim)}
+.marks b{font-weight:400;color:var(--ink)}
+.marks li:first-child{translate:-6.5px 0;justify-items:start;text-align:start}
+.marks li:last-child{translate:calc(-100% + 6.5px) 0;justify-items:end;text-align:end}
+
+/* Caslon's names for his sizes; the step the loupe holds is lit, and a mark rides down them */
+.sizes{--row:24px;align-self:center;position:relative;margin:0;padding:0 0 0 18px;list-style:none;border-left:1px solid var(--rule);
+  font:9.5px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;white-space:nowrap}
+.sizes li{height:var(--row);display:flex;align-items:center;opacity:clamp(.28, 1 - abs(var(--t) * (var(--n) - 1) - var(--i)) * 1.4, 1)}
+.sizes::before{content:'';position:absolute;left:-4px;top:calc(var(--t) * (var(--n) - 1) * var(--row) + var(--row) / 2 - 3.5px);
+  width:7px;height:7px;border-radius:50%;background:var(--accent)}
+
+@media (max-width:760px){
+  .specimen{--m:min(.42, 100vw / 1000px)}
+  .frame{grid-template-columns:minmax(0,1fr);grid-template-rows:minmax(0,1fr) auto auto;gap:12px;padding:14px 18px 18px}
+  .sizes{grid-row:2;display:grid;padding:0;border:0;justify-items:start}
+  .sizes li{grid-area:1/1;opacity:clamp(0, 1 - abs(var(--t) * (var(--n) - 1) - var(--i)) * 2, 1)}
+  .sizes::before{display:none}
+  .file{grid-row:3;grid-template-rows:auto 34svh auto}
+  .kicker{margin-bottom:8px}
+}
+@media (prefers-reduced-motion:reduce){
+  .file{animation:none;--w:var(--dial)}
+}
