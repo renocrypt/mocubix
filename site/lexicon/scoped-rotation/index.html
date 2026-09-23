@@ -14,10 +14,10 @@
 <meta property="og:title" content="Scoped Rotation — Mocubix Lexicon">
 <meta property="og:description" content="The same colour change, asked of a few elements or of a great many. Press the switch and watch the counter beside it.">
 <meta property="og:url" content="https://mocubix.renocrypt.com/lexicon/scoped-rotation/">
-<meta property="og:image" content="https://mocubix.renocrypt.com/share/lexicon.jpg">
+<meta property="og:image" content="https://mocubix.renocrypt.com/share/lexicon-scoped-rotation.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="The Mocubix Lexicon: forty-one named interface effects">
+<meta property="og:image:alt" content="Scoped Rotation, in the Mocubix Lexicon: where the angle lives">
 <meta name="twitter:card" content="summary_large_image">
 
 <link rel="preconnect" href="https://api.fontshare.com">
@@ -35,6 +35,8 @@
 <script src="../../house.js"></script>
 <!-- Chrome readies a term while the pointer rests on its link, so turning the page is instant. -->
 <script type="speculationrules">{"prerender":[{"where":{"href_matches":"/lexicon/*"},"eagerness":"moderate"}]}</script>
+<link rel="stylesheet" href="showcase.css">
+<script src="showcase.js" defer></script>
 </head>
 <body>
 
@@ -51,6 +53,26 @@
 
 <div class="wrap">
 <p class="crumb"><a href="../">Lexicon</a> / <a href="../colour/">Colour</a> · 2 of 5</p>
+<header class="showhead">
+  <div><span class="idx">38 / Colour</span>
+    <h1 class="name" style="view-transition-name:t-scoped-rotation">Scoped Rotation</h1>
+    <p class="gloss">The same colour change, asked of a few elements or of a great many. Press the switch and watch the counter beside it.</p></div>
+  <div class="journey"><h2>Where the angle lives</h2><p>Seurat’s <i>A Sunday on La Grande Jatte</i>, redrawn as 3,456 dots, and its palette as 24 swatches. One turning angle can be declared on the swatches, on the root of the page, or on the painting. Choose, and watch the counter: the same change costs what its scope costs.</p></div>
+</header>
+<section class="scope stage" data-material data-scope="swatches" aria-label="One turning angle, declared on the swatches, the root or the painting, and what each costs">
+<div class="mosaic" role="img" style="--cols:72;--rows:48;--src:url(https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7d/A_Sunday_on_La_Grande_Jatte%2C_Georges_Seurat%2C_1884.jpg/500px-A_Sunday_on_La_Grande_Jatte%2C_Georges_Seurat%2C_1884.jpg)" aria-label="Seurat’s A Sunday on La Grande Jatte, redrawn as 3,456 dots"></div>
+<aside class="panel">
+  <fieldset class="where"><legend>Where the angle is declared</legend><input type="radio" name="scope" id="scope-still" value="still"><label for="scope-still">nowhere<small>the colours stand still</small></label><input type="radio" name="scope" id="scope-swatches" value="swatches" checked><label for="scope-swatches">on the swatches<small>25 elements</small></label><input type="radio" name="scope" id="scope-root" value="root"><label for="scope-root">on the root<small>every element on the page</small></label><input type="radio" name="scope" id="scope-painting" value="painting"><label for="scope-painting">on the painting<small>3,457 elements</small></label></fieldset>
+  <div class="meter">
+    <p class="ms"><output>0</output><span>frames a second</span></p>
+    <p class="n"><output>0</output><span>elements re‑resolving</span></p>
+    <canvas width="480" height="96" aria-hidden="true"></canvas>
+    <p class="scale">the last two seconds, frame by frame; the line is one frame at 60 Hz, 16.7 ms</p>
+  </div>
+  <ul class="swatches" aria-label="The painting’s palette, 24 swatches"><li style="--c:#4F3234"></li><li style="--c:#946A63"></li><li style="--c:#9A5D34"></li><li style="--c:#CBB098"></li><li style="--c:#9E9D9C"></li><li style="--c:#C6B367"></li><li style="--c:#D7CEA1"></li><li style="--c:#A79F5E"></li><li style="--c:#CFC570"></li><li style="--c:#989137"></li><li style="--c:#575E35"></li><li style="--c:#D6D7D4"></li><li style="--c:#718864"></li><li style="--c:#324837"></li><li style="--c:#272F2C"></li><li style="--c:#384E4B"></li><li style="--c:#585E5E"></li><li style="--c:#758B93"></li><li style="--c:#B5C7D1"></li><li style="--c:#A3B5C9"></li><li style="--c:#686D8B"></li><li style="--c:#363848"></li><li style="--c:#8E758D"></li><li style="--c:#50394C"></li></ul>
+  <figure class="source"><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7d/A_Sunday_on_La_Grande_Jatte%2C_Georges_Seurat%2C_1884.jpg/500px-A_Sunday_on_La_Grande_Jatte%2C_Georges_Seurat%2C_1884.jpg" width="20000" height="13313" style="--ar:1.5023" crossorigin="anonymous" alt="Georges Seurat, A Sunday on La Grande Jatte: Parisians at leisure on an island in the Seine, in the shade and sun of a summer afternoon, painted in small touches of colour" decoding="async"><figcaption>Georges Seurat, <i>A Sunday on La Grande Jatte — 1884</i>, 1884–86 · Art Institute of Chicago</figcaption></figure>
+</aside>
+</section>
 <div class="termgrid">
   <aside class="pillarnav" aria-label="Colour">
     <h4><a href="../colour/">Colour</a><em>5</em></h4>
@@ -58,24 +80,20 @@
     <p class="others"><a href="../scroll-driven/">Scroll-driven</a><a href="../scroll-behaviour/">Scroll behaviour</a><a href="../image/">Image</a><a href="../type/">Type</a></p>
   </aside>
   <article class="term">
-<section class="spec" id="scoped-rotation">
-  <div class="meta">
-    <span class="idx">38 / Colour</span>
-    <h1 class="name" style="view-transition-name:t-scoped-rotation">Scoped Rotation</h1>
-    <p class="gloss">The same colour change, asked of a few elements or of a great many. Press the switch and watch the counter beside it.</p>
+<div class="meta showmeta">
     <p class="aka">also called <i>custom property invalidation</i> · <i>style recalc scope</i></p>
-    <p class="note">Where the angle is declared decides what it costs. On the root, every element on the page re-resolves its colours each frame; on the stage, only the stage does. Scope is the whole difference between a palette that animates for free and one that eats the frame budget.</p>
-    <details class="how"><summary>How it is built</summary><code class="api">.stage { --rot: 0deg; animation: turn linear both; animation-timeline: scroll(root) }
-/* declared on .stage, not :root — only this subtree re-resolves each frame */</code></details>
-    
+    <p class="note">Where the angle is declared decides what it costs. On the root, every element on the page re-resolves its colours each frame; on the stage, only the stage does. Scope is the whole difference between a palette that animates for free and one that eats the frame budget. Measured here in Chrome, frame to frame: declared on the swatches, the turn leaves the page at the screen’s own pace; declared on the root, it drops to about a fifth of that, for a change that still shows only on the same 24 swatches. An inherited custom property that changes on an element changes on everything below it, used or not, and every one of those elements is given a fresh computed style each frame: the recalculation and the garbage it leaves are the whole cost, and a trace shows the painting of it almost free. Asked of the painting, all 3,456 dots take the angle, and the cost buys something. The counter caught a selector as well: with a <code>:has()</code> in the dots’ rules their style work was five times greater, every element re-matching its selectors each frame, so the choice is mirrored into an attribute. Declare an animated property as low in the tree as it will serve, and register it with <code>inherits: false</code> when one element is all that needs it.</p>
+    <details class="how" open><summary>How it is built</summary><code class="api">@property --turn { syntax: '&lt;number&gt;'; inherits: true; initial-value: 0 }   /* degrees */
+.swatches li { background: oklch(from var(--c) l c calc(h + var(--turn))) }
+.swatches { animation: turn 8s linear infinite }   /* 25 elements re-resolve each frame */
+:root     { animation: turn 8s linear infinite }   /* all of them do, though only 24 use it */</code></details>
+    <p class="credit">Painting — Georges Seurat, <a href="https://commons.wikimedia.org/wiki/File:A_Sunday_on_La_Grande_Jatte,_Georges_Seurat,_1884.jpg">A Sunday on La Grande Jatte — 1884</a>, 1884–86, Art Institute of Chicago, public domain, via Wikimedia Commons; its dots sampled from the image in the browser, its swatches its 24 most representative colours. Facts — <a href="https://en.wikipedia.org/wiki/A_Sunday_Afternoon_on_the_Island_of_La_Grande_Jatte">A Sunday Afternoon on the Island of La Grande Jatte</a>; <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@property">@property (MDN)</a>.</p>
   </div>
-  <div class="stage"><span class="tag">press the switch</span><div class="sc" id="sc"><div class="scgrid" id="scgrid"></div><button class="btn" id="scBtn">24 consumers</button><p class="scout"><span id="scMs">--</span> · <span id="scN">0</span> consumers</p></div></div>
-</section>
   </article>
 </div>
 <nav class="pager" aria-label="Previous and next term"><a class="prev" href="../token-interpolation/"><small>← Previous</small><span>Token Interpolation</span></a><a class="next" href="../gamut-arc/"><small>Next →</small><span>Gamut Arc</span></a></nav>
 <footer>
-  <span>Material — Kamisaka Sekka 神坂雪佳, <i>Momoyogusa</i> 百々世草, 1909–10<br>Rijksmuseum scans via Wikimedia Commons, CC0. Anna Atkins cyanotypes, 1843.</span>
+  <span>Material — Georges Seurat, <i>A Sunday on La Grande Jatte — 1884</i>, 1884–86 · Art Institute of Chicago · public domain</span>
   <span>Type — Melodrama · Switzer · Geist · Geist Mono · 思源宋体</span>
   <span><a href="../../">The seven exhibits</a></span>
 </footer>

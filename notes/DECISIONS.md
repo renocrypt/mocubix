@@ -1766,3 +1766,49 @@ tabular zero is slashed (proportional figures, a fixed-width readout).
 console clean, p50 6.9 ms, worst 7.9 ms at 144 Hz with the frame recoloured
 every frame. The card is the frame at 179°, the needle upright in Runge's
 missing cyan.
+
+## The twenty-seventh showcase: Scoped Rotation, where the angle lives, 2026-09-23
+
+**The idea.** Georges Seurat's *A Sunday on La Grande Jatte — 1884*
+(1884–86, Art Institute of Chicago, CC0) redrawn as 3,456 dots, and its
+palette as 24 swatches. One turning angle can be declared nowhere, on the
+swatches, on the root of the page, or on the painting (a radio group), and
+a counter gives the frames a second the page keeps and how many elements
+the declaration reaches, with a sparkline of the last two seconds. On the
+root the page slows to about a fifth of its pace for a change that shows
+only on the same 24 swatches; on the painting, every dot takes the angle
+and the Grande Jatte turns through the hues.
+
+**What the counter found.** First version: the angle chosen by `:has()`
+rules and each dot's colour a relative colour (`oklch(from var(--c) …)`).
+Timing the style work alone (forced inside `requestAnimationFrame`, where
+the animations have ticked and style has not), the painting cost 90 ms a
+frame at 7,776 dots, the root 15. A prototype separated the causes: the
+`:has()` in the dots' selectors made their style work five times dearer,
+every element re-matching its selectors each frame, so the choice is now
+mirrored into a `data-scope` attribute by the script. And in relative
+colour syntax the `h` channel is a number, so `calc(h + <angle>)` is
+invalid (the swatches rendered transparent): the turn is a registered
+`<number>` of degrees. Then a trace showed the style work was not the whole
+cost: every element given a fresh computed style each frame leaves garbage,
+and collecting it took more time than the recalculation (paint was almost
+free). So the counter measures what a visitor feels, the time from frame to
+frame, and nothing is forced. At 7,776 dots the painting ran at 9 frames a
+second, at 5,400 at 13, at 3,456 at 20, where a turn of 8 s moves each dot's
+hue under a degree a frame and reads as smooth; so 72 × 48.
+
+**How it is built.** The dots are sampled from the painting's image in the
+browser (Wikimedia sends CORS headers), each given its OKLCH lightness,
+chroma and hue once, as custom properties; the swatches are the painting's
+24 most representative colours from the new `palette.py swatches` mode
+(octree, not median cut: median cut greys a painting of mixed dots, mean
+chroma 0.035 against 0.049). Out of view the angle is declared nowhere, so
+leaving the stage in root mode gives the page back its pace (29 frames a
+second in view, 141 away, the choice restored on return).
+
+**Checked.** At 1324×725 and 390×844: no overflow, console clean; the
+swatches at the display's 145 frames a second, the root at 27–29, the
+painting at 20–23. Also fixed across the Lexicon: Melodrama's zero is
+slashed in every setting, so the meters here, in Token Interpolation and in
+Ordered Dithering set their numerals in Switzer. The card is the painting
+turned, the counter at 21 and the sparkline's jump.

@@ -17,6 +17,7 @@ WORKS = [
  ["photochrom", "Stockholm", 'File:Stockholm photochrom2.jpg'],
  ["photochrom", "Sami", 'File:Saami Family 1900.jpg'],
  ["photochrom", "Silver Apron", 'File:Silver Apron, Yosemite Valley-LCCN2008678176.jpg'],
+ ["seurat", "Grande Jatte", "File:A Sunday on La Grande Jatte, Georges Seurat, 1884.jpg"],
  ["runge", "Farbenkugel", "File:Runge Farbenkugel.jpg"],
  ["voyager", "Sounds of Earth", "File:The Sounds of Earth - GPN-2000-001976.jpg"],
  ["edo", "Nihonbashi", "File:Nihonbashi yukibare LCCN2009631885.jpg"],

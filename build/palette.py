@@ -126,6 +126,23 @@ def ring(name):
     print(f'wrote the {len(out)} sectors of {r["label"]} into {path.relative_to(ROOT)}')
 
 
+def swatches(name):
+    """The n most representative colours of a work, in order of hue, from the showcase's SWATCHES = (label, n), into
+    assets/palettes.json as swatches:<label>. Octree, not median cut: median cut greys a painting of mixed dots
+    (Seurat's 24: mean chroma 0.035 against 0.049), where the octree keeps its blues, violets and oranges."""
+    sys.path.insert(0, str(ROOT / 'build' / 'showcases'))
+    label, n = __import__(name).SWATCHES
+    q = fetch(label).convert('RGB').quantize(colors=n, method=Image.Quantize.FASTOCTREE)
+    pal = q.getpalette()
+    rgbs = [pal[3 * i:3 * i + 3] for _, i in q.getcolors()]
+    rgbs.sort(key=lambda c: math.atan2(oklab(c)[2], oklab(c)[1]) % (2 * math.pi))
+    path = ROOT / 'assets/palettes.json'
+    data = json.load(open(path)) if path.exists() else {}
+    data[f'swatches:{label}'] = ['#%02X%02X%02X' % tuple(c) for c in rgbs]
+    json.dump(data, open(path, 'w'), indent=1, ensure_ascii=False)
+    print(f'wrote {len(rgbs)} swatches of {label} into {path.relative_to(ROOT)}: {" ".join(data[f"swatches:{label}"])}')
+
+
 def main(name):
     sys.path.insert(0, str(ROOT / 'build' / 'showcases'))
     showcase = __import__(name)
@@ -139,4 +156,4 @@ def main(name):
 
 
 if __name__ == '__main__':
-    ring(sys.argv[2]) if sys.argv[1] == 'ring' else main(sys.argv[1])
+    {'ring': ring, 'swatches': swatches}.get(sys.argv[1], main)(sys.argv[-1])

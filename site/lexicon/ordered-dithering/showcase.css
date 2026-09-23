@@ -17,7 +17,7 @@
 
 .panel{display:grid;gap:clamp(14px,2.6vh,26px);align-content:center}
 .count{margin:0;display:grid;gap:6px}
-.count output{font-family:var(--display);font-weight:400;font-size:clamp(44px,5vw,76px);line-height:.95;letter-spacing:-.02em}
+.count output{font-family:var(--sans);font-weight:300;font-size:clamp(44px,5vw,76px);line-height:.95;letter-spacing:-.03em}   /* Melodrama's zero is slashed */
 .count .per{font:10px/1.4 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:#9A9286}
 .count .per:empty{display:none}
 /* the tones in use, each as a band */
