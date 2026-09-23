@@ -1159,3 +1159,27 @@ way: a grid row sized by an image of a tall poster overflowed the room
 does not neutralise a 0 s fill-both animation — Chrome runs it to its end —
 so the last sheet takes `animation: none`. Posters are sized explicitly from
 their proportions (no lazy-image layout warning). 120 fps, p99 10 ms.
+
+## The thirteenth showcase: Scroll Snap, twelve months, a page each, 2026-09-23
+
+**The idea.** The calendar of the Très Riches Heures du Duc de Berry (the
+Limbourg brothers, about 1412–16; Musée Condé, Chantilly, MS 65; public
+domain) as a book that snaps: its own vertical scroller, a page a month, and
+however far it is thrown it comes to rest on a whole month. Each page: the
+miniature under its zodiac arch, and facing it the month in French, its Roman
+numeral, the two signs on its arch (checked against the arches themselves —
+October's shows the scales and the scorpion), and one line on the scene, with
+castles named only where Wikipedia names them. The stage wears the
+manuscript's own ultramarine, sampled from the arches (OKLCh h ≈ 269°) and
+deepened; vellum for the words, gold for the marks.
+
+**How it is built.** Two properties make the book (`scroll-snap-type: y
+mandatory` on the scroller, `scroll-snap-align: start` on each page). A thumb
+index of the months runs down the edge; its gold mark rides the book's own
+scroll timeline (`scroll-timeline: --book`, shared through `timeline-scope`),
+continuously, so the difference between the scroll and the resting page can
+be seen. Each month's words rise on the page's timeline, not the words' own —
+a page the book's height is fully entered exactly when it snaps, so the rise
+always finishes at rest (keyed to the words themselves, they stayed half-faded
+on phones, where they sit below the middle). No script. `.index` was taken
+(the Lexicon's entrance), so the list is `.months`.

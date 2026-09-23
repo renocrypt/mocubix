@@ -12,6 +12,66 @@ UA = {'User-Agent': 'Mocubix/1.0 (https://github.com/renocrypt/mocubix)'}
 
 WORKS = [
  [
+  "heures",
+  "Janvier",
+  "File:Les Très Riches Heures du duc de Berry Janvier.jpg"
+ ],
+ [
+  "heures",
+  "Février",
+  "File:Les Très Riches Heures du duc de Berry février.jpg"
+ ],
+ [
+  "heures",
+  "Mars",
+  "File:Les Très Riches Heures du duc de Berry mars.jpg"
+ ],
+ [
+  "heures",
+  "Avril",
+  "File:Les Très Riches Heures du duc de Berry avril.jpg"
+ ],
+ [
+  "heures",
+  "Mai",
+  "File:Les Très Riches Heures du duc de Berry mai.jpg"
+ ],
+ [
+  "heures",
+  "Juin",
+  "File:Les Très Riches Heures du duc de Berry juin.jpg"
+ ],
+ [
+  "heures",
+  "Juillet",
+  "File:Les Très Riches Heures du duc de Berry juillet.jpg"
+ ],
+ [
+  "heures",
+  "Août",
+  "File:Les Très Riches Heures du duc de Berry aout.jpg"
+ ],
+ [
+  "heures",
+  "Septembre",
+  "File:Les Très Riches Heures du duc de Berry septembre.jpg"
+ ],
+ [
+  "heures",
+  "Octobre",
+  "File:Les Très Riches Heures du duc de Berry octobre.jpg"
+ ],
+ [
+  "heures",
+  "Novembre",
+  "File:Les Très Riches Heures du duc de Berry novembre.jpg"
+ ],
+ [
+  "heures",
+  "Décembre",
+  "File:Les Très Riches Heures du duc de Berry décembre.jpg"
+ ],
+ [
   "posters",
   "Bal du Moulin Rouge",
   "File:Bal du Moulin rouge tous les soirs et dimanche jour. affiche, Jules Chéret.jpg"
@@ -880,7 +940,7 @@ def real_width(url):
 ONLY = set(sys.argv[1:])          # e.g. `python3 build/curate.py webb` fetches only that kind
 if ONLY: WORKS = [w for w in WORKS if w[0] in ONLY]
 # material shown large asks for the big buckets too
-WIDE = {'webb': (1920, 3840), 'glacier': (1920,), 'buson': (1920, 2560), 'adams': (1920,), 'fsa': (1920, 3840), 'tabula': (1920, 3840), 'morris': (1920, 3840), 'monet': (1920,), 'posters': (1920,)}
+WIDE = {'webb': (1920, 3840), 'glacier': (1920,), 'buson': (1920, 2560), 'adams': (1920,), 'fsa': (1920, 3840), 'tabula': (1920, 3840), 'morris': (1920, 3840), 'monet': (1920,), 'posters': (1920,), 'heures': (1920,)}
 
 recs = {}
 for width in (330, 500, 640, 1024, 1600, 1920, 2560, 3840):   # 330, 500: tiles, thumbnails, pictures shown small

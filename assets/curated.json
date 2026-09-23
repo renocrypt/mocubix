@@ -3465,5 +3465,236 @@
   },
   "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/46/Tourn%C3%A9e_du_Chat_noir_avec_Rodolphe_Salis%2C_RP-P-1969-78.jpg/330px-Tourn%C3%A9e_du_Chat_noir_avec_Rodolphe_Salis%2C_RP-P-1969-78.jpg 330w, https://thumb.wikimedia.org/wikipedia/commons/thumb/4/46/Tourn%C3%A9e_du_Chat_noir_avec_Rodolphe_Salis%2C_RP-P-1969-78.jpg/500px-Tourn%C3%A9e_du_Chat_noir_avec_Rodolphe_Salis%2C_RP-P-1969-78.jpg 500w, https://thumb.wikimedia.org/wikipedia/commons/thumb/4/46/Tourn%C3%A9e_du_Chat_noir_avec_Rodolphe_Salis%2C_RP-P-1969-78.jpg/960px-Tourn%C3%A9e_du_Chat_noir_avec_Rodolphe_Salis%2C_RP-P-1969-78.jpg 960w, https://thumb.wikimedia.org/wikipedia/commons/thumb/4/46/Tourn%C3%A9e_du_Chat_noir_avec_Rodolphe_Salis%2C_RP-P-1969-78.jpg/1280px-Tourn%C3%A9e_du_Chat_noir_avec_Rodolphe_Salis%2C_RP-P-1969-78.jpg 1280w, https://thumb.wikimedia.org/wikipedia/commons/thumb/4/46/Tourn%C3%A9e_du_Chat_noir_avec_Rodolphe_Salis%2C_RP-P-1969-78.jpg/1920px-Tourn%C3%A9e_du_Chat_noir_avec_Rodolphe_Salis%2C_RP-P-1969-78.jpg 1920w",
   "default": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/46/Tourn%C3%A9e_du_Chat_noir_avec_Rodolphe_Salis%2C_RP-P-1969-78.jpg/960px-Tourn%C3%A9e_du_Chat_noir_avec_Rodolphe_Salis%2C_RP-P-1969-78.jpg"
+ },
+ {
+  "title": "File:Les Très Riches Heures du duc de Berry Janvier.jpg",
+  "label": "Janvier",
+  "kind": "heures",
+  "w": 1333,
+  "h": 2062,
+  "license": "Public domain",
+  "artist": "Limbourg brothers",
+  "credit": "R-G Ojéda/RMN",
+  "descurl": "https://commons.wikimedia.org/wiki/File:Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_Janvier.jpg",
+  "sources": {
+   "330": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8a/Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_Janvier.jpg/330px-Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_Janvier.jpg",
+   "500": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8a/Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_Janvier.jpg/500px-Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_Janvier.jpg",
+   "960": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8a/Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_Janvier.jpg/960px-Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_Janvier.jpg",
+   "1280": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8a/Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_Janvier.jpg/1280px-Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_Janvier.jpg",
+   "1333": "https://upload.wikimedia.org/wikipedia/commons/8/8a/Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_Janvier.jpg"
+  },
+  "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8a/Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_Janvier.jpg/330px-Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_Janvier.jpg 330w, https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8a/Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_Janvier.jpg/500px-Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_Janvier.jpg 500w, https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8a/Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_Janvier.jpg/960px-Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_Janvier.jpg 960w, https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8a/Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_Janvier.jpg/1280px-Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_Janvier.jpg 1280w, https://upload.wikimedia.org/wikipedia/commons/8/8a/Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_Janvier.jpg 1333w",
+  "default": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8a/Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_Janvier.jpg/960px-Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_Janvier.jpg"
+ },
+ {
+  "title": "File:Les Très Riches Heures du duc de Berry avril.jpg",
+  "label": "Avril",
+  "kind": "heures",
+  "w": 1148,
+  "h": 1838,
+  "license": "Public domain",
+  "artist": "Limbourg brothers",
+  "credit": "R.M.N. / R.-G. Ojéda",
+  "descurl": "https://commons.wikimedia.org/wiki/File:Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_avril.jpg",
+  "sources": {
+   "330": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c6/Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_avril.jpg/330px-Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_avril.jpg",
+   "500": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c6/Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_avril.jpg/500px-Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_avril.jpg",
+   "960": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c6/Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_avril.jpg/960px-Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_avril.jpg",
+   "1148": "https://upload.wikimedia.org/wikipedia/commons/c/c6/Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_avril.jpg"
+  },
+  "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c6/Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_avril.jpg/330px-Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_avril.jpg 330w, https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c6/Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_avril.jpg/500px-Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_avril.jpg 500w, https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c6/Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_avril.jpg/960px-Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_avril.jpg 960w, https://upload.wikimedia.org/wikipedia/commons/c/c6/Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_avril.jpg 1148w",
+  "default": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c6/Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_avril.jpg/960px-Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_avril.jpg"
+ },
+ {
+  "title": "File:Les Très Riches Heures du duc de Berry février.jpg",
+  "label": "Février",
+  "kind": "heures",
+  "w": 1141,
+  "h": 1899,
+  "license": "Public domain",
+  "artist": "Limbourg brothers",
+  "credit": "R.M.N. / R.-G. Ojéda",
+  "descurl": "https://commons.wikimedia.org/wiki/File:Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_f%C3%A9vrier.jpg",
+  "sources": {
+   "330": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/02/Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_f%C3%A9vrier.jpg/330px-Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_f%C3%A9vrier.jpg",
+   "500": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/02/Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_f%C3%A9vrier.jpg/500px-Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_f%C3%A9vrier.jpg",
+   "960": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/02/Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_f%C3%A9vrier.jpg/960px-Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_f%C3%A9vrier.jpg",
+   "1141": "https://upload.wikimedia.org/wikipedia/commons/0/02/Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_f%C3%A9vrier.jpg"
+  },
+  "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/02/Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_f%C3%A9vrier.jpg/330px-Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_f%C3%A9vrier.jpg 330w, https://thumb.wikimedia.org/wikipedia/commons/thumb/0/02/Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_f%C3%A9vrier.jpg/500px-Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_f%C3%A9vrier.jpg 500w, https://thumb.wikimedia.org/wikipedia/commons/thumb/0/02/Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_f%C3%A9vrier.jpg/960px-Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_f%C3%A9vrier.jpg 960w, https://upload.wikimedia.org/wikipedia/commons/0/02/Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_f%C3%A9vrier.jpg 1141w",
+  "default": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/02/Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_f%C3%A9vrier.jpg/960px-Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_f%C3%A9vrier.jpg"
+ },
+ {
+  "title": "File:Les Très Riches Heures du duc de Berry mars.jpg",
+  "label": "Mars",
+  "kind": "heures",
+  "w": 1144,
+  "h": 1847,
+  "license": "Public domain",
+  "artist": "Limbourg brothers / Barthélemy d'Eyck",
+  "credit": "R.M.N. / R.-G. Ojéda",
+  "descurl": "https://commons.wikimedia.org/wiki/File:Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_mars.jpg",
+  "sources": {
+   "330": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7a/Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_mars.jpg/330px-Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_mars.jpg",
+   "500": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7a/Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_mars.jpg/500px-Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_mars.jpg",
+   "960": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7a/Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_mars.jpg/960px-Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_mars.jpg",
+   "1144": "https://upload.wikimedia.org/wikipedia/commons/7/7a/Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_mars.jpg"
+  },
+  "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7a/Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_mars.jpg/330px-Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_mars.jpg 330w, https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7a/Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_mars.jpg/500px-Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_mars.jpg 500w, https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7a/Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_mars.jpg/960px-Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_mars.jpg 960w, https://upload.wikimedia.org/wikipedia/commons/7/7a/Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_mars.jpg 1144w",
+  "default": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7a/Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_mars.jpg/960px-Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_mars.jpg"
+ },
+ {
+  "title": "File:Les Très Riches Heures du duc de Berry aout.jpg",
+  "label": "Août",
+  "kind": "heures",
+  "w": 1555,
+  "h": 2526,
+  "license": "Public domain",
+  "artist": "Limbourg brothers",
+  "credit": "R.M.N. / R.-G. Ojéda\n\nchateaudechantilly.com",
+  "descurl": "https://commons.wikimedia.org/wiki/File:Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_aout.jpg",
+  "sources": {
+   "330": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c5/Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_aout.jpg/330px-Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_aout.jpg",
+   "500": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c5/Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_aout.jpg/500px-Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_aout.jpg",
+   "960": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c5/Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_aout.jpg/960px-Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_aout.jpg",
+   "1280": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c5/Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_aout.jpg/1280px-Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_aout.jpg",
+   "1555": "https://upload.wikimedia.org/wikipedia/commons/c/c5/Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_aout.jpg"
+  },
+  "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c5/Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_aout.jpg/330px-Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_aout.jpg 330w, https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c5/Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_aout.jpg/500px-Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_aout.jpg 500w, https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c5/Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_aout.jpg/960px-Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_aout.jpg 960w, https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c5/Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_aout.jpg/1280px-Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_aout.jpg 1280w, https://upload.wikimedia.org/wikipedia/commons/c/c5/Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_aout.jpg 1555w",
+  "default": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c5/Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_aout.jpg/960px-Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_aout.jpg"
+ },
+ {
+  "title": "File:Les Très Riches Heures du duc de Berry juillet.jpg",
+  "label": "Juillet",
+  "kind": "heures",
+  "w": 1152,
+  "h": 1873,
+  "license": "Public domain",
+  "artist": "Limbourg brothers / Barthélemy d'Eyck",
+  "credit": "R.M.N. / R.-G. Ojéda",
+  "descurl": "https://commons.wikimedia.org/wiki/File:Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_juillet.jpg",
+  "sources": {
+   "330": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/be/Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_juillet.jpg/330px-Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_juillet.jpg",
+   "500": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/be/Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_juillet.jpg/500px-Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_juillet.jpg",
+   "960": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/be/Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_juillet.jpg/960px-Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_juillet.jpg",
+   "1152": "https://upload.wikimedia.org/wikipedia/commons/b/be/Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_juillet.jpg"
+  },
+  "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/be/Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_juillet.jpg/330px-Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_juillet.jpg 330w, https://thumb.wikimedia.org/wikipedia/commons/thumb/b/be/Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_juillet.jpg/500px-Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_juillet.jpg 500w, https://thumb.wikimedia.org/wikipedia/commons/thumb/b/be/Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_juillet.jpg/960px-Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_juillet.jpg 960w, https://upload.wikimedia.org/wikipedia/commons/b/be/Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_juillet.jpg 1152w",
+  "default": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/be/Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_juillet.jpg/960px-Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_juillet.jpg"
+ },
+ {
+  "title": "File:Les Très Riches Heures du duc de Berry juin.jpg",
+  "label": "Juin",
+  "kind": "heures",
+  "w": 1167,
+  "h": 1884,
+  "license": "Public domain",
+  "artist": "Limbourg brothers / Barthélemy d'Eyck / Jean Colombe",
+  "credit": "R.M.N. / R.-G. Ojéda",
+  "descurl": "https://commons.wikimedia.org/wiki/File:Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_juin.jpg",
+  "sources": {
+   "330": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e9/Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_juin.jpg/330px-Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_juin.jpg",
+   "500": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e9/Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_juin.jpg/500px-Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_juin.jpg",
+   "960": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e9/Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_juin.jpg/960px-Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_juin.jpg",
+   "1167": "https://upload.wikimedia.org/wikipedia/commons/e/e9/Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_juin.jpg"
+  },
+  "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e9/Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_juin.jpg/330px-Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_juin.jpg 330w, https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e9/Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_juin.jpg/500px-Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_juin.jpg 500w, https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e9/Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_juin.jpg/960px-Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_juin.jpg 960w, https://upload.wikimedia.org/wikipedia/commons/e/e9/Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_juin.jpg 1167w",
+  "default": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e9/Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_juin.jpg/960px-Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_juin.jpg"
+ },
+ {
+  "title": "File:Les Très Riches Heures du duc de Berry mai.jpg",
+  "label": "Mai",
+  "kind": "heures",
+  "w": 3953,
+  "h": 6144,
+  "license": "Public domain",
+  "artist": "Limbourg brothers",
+  "credit": "R.M.N. / R.-G. Ojéda",
+  "descurl": "https://commons.wikimedia.org/wiki/File:Fr%C3%A8res_Limbourg_-_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_-_mois_de_mai_-_Google_Art_Project.jpg",
+  "sources": {
+   "330": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d9/Fr%C3%A8res_Limbourg_-_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_-_mois_de_mai_-_Google_Art_Project.jpg/330px-Fr%C3%A8res_Limbourg_-_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_-_mois_de_mai_-_Google_Art_Project.jpg",
+   "500": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d9/Fr%C3%A8res_Limbourg_-_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_-_mois_de_mai_-_Google_Art_Project.jpg/500px-Fr%C3%A8res_Limbourg_-_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_-_mois_de_mai_-_Google_Art_Project.jpg",
+   "960": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d9/Fr%C3%A8res_Limbourg_-_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_-_mois_de_mai_-_Google_Art_Project.jpg/960px-Fr%C3%A8res_Limbourg_-_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_-_mois_de_mai_-_Google_Art_Project.jpg",
+   "1280": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d9/Fr%C3%A8res_Limbourg_-_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_-_mois_de_mai_-_Google_Art_Project.jpg/1280px-Fr%C3%A8res_Limbourg_-_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_-_mois_de_mai_-_Google_Art_Project.jpg",
+   "1920": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d9/Fr%C3%A8res_Limbourg_-_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_-_mois_de_mai_-_Google_Art_Project.jpg/1920px-Fr%C3%A8res_Limbourg_-_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_-_mois_de_mai_-_Google_Art_Project.jpg"
+  },
+  "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d9/Fr%C3%A8res_Limbourg_-_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_-_mois_de_mai_-_Google_Art_Project.jpg/330px-Fr%C3%A8res_Limbourg_-_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_-_mois_de_mai_-_Google_Art_Project.jpg 330w, https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d9/Fr%C3%A8res_Limbourg_-_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_-_mois_de_mai_-_Google_Art_Project.jpg/500px-Fr%C3%A8res_Limbourg_-_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_-_mois_de_mai_-_Google_Art_Project.jpg 500w, https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d9/Fr%C3%A8res_Limbourg_-_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_-_mois_de_mai_-_Google_Art_Project.jpg/960px-Fr%C3%A8res_Limbourg_-_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_-_mois_de_mai_-_Google_Art_Project.jpg 960w, https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d9/Fr%C3%A8res_Limbourg_-_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_-_mois_de_mai_-_Google_Art_Project.jpg/1280px-Fr%C3%A8res_Limbourg_-_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_-_mois_de_mai_-_Google_Art_Project.jpg 1280w, https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d9/Fr%C3%A8res_Limbourg_-_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_-_mois_de_mai_-_Google_Art_Project.jpg/1920px-Fr%C3%A8res_Limbourg_-_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_-_mois_de_mai_-_Google_Art_Project.jpg 1920w",
+  "default": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d9/Fr%C3%A8res_Limbourg_-_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_-_mois_de_mai_-_Google_Art_Project.jpg/960px-Fr%C3%A8res_Limbourg_-_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_-_mois_de_mai_-_Google_Art_Project.jpg"
+ },
+ {
+  "title": "File:Les Très Riches Heures du duc de Berry décembre.jpg",
+  "label": "Décembre",
+  "kind": "heures",
+  "w": 1110,
+  "h": 1907,
+  "license": "Public domain",
+  "artist": "Barthélemy d'Eyck",
+  "credit": "R.M.N. / R.-G. Ojéda",
+  "descurl": "https://commons.wikimedia.org/wiki/File:Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_d%C3%A9cembre.jpg",
+  "sources": {
+   "330": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6e/Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_d%C3%A9cembre.jpg/330px-Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_d%C3%A9cembre.jpg",
+   "500": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6e/Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_d%C3%A9cembre.jpg/500px-Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_d%C3%A9cembre.jpg",
+   "960": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6e/Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_d%C3%A9cembre.jpg/960px-Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_d%C3%A9cembre.jpg",
+   "1110": "https://upload.wikimedia.org/wikipedia/commons/6/6e/Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_d%C3%A9cembre.jpg"
+  },
+  "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6e/Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_d%C3%A9cembre.jpg/330px-Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_d%C3%A9cembre.jpg 330w, https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6e/Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_d%C3%A9cembre.jpg/500px-Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_d%C3%A9cembre.jpg 500w, https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6e/Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_d%C3%A9cembre.jpg/960px-Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_d%C3%A9cembre.jpg 960w, https://upload.wikimedia.org/wikipedia/commons/6/6e/Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_d%C3%A9cembre.jpg 1110w",
+  "default": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6e/Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_d%C3%A9cembre.jpg/960px-Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_d%C3%A9cembre.jpg"
+ },
+ {
+  "title": "File:Les Très Riches Heures du duc de Berry novembre.jpg",
+  "label": "Novembre",
+  "kind": "heures",
+  "w": 1144,
+  "h": 1933,
+  "license": "Public domain",
+  "artist": "Jean Colombe",
+  "credit": "R.M.N. / R.-G. Ojéda",
+  "descurl": "https://commons.wikimedia.org/wiki/File:Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_novembre.jpg",
+  "sources": {
+   "330": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a5/Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_novembre.jpg/330px-Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_novembre.jpg",
+   "500": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a5/Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_novembre.jpg/500px-Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_novembre.jpg",
+   "960": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a5/Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_novembre.jpg/960px-Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_novembre.jpg",
+   "1144": "https://upload.wikimedia.org/wikipedia/commons/a/a5/Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_novembre.jpg"
+  },
+  "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a5/Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_novembre.jpg/330px-Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_novembre.jpg 330w, https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a5/Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_novembre.jpg/500px-Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_novembre.jpg 500w, https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a5/Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_novembre.jpg/960px-Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_novembre.jpg 960w, https://upload.wikimedia.org/wikipedia/commons/a/a5/Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_novembre.jpg 1144w",
+  "default": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a5/Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_novembre.jpg/960px-Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_novembre.jpg"
+ },
+ {
+  "title": "File:Les Très Riches Heures du duc de Berry octobre.jpg",
+  "label": "Octobre",
+  "kind": "heures",
+  "w": 1140,
+  "h": 1900,
+  "license": "Public domain",
+  "artist": "Limbourg brothers / Barthélemy d'Eyck",
+  "credit": "R.M.N. / R.-G. Ojéda",
+  "descurl": "https://commons.wikimedia.org/wiki/File:Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_octobre.jpg",
+  "sources": {
+   "330": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f5/Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_octobre.jpg/330px-Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_octobre.jpg",
+   "500": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f5/Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_octobre.jpg/500px-Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_octobre.jpg",
+   "960": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f5/Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_octobre.jpg/960px-Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_octobre.jpg",
+   "1140": "https://upload.wikimedia.org/wikipedia/commons/f/f5/Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_octobre.jpg"
+  },
+  "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f5/Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_octobre.jpg/330px-Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_octobre.jpg 330w, https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f5/Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_octobre.jpg/500px-Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_octobre.jpg 500w, https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f5/Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_octobre.jpg/960px-Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_octobre.jpg 960w, https://upload.wikimedia.org/wikipedia/commons/f/f5/Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_octobre.jpg 1140w",
+  "default": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f5/Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_octobre.jpg/960px-Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_octobre.jpg"
+ },
+ {
+  "title": "File:Les Très Riches Heures du duc de Berry septembre.jpg",
+  "label": "Septembre",
+  "kind": "heures",
+  "w": 1159,
+  "h": 1922,
+  "license": "Public domain",
+  "artist": "Limbourg brothers / Barthélemy d'Eyck / Jean Colombe",
+  "credit": "R.M.N. / R.-G. Ojéda",
+  "descurl": "https://commons.wikimedia.org/wiki/File:Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_septembre.jpg",
+  "sources": {
+   "330": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/72/Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_septembre.jpg/330px-Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_septembre.jpg",
+   "500": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/72/Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_septembre.jpg/500px-Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_septembre.jpg",
+   "960": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/72/Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_septembre.jpg/960px-Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_septembre.jpg",
+   "1159": "https://upload.wikimedia.org/wikipedia/commons/7/72/Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_septembre.jpg"
+  },
+  "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/72/Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_septembre.jpg/330px-Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_septembre.jpg 330w, https://thumb.wikimedia.org/wikipedia/commons/thumb/7/72/Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_septembre.jpg/500px-Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_septembre.jpg 500w, https://thumb.wikimedia.org/wikipedia/commons/thumb/7/72/Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_septembre.jpg/960px-Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_septembre.jpg 960w, https://upload.wikimedia.org/wikipedia/commons/7/72/Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_septembre.jpg 1159w",
+  "default": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/72/Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_septembre.jpg/960px-Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_septembre.jpg"
  }
 ]

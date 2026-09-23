@@ -1,0 +1,57 @@
+/* Scroll Snap, in full: twelve months, a page each. The book is a vertical
+   scroller that snaps to whole pages; the gold mark in the month index rides the
+   book's scroll timeline (shared with the index through timeline-scope), so it
+   moves with the scroll while the pages come to rest on whole months. */
+
+.heures{position:relative;width:100vw;margin-inline:calc(50% - 50vw);height:calc(100svh - var(--bar));border:0;border-radius:0;
+  background:radial-gradient(120% 90% at 40% 30%,#192781,#0D1757 58%,#070C33);color:#D9D0BD;
+  timeline-scope:--book;scroll-snap-align:start}
+html{scroll-snap-type:y proximity;scroll-padding-top:var(--bar)}
+
+/* the book: its own scroller, snapping to whole pages */
+.book{height:100%;overflow-y:auto;overscroll-behavior-y:auto;scroll-snap-type:y mandatory;scroll-behavior:smooth;
+  scrollbar-width:none;scroll-timeline:--book y;outline:none}
+.book:focus-visible{box-shadow:inset 0 0 0 1px #C9A45C}
+.page{height:100%;box-sizing:border-box;scroll-snap-align:start;view-timeline:--page block;
+  display:grid;grid-template-columns:auto minmax(0,1fr);grid-template-rows:minmax(0,1fr);align-items:center;
+  gap:clamp(28px,5vw,88px);padding:clamp(18px,4vh,44px) clamp(150px,16vw,260px) clamp(18px,4vh,44px) clamp(20px,7vw,120px)}
+.page img{--w:min(38vw,calc((100svh - var(--bar)) * .88 * var(--ar)));width:var(--w);height:calc(var(--w) / var(--ar));display:block;
+  box-shadow:0 30px 70px -26px rgb(0 0 0 / .8),0 0 0 1px rgb(201 164 92 / .25)}
+
+/* the facing leaf: the month, rising as its page arrives, and done the moment the page comes to rest
+   (the page's timeline, not the leaf's: a page the book's height is fully entered exactly when snapped) */
+.leaf{display:grid;gap:14px;align-content:center;animation:rise linear both;animation-timeline:--page;animation-range:entry 30% entry 100%}
+@keyframes rise{from{opacity:0;translate:0 40px}}
+.leaf .num{margin:0;font-family:var(--display);font-weight:400;font-size:clamp(20px,2vw,28px);letter-spacing:.08em;color:#C9A45C}
+.leaf h2{margin:0;font-family:var(--display);font-weight:400;font-style:italic;font-size:clamp(56px,8.4vw,140px);line-height:.88;letter-spacing:-.03em}
+.leaf .signs{margin:4px 0 0;font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:#C9A45C}
+.leaf .scene{margin:0;max-width:34ch;font-size:clamp(15px,1.35vw,19px);line-height:1.5;color:#BFB6A3;text-wrap:pretty}
+
+/* the months down the edge, like a book's thumb index; the gold mark follows the scroll itself */
+.months{--row:clamp(24px,5.2svh,44px);position:absolute;right:clamp(16px,3vw,48px);top:50%;translate:0 -50%;margin:0;padding:0 0 0 18px;
+  list-style:none;display:grid;grid-auto-rows:var(--row)}
+.months a{display:flex;align-items:center;gap:12px;height:100%;color:rgb(217 208 189 / .5);text-decoration:none;
+  font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;transition:color .3s var(--settle)}
+.months a b{width:3.2em;font-weight:400;text-align:right;color:rgb(201 164 92 / .6)}
+.months a:hover,.months a:focus-visible{color:#D9D0BD}
+.months::after{content:'';position:absolute;left:0;top:calc(var(--row) * .5 - 7px);width:3px;height:14px;border-radius:2px;background:#C9A45C;
+  box-shadow:0 0 12px rgb(201 164 92 / .7);animation:turn linear both;animation-timeline:--book}
+@keyframes turn{to{translate:0 calc(var(--row) * 11)}}
+
+.colophon{position:absolute;left:clamp(20px,7vw,120px);bottom:clamp(10px,2vh,20px);margin:0;font-family:var(--mono);font-size:9.5px;
+  letter-spacing:.14em;text-transform:uppercase;color:rgb(217 208 189 / .45)}
+
+@media (max-width:900px){
+  .page{grid-template-columns:minmax(0,1fr);grid-template-rows:auto auto;align-content:center;justify-items:center;
+    gap:18px;padding:18px 64px 30px 18px}
+  .page img{--w:min(56vw,calc((100svh - var(--bar)) * .5 * var(--ar)))}
+  .leaf{justify-items:center;text-align:center}
+  .leaf h2{font-size:clamp(44px,12vw,72px)}
+  .months{--row:clamp(20px,4.6svh,30px);right:8px;padding-left:12px}
+  .months a span{display:none}
+  .colophon{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  .book{scroll-behavior:auto}
+  .leaf{animation:none}
+}
