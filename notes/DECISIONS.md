@@ -659,3 +659,58 @@ hard constraint 11 (fragments are not addresses), so each effect gets a real
 page, bound like a book: the entrance shows every effect as a small moving
 preview, each page carries the contents and next/previous, and the next page
 is prepared in advance so turning is instant.
+
+## One rule for what text stands on, 2026-09-22 — replacing three patches
+
+**What the user found (day palette).** The orrery's switch blurred: the house
+halo was a 12 px glow of the page's ground, so by day a paper glow sat on
+the black sky. Florence's way back painted dark ink on the black storm photo.
+Kīlauea by day set dark ink on dark photographs and washed every photograph
+in a paper veil to compensate. They asked for one consistent answer, not
+another patch.
+
+**Why Florence failed.** Its chrome took its colour from `color-mix()` over a
+registered `--paper` animated by a view timeline. `getComputedStyle` said
+`#E9E4DC`; the pixels said `(28,24,20)`, the day ink. Pinning the same value
+inline repainted it at once `(232,228,221)`: Chrome recomputed the colour but
+did not repaint text whose colour depends on a scroll-animated custom
+property. My earlier check read computed style only. Rule now in the charter:
+measure what is painted — contrast from screenshot pixels.
+
+**The system.** Ink follows the surface it stands on:
+- *ground* — the page's own surface, takes the palette;
+- *plate* — a piece of the ground laid over something else (the chrome,
+  03's gauge, 07's panel), takes the palette;
+- *material* — a photograph, 02's night, 06's sky, 05's enamel — keeps its
+  own light. `[data-material]` re-declares the night tokens (and restarts
+  `color`, since inherited colour arrives already computed), so words laid on
+  it stay light in both palettes; words on a photograph carry their own shade,
+  as 03's title already did.
+
+The way back and the switch are defined once in `house.css`, on a plate at
+90% of the ground with a 14 px backdrop blur, text in `--mid`, a focus ring
+for keyboards. Deleted: every page's `.back` rules (7 copies), 02's and 07's
+halo overrides, 03's `--paper` scroll switch, the house halo. 02's body is
+material (its plate is night, like the page); 07's `.backdrop` and
+`main.phases` are material (the panel and footer follow the switch).
+
+**Measured from pixels**, text against plate: by day 5.5–6.9:1 (lowest: the
+switch over the orrery's black sky), by night 8.1–8.8:1, at 1324 and 390 —
+AA for small text is 4.5:1. By arithmetic a 90% plate holds about 5.7:1 over
+pure black by day and 6.9:1 over pure white by night, whatever is beneath.
+
+**Found on the way.**
+- 07's phase logic trusted the section crossing the middle; the last
+  section ends above the middle before the foot of the page, so a jump (End,
+  a reload at the bottom) left the previous phase on screen. It now asks, on
+  every crossing, for the last section whose line has crossed. Checked: jumps
+  both ways, reload at the foot, and each break 4 px either side of its line.
+- The new text shades widened 07 to 447 px on a phone. The overflow sweeps
+  had compared `scrollWidth` with `innerWidth`, which on a phone grows with
+  the overflow and hides it; the right measure is `clientWidth`. Clipped
+  (`.phases{overflow-x:clip}`) and all nine pages re-swept at 390: none.
+- Python's `http.server` sends no caching headers, so Chrome kept serving the
+  old `house.css`. `build/serve.py` serves `site/` with `no-store`.
+
+Evidence: `07-day-*` (before), `07-day-after*` (after), `chrome-*` (each page's
+chrome, with the rects the contrast was read from).

@@ -20,27 +20,12 @@
 <style>
 :root{--display:'Zodiak',Georgia,serif;--gh:clamp(118px,15vh,150px)} /* guest display face for this exhibit */
 @property --ph{syntax:'<integer>';inherits:true;initial-value:0}
-@property --paper{syntax:'<number>';inherits:true;initial-value:0}
 *{box-sizing:border-box}
 body{margin:0;background:var(--ground);color:var(--ink);font:15px/1.55 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
 a{color:inherit;text-decoration:none}
 img{display:block}
 h1,h2,p,figure,dl,dd{margin:0}
 h1,h2{font-weight:400}
-.back{position:fixed;top:22px;left:clamp(16px,4vw,40px);z-index:80;font-family:var(--mono);font-size:10px;
-  letter-spacing:.14em;text-transform:uppercase}
-/* The chrome is light over the photographs, then takes the palette once the
-   gauge — the stage's last band, set on the page's ground — rises under it:
-   --paper cuts from 0 to 1 when the gauge's top edge crosses the chrome. */
-body{timeline-scope:--run}
-.back,.theme{
-  color:color-mix(in srgb,var(--dim) calc(var(--paper) * 100%),#E9E4DC);
-  text-shadow:0 1px 12px color-mix(in srgb,var(--ground) calc(var(--paper) * 100%),rgb(0 0 0 / .6)),
-              0 0 3px color-mix(in srgb,var(--ground) calc(var(--paper) * 100%),transparent);
-  animation:onpaper steps(1,jump-end) both;animation-timeline:--run;
-  animation-range:exit 0% exit calc(100% - 29px - var(--gh))}
-.back:hover,.theme:hover,.theme:focus-visible{color:color-mix(in srgb,var(--ink) calc(var(--paper) * 100%),#fff)}
-@keyframes onpaper{from{--paper:0}to{--paper:1}}
 
 /* ── the pass ──────────────────────────────────────────────────
    Position walks the three minutes the station spent over the storm:

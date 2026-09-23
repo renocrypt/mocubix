@@ -3,16 +3,25 @@
    Terra marks what is active or what to look at. Indigo is for numbers the
    page measures live, and nothing else. */
 :root{
-  color-scheme:dark;
-  --ground:#0B0A09; --raise:#131110; --lift:#1A1715;
-  --ink:#F2EDE5; --mid:#B4ABA0; --dim:#7E766D;
-  --accent:#D4673F; --indigo:#6E86B8;
-  --line:color-mix(in srgb,var(--ink) 13%,transparent);
   --settle:cubic-bezier(.16,.84,.24,1);
   --display:'Melodrama',Georgia,serif;
   --sans:'Switzer',-apple-system,system-ui,sans-serif;
   --mono:'Geist Mono Variable',ui-monospace,SFMono-Regular,monospace;
 }
+
+/* Ink follows the surface it stands on. The page's ground, and the plates cut
+   from it, take the palette. Material (a photograph, the night, the sky)
+   keeps its own light, so an element marked data-material keeps the night
+   tokens in both palettes and everything laid on it stays legible. */
+:root,[data-material]{
+  color-scheme:dark;
+  --ground:#0B0A09; --raise:#131110; --lift:#1A1715;
+  --ink:#F2EDE5; --mid:#B4ABA0; --dim:#7E766D;
+  --accent:#D4673F; --indigo:#6E86B8;
+  --line:color-mix(in srgb,var(--ink) 13%,transparent);
+}
+/* text inherits its colour already computed, so material restarts it */
+[data-material]{color:var(--ink)}
 :root[data-theme="day"]{
   color-scheme:light;
   --ground:#F4F0E9; --raise:#ECE7DF; --lift:#E5DFD6;
@@ -20,20 +29,28 @@
   --accent:#BA4E24; --indigo:#49649F;
 }
 
+/* ── the chrome ───────────────────────────────────────────────────
+   The way back (top left) and the switch (top right) are on every page, so
+   they bring their own surface: a plate cut from the page's ground, the same
+   material as the instrument panels. Over the ground it is invisible; over a
+   photograph, the sky or text scrolling beneath, it reads as a small label.
+   Their legibility never depends on what is under them. */
+.back,.theme{font-family:var(--mono);font-size:10px;line-height:16px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--mid);text-decoration:none;transition:color .35s var(--settle)}
+.back:hover,.theme:hover,.back:focus-visible,.theme:focus-visible{color:var(--ink)}
+.back:focus-visible,.theme:focus-visible{outline:1px solid currentColor;outline-offset:2px}
+.back,.theme:not([data-inline]){position:fixed;top:16px;z-index:90;padding:6px 9px;border-radius:2px;
+  background:color-mix(in srgb,var(--ground) 90%,transparent);
+  -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}
+.back{left:calc(clamp(16px,4vw,40px) - 9px)}
+.theme:not([data-inline]){right:calc(clamp(16px,4vw,40px) - 9px)}
+
 /* the switch */
-.theme{position:fixed;top:19px;right:clamp(16px,4vw,40px);z-index:90;
-  display:inline-flex;align-items:center;gap:9px;padding:4px 0;margin:0;
-  background:none;border:0;cursor:pointer;color:var(--dim);
-  font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;
-  transition:color .35s var(--settle)}
-.theme:hover,.theme:focus-visible{color:var(--ink);outline:none}
+.theme{display:inline-flex;align-items:center;gap:9px;margin:0;border:0;background:none;cursor:pointer}
+.theme[data-inline]{padding:4px 0}
 .theme i{width:11px;height:11px;border-radius:50%;border:1px solid currentColor;
   background:linear-gradient(90deg,currentColor 50%,transparent 50%)}
 :root[data-theme="day"] .theme i{background:linear-gradient(270deg,currentColor 50%,transparent 50%)}
-.theme[data-inline]{position:static}
-/* the fixed chrome stays legible over whatever scrolls beneath it: a halo of
-   the page's own ground, not a bar */
-.theme,.back{text-shadow:0 1px 12px var(--ground),0 0 3px var(--ground)}
 
 /* the swap is one cross-fade of the whole page, on the house curve */
 ::view-transition-old(root),::view-transition-new(root){

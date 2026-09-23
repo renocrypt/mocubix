@@ -22,8 +22,11 @@
 @property --rot { syntax: '<angle>'; inherits: true; initial-value: 0deg }
 
 /* House tokens with the phase angle inside them. Each phase sets the angle to
-   the hue of its own photograph, and the whole set turns together. */
-:root{
+   the hue of its own photograph, and the whole set turns together. The
+   photographs and the words laid on them are material: they keep the night
+   set in both palettes, while the panel and the footer follow the switch. */
+:root{--pad:clamp(20px,5vw,72px)}
+:root,[data-material]{
   --ground: oklch(0.146 0.024 calc( 68.6deg + var(--rot)));
   --raise:  oklch(0.190 0.028 calc( 48.5deg + var(--rot)));
   --lift:   oklch(0.225 0.032 calc( 56.0deg + var(--rot)));
@@ -31,7 +34,6 @@
   --mid:    oklch(0.760 0.022 calc( 73.0deg + var(--rot)));
   --dim:    oklch(0.580 0.020 calc( 70.7deg + var(--rot)));
   --accent: oklch(0.660 0.160 calc( 40.2deg + var(--rot)));
-  --pad:clamp(20px,5vw,72px);
 }
 :root[data-theme="day"]{
   --ground: oklch(0.955 0.018 calc( 80.0deg + var(--rot)));
@@ -50,11 +52,6 @@ body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--sans);
 a{color:inherit;text-decoration:none}
 img{display:block}
 h1,h2{font-weight:400;margin:0}
-
-.back{position:fixed;top:22px;left:clamp(16px,4vw,40px);z-index:80;
-  font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;
-  color:var(--ink);text-shadow:0 1px 14px var(--ground),0 0 3px var(--ground)}
-.theme{color:var(--ink);text-shadow:0 1px 14px var(--ground),0 0 3px var(--ground)}
 
 /* ── the deck: one fixed photograph, one pinned panel, text that scrolls ── */
 .deck{position:relative}
@@ -113,12 +110,17 @@ h1,h2{font-weight:400;margin:0}
 .deck[data-phase="1"] .foot .d1,.deck[data-phase="2"] .foot .d2,.deck[data-phase="3"] .foot .d3,.deck[data-phase="4"] .foot .d4{display:inline}
 
 /* the text scrolls over the photograph; each phase begins at a dated line */
-.phases{position:relative;z-index:5;margin-top:-100svh}
+.phases{position:relative;z-index:5;margin-top:-100svh;overflow-x:clip} /* the text shades never widen the page */
 .phases::after{content:'';display:block;height:34svh}
 .phase{position:relative;min-height:100svh;display:grid;align-content:end;padding:0 var(--pad) clamp(36px,7vh,72px)}
 .phase .bp{position:absolute;left:var(--pad);right:var(--pad);top:0;border-top:1px dashed color-mix(in srgb,var(--ink) 40%,transparent)}
 .phase .bp span{position:absolute;left:50%;translate:-50% 0;top:9px;white-space:nowrap;font-family:var(--mono);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--mid)}
 .phase .txt{max-width:58%}
+/* words on a photograph carry their own shade, cut from the material's
+   ground, so they read wherever the scroll carries them */
+.phase .txt{position:relative;isolation:isolate}
+.phase .txt::before{content:'';position:absolute;z-index:-1;inset:-14% -22% -10% -14%;pointer-events:none;
+  background:radial-gradient(closest-side,color-mix(in srgb,var(--ground) 62%,transparent),color-mix(in srgb,var(--ground) 34%,transparent) 58%,transparent)}
 .phase .n{font-family:var(--display);font-style:normal;font-size:clamp(96px,16vw,220px);line-height:.82;letter-spacing:-.02em;color:var(--accent)}
 .phase h2{font-family:var(--display);font-size:clamp(34px,4.6vw,64px);line-height:.98;letter-spacing:0;margin-top:8px;max-width:14ch;text-wrap:balance}
 .phase p{margin:16px 0 0;font-size:clamp(14px,1.5vw,17px);color:var(--mid);max-width:46ch;text-wrap:pretty}
@@ -168,7 +170,7 @@ footer{position:relative;z-index:5;padding:34px var(--pad) 70px;border-top:1px s
 
 <div class="deck" data-phase="0">
 
-  <div class="backdrop" aria-hidden="true">
+  <div class="backdrop" data-material aria-hidden="true">
     <figure data-p="0"><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c4/Halemaumau_Lava_Lake%2C_April_19th_2018%2C_Vulcanoes_National_Park%2C_Big_Island%2C_Hawaii_%2828887175718%29.jpg/1280px-Halemaumau_Lava_Lake%2C_April_19th_2018%2C_Vulcanoes_National_Park%2C_Big_Island%2C_Hawaii_%2828887175718%29.jpg" srcset="https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c4/Halemaumau_Lava_Lake%2C_April_19th_2018%2C_Vulcanoes_National_Park%2C_Big_Island%2C_Hawaii_%2828887175718%29.jpg/960px-Halemaumau_Lava_Lake%2C_April_19th_2018%2C_Vulcanoes_National_Park%2C_Big_Island%2C_Hawaii_%2828887175718%29.jpg 960w, https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c4/Halemaumau_Lava_Lake%2C_April_19th_2018%2C_Vulcanoes_National_Park%2C_Big_Island%2C_Hawaii_%2828887175718%29.jpg/1280px-Halemaumau_Lava_Lake%2C_April_19th_2018%2C_Vulcanoes_National_Park%2C_Big_Island%2C_Hawaii_%2828887175718%29.jpg 1280w, https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c4/Halemaumau_Lava_Lake%2C_April_19th_2018%2C_Vulcanoes_National_Park%2C_Big_Island%2C_Hawaii_%2828887175718%29.jpg/1920px-Halemaumau_Lava_Lake%2C_April_19th_2018%2C_Vulcanoes_National_Park%2C_Big_Island%2C_Hawaii_%2828887175718%29.jpg 1920w" sizes="100vw" width="6586" height="3705" alt="" style="object-position:50% 45%" decoding="async" loading="eager" fetchpriority="high"></figure>
     <figure data-p="1"><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/4/42/North_portion_of_Kilauea_volcano.jpg/1280px-North_portion_of_Kilauea_volcano.jpg" srcset="https://thumb.wikimedia.org/wikipedia/commons/thumb/4/42/North_portion_of_Kilauea_volcano.jpg/960px-North_portion_of_Kilauea_volcano.jpg 960w, https://thumb.wikimedia.org/wikipedia/commons/thumb/4/42/North_portion_of_Kilauea_volcano.jpg/1280px-North_portion_of_Kilauea_volcano.jpg 1280w, https://thumb.wikimedia.org/wikipedia/commons/thumb/4/42/North_portion_of_Kilauea_volcano.jpg/1920px-North_portion_of_Kilauea_volcano.jpg 1920w" sizes="100vw" width="4608" height="2592" alt="" style="object-position:50% 42%" decoding="async" loading="eager"></figure>
     <figure data-p="2"><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/1/14/Kilauea_eastern_rift_zone_fissure_eruption_May_2018.jpg/1280px-Kilauea_eastern_rift_zone_fissure_eruption_May_2018.jpg" srcset="https://thumb.wikimedia.org/wikipedia/commons/thumb/1/14/Kilauea_eastern_rift_zone_fissure_eruption_May_2018.jpg/960px-Kilauea_eastern_rift_zone_fissure_eruption_May_2018.jpg 960w, https://thumb.wikimedia.org/wikipedia/commons/thumb/1/14/Kilauea_eastern_rift_zone_fissure_eruption_May_2018.jpg/1280px-Kilauea_eastern_rift_zone_fissure_eruption_May_2018.jpg 1280w, https://thumb.wikimedia.org/wikipedia/commons/thumb/1/14/Kilauea_eastern_rift_zone_fissure_eruption_May_2018.jpg/1920px-Kilauea_eastern_rift_zone_fissure_eruption_May_2018.jpg 1920w" sizes="100vw" width="4032" height="3024" alt="" style="object-position:50% 50%" decoding="async"></figure>
@@ -228,7 +230,7 @@ footer{position:relative;z-index:5;padding:34px var(--pad) 70px;border-top:1px s
     </div>
   </aside>
 
-  <main class="phases">
+  <main class="phases" data-material>
 
     <header class="phase hero" data-n="0" data-rot="0deg">
       <div class="txt">
@@ -318,11 +320,19 @@ footer{position:relative;z-index:5;padding:34px var(--pad) 70px;border-top:1px s
       amp = +d.amp;
     }
   }
-  var io = new IntersectionObserver(function(es){
-    es.forEach(function(e){ if (e.isIntersecting) trip(e.target); });
-  }, { rootMargin: '-50% 0px -50% 0px', threshold: 0 });
-  document.querySelectorAll('.phase').forEach(function(s){ io.observe(s); });
-  trip(document.querySelector('.phase'));
+  /* The phase in force is the last one whose line has crossed. Asking that on
+     every crossing, rather than trusting the section that crossed, keeps the
+     screen right after a jump (End, a reload at the foot of the page) that
+     leaves no section across the middle. */
+  var secs = Array.prototype.slice.call(document.querySelectorAll('.phase'));
+  function settle(){
+    var mid = innerHeight / 2, sec = secs[0];
+    secs.forEach(function(s){ if (s.getBoundingClientRect().top <= mid) sec = s; });
+    if (sec.dataset.n !== deck.dataset.phase) trip(sec);
+  }
+  var io = new IntersectionObserver(settle, { rootMargin: '-50% 0px -50% 0px', threshold: 0 });
+  secs.forEach(function(s){ io.observe(s); });
+  trip(secs[0]);
 
   /* seismogram: a rolling trace whose amplitude belongs to the phase */
   var N = 160, pts = [], trace = $('trace'), last = 0;

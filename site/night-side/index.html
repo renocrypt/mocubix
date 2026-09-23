@@ -21,7 +21,7 @@
 :root{--display:'Panchang',Arial,sans-serif} /* guest display face for this exhibit */
 /* ── material ─────────────────────────────────────────────────
    This piece is the night side of the planet. It stays dark in both
-   palettes — the night tokens, fixed — and only its chrome follows the switch. */
+   palettes, marked data-material, so even the plate the chrome stands on is night. */
 :root{--space:#050506;--hi:#F2EDE5;--md:#B4ABA0;--lo:#7E766D;--sig:#6E86B8;--terra:#D4673F;
   --rule:color-mix(in srgb,#F2EDE5 13%,transparent)}
 @property --i{syntax:'<integer>';inherits:true;initial-value:0}
@@ -33,11 +33,6 @@ a{color:inherit;text-decoration:none}
 img{display:block}
 h1,h2,p,figure,dl,dd{margin:0}
 h1,h2{font-weight:400}
-.back{position:fixed;top:22px;left:clamp(16px,4vw,40px);z-index:80;font-family:var(--mono);font-size:10px;
-  letter-spacing:.14em;text-transform:uppercase;color:var(--md)}
-.back:hover{color:var(--hi)}
-.theme{color:var(--md)}
-.back,.theme{text-shadow:0 1px 14px var(--space),0 0 3px var(--space)}
 
 /* ── the runway ────────────────────────────────────────────────
    One view timeline over the pin. 0–13%: the title leaves, the map docks,
@@ -168,7 +163,7 @@ footer{padding:0 clamp(20px,5vw,72px) 70px;display:flex;flex-wrap:wrap;gap:12px 
 }
 </style>
 </head>
-<body>
+<body data-material>
 
 <a class="back" href="../">← Mocubix</a>
 
