@@ -1530,3 +1530,44 @@ It runs at the display's refresh rate (p50 6.9 ms, p99 7.7 ms at 144 Hz),
 with no overflow at 1324 or 390, and the console is clean. On the phone the
 frame's implicit grid column grew to the 1083px map and carried the ledger
 off-screen; the fix was an explicit `minmax(0,1fr)`.
+
+## The twenty-second showcase: Ordered Dithering, tones taken away, 2026-09-23
+
+**The idea.** Three photographs from three centuries, taken down to a
+handful of tones, the missing ones made up out of the regular grain of the
+8×8 Bayer matrix: Nadar's Sarah Bernhardt (1864), a plate of the Moon from
+Loewy and Puiseux's photographic atlas for the Paris Observatory (Blancanus,
+Tycho, Schiller, 1899; the National Gallery of Art, CC0), and Apollo 8's
+Earthrise (1968). On arrival the tones fall by themselves from the
+photograph to two, once; then a dial takes them from 16 to 2, with three
+grains and the matrix itself shown as 64 greys with their thresholds as
+text.
+
+**Made right, not just made.** The dither is real, computed live on a
+canvas over the photograph: Wikimedia serves `access-control-allow-origin:
+*`, so a canvas can read the image. Each pixel takes the tone just below or
+just above its own by its cell's threshold, and the choice is made in linear
+light, so the grain averages to the photograph's brightness (in sRGB a
+two-tone dither makes every mid-tone too light). The tones are spaced
+evenly in sRGB, and a 256-entry table per setting (the tone below, the
+fraction towards the one above) keeps the inner loop to a lookup and a
+compare. The monochrome prints dither between their own ink and paper, the
+0.5th and 99th percentiles measured on each (Bernhardt neutral #0B0B0B /
+#E5E5E5; the Moon plate warm #322F26 / #F8F4EB). Earthrise dithers per
+channel, so at two tones it has eight colours, and it is cropped to the
+Earth and the horizon. A redraw of 1.3–1.75 Mpx costs about 5–14 ms.
+
+**Crops, and a trap.** A picture may declare the part shown. The `<img>`
+crops itself with `object-view-box: inset(…)` (its width, height and --ar
+are the crop's, its `sizes` scaled up by the crop's width). The script must
+draw the same part, and `drawImage`'s source rectangle is in the file's own
+pixels, while `naturalWidth` is density-corrected for srcset images and
+ignores `object-view-box`: a source rectangle computed from `naturalWidth`
+drew the black sky. The fix draws the whole picture into a larger
+destination rectangle, offset so the part fills the canvas, which needs no
+source units at all.
+
+**Checked.** At 1324×725 and at 390×844, no overflow, and the console is
+clean. The photograph stays in the page as the image, with its alt; the
+canvas is aria-hidden, and the tone count is an `<output>`. The card is
+Bernhardt at two tones.

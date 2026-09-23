@@ -4348,5 +4348,67 @@
   },
   "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/59/Carte_figurative_des_pertes_successives_en_hommes_de_l%27arm%C3%A9e_fran%C3%A7aise_dans_la_Campagne_de_Russie_1812-13.jpg/330px-Carte_figurative_des_pertes_successives_en_hommes_de_l%27arm%C3%A9e_fran%C3%A7aise_dans_la_Campagne_de_Russie_1812-13.jpg 330w, https://thumb.wikimedia.org/wikipedia/commons/thumb/5/59/Carte_figurative_des_pertes_successives_en_hommes_de_l%27arm%C3%A9e_fran%C3%A7aise_dans_la_Campagne_de_Russie_1812-13.jpg/500px-Carte_figurative_des_pertes_successives_en_hommes_de_l%27arm%C3%A9e_fran%C3%A7aise_dans_la_Campagne_de_Russie_1812-13.jpg 500w, https://thumb.wikimedia.org/wikipedia/commons/thumb/5/59/Carte_figurative_des_pertes_successives_en_hommes_de_l%27arm%C3%A9e_fran%C3%A7aise_dans_la_Campagne_de_Russie_1812-13.jpg/960px-Carte_figurative_des_pertes_successives_en_hommes_de_l%27arm%C3%A9e_fran%C3%A7aise_dans_la_Campagne_de_Russie_1812-13.jpg 960w, https://thumb.wikimedia.org/wikipedia/commons/thumb/5/59/Carte_figurative_des_pertes_successives_en_hommes_de_l%27arm%C3%A9e_fran%C3%A7aise_dans_la_Campagne_de_Russie_1812-13.jpg/1280px-Carte_figurative_des_pertes_successives_en_hommes_de_l%27arm%C3%A9e_fran%C3%A7aise_dans_la_Campagne_de_Russie_1812-13.jpg 1280w, https://thumb.wikimedia.org/wikipedia/commons/thumb/5/59/Carte_figurative_des_pertes_successives_en_hommes_de_l%27arm%C3%A9e_fran%C3%A7aise_dans_la_Campagne_de_Russie_1812-13.jpg/1920px-Carte_figurative_des_pertes_successives_en_hommes_de_l%27arm%C3%A9e_fran%C3%A7aise_dans_la_Campagne_de_Russie_1812-13.jpg 1920w, https://thumb.wikimedia.org/wikipedia/commons/thumb/5/59/Carte_figurative_des_pertes_successives_en_hommes_de_l%27arm%C3%A9e_fran%C3%A7aise_dans_la_Campagne_de_Russie_1812-13.jpg/3840px-Carte_figurative_des_pertes_successives_en_hommes_de_l%27arm%C3%A9e_fran%C3%A7aise_dans_la_Campagne_de_Russie_1812-13.jpg 3840w",
   "default": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/59/Carte_figurative_des_pertes_successives_en_hommes_de_l%27arm%C3%A9e_fran%C3%A7aise_dans_la_Campagne_de_Russie_1812-13.jpg/1280px-Carte_figurative_des_pertes_successives_en_hommes_de_l%27arm%C3%A9e_fran%C3%A7aise_dans_la_Campagne_de_Russie_1812-13.jpg"
+ },
+ {
+  "title": "File:AS08-14-2383.jpg",
+  "label": "Earthrise",
+  "kind": "tones",
+  "w": 5584,
+  "h": 5584,
+  "license": "Public domain",
+  "artist": "NASA",
+  "credit": "https://tothemoon.ser.asu.edu/gallery/Apollo/8/Hasselblad%20500EL%2070%20mm#AS08",
+  "descurl": "https://commons.wikimedia.org/wiki/File:AS08-14-2383.jpg",
+  "sources": {
+   "330": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e0/AS08-14-2383.jpg/330px-AS08-14-2383.jpg",
+   "500": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e0/AS08-14-2383.jpg/500px-AS08-14-2383.jpg",
+   "960": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e0/AS08-14-2383.jpg/960px-AS08-14-2383.jpg",
+   "1280": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e0/AS08-14-2383.jpg/1280px-AS08-14-2383.jpg",
+   "1920": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e0/AS08-14-2383.jpg/1920px-AS08-14-2383.jpg",
+   "3840": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e0/AS08-14-2383.jpg/3840px-AS08-14-2383.jpg"
+  },
+  "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e0/AS08-14-2383.jpg/330px-AS08-14-2383.jpg 330w, https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e0/AS08-14-2383.jpg/500px-AS08-14-2383.jpg 500w, https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e0/AS08-14-2383.jpg/960px-AS08-14-2383.jpg 960w, https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e0/AS08-14-2383.jpg/1280px-AS08-14-2383.jpg 1280w, https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e0/AS08-14-2383.jpg/1920px-AS08-14-2383.jpg 1920w, https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e0/AS08-14-2383.jpg/3840px-AS08-14-2383.jpg 3840w",
+  "default": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e0/AS08-14-2383.jpg/1280px-AS08-14-2383.jpg"
+ },
+ {
+  "title": "File:Loewy et Puiseux, Photographie Lunaire Blancanus - Tycho - Schiller, 1899, NGA 136739.jpg",
+  "label": "Moon",
+  "kind": "tones",
+  "w": 2446,
+  "h": 3000,
+  "license": "CC0",
+  "artist": "Loewy et Puiseux",
+  "credit": "This file was donated to Wikimedia Commons as part of a project by the National ",
+  "descurl": "https://commons.wikimedia.org/wiki/File:Loewy_et_Puiseux,_Photographie_Lunaire_Blancanus_-_Tycho_-_Schiller,_1899,_NGA_136739.jpg",
+  "sources": {
+   "330": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/21/Loewy_et_Puiseux%2C_Photographie_Lunaire_Blancanus_-_Tycho_-_Schiller%2C_1899%2C_NGA_136739.jpg/330px-Loewy_et_Puiseux%2C_Photographie_Lunaire_Blancanus_-_Tycho_-_Schiller%2C_1899%2C_NGA_136739.jpg",
+   "500": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/21/Loewy_et_Puiseux%2C_Photographie_Lunaire_Blancanus_-_Tycho_-_Schiller%2C_1899%2C_NGA_136739.jpg/500px-Loewy_et_Puiseux%2C_Photographie_Lunaire_Blancanus_-_Tycho_-_Schiller%2C_1899%2C_NGA_136739.jpg",
+   "960": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/21/Loewy_et_Puiseux%2C_Photographie_Lunaire_Blancanus_-_Tycho_-_Schiller%2C_1899%2C_NGA_136739.jpg/960px-Loewy_et_Puiseux%2C_Photographie_Lunaire_Blancanus_-_Tycho_-_Schiller%2C_1899%2C_NGA_136739.jpg",
+   "1280": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/21/Loewy_et_Puiseux%2C_Photographie_Lunaire_Blancanus_-_Tycho_-_Schiller%2C_1899%2C_NGA_136739.jpg/1280px-Loewy_et_Puiseux%2C_Photographie_Lunaire_Blancanus_-_Tycho_-_Schiller%2C_1899%2C_NGA_136739.jpg",
+   "1920": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/21/Loewy_et_Puiseux%2C_Photographie_Lunaire_Blancanus_-_Tycho_-_Schiller%2C_1899%2C_NGA_136739.jpg/1920px-Loewy_et_Puiseux%2C_Photographie_Lunaire_Blancanus_-_Tycho_-_Schiller%2C_1899%2C_NGA_136739.jpg",
+   "2446": "https://upload.wikimedia.org/wikipedia/commons/2/21/Loewy_et_Puiseux%2C_Photographie_Lunaire_Blancanus_-_Tycho_-_Schiller%2C_1899%2C_NGA_136739.jpg"
+  },
+  "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/21/Loewy_et_Puiseux%2C_Photographie_Lunaire_Blancanus_-_Tycho_-_Schiller%2C_1899%2C_NGA_136739.jpg/330px-Loewy_et_Puiseux%2C_Photographie_Lunaire_Blancanus_-_Tycho_-_Schiller%2C_1899%2C_NGA_136739.jpg 330w, https://thumb.wikimedia.org/wikipedia/commons/thumb/2/21/Loewy_et_Puiseux%2C_Photographie_Lunaire_Blancanus_-_Tycho_-_Schiller%2C_1899%2C_NGA_136739.jpg/500px-Loewy_et_Puiseux%2C_Photographie_Lunaire_Blancanus_-_Tycho_-_Schiller%2C_1899%2C_NGA_136739.jpg 500w, https://thumb.wikimedia.org/wikipedia/commons/thumb/2/21/Loewy_et_Puiseux%2C_Photographie_Lunaire_Blancanus_-_Tycho_-_Schiller%2C_1899%2C_NGA_136739.jpg/960px-Loewy_et_Puiseux%2C_Photographie_Lunaire_Blancanus_-_Tycho_-_Schiller%2C_1899%2C_NGA_136739.jpg 960w, https://thumb.wikimedia.org/wikipedia/commons/thumb/2/21/Loewy_et_Puiseux%2C_Photographie_Lunaire_Blancanus_-_Tycho_-_Schiller%2C_1899%2C_NGA_136739.jpg/1280px-Loewy_et_Puiseux%2C_Photographie_Lunaire_Blancanus_-_Tycho_-_Schiller%2C_1899%2C_NGA_136739.jpg 1280w, https://thumb.wikimedia.org/wikipedia/commons/thumb/2/21/Loewy_et_Puiseux%2C_Photographie_Lunaire_Blancanus_-_Tycho_-_Schiller%2C_1899%2C_NGA_136739.jpg/1920px-Loewy_et_Puiseux%2C_Photographie_Lunaire_Blancanus_-_Tycho_-_Schiller%2C_1899%2C_NGA_136739.jpg 1920w, https://upload.wikimedia.org/wikipedia/commons/2/21/Loewy_et_Puiseux%2C_Photographie_Lunaire_Blancanus_-_Tycho_-_Schiller%2C_1899%2C_NGA_136739.jpg 2446w",
+  "default": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/21/Loewy_et_Puiseux%2C_Photographie_Lunaire_Blancanus_-_Tycho_-_Schiller%2C_1899%2C_NGA_136739.jpg/1280px-Loewy_et_Puiseux%2C_Photographie_Lunaire_Blancanus_-_Tycho_-_Schiller%2C_1899%2C_NGA_136739.jpg"
+ },
+ {
+  "title": "File:Sarah Bernhardt 1864 Nadar.jpg",
+  "label": "Bernhardt",
+  "kind": "tones",
+  "w": 3046,
+  "h": 4000,
+  "license": "Public domain",
+  "artist": "Nadar",
+  "credit": "Unknown sourceUnknown source",
+  "descurl": "https://commons.wikimedia.org/wiki/File:Sarah_Bernhardt_1864_Nadar.jpg",
+  "sources": {
+   "330": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8b/Sarah_Bernhardt_1864_Nadar.jpg/330px-Sarah_Bernhardt_1864_Nadar.jpg",
+   "500": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8b/Sarah_Bernhardt_1864_Nadar.jpg/500px-Sarah_Bernhardt_1864_Nadar.jpg",
+   "960": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8b/Sarah_Bernhardt_1864_Nadar.jpg/960px-Sarah_Bernhardt_1864_Nadar.jpg",
+   "1280": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8b/Sarah_Bernhardt_1864_Nadar.jpg/1280px-Sarah_Bernhardt_1864_Nadar.jpg",
+   "1920": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8b/Sarah_Bernhardt_1864_Nadar.jpg/1920px-Sarah_Bernhardt_1864_Nadar.jpg"
+  },
+  "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8b/Sarah_Bernhardt_1864_Nadar.jpg/330px-Sarah_Bernhardt_1864_Nadar.jpg 330w, https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8b/Sarah_Bernhardt_1864_Nadar.jpg/500px-Sarah_Bernhardt_1864_Nadar.jpg 500w, https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8b/Sarah_Bernhardt_1864_Nadar.jpg/960px-Sarah_Bernhardt_1864_Nadar.jpg 960w, https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8b/Sarah_Bernhardt_1864_Nadar.jpg/1280px-Sarah_Bernhardt_1864_Nadar.jpg 1280w, https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8b/Sarah_Bernhardt_1864_Nadar.jpg/1920px-Sarah_Bernhardt_1864_Nadar.jpg 1920w",
+  "default": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8b/Sarah_Bernhardt_1864_Nadar.jpg/960px-Sarah_Bernhardt_1864_Nadar.jpg"
  }
 ]

@@ -118,7 +118,7 @@ mask-image: linear-gradient(to top, #000, transparent);</code></details>
     <p class="note">Real pixel work — it needs <code>crossorigin="anonymous"</code> and a CORS-clean host, otherwise the canvas is tainted and <code>getImageData</code> throws. Wikimedia sends the header; most museum CDNs do not.</p>
     <details class="how"><summary>How it is built</summary><code class="api">const BAYER8 = [...];  // 8×8 threshold matrix
 v = v + (BAYER8[y%8][x%8]/64 - 0.5) * spread;</code></details>
-    <a class="deeper open" href="../ordered-dithering/">Open its page</a>
+    <a class="deeper open" href="../ordered-dithering/">Open its showcase</a>
   </div>
   <div class="stage"><span class="tag">drag the slider</span><div class="dith"><canvas id="dithCv"></canvas></div><input class="rng" id="dithRange" type="range" min="2" max="16" value="4" aria-label="Levels"></div>
 </section>
