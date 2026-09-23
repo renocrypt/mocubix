@@ -31,7 +31,7 @@ def fetch(label, width=960):
     CACHE.mkdir(exist_ok=True)
     path = CACHE / (label.replace(' ', '_') + f'-{width}.jpg')
     if not path.exists():
-        for wait in (0, 3, 8, 20):
+        for wait in (0, 2, 4, 8, 8, 15, 15, 30, 30, 45):   # large copies are often cut short: try again
             time.sleep(wait)
             try:
                 path.write_bytes(urllib.request.urlopen(urllib.request.Request(works[label]['sources'][str(width)], headers=UA), timeout=60).read())
@@ -237,15 +237,24 @@ def seam(A, B, ba, edge):
 
 def stitch(name):
     """Lay a showcase's SHEETS end to end: each sheet's scale, turn and shift into the first sheet's frame,
-    where each is cut (the middle of every overlap) and the box around the whole, at the 1920px copies."""
+    where each is cut (the middle of every overlap) and the box around the whole, at the 1920px copies.
+    A map's band is found between its blank margins; a showcase whose sheets have none (a textile, a
+    scroll) gives BAND = (top, bottom) as fractions of the height. Sheets served at one width can differ
+    in scale: each is brought to its neighbour's height before they are matched."""
     sys.path.insert(0, str(ROOT / 'build' / 'showcases'))
     showcase = __import__(name)
     grey = [ImageOps.grayscale(fetch(label, 1920)) for label in showcase.SHEETS]
-    bands = [band(g) for g in grey]
+    frac = getattr(showcase, 'BAND', None)
+    bands = [band(g) if frac is None else (round(g.height * frac[0]), round(g.height * frac[1]) - 1) for g in grey]
     edge = lambda g: g.width - 9
     to_first, pairs = [(1.0, 0.0, 0.0, 0.0)], []
     for k in range(len(grey) - 1):
-        m, n, of, worst = seam(grey[k], grey[k + 1], bands[k], edge(grey[k]))
+        A, B = grey[k], grey[k + 1]
+        r = A.height / B.height
+        Bs = B.resize((round(B.width * r), A.height), Image.LANCZOS) if abs(r - 1) > .01 else B
+        m, n, of, worst = seam(A, Bs, bands[k], edge(A))
+        if Bs is not B:
+            m = compose(m, (r, 0.0, 0.0, 0.0))                 # back into the later sheet's own pixels
         pairs.append(m)
         to_first.append(compose(to_first[-1], m))
         print(f'  seam {k + 1}|{k + 2}: {n} of {of} patches agree; s={m[0]:.4f} turn={math.degrees(m[1]):+.2f}° '
@@ -272,7 +281,7 @@ def stitch(name):
     pad, sheets, ys = -2, [], []
     for k, g in enumerate(grey):
         x0 = cuts[k - 1][1] if k else 8
-        x1 = cuts[k][0] + 8 if k < len(cuts) else east(g, bands[k]) + 4   # a little under the next sheet: no hairline
+        x1 = cuts[k][0] + 8 if k < len(cuts) else (east(g, bands[k]) + 4 if frac is None else g.width - 1)   # a little under the next sheet: no hairline
         y0, y1 = bands[k][0] - pad, bands[k][1] + pad
         s_, th, tx, ty = to_first[k]
         sheets.append({'label': showcase.SHEETS[k], 'w': g.width, 'h': g.height, 's': round(s_, 5),

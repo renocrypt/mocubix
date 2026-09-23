@@ -11,6 +11,10 @@ ROOT = Path(__file__).resolve().parents[1]
 UA = {'User-Agent': 'Mocubix/1.0 (https://github.com/renocrypt/mocubix)'}
 
 WORKS = [
+ ["bayeux", "Scene 55", "File:Bayeux Tapestry Scene 55.png"],
+ ["bayeux", "Scene 56", "File:Bayeux Tapestry Scene 56.png"],
+ ["bayeux", "Scene 57", "File:Bayeux Tapestry Scene 57.png"],
+ ["bayeux", "Scene 58", "File:Bayeux Tapestry Scene 58.png"],
  ["prokudin", "Alim Khan", "File:Alim Khan (1880–1944), Emir of Bukhara, photographed by S.M. Prokudin-Gorskiy in 1911.jpg"],
  ["prokudin", "Peasant girls", "File:Russian peasant girls in front of a traditional wooden house in Kirillov.jpg"],
  ["prokudin", "Tea harvest", "File:Group of workers harvesting tea Chakva Prokudin-Gorsky.jpg"],
@@ -957,7 +961,7 @@ def real_width(url):
 ONLY = set(sys.argv[1:])          # e.g. `python3 build/curate.py webb` fetches only that kind
 if ONLY: WORKS = [w for w in WORKS if w[0] in ONLY]
 # material shown large asks for the big buckets too
-WIDE = {'webb': (1920, 3840), 'glacier': (1920,), 'buson': (1920, 2560), 'adams': (1920,), 'fsa': (1920, 3840), 'tabula': (1920, 3840), 'morris': (1920, 3840), 'monet': (1920,), 'posters': (1920,), 'heures': (1920,), 'prokudin': (1920,)}
+WIDE = {'webb': (1920, 3840), 'glacier': (1920,), 'buson': (1920, 2560), 'adams': (1920,), 'fsa': (1920, 3840), 'tabula': (1920, 3840), 'morris': (1920, 3840), 'monet': (1920,), 'posters': (1920,), 'heures': (1920,), 'prokudin': (1920,), 'bayeux': (1920,)}
 
 recs = {}
 for width in (330, 500, 640, 1024, 1600, 1920, 2560, 3840):   # 330, 500: tiles, thumbnails, pictures shown small

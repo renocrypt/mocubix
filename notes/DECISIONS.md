@@ -1302,3 +1302,46 @@ colour; no overflow; the console is clean. In the tea harvest, a girl who
 moved between exposures keeps a colour fringe, and the note points to it.
 The card is the Emir with blue two-thirds across: full colour behind the
 edge, red and green ahead of it.
+
+## The seventeenth showcase: Horizontal Scroll Section, the end of the tapestry, 2026-09-23
+
+**The idea.** The last scenes of the Bayeux Tapestry (55–58, public domain;
+the Université de Caen Normandie, CNRS and ENSICAEN digitisation of the 2017
+photographic campaign), from William lifting his helmet to show he is alive,
+through Harold's death, to the ragged end of the cloth. You scroll down; the
+cloth travels sideways, the way it is read. The Latin tituli sit under the
+words stitched above them, each with its English, and the last line is set
+under the last stitch: the rest has been missing from time immemorial. "Et
+fuga verterunt Angli" is noted as probably added shortly before 1814, as
+Wikipedia reports. The date is given as the source gives it: produced in
+England in the years after the Conquest.
+
+**How it is built.** No script. The run is exactly as tall as the strip is
+wider than the screen (`--travel`, computed from the strip's own size); the
+frame is sticky, and the track pans on the run's view timeline to
+`translate: calc(100cqw - 100%)`, so the last stitch lands a gutter from the
+frame's edge whatever the screen. A hairline beneath fills as you go. The
+strip is four overlapping photographs laid end to end by `register.py
+stitch`, now general enough for a textile: a showcase may give BAND (its
+band as fractions of the height) where a map would have blank margins, and
+sheets served at one width but of different scale (the four scans are
+15400–22000 px wide, all 5550 tall) are brought to one height before
+matching, the scale folded back into the fit. All three seams agreed on
+every patch (101, 72, 75), worst residual 1.9 px; the joins are invisible
+("…CVM HAROLDO" flows into "HIC" across two scans).
+
+**Weight.** The scans are PNG only, and embroidered linen compresses badly:
+3840px copies are 6–9 MB each (29 MB for the four). No public-domain JPEG
+of these scenes exists on Commons (only details, and CC BY-SA photographs).
+The srcset is therefore capped at 1920 (7.4 MB, the Montmartre posters' order
+of weight), which reads well on a retina screen at this height. All four load
+eagerly: a lazy image inside the clipped, travelling track is not
+"intersecting" until it is on screen, and would arrive visibly late.
+`register.py`'s fetch now retries more patiently, because large copies are
+often cut short in transit. Resuming with Range was tried: upload.wikimedia
+answers 200 with the whole file, not 206.
+
+**Checked.** At 1324×725 and at 390×844 (where the cloth is half the screen):
+no overflow; a sweep runs at 120 fps (p99 10.2 ms); the console is clean.
+With reduced motion the run collapses to one screen and the cloth becomes an
+ordinary sideways scroller. The card is Harold's death with its titulus.
