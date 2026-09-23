@@ -146,7 +146,7 @@ def render(works):
         '    </div>\n'
         '    <div class="field straight">\n'
         '      <p class="road"><i class="glyph"></i><b>Straight across</b><span>the line CSS takes unless asked otherwise</span></p>\n'
-        '      <p class="mix" aria-hidden="true"></p>\n'
+        '      <p class="mix" aria-hidden="true"><span></span><span></span></p>\n'
         '      <p class="meter"><span>chroma</span><b aria-hidden="true"></b><i></i></p>\n'
         '    </div>\n'
         f'    <figure class="medallion" style="--iw:{scale:.5f};--ih:{ih:.5f};--ix:{0.5 - cx * scale:.5f};--iy:{0.5 - cy * ih:.5f};'

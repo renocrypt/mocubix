@@ -27,7 +27,7 @@
 .zones{margin:0;padding:0;list-style:none}
 .zone{--l:calc(var(--z) * 10%);height:24svh;background:lab(var(--l) 0 0);display:flex;align-items:flex-end;gap:18px;
   padding:0 clamp(20px,5vw,72px) 16px;color:lab(calc(mod(var(--z) * 10 + 50, 100) * 1%) 0 0)}
-.zone b{font-family:var(--display);font-weight:400;font-size:clamp(28px,3vw,44px);line-height:1}
+.zone b{font-family:var(--sans);font-weight:400;font-size:clamp(28px,3vw,44px);line-height:1;letter-spacing:-.02em}   /* figures in Switzer: Melodrama's zero is slashed */
 .zone span{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;padding-bottom:4px}
 
 @media (max-width:760px){

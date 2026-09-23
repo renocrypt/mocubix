@@ -39,7 +39,13 @@
 /* what the straight route is: a mixture of the two, by weight, set as a recipe */
 .mix{align-self:end;margin:0 0 clamp(10px,2.4vh,22px);font-family:var(--display);font-style:italic;font-size:clamp(26px,3.3vw,52px);line-height:1.08;white-space:pre;
   counter-reset:pa calc(100 - var(--t) * 100) pb calc(var(--t) * 100)}
-.mix::before{content:counter(pa) '% ' var(--na) '\A' counter(pb) '% ' var(--nb)}
+/* the weights in Switzer (Melodrama's zero is slashed), Chevreul's names in the italic */
+.mix span{display:block}
+.mix span::before{font-family:var(--sans);font-style:normal;font-weight:400;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.mix span:first-child::before{content:counter(pa) '% '}
+.mix span:first-child::after{content:var(--na)}
+.mix span:last-child::before{content:counter(pb) '% '}
+.mix span:last-child::after{content:var(--nb)}
 
 /* how much colour is left: a meter, and its number */
 .meter{display:grid;grid-template-columns:auto minmax(0,1fr) 3.4em;align-items:center;gap:12px;width:min(100%,380px);margin:0;

@@ -1812,3 +1812,26 @@ painting at 20–23. Also fixed across the Lexicon: Melodrama's zero is
 slashed in every setting, so the meters here, in Token Interpolation and in
 Ordered Dithering set their numerals in Switzer. The card is the painting
 turned, the counter at 21 and the sparkline's jump.
+
+## Wrapping up, 2026-09-23
+
+**A regression sweep** of all 27 showcases, each loaded in an iframe at 1324
+and at 390 wide and scrolled through: no horizontal overflow, no broken
+images, no failed resources, no script errors, every page its own card.
+
+**Melodrama's zero is slashed in every setting** (default, lining,
+`zero` off, old-style, every stylistic set), so wherever the display face
+sets figures that are the point (a measured count, a percentage, a
+distance, a scale), the figures are set in Switzer: Path Drawing's
+soldiers and temperatures, Scroll Markers' distances, Difference
+Inversion's scale, Gamut Arc's mixture (its figures in Switzer, Chevreul's
+colour names still in the italic, split into two pseudo-elements), and the
+three meters fixed earlier. Figures inside running prose stay in the face
+they belong to. The meters also declared Switzer at 300, a weight the site
+never loads: they now say 400, what they always rendered.
+
+**Two things decided with the user.** Motion is the content here: no
+effort goes into `prefers-reduced-motion` variants (it moves no SEO signal,
+and a still showcase shows nothing); the rules already in place stay. And
+Google Fonts only as a convenience for script coverage (the Marquee's Noto),
+never for a curated choice of face; fonts may stay on CDNs.

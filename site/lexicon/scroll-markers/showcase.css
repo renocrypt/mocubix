@@ -26,7 +26,7 @@
 .stop h2{font-family:var(--display);font-weight:400;font-size:clamp(40px,5vw,76px);line-height:.92;letter-spacing:-.025em;margin:10px 0 0;text-wrap:balance}
 .stop .what{margin:14px 0 0;font-size:clamp(15px,1.3vw,18px);line-height:1.5;color:var(--mid);max-width:38ch;text-wrap:pretty}
 .stop .far{margin:20px 0 0;font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--mid)}
-.stop .far b{display:block;font-family:var(--display);font-weight:400;font-size:clamp(36px,3.8vw,58px);line-height:1;letter-spacing:-.02em;
+.stop .far b{display:block;font-family:var(--sans);font-weight:400;font-size:clamp(36px,3.8vw,58px);line-height:1;letter-spacing:-.03em;   /* figures in Switzer: Melodrama's zero is slashed */
   text-transform:none;color:var(--accent);margin-bottom:6px}
 .stop .light{margin:8px 0 0;font-size:13.5px;line-height:1.5;color:var(--mid)}
 .stop .cr{display:block;margin-top:16px;font-family:var(--mono);font-size:9px;letter-spacing:.06em;color:var(--dim)}
