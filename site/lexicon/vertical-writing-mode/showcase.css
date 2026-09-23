@@ -74,12 +74,12 @@
 /* in vertical writing a figure's blocks stack right to left like everything else: the picture, then its caption */
 .painting,.fan{margin:0}
 /* its paper is the scroll's own colour, so only its ends need to melt; the right end is Buson's first column, so barely */
-.painting img{display:block;height:var(--h);width:auto;
+.painting img{display:block;height:var(--h);width:calc(var(--h) * var(--ar));
   -webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 98.5%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 98.5%,transparent)}
 .painting figcaption,.fan figcaption{margin-block:0;margin-inline:var(--pad);font-size:calc(var(--fs) * .36);color:#7C6C5C}
 .fan{margin-block:0 calc(var(--col) * .4);padding-block-start:calc(var(--col) * .8)}
 /* the fan is cut from its mount: an annulus about the point its ribs meet, between its two outer ribs (measured on the scan) */
-.fan img{display:block;height:calc(var(--h) * .6);width:auto;margin-inline:auto;filter:drop-shadow(0 6px 10px rgb(60 40 20 / .28));
+.fan img{display:block;height:calc(var(--h) * .6);width:calc(var(--h) * .6 * var(--ar));margin-inline:auto;filter:drop-shadow(0 6px 10px rgb(60 40 20 / .28));
   -webkit-mask-image:radial-gradient(ellipse 59.04% 106.14% at 50.16% 116.89%,transparent 39.9%,#000 40.3%,#000 98.9%,transparent 99.3%),
     conic-gradient(from -52.9deg at 50.16% 116.89%,#000 0deg 104.9deg,transparent 105.2deg);
   mask-image:radial-gradient(ellipse 59.04% 106.14% at 50.16% 116.89%,transparent 39.9%,#000 40.3%,#000 98.9%,transparent 99.3%),

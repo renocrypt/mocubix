@@ -63,7 +63,8 @@ def render(works):
         rooms.append(
             f'<figure class="canvas" data-light="{_key(i)}">\n'
             f'  <img src="{w["default"]}" srcset="{w["srcset"]}" sizes="(max-width: 760px) 70vw, min(52svh, 520px)" '
-            f'width="{w["w"]}" height="{w["h"]}" alt="{html.escape(f"Claude Monet, {title}, {year}", quote=True)}" decoding="async"'
+            f'width="{w["w"]}" height="{w["h"]}" style="--ar:{w["w"] / w["h"]:.4f}" '
+            f'alt="{html.escape(f"Claude Monet, {title}, {year}", quote=True)}" decoding="async"'
             f'{" fetchpriority=\"high\"" if i == 0 else " loading=\"lazy\""}>\n'
             f'  <figcaption><b lang="fr">{html.escape(label)}</b><span class="t">{html.escape(title)}</span>'
             f'<span class="w">{year} · {html.escape(where)}</span></figcaption>\n'

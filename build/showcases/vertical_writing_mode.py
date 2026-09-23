@@ -104,6 +104,7 @@ def render(works):
 
     def img(w, sizes, alt):
         return (f'<img src="{w["default"]}" srcset="{w["srcset"]}" sizes="{sizes}" width="{w["w"]}" height="{w["h"]}" '
+                f'style="--ar:{w["w"] / w["h"]:.4f}" '
                 f'alt="{html.escape(alt, quote=True)}" loading="lazy" decoding="async">')
 
     en = lambda *lines: '\n'.join(f'<p class="en">{html.escape(l)}</p>' for l in lines)

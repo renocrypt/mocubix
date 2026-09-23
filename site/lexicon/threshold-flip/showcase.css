@@ -10,7 +10,7 @@
 /* a room per canvas: the name of its light, and the painting */
 .canvas{margin:0;min-height:calc(100svh - var(--bar));box-sizing:border-box;padding:clamp(24px,5vh,56px) clamp(20px,6vw,96px);
   display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:clamp(24px,5vw,96px)}
-.canvas img{grid-column:2;grid-row:1;display:block;height:min(80svh,820px);width:auto;max-width:100%;
+.canvas img{--ih:min(80svh,820px);grid-column:2;grid-row:1;display:block;height:var(--ih);width:calc(var(--ih) * var(--ar));max-width:100%;
   box-shadow:0 30px 70px -30px rgb(0 0 0 / .55)}
 /* the label stands beside its painting, like a gallery label */
 .canvas figcaption{grid-column:1;grid-row:1;display:grid;gap:14px;align-content:center;justify-items:end;text-align:right}
@@ -24,7 +24,7 @@
   .canvas{grid-template-columns:minmax(0,1fr);align-content:center;gap:22px}
   .canvas img,.canvas figcaption{grid-column:1;grid-row:auto}
   .canvas figcaption{justify-items:start;text-align:left}
-  .canvas img{height:auto;width:min(78vw,56svh);justify-self:center}
+  .canvas img{--iw:min(78vw,56svh);width:var(--iw);height:calc(var(--iw) / var(--ar));justify-self:center}
 }
 @media (prefers-reduced-motion:reduce){
   .rouen,.canvas b,.canvas .t,.canvas .w{transition:none}

@@ -48,7 +48,8 @@ def render(works):
         prints.append(
             f'<figure class="print{tall}">\n'
             f'  <img src="{w["default"]}" srcset="{w["srcset"]}" sizes="(max-width: 760px) 92vw, {"62svh" if tall else "108svh"}" '
-            f'width="{w["w"]}" height="{w["h"]}" alt="{html.escape(f"Ansel Adams, {caption}, {year}", quote=True)}" '
+            f'width="{w["w"]}" height="{w["h"]}" style="--ar:{w["w"] / w["h"]:.4f}" '
+            f'alt="{html.escape(f"Ansel Adams, {caption}, {year}", quote=True)}" '
             f'decoding="async"{" fetchpriority=\"high\"" if i == 0 else " loading=\"lazy\""}>\n'
             f'  <figcaption><span>{html.escape(caption)}</span><span>Ansel Adams, {year} · National Archives {ident}</span>'
             + (f'<span class="aside">{html.escape(line)}</span>' if line else '') + '</figcaption>\n'
