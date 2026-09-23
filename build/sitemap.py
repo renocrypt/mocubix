@@ -44,6 +44,8 @@ out = ['# Mocubix', '',
        'and every file there reads as served at https://raw.githubusercontent.com/renocrypt/mocubix/main/site/<path>/<file>. '
        'All pages share site/house.css and site/house.js; the Lexicon adds site/lexicon/lexicon.css and lexicon.js. '
        'A showcase keeps everything else beside its page: index.html, showcase.css and, where it needs one, showcase.js.', '',
+       f'The code is licensed under the Apache License 2.0 ({REPO}/blob/main/LICENSE). '
+       'The pictures keep their own licences from Wikimedia Commons, credited on each page.', '',
        '## Exhibits', '', entry('')]
 out += [entry(p) for p in linked('index.html', r'<a class="card[^"]*" href="([a-z0-9-]+/)"')]
 out += ['', '## The Lexicon', '', entry('lexicon/')]

@@ -4,6 +4,8 @@
 
 Each page is served from its own folder of the repository: https://mocubix.renocrypt.com/<path>/ from https://github.com/renocrypt/mocubix/tree/main/site/<path>/, and every file there reads as served at https://raw.githubusercontent.com/renocrypt/mocubix/main/site/<path>/<file>. All pages share site/house.css and site/house.js; the Lexicon adds site/lexicon/lexicon.css and lexicon.js. A showcase keeps everything else beside its page: index.html, showcase.css and, where it needs one, showcase.js.
 
+The code is licensed under the Apache License 2.0 (https://github.com/renocrypt/mocubix/blob/main/LICENSE). The pictures keep their own licences from Wikimedia Commons, credited on each page.
+
 ## Exhibits
 
 - [Mocubix — Seven ways a page can move](https://mocubix.renocrypt.com/): Seven exhibits of how a page can move — a galloping mare, a hurricane from orbit, an eruption, a departures board — each a real subject on one mechanism, and a lexicon that names forty-one effects. Source: https://github.com/renocrypt/mocubix/tree/main/site/

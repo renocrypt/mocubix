@@ -9,6 +9,7 @@
 [![Lexicon: 41 named effects](https://img.shields.io/badge/lexicon-41%20named%20effects-6E86B8?style=flat-square&labelColor=0B0A09)](https://mocubix.renocrypt.com/lexicon/)
 [![Built with HTML and CSS](https://img.shields.io/badge/built%20with-HTML%20%C2%B7%20CSS-585149?style=flat-square&labelColor=0B0A09)](AGENTS.md)
 [![Made for Chrome](https://img.shields.io/badge/made%20for-Chrome-585149?style=flat-square&labelColor=0B0A09)](AGENTS.md)
+[![Licence: Apache 2.0](https://img.shields.io/badge/licence-Apache%202.0-585149?style=flat-square&labelColor=0B0A09)](LICENSE)
 
 [![Seven ways a page can move: the front door of Mocubix](site/share/index.jpg)](https://mocubix.renocrypt.com/)
 
@@ -53,3 +54,7 @@ Then open http://127.0.0.1:8765/.
 ## Working on it
 
 Start with [AGENTS.md](AGENTS.md): the laws, the map of the repository and the build tools. [notes/NEXT.md](notes/NEXT.md) says what comes next, [notes/TRAPS.md](notes/TRAPS.md) lists the traps already met, and [notes/DECISIONS.md](notes/DECISIONS.md) keeps the history of every exhibit and showcase.
+
+## Licence
+
+Everything written for this repository (the pages, their styles and scripts, the build tools) is licensed under the [Apache License 2.0](LICENSE), so any page can be taken as a template. The pictures are not ours to license: each keeps its own licence from Wikimedia Commons, credited on the page that shows it. The typefaces load from Fontshare and jsDelivr under their own licences and are not part of this repository.
