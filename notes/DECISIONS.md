@@ -1673,3 +1673,52 @@ stage (now the stage's padding); on a phone the sticky deck was 126 px, a
 sixth of the screen, all the way down (static there); the cost line
 orphaned its "KB" (now two unbreakable halves). The card is the winter row,
 prints and stand-ins alternating under the deck's count of bytes.
+
+## The twenty-fifth showcase: Marquee, fifty-five greetings still travelling, 2026-09-23
+
+**The idea.** The fifty-five greetings of the Voyager Golden Record (1977),
+from Sumerian to English, in the order they were recorded, running in five
+bands out from under the record into the dark. Each greeting is set in its
+own script, with its time on the record and its English translation beneath.
+The marquee is the one effect that ignores scroll; here it has something to
+carry: greetings still travelling, on both Voyagers, out of the solar
+system. The texts, written forms and translations are those listed in
+Wikipedia's contents of the record (the table gives the written form for all
+55, cuneiform and Imperial Aramaic included); Wikipedia stores the Arabic
+greeting with its full stop at the logical start, for display inside
+left-to-right text, and here it is set right-to-left with the stop at its
+end.
+
+**The record.** NASA's photograph of the disc (GPN-2000-001976), on a black
+matched to the stage (#040205). The photograph is clipped to the disc's own
+outline about the spindle hole, so only the disc stands in front of the
+bands, not the photograph's black square, and the bands end at the hole, so
+every greeting comes out from behind the record's round edge. Only the label
+turns, at the 16⅔ rpm the record was cut for: a second copy of the same file,
+clipped at 0.179 of the width (inside the dark run-out band, so the seam
+between still and turning falls on black) and rotated about the hole (found
+as the centroid of the dark pixels at the centre). The grooves look the same
+at every angle, and the photograph's glints stay where the light was.
+
+**How it is built.** Each band's greetings are set twice in one moving
+flex row, which travels `-50%`; the copy is `aria-hidden` and `inert`. The
+duration is one set's measured width over the band's speed in pixels a
+second (a ResizeObserver in showcase.js, so it is measured again when the
+fonts arrive): bands of 6,000 to 12,600 px keep their paces. Five bands differ
+in size, speed (23–54 px/s) and light, so they read as depths. Hover stops a
+band and Hold stops them all (WCAG 2.2.2: anything moving for more than five
+seconds must be stoppable; hover alone leaves out touch and keyboard); with
+reduced motion the bands stand still and scroll by hand. Twenty-one faces,
+Noto Serif for most scripts, Naskh for Arabic and Persian, Nastaliq for Urdu
+(at 0.82em: it sits larger), Noto Sans for cuneiform and Imperial Aramaic,
+come in one Google Fonts request with `text=`, cut down to the 488 characters
+the greetings use (a 4.2 KB URL).
+
+**Checked.** At 1324×725 and 390×844: no overflow, all 21 faces loaded,
+console clean; Hold stops all five (0 px of movement), and five bands plus
+the turning label run at p50 6.9 ms, p99 7.8 ms at 144 Hz, all on the
+compositor. Found on the way: the photograph's black square hid the bands
+along a straight line (clipped to the disc), a sliver of text showed right
+of the disc at the bottom band (the bands now end at the hole), and on a
+phone, where the record sits above, the bands run the full width below it
+instead. The card is the stage itself.

@@ -17,6 +17,7 @@ WORKS = [
  ["photochrom", "Stockholm", 'File:Stockholm photochrom2.jpg'],
  ["photochrom", "Sami", 'File:Saami Family 1900.jpg'],
  ["photochrom", "Silver Apron", 'File:Silver Apron, Yosemite Valley-LCCN2008678176.jpg'],
+ ["voyager", "Sounds of Earth", "File:The Sounds of Earth - GPN-2000-001976.jpg"],
  ["edo", "Nihonbashi", "File:Nihonbashi yukibare LCCN2009631885.jpg"],
  ["edo", "Sendagi", "File:名所江戸百景 千駄木団子坂花屋敷-Sendagi Dangozaka MET DP121532.jpg"],
  ["edo", "Kameido", "File:Ando Hiroshige - Plum Garden, Kameido - Google Art Project.jpg"],
@@ -998,7 +999,7 @@ def real_width(url):
 ONLY = set(sys.argv[1:])          # e.g. `python3 build/curate.py webb` fetches only that kind
 if ONLY: WORKS = [w for w in WORKS if w[0] in ONLY]
 # material shown large asks for the big buckets too
-WIDE = {'webb': (1920, 3840), 'glacier': (1920,), 'buson': (1920, 2560), 'adams': (1920,), 'fsa': (1920, 3840), 'tabula': (1920, 3840), 'morris': (1920, 3840), 'monet': (1920,), 'posters': (1920,), 'heures': (1920,), 'prokudin': (1920,), 'bayeux': (1920,), 'caslon': (1920, 3840), 'chevreul': (1920,), 'minard': (1920, 2560, 3840), 'tones': (1920, 2560), 'photochrom': (1920, 2560)}
+WIDE = {'webb': (1920, 3840), 'glacier': (1920,), 'buson': (1920, 2560), 'adams': (1920,), 'fsa': (1920, 3840), 'tabula': (1920, 3840), 'morris': (1920, 3840), 'monet': (1920,), 'posters': (1920,), 'heures': (1920,), 'prokudin': (1920,), 'bayeux': (1920,), 'caslon': (1920, 3840), 'chevreul': (1920,), 'minard': (1920, 2560, 3840), 'tones': (1920, 2560), 'photochrom': (1920, 2560), 'voyager': (1920,)}
 
 recs = {}
 for width in (330, 500, 640, 1024, 1600, 1920, 2560, 3840):   # 330, 500: tiles, thumbnails, pictures shown small

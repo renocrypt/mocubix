@@ -1,0 +1,67 @@
+/* Marquee, in full: the Voyager Golden Record's fifty-five greetings in five bands, running out from under the
+   record into the dark. Each band's greetings are set twice and the pair travels half its width (showcase.js sets
+   --dur from the measured width and the band's speed); the bands differ in size, speed and light, so they read as
+   depths. The record's label is a second copy of the photograph, clipped inside the dark run-out band and turned
+   about the spindle hole at 16⅔ rpm. Hover stops a band; Hold stops them all; reduced motion stills everything. */
+
+.voyager{--black:#040205;--ink:#F3EBDB;--dim:rgb(243 235 219 / .56);
+  --d:min(calc((100svh - var(--bar)) * .96), 64vw);            /* the record's size; the bands start under its hole */
+  position:relative;width:100vw;margin-inline:calc(50% - 50vw);height:calc(100svh - var(--bar));min-height:560px;
+  max-height:980px;border:0;border-radius:0;background:var(--black);color:var(--ink);overflow:clip}
+
+/* the record, half out of the frame on the right; the bands pass under it */
+.record{position:absolute;z-index:2;margin:0;width:var(--d);aspect-ratio:1;
+  top:50%;right:calc(var(--d) * -.22);translate:0 -50%;pointer-events:none}
+.record img{position:absolute;inset:0;width:100%;height:100%;display:block}
+/* only the disc stands in front of the bands, not the photograph's black square: its outline about the hole */
+.record .disc{clip-path:ellipse(46.8% 46.2% at var(--hx) var(--hy))}
+.record .label{clip-path:circle(var(--turning) at var(--hx) var(--hy));transform-origin:var(--hx) var(--hy);
+  animation:turn 3.6s linear infinite}                          /* 16⅔ turns a minute */
+@keyframes turn{to{rotate:1turn}}
+
+.bands{position:absolute;inset:0 calc(var(--d) * .2752) 0 0;z-index:1;   /* right: out from under the hole */
+  display:flex;flex-direction:column;justify-content:center;overflow:clip;
+  gap:clamp(12px,3svh,32px);mask:linear-gradient(90deg,transparent,#000 14%)}
+.band{font-size:calc(var(--size) * clamp(30px,3.5vw,54px));opacity:var(--light)}
+.run{display:flex;width:max-content;animation:run var(--dur,160s) linear infinite}
+@keyframes run{to{translate:-50% 0}}
+.set{display:flex;align-items:flex-end;gap:1.5em;margin:0;padding:0 1.5em 0 0;list-style:none}
+.set li{display:grid;gap:.35em}
+.band:hover .run,.voyager:has(#voy-hold:checked) .run{animation-play-state:paused}
+.band:hover{opacity:1}
+
+/* each script in its own face; Han and Arabic choose by language */
+.g{font-family:'Noto Serif Display','Noto Serif Thai','Noto Naskh Arabic','Noto Serif Hebrew','Noto Serif Myanmar',
+  'Noto Serif Gurmukhi','Noto Serif Bengali','Noto Serif Devanagari','Noto Serif Sinhala','Noto Serif Armenian',
+  'Noto Serif Gujarati','Noto Serif Oriya','Noto Serif Telugu','Noto Serif Kannada','Noto Sans Cuneiform',
+  'Noto Sans Imperial Aramaic','Noto Serif KR','Noto Serif SC',serif;
+  font-weight:400;line-height:1.35;white-space:nowrap}
+.g:lang(ja){font-family:'Noto Serif JP',serif}
+.g:lang(yue),.g:lang(nan){font-family:'Noto Serif TC',serif}
+.g:lang(ur){font-family:'Noto Nastaliq Urdu',serif;font-size:.82em;line-height:1.9}   /* Nastaliq sits larger */
+.t{font:max(10px,.21em)/1.3 var(--mono);letter-spacing:.08em;color:var(--dim);white-space:nowrap}
+.t time{color:#D9B866;margin-right:.5em}
+
+.foot{position:absolute;z-index:3;left:clamp(16px,4vw,64px);bottom:clamp(16px,3.5svh,32px);display:flex;align-items:center;
+  gap:14px;margin:0}
+.foot input{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+.foot label{padding:9px 15px;border-radius:999px;cursor:pointer;font:10px/1 var(--mono);letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ink);box-shadow:inset 0 0 0 1px rgb(243 235 219 / .3);
+  transition:background-color .25s var(--settle),color .25s var(--settle)}
+.foot input:checked + label{background:var(--ink);color:var(--black)}
+.foot input:focus-visible + label{outline:2px solid var(--ink);outline-offset:2px}
+.foot p{margin:0;font:10px/1.4 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--dim)}
+
+@media (max-width:760px){
+  /* on a phone the record sits above and the bands run the whole width below it, fading in at the right edge */
+  .voyager{--d:100vw}
+  .record{top:21%}
+  .bands{inset:auto 0 132px 0;gap:12px;mask:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+  .band{font-size:calc(var(--size) * 26px)}
+  .foot{flex-direction:column;align-items:flex-start;gap:10px;right:16px}
+}
+@media (prefers-reduced-motion:reduce){
+  .run,.record .label{animation:none}
+  .set[aria-hidden]{display:none}
+  .band{overflow-x:auto;scrollbar-width:none}
+}
