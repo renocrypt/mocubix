@@ -11,6 +11,15 @@ ROOT = Path(__file__).resolve().parents[1]
 UA = {'User-Agent': 'Mocubix/1.0 (https://github.com/renocrypt/mocubix)'}
 
 WORKS = [
+ ["verne", "Wager", "File:'Around the World in Eighty Days' by Neuville and Benett 06.jpg"],
+ ["verne", "Pagoda", "File:'Around the World in Eighty Days' by Neuville and Benett 15.jpg"],
+ ["verne", "Elephant", "File:'Around the World in Eighty Days' by Neuville and Benett 18.jpg"],
+ ["verne", "Tavern", 'File:Around the World in Eighty Days by Neuville and Benett (139390315).jpg'],
+ ["verne", "Tankadere", "File:'Around the World in Eighty Days' by Neuville and Benett 34.jpg"],
+ ["verne", "Pyramid", "File:'Around the World in Eighty Days' by Neuville and Benett 37 b&w.jpg"],
+ ["verne", "Sledge", "File:'Around the World in Eighty Days' by Neuville and Benett 52.jpg"],
+ ["verne", "Reform Club", "File:'Around the World in Eighty Days' by Neuville and Benett (139390668).jpg"],
+ ["verne", "Map", 'File:Around the World in Eighty Days - map.jpg'],
  ["caslon", "Specimen", "File:A Specimen by William Caslon.jpg"],
  ["bayeux", "Scene 55", "File:Bayeux Tapestry Scene 55.png"],
  ["bayeux", "Scene 56", "File:Bayeux Tapestry Scene 56.png"],

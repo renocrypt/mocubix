@@ -1392,3 +1392,40 @@ fires as the frame pins; the dial drives weight and readout; no overflow; a
 sweep runs at 120 fps (p99 10.3 ms, one 42 ms frame on the sheet's first
 decode); the console is clean. The card is French Cannon, metal against the
 file at weight 780.
+
+## The nineteenth showcase: Scrollspy, eighty days leg by leg, 2026-09-23
+
+**The idea.** Around the World in Eighty Days (1872). The index is the plan
+the Morning Chronicle works out in chapter III (London to Suez 7 days … New
+York to London 9; total 80), set as a timetable with dotted leaders and a
+double-ruled total, with the route map of the illustrated French edition
+above it. It stays beside the story. The story is the eight legs as they
+went, each with an engraving by Alphonse de Neuville or Léon Benett (the
+wager, the Malabar Hill pagoda, the elephant Kiouni, the Hong Kong tavern,
+the Tankadere in the typhoon, the Long Noses' pyramid, the sail-sledge, the
+return to the Reform Club) and a line of Towle's translation, verbatim, cut
+only with an ellipsis. The coda is the day gained by travelling east.
+Whichever leg has reached the top is marked in the timetable, the legs
+behind are ticked off, and the ones ahead wait. The type is Old Standard TT,
+modelled on the book faces of the period.
+
+**Material choices.** The 1873 English edition's 55 illustrations are PNG
+(3.6 MB at 960px), so the JPGs of the French plates were used (0.66 MB), a
+high-resolution set plus four medium ones where a leg had no large plate.
+Their Commons captions come from another translation, so the scenes were
+identified by eye and each quote was found in the Towle text itself. An
+Encyclopédie plate with its "explication" was considered and set aside
+(plates, text and figure positions all to assemble).
+
+**How it is built.** No script. The timetable's `<ol>` has
+`scroll-target-group: auto`, so its links (plain `#leg-N` anchors) become
+scroll markers. `:target-current` marks the leg reached, `:target-before`
+ticks the legs behind (✓), and `:target-after` dims the ones ahead. The
+links still work as links, and `scroll-margin-top` lands a jump just under
+the bar. On a phone the plan becomes a strip under the bar showing only the
+current row (every row in one grid cell, `li:has(a:not(:target-current))`
+hidden).
+
+**Checked.** Above the stage leg I is current; at the end all seven are
+ticked and VIII is current; a click lands at the bar and marks its leg; no
+overflow at 1324 or 390. The card is leg V with four legs ticked.

@@ -1,0 +1,68 @@
+/* Scrollspy, in full: Around the World in Eighty Days. The plan (chapter III's timetable) stays beside the
+   story; its links form a scroll-target group, so the browser marks the leg you have reached
+   (:target-current), the legs behind you (:target-before) and the ones ahead (:target-after). No script. */
+
+.voyage{position:relative;width:100vw;margin-inline:calc(50% - 50vw);border:0;border-radius:0;
+  --paper:#EEE7D6;--ink:#211B14;--dim:#8A7D6A;--rule:rgb(33 27 20 / .14);--mark:#9E3B22;
+  display:grid;grid-template-columns:minmax(300px,.8fr) minmax(0,1.2fr);gap:clamp(28px,6vw,110px);
+  padding:0 clamp(20px,6vw,110px);background:var(--paper);color:var(--ink);font-family:'Old Standard TT',Georgia,serif}
+
+/* the plan: a timetable that stays beside the story */
+.plan{position:sticky;top:var(--bar);align-self:start;height:calc(100svh - var(--bar));box-sizing:border-box;
+  display:flex;flex-direction:column;justify-content:center;gap:clamp(12px,2.2vh,22px);padding-block:clamp(18px,4vh,40px)}
+.route{display:block;width:100%;height:auto;max-height:30svh;object-fit:contain;object-position:left;mix-blend-mode:multiply;filter:saturate(.42)}
+.plan .head{margin:0;font:9.5px/1.4 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--dim)}
+.plan ol{margin:0;padding:0;list-style:none;scroll-target-group:auto;font-size:clamp(13.5px,1.08vw,16px);line-height:1.3}
+.plan li + li{border-top:1px solid var(--rule)}
+.plan a{position:relative;display:grid;grid-template-columns:2.2em minmax(0,1fr) auto;gap:.8em;align-items:baseline;padding:.52em 0;
+  color:var(--dim);text-decoration:none;transition:color .5s var(--settle),opacity .5s var(--settle)}
+.plan .n{font-style:italic;font-size:.86em}
+.plan .d{font-variant-numeric:oldstyle-nums;white-space:nowrap}
+/* the dotted leaders of a timetable, between the way and the days */
+.plan .way{display:flex;gap:.4em}
+.plan .way::after{content:'';flex:1;min-width:1.5em;border-bottom:1px dotted currentColor;translate:0 -.28em;opacity:.55}
+/* ahead: waiting; behind: ticked off; here: in ink, with the mark */
+.plan a:target-after{opacity:.55}
+.plan a:target-before{color:var(--ink)}
+.plan a:target-before .n{color:transparent}
+.plan a:target-before .n::before{content:'✓';position:absolute;color:var(--mark);font-style:normal}
+.plan a:target-current{color:var(--ink)}
+.plan a:target-current::before{content:'';position:absolute;left:-14px;top:.5em;bottom:.5em;width:3px;border-radius:2px;background:var(--mark)}
+.plan a:target-current .way{font-style:italic}
+.plan a:hover{color:var(--ink)}
+.plan .total{display:flex;justify-content:space-between;margin:0;padding-top:.5em;border-top:3px double var(--ink);
+  font-size:clamp(13.5px,1.08vw,16px)}
+
+/* the legs as they went */
+.legs{padding-block:clamp(40px,12vh,120px) clamp(60px,30vh,300px)}
+.leg{min-height:calc(100svh - var(--bar));padding-block:clamp(28px,8vh,80px);scroll-margin-top:var(--bar);
+  display:grid;grid-template-columns:auto minmax(0,1fr);grid-template-rows:auto auto 1fr;column-gap:clamp(22px,3vw,48px);align-content:start}
+.leg .when{grid-column:1/-1;margin:0 0 8px;font:9.5px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--mark)}
+.leg h2{grid-column:1/-1;margin:0 0 clamp(18px,3.4vh,32px);font-weight:400;font-size:clamp(28px,3.4vw,48px);line-height:1.05;letter-spacing:-.01em}
+.leg h2 span{font-style:italic;color:var(--dim);margin-right:.2em}
+.leg figure{margin:0;grid-row:3}
+.leg img{display:block;height:auto;width:min(40vw,calc(46svh * 2262 / 3270),520px);
+  box-shadow:0 1px 0 var(--rule),0 24px 50px -30px rgb(60 40 10 / .5)}
+.leg figcaption{margin-top:10px;font-size:13px;font-style:italic;color:var(--dim)}
+.leg blockquote{grid-row:3;align-self:center;margin:0;max-width:24em;font-size:clamp(19px,1.7vw,26px);line-height:1.38;text-wrap:pretty}
+.leg blockquote p{margin:0}
+.leg cite,.coda cite{display:block;margin-top:14px;font:9.5px/1 var(--mono);font-style:normal;letter-spacing:.16em;text-transform:uppercase;color:var(--dim)}
+.coda{max-width:30em;margin:0;font-size:clamp(17px,1.4vw,21px);line-height:1.45;font-style:italic;text-wrap:pretty}
+
+@media (max-width:860px){
+  .voyage{grid-template-columns:minmax(0,1fr);gap:0;padding:0 18px}
+  /* on a phone the plan is a strip under the bar showing only the leg you are on */
+  .plan{height:auto;z-index:2;display:block;padding:10px 0;margin-inline:-18px;padding-inline:18px;
+    background:color-mix(in oklab,var(--paper) 94%,transparent);border-bottom:1px solid var(--rule);backdrop-filter:blur(6px)}
+  .route,.plan .head,.plan .total{display:none}
+  .plan ol{display:grid;font-size:14px}
+  .plan li{grid-area:1/1;border:0 !important}
+  .plan li:has(a:not(:target-current)){visibility:hidden}
+  .plan a{padding:0}
+  .plan .way::after{display:none}
+  .plan a:target-current::before{left:-10px}
+  .legs{padding-top:20px}
+  .leg{grid-template-columns:minmax(0,1fr);grid-template-rows:auto auto auto auto;min-height:auto;scroll-margin-top:calc(var(--bar) + 44px)}
+  .leg img{width:min(78vw,calc(52svh * 2262 / 3270))}
+  .leg blockquote{grid-row:4;margin-top:20px}
+}
