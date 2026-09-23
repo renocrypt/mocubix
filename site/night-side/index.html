@@ -128,7 +128,7 @@ h1 em{font-style:normal;color:var(--sig)}
 .tele{display:flex;gap:clamp(18px,2.4vw,36px);margin-top:20px;padding-top:14px;border-top:1px solid var(--rule);
   font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--lo)}
 .tele dd{margin-top:5px;color:var(--sig);font-size:15px;letter-spacing:0;text-transform:none;font-variant-numeric:tabular-nums;white-space:nowrap}
-.km::before{counter-reset:km var(--km);content:counter(km)}
+.km::before{counter-reset:km calc(var(--km));content:counter(km)}
 /* the arrival: the title's place, the journey's total */
 .arrival{position:absolute;top:clamp(70px,9vh,96px);left:var(--pad);right:var(--pad);z-index:3;opacity:0;
   display:grid;grid-template-columns:minmax(0,1fr) minmax(0,46ch);gap:clamp(24px,4vw,72px);align-items:end;

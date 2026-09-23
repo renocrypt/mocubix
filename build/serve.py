@@ -11,7 +11,6 @@ import pathlib
 import sys
 
 SITE = pathlib.Path(__file__).resolve().parent.parent / 'site'
-PORT = int(sys.argv[1]) if len(sys.argv) > 1 else 8765
 
 
 class Handler(http.server.SimpleHTTPRequestHandler):
@@ -34,6 +33,7 @@ class Handler(http.server.SimpleHTTPRequestHandler):
 
 
 if __name__ == '__main__':
+    PORT = int(sys.argv[1]) if len(sys.argv) > 1 else 8765
     server = http.server.ThreadingHTTPServer(('127.0.0.1', PORT), functools.partial(Handler, directory=str(SITE)))
     print(f'Mocubix at http://127.0.0.1:{PORT}/  (serving {SITE})', flush=True)
     server.serve_forever()

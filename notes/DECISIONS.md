@@ -772,3 +772,18 @@ email and token-like strings: none.
   share cards 200; unknown addresses 404 with our page; `http://` and
   `renocrypt.github.io/mocubix/` both 301 to the canonical address; in Chrome,
   no console messages, no broken images, Kīlauea lands on phase 4 at its foot.
+
+## Chrome only, 2026-09-23
+
+A Playwright checker across Chromium, WebKit and Firefox (with downloaded
+browsers and a CI gate) was built and removed within the hour: the user's
+call, and the right one — "nobody who does UX design would use Safari for
+design; Chrome is the one to go", Firefox is single-digit share, and the
+weight was not worth it. Verification stays in Chrome through DevTools.
+
+Two small changes from that hour are kept because they are simpler in any
+browser: Night side's distance counter is fed `calc(var(--km))`, and each
+Urformen plate's rail now reads the same `--p` as the number beside it (one
+clock, not two animations that could disagree). Both verified in Chrome:
+the counter reads 8011 km at 35% of the page; rails read 0.47 and 0.42
+against 47% and 42%; no overflow, no console messages.

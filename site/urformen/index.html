@@ -92,11 +92,11 @@ h1 em{font-style:italic;color:var(--accent)}
 /* the plate's own meter and its own number */
 .plate .own{grid-column:2;grid-row:1;align-self:start;position:sticky;top:clamp(40vh,45vh,50vh);display:grid;gap:8px;justify-items:center}
 .plate .own i{width:2px;height:120px;background:color-mix(in srgb,var(--ink) 14%,transparent);position:relative;display:block}
-.plate .own i::after{content:'';position:absolute;inset:0;background:var(--accent);transform-origin:50% 0;transform:scaleY(0);
-  animation:fill linear both;animation-timeline:--plate;animation-range:cover 0% cover 100%}
-@keyframes fill{to{transform:scaleY(1)}}
+/* the rail reads the same --p as the number beside it: one clock, so they can never disagree
+   (WebKit advanced a second animation on this pseudo-element at its own rate) */
+.plate .own i::after{content:'';position:absolute;inset:0;background:var(--accent);transform-origin:50% 0;transform:scaleY(calc(var(--p) / 100))}
 .plate .own b{font-family:var(--mono);font-weight:400;font-size:10px;color:var(--indigo);font-variant-numeric:tabular-nums;writing-mode:vertical-rl}
-.plate .own b::after{counter-reset:p var(--p);content:counter(p) '%'}
+.plate .own b::after{counter-reset:p calc(var(--p));content:counter(p) '%'}
 
 .after{padding:clamp(50px,9vh,110px) 0 clamp(60px,10vh,120px);border-top:1px solid var(--line);
   display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,5vw,80px);align-items:end}
@@ -117,7 +117,7 @@ footer{padding-bottom:70px;display:flex;flex-wrap:wrap;gap:12px 44px;justify-con
   .after{grid-template-columns:1fr;gap:20px}
 }
 @media (prefers-reduced-motion:reduce){
-  .rail,.plate,.plate .art::after,.plate img,.plate figcaption,.plate .own i::after{animation:none}
+  .rail,.plate,.plate .art::after,.plate img,.plate figcaption{animation:none}
   .plate .art::after{opacity:0}.plate img{scale:1}.plate figcaption{opacity:1;transform:none}
   .plate .own i::after{transform:scaleY(1)}
 }
