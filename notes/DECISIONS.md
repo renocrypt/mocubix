@@ -1183,3 +1183,53 @@ a page the book's height is fully entered exactly when it snaps, so the rise
 always finishes at rest (keyed to the words themselves, they stayed half-faded
 on phones, where they sit below the middle). No script. `.index` was taken
 (the Lexicon's entrance), so the list is `.months`.
+
+## The fourteenth showcase: Scroll-Triggered Count, a generation counted, 2026-09-23
+
+**The idea.** Six of the charts W. E. B. Du Bois and his students at Atlanta
+University drew for the Exhibit of American Negroes at the Paris Exposition of
+1900 (The Georgia Negro: A Social Study; Library of Congress, public domain):
+slaves and free, city and rural, children in school, acres, household
+furniture, all taxable property. Beside each plate, its figures are set the
+way the plate letters them: the year, a band in the plate's own colour, the
+figure, and the plate's last figure large. Every number was read off
+full-resolution crops of the plates (the city plate's four parts add up to
+the population plate's 858,815, a check). The mark under 1860 on the schools
+plate is a 7, not Du Bois's question mark: his "?" has a curl and a dot. Each
+section wears the plate's own inks, sampled from the inked pixels only:
+black, paper, the schools' olive, crimson, gold, and the property rings'
+ultramarine with gold figures. The numerals are Anybody at 150 % width,
+weight 200: its tabular figures are as wide and thin as the plates' lettering,
+and its heavy weight does the plates' titles.
+
+**How it is built.** No script. Each figure is text; each digit is a span and
+also a wheel. `timeline-trigger: --count view() contain 0% contain 100%` with
+`animation-trigger: --count play-once` starts a registered `--t` from 0 to 1
+once, when the whole figure is on screen. Each wheel's place comes from
+`pow(10, sibling-count() - sibling-index())`; the count is
+`to · (1 − 10^(−k·t)) / (1 − 10^(−k))`, closing on its figure a power of ten
+at a time, so the wheels come to rest one by one from the left, each at a
+readable pace; each wheel turns to `mod(max(0, (n − mod(to, p)) / p), 10)`,
+which lands exactly on its own digit. The strip is generated content with
+empty alt text (`content: '0\A 1…' / ''`), so it is never read aloud; the
+real digit is transparent underneath. `text-box: trim-both cap alphabetic`
+makes the window exactly the figure's height; a little padding over it,
+masked, lets digits roll in and out as on a drum, and a large wheel turning
+fast blurs by `log()` of its speed. Rows count a beat apart
+(`--i: sibling-index()`, registered). Reduced motion: no animation, `--t: 1`.
+
+**The boards.** The scans show the boards in clear sleeves on a scanner bed,
+white at every torn corner; on a coloured ground that read as a frame.
+`build/cutout.py <kind>` floods the backing from the picture's edge (light and
+nearly colourless; the sleeve's edge line is RGB spread ≤ 17, the board's
+paper ≥ 25), traces the board's outline, pulls it in a pixel and simplifies it
+(Douglas–Peucker) into a clip-path polygon in `assets/cutouts.json`. The
+shadow is a `drop-shadow` on the figure, so it follows the torn edge.
+
+**Checked.** At 1324×725 and on a phone at 390×844, no overflow, and every
+large figure fits its column (`100cqi / --em`, the figure's width in em
+computed at build). A smooth sweep through all six: 120 fps, p99 10.2 ms; all
+34 figures fire. A trap on the way: a test sweep that calls `scrollTo(0, y)`
+every frame on this site (`scroll-behavior: smooth`) keeps restarting a smooth
+scroll, and triggers stop firing mid-sweep. With `behavior: 'instant'`, and
+with real Page Down scrolling, every trigger fires.

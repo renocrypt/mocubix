@@ -1,0 +1,75 @@
+/* Scroll-Triggered Count, in full: six of Du Bois's charts for the Paris Exposition of 1900,
+   each on a ground of its own colours, its figures set beside it as the plate letters them.
+   Every figure is text; each of its digits is also a wheel. A figure waits until the whole
+   of it is on screen (a view-timeline trigger), then counts up once. No script. */
+
+@property --t{syntax:'<number>';inherits:true;initial-value:0}
+@property --pos{syntax:'<number>';inherits:true;initial-value:0}
+@property --v{syntax:'<number>';inherits:true;initial-value:0}
+@property --i{syntax:'<integer>';inherits:true;initial-value:1}
+
+.georgia{position:relative;width:100vw;margin-inline:calc(50% - 50vw);border:0;border-radius:0;background:#1B1A1A;overflow:clip;
+  font-family:'Anybody Variable',var(--sans);font-stretch:150%}
+
+.plate{--pad:clamp(22px,5.5vh,60px);min-height:calc(100svh - var(--bar));box-sizing:border-box;
+  display:grid;grid-template-columns:auto minmax(0,1fr);align-items:center;gap:clamp(28px,6vw,120px);
+  padding:var(--pad) clamp(20px,6.5vw,128px);background:var(--ground);color:var(--ink)}
+.plate.right{grid-template-columns:minmax(0,1fr) auto}
+.plate.right .board{order:2}
+
+/* the board, cut from its scan along its torn edge; the shadow follows the edge */
+.board{margin:0;filter:drop-shadow(0 24px 36px rgb(0 0 0 / .32)) drop-shadow(0 2px 3px rgb(0 0 0 / .2))}
+.board img{--h:min(calc(100svh - var(--bar) - 2 * var(--pad)),calc(42vw / var(--ar)));display:block;
+  height:var(--h);width:calc(var(--h) * var(--ar))}
+
+.figures{container-type:inline-size;width:100%;max-width:780px}
+.figures .no{margin:0 0 16px;font-family:var(--mono);font-stretch:normal;font-size:10px;letter-spacing:.18em;
+  color:color-mix(in oklab,var(--ink) 62%,var(--ground))}
+.figures h2{margin:0;max-width:34em;font-weight:720;font-stretch:112%;font-size:clamp(15px,1.4vw,20px);line-height:1.3;
+  letter-spacing:.06em;text-transform:uppercase;text-wrap:balance}
+.figures .head{margin:10px 0 0;font-weight:400;font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:color-mix(in oklab,var(--ink) 66%,var(--ground))}
+
+/* the figures as the plates letter them: the year, a band in the plate's own colour, the figure */
+.figures dl{margin:clamp(18px,3.4vh,34px) 0 0;font-weight:300;font-size:clamp(13px,1.05vw,15.5px);line-height:1.8}
+.figures dl > div{--i:sibling-index();display:grid;grid-template-columns:auto minmax(2.5em,1fr) auto;align-items:center;column-gap:1em}
+.figures dl > div::after{content:'';grid-area:1/2;height:.3em;background:var(--c);
+  box-shadow:inset 0 0 0 1px color-mix(in oklab,var(--ink) 28%,transparent)}
+.figures dt{grid-area:1/1}
+.figures dd{--num:var(--ink);grid-area:1/3;margin:0;text-align:right;white-space:nowrap;color:var(--num)}
+/* the plate's last figure, as large as its column allows */
+.figures dl > .most{margin-top:clamp(16px,3.6vh,40px)}
+.figures .most dd{--num:var(--hero);grid-area:2/1/3/-1;text-align:left;margin-top:.14em;
+  font-weight:200;line-height:1;font-size:min(172px,23svh,calc(100cqi / var(--em)))}
+
+/* every figure counts once, when the whole of it is on screen; down a column, a beat apart */
+.odo{line-height:1;font-variant-numeric:tabular-nums;
+  timeline-trigger:--count view() contain 0% contain 100%;
+  animation:count calc(var(--k) * .17s) calc((var(--i) - 1) * 70ms) linear both;animation-trigger:--count play-once}
+.most .odo{animation-duration:calc(var(--k) * .42s)}
+@keyframes count{from{--t:0}to{--t:1}}
+
+/* each digit is a wheel: the count over its place, turned to land on its own digit. The count
+   closes on its figure a power of ten at a time, so the wheels settle one by one from the left.
+   Its window is the digit's height and a little over, faded, so digits roll in and out as on a drum. */
+.odo > span{display:inline-block;position:relative;overflow:clip;text-box:trim-both cap alphabetic;color:transparent;
+  padding-block:.16em;margin-block:-.16em;mask:linear-gradient(transparent,#000 .16em calc(100% - .16em),transparent);
+  --p:pow(10,sibling-count() - sibling-index());
+  --n:calc(var(--to) * (1 - pow(10,-1 * sibling-count() * var(--t))) / (1 - pow(10,-1 * sibling-count())));
+  --pos:mod(max(0,(var(--n) - mod(var(--to),var(--p))) / var(--p)),10)}
+.odo > span::after{content:'0\A 1\A 2\A 3\A 4\A 5\A 6\A 7\A 8\A 9\A 0' / '';position:absolute;inset:.16em 0 auto;
+  white-space:pre;text-align:center;text-box:trim-both cap alphabetic;color:var(--num);translate:0 calc(var(--pos) * -1lh)}
+/* a large wheel turning fast blurs, as a drum does */
+.most .odo > span{--v:calc(var(--to) / var(--p) * pow(10,-1 * sibling-count() * var(--t)))}
+.most .odo > span::after{filter:blur(clamp(0em,(log(var(--v)) - 2.3) * .012em,.05em))}
+
+@media (max-width:760px){
+  .plate,.plate.right{grid-template-columns:minmax(0,1fr);gap:26px;align-content:center}
+  .plate.right .board{order:0}
+  .board{justify-self:center}
+  .board img{--h:min(50svh,calc(78vw / var(--ar)))}
+  .figures h2{font-size:14px}
+}
+@media (prefers-reduced-motion:reduce){
+  .odo{animation:none;--t:1}
+}

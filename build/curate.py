@@ -11,6 +11,12 @@ ROOT = Path(__file__).resolve().parents[1]
 UA = {'User-Agent': 'Mocubix/1.0 (https://github.com/renocrypt/mocubix)'}
 
 WORKS = [
+ ["dubois", "Slaves and free", "File:The Georgia Negro LCCN2013650431.jpg"],
+ ["dubois", "City and rural", "File:The Georgia Negro LCCN2013650430.jpg"],
+ ["dubois", "Schools", "File:The Georgia Negro LCCN2013650434.jpg"],
+ ["dubois", "Acres", "File:The Georgia Negro LCCN2013650438.jpg"],
+ ["dubois", "Furniture", "File:The Georgia Negro LCCN2013650445.jpg"],
+ ["dubois", "Property", "File:The Georgia Negro LCCN2013650442.jpg"],
  [
   "heures",
   "Janvier",
