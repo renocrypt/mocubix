@@ -1127,3 +1127,35 @@ one place. The module guards its import-time read so the tool can run first.
 `-45%` band names the canvas at eye level on the stage; the stylesheet holds
 the palettes and a .7 s transition. Museums checked on the Commons records
 (Boston's and Orsay's through their Google Art Project metadata).
+
+## The twelfth showcase: Curtain Overlap, Montmartre pasted over, 2026-09-23
+
+**The idea.** Eight posters from the Paris of 1889–1896, in order: Chéret's
+Bal du Moulin Rouge (the opening, 6 October 1889), Lautrec's La Goulue (his
+first poster, 1891), Chéret's Saxoléine, Lautrec's Aristide Bruant (1892) and
+Divan Japonais (1893, Jane Avril and Édouard Dujardin in the front row),
+Chéret's Loïe Fuller, Mucha's Gismonda (up on 1 January 1895; Bernhardt
+ordered four thousand and gave him a six-year contract) and Steinlen's
+Tournée du Chat Noir (1896). Each sits on a screen-high panel in one of its
+own inks; every panel is sticky at the same place, so each new one rides up
+over the last, as a billposter pasted one poster over another. Scans from the
+BnF, the Met, the Art Institute of Chicago, the NGV, the Museum of Decorative
+Arts in Prague and the Rijksmuseum; all public domain or CC0.
+
+**Colour.** The posters are mostly paper and black ink; their vivid inks
+cover only 10–18 %, so one automatic rule gave five red panels. The grounds
+and inks are still each poster's own (from palette.py's quantisation), but
+chosen by eye so neighbours never share one and lightness alternates; that
+choice is written in the module with the reason.
+
+**How it is built.** No script. The overlap is two rules (sticky, same top).
+Depth: the incoming panel carries a shadow above its top edge; the covered
+sheet recedes (scale .93, up 3 %) and dims on the incoming panel's own view
+timeline — a named `view-timeline` per panel, shared with its predecessor
+through `timeline-scope` on the hoarding and a `--next` custom property. The
+whole sheet recedes with its ground into the dark hoarding behind. Found on the
+way: a grid row sized by an image of a tall poster overflowed the room
+(`grid-template-rows: minmax(0,1fr)` fixed it); and `animation-timeline: none`
+does not neutralise a 0 s fill-both animation — Chrome runs it to its end —
+so the last sheet takes `animation: none`. Posters are sized explicitly from
+their proportions (no lazy-image layout warning). 120 fps, p99 10 ms.

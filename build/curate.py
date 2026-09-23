@@ -12,6 +12,46 @@ UA = {'User-Agent': 'Mocubix/1.0 (https://github.com/renocrypt/mocubix)'}
 
 WORKS = [
  [
+  "posters",
+  "Bal du Moulin Rouge",
+  "File:Bal du Moulin rouge tous les soirs et dimanche jour. affiche, Jules Chéret.jpg"
+ ],
+ [
+  "posters",
+  "Saxoléine",
+  "File:Saxoléine pétrole de sûreté. affiche, Jules Chéret.jpg"
+ ],
+ [
+  "posters",
+  "La Goulue",
+  "File:Moulin Rouge- La Goulue MET DT11780.jpg"
+ ],
+ [
+  "posters",
+  "Aristide Bruant",
+  "File:Toulouse-Lautrec - Ambassadeurs Aristide Bruant, 1948.450.jpg"
+ ],
+ [
+  "posters",
+  "Divan Japonais",
+  "File:1893 color lithograph by de Toulouse-Lautrec - Divan Japonais.jpg"
+ ],
+ [
+  "posters",
+  "La Loïe Fuller",
+  "File:Folies Bergère. La Loïe Fuller affiche, Jules Chéret.jpg"
+ ],
+ [
+  "posters",
+  "Gismonda",
+  "File:24. Alfons Mucha, Plakát Gismonda. Sarah Bernhardt, 1894, Uměleckoprůmyslové muzeum v Praze.jpg"
+ ],
+ [
+  "posters",
+  "Chat Noir",
+  "File:Tournée du Chat noir avec Rodolphe Salis, RP-P-1969-78.jpg"
+ ],
+ [
   "monet",
   "Brouillard",
   "File:La Cathédrale dans le brouillard (1894) Claude Monet (W 1349).jpg"
@@ -840,7 +880,7 @@ def real_width(url):
 ONLY = set(sys.argv[1:])          # e.g. `python3 build/curate.py webb` fetches only that kind
 if ONLY: WORKS = [w for w in WORKS if w[0] in ONLY]
 # material shown large asks for the big buckets too
-WIDE = {'webb': (1920, 3840), 'glacier': (1920,), 'buson': (1920, 2560), 'adams': (1920,), 'fsa': (1920, 3840), 'tabula': (1920, 3840), 'morris': (1920, 3840), 'monet': (1920,)}
+WIDE = {'webb': (1920, 3840), 'glacier': (1920,), 'buson': (1920, 2560), 'adams': (1920,), 'fsa': (1920, 3840), 'tabula': (1920, 3840), 'morris': (1920, 3840), 'monet': (1920,), 'posters': (1920,)}
 
 recs = {}
 for width in (330, 500, 640, 1024, 1600, 1920, 2560, 3840):   # 330, 500: tiles, thumbnails, pictures shown small

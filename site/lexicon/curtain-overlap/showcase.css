@@ -1,0 +1,60 @@
+/* Curtain Overlap, in full: Montmartre, pasted over. Every panel is sticky at the
+   same place under the bar, so each that follows rides up over it. The incoming
+   panel casts a shadow above its top edge; the covered room recedes on the
+   incoming panel's view timeline (named per panel, shared by timeline-scope). */
+
+.hoarding{position:relative;width:100vw;margin-inline:calc(50% - 50vw);border:0;border-radius:0;background:#1A1512;overflow:clip}
+
+.panel{position:sticky;top:var(--bar);height:calc(100svh - var(--bar));box-sizing:border-box;
+  color:var(--ink);view-timeline-axis:block;view-timeline-inset:var(--bar) 0px}
+/* the incoming sheet's shadow falls on the one it covers */
+.panel + .panel::before{content:'';position:absolute;left:0;right:0;bottom:100%;height:34svh;pointer-events:none;
+  background:linear-gradient(to bottom,rgb(0 0 0 / 0),rgb(0 0 0 / .42))}
+
+/* the room: the poster on one side, its words on the other */
+/* the whole sheet recedes, its ground with it, into the dark of the hoarding behind */
+.room{position:relative;height:100%;box-sizing:border-box;padding:clamp(20px,4.5vh,48px) clamp(20px,5.5vw,88px);
+  background:var(--ground);
+  display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-rows:minmax(0,1fr);align-items:center;gap:clamp(28px,5vw,96px);
+  transform-origin:50% 0;
+  animation:recede linear both;animation-timeline:var(--next);animation-range:entry 0% entry 100%}
+.panel.left .room{grid-template-columns:auto minmax(0,1fr)}
+@keyframes recede{to{scale:.93;translate:0 -3%}}
+/* and it dims as it goes under */
+.room::after{content:'';position:absolute;inset:0;background:#000;opacity:0;pointer-events:none;
+  animation:dim linear both;animation-timeline:var(--next);animation-range:entry 0% entry 100%}
+@keyframes dim{to{opacity:.45}}
+/* nothing covers the last sheet. (Its timeline alone won't do: Chrome runs a timeline-less
+   0s animation to its end, so a fill-both recede would apply in full.) */
+.panel:last-child .room,.panel:last-child .room::after{animation:none}
+
+.bill{margin:0;height:100%;display:flex;align-items:center}
+/* the poster's size is explicit: as wide as fits, its height from its own proportions */
+.bill img{--w:min(46vw,640px,calc((100svh - var(--bar)) * .86 * var(--ar)));display:block;width:var(--w);height:calc(var(--w) / var(--ar));
+  box-shadow:0 22px 50px -16px rgb(0 0 0 / .55),0 2px 4px rgb(0 0 0 / .25)}
+.panel.left .bill{grid-column:1;grid-row:1}
+.panel.left .words{grid-column:2;grid-row:1}
+.panel.right .words{text-align:right;justify-items:end}
+
+.words{display:grid;gap:14px;align-content:center;max-width:44rem}
+.words .no{margin:0;font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;
+  color:color-mix(in oklab,var(--ink) 70%,var(--ground))}
+.words h2{margin:0;font-family:var(--display);font-weight:400;font-style:italic;font-size:clamp(54px,8.4vw,150px);line-height:.88;
+  letter-spacing:-.03em;text-wrap:balance}
+.words .by{margin:6px 0 0;font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase}
+.words .line{margin:0;max-width:38ch;font-size:clamp(15px,1.3vw,18px);line-height:1.5;text-wrap:pretty;
+  color:color-mix(in oklab,var(--ink) 86%,var(--ground))}
+.words .src{margin:6px 0 0;font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;
+  color:color-mix(in oklab,var(--ink) 60%,var(--ground))}
+
+@media (max-width:760px){
+  .room,.panel.left .room{grid-template-columns:minmax(0,1fr);grid-template-rows:minmax(0,1fr) auto;align-items:end;gap:16px}
+  .bill,.panel.left .bill{grid-column:1;grid-row:1;justify-content:center;min-height:0}
+  .bill img{--w:min(78vw,calc((100svh - var(--bar)) * .5 * var(--ar)))}
+  .words,.panel.left .words,.panel.right .words{grid-column:1;grid-row:2;text-align:left;justify-items:start}
+  .words h2{font-size:clamp(40px,12vw,64px)}
+  .words .line{font-size:14px}
+}
+@media (prefers-reduced-motion:reduce){
+  .room,.room::after{animation:none}
+}
