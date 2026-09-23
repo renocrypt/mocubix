@@ -971,3 +971,26 @@ term's card when the file exists, otherwise the Lexicon's. The Lexicon's own
 card was stale (it still showed the one-page Lexicon) and was retaken from the
 entrance. The showcase dot in the index is now held to its term's last word,
 so it never wraps onto a line of its own.
+
+## The sixth showcase: Ken Burns, slower than attention, 2026-09-23
+
+**The idea.** Six photographs made for the Farm Security Administration,
+1936–38 (Library of Congress, public domain), run as a documentary: Rothstein's
+farmer and sons walking into the dust storm, Lange's half-buried Coldwater farm,
+her "Tractored out" furrows, Rothstein's steer skull, Evans's Allie Mae
+Burroughs, Lange's Migrant Mother. Each has its own authored move — in on the
+walkers, across the buried fence to the house, up the furrows to the house on
+the horizon, a drift from the skull along its shadow, up from the collar to
+the stare, out from the mother's face to her children — nine seconds a
+picture, a two-second cross-dissolve, a lower third with the Library's caption,
+and a reel of six hairlines. Resting the pointer holds the film.
+
+**How it is built.** No script. A move is two focus points and two scales: the
+picture is cover-fitted with `object-position` and `transform-origin` on the
+focus (two registered `<percentage>` properties, so they interpolate), and
+`scale` pushes in or pulls out about it — the frame is covered at any shape of
+screen, phone portrait included. One 54 s cycle per picture, staggered by
+`--i`; z-index keyframes put the incoming picture on top while it dissolves in.
+Chrome holds 120 fps through a dissolve (p99 10 ms), though the focus animates
+on the main thread. The Dust storm scan includes the print's edge, so its move
+starts at 1.08. The card uses the Coldwater farm rather than anyone's face.
