@@ -396,6 +396,7 @@ EXHIBITS = {
 }
 
 BASE = 'https://mocubix.renocrypt.com/'
+REPO = 'https://github.com/renocrypt/mocubix'
 
 
 def plain(s):
@@ -439,8 +440,17 @@ MATERIAL = ('Material — Kamisaka Sekka 神坂雪佳, <i>Momoyogusa</i> 百々�
             'Rijksmuseum scans via Wikimedia Commons, CC0. Anna Atkins cyanotypes, 1843.')
 
 
+def ld(title, url, source):
+    """For machines: what the page is, and the folder of the repository it is served from."""
+    return json.dumps({'@context': 'https://schema.org', '@type': 'WebPage', 'name': plain(title), 'url': url,
+                       'isPartOf': {'@type': 'WebSite', 'name': 'Mocubix', 'url': BASE},
+                       'isBasedOn': {'@type': 'SoftwareSourceCode', 'url': source, 'codeRepository': REPO,
+                                     'programmingLanguage': ['HTML', 'CSS', 'JavaScript']}},
+                      ensure_ascii=False, separators=(',', ':')).replace('</', '<\\/')
+
+
 def shell(title, desc, path, rel, body, current=None, head='', material=MATERIAL, card=None):
-    url = BASE + path
+    url, source = BASE + path, f'{REPO}/tree/main/site/{path}'
     # a showcase with its own share card (site/share/lexicon-<term>.jpg) shows it; every other page the Lexicon's
     card_name, card_alt = card or ('lexicon', 'The Mocubix Lexicon: forty-one named interface effects')
     nav = ''
@@ -451,7 +461,8 @@ def shell(title, desc, path, rel, body, current=None, head='', material=MATERIAL
     return (SHELL.replace('__TITLE__', title).replace('__TITLE_ATTR__', attr(title)).replace('__DESC__', attr(desc))
             .replace('__URL__', url).replace('__NAV__', nav).replace('__COUNT__', str(len(TERMS)))
             .replace('__BODY__', body).replace('__HEAD__', head).replace('__MATERIAL__', material).replace('__REL__', rel)
-            .replace('__CARD__', card_name).replace('__CARD_ALT__', attr(card_alt)))
+            .replace('__CARD__', card_name).replace('__CARD_ALT__', attr(card_alt))
+            .replace('__SOURCE__', source).replace('__LD__', ld(title, url, source)))
 
 
 SHELL = """<!doctype html>
@@ -462,6 +473,7 @@ SHELL = """<!doctype html>
 <title>__TITLE__</title>
 <meta name="description" content="__DESC__">
 <link rel="canonical" href="__URL__">
+<script type="application/ld+json">__LD__</script>
 <link rel="icon" href="__REL__favicon.ico" sizes="32x32">
 <link rel="icon" href="__REL__favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="__REL__apple-touch-icon.png">
@@ -501,6 +513,7 @@ __HEAD__</head>
     <a class="brand" href="__REL__">Mocubix</a><a class="brand" href="__REL__lexicon/"><i>Lexicon</i></a>
     <div class="navfams">__NAV__</div>
     <span class="navtail">__COUNT__ named effects</span>
+    <a class="source" href="__SOURCE__" aria-label="Source of this page, on GitHub"><span>Source</span></a>
     <span data-theme-slot></span>
   </div>
 </nav>
@@ -615,10 +628,13 @@ def term_page(i):
     pager = (f'<a class="prev" href="../{slug(prev[2][1])}/"><small>← Previous</small><span>{prev[2][1]}</span></a>' if prev else '<span></span>')
     pager += (f'<a class="next" href="../{slug(nxt[2][1])}/"><small>Next →</small><span>{nxt[2][1]}</span></a>' if nxt else '<span></span>')
     sc = SHOWCASES.get(slug(name))
+    js = sc and (ROOT / 'site' / 'lexicon' / slug(name) / 'showcase.js').exists()   # a showcase may bring a little script of its own
     if sc:
         _, _, aka, gloss, _, note, _, _ = s
         akas = ' · '.join('<i>' + a.strip() + '</i>' for a in aka.split('·'))
         how = sc.HOW.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;')
+        files = ' '.join(f'<a href="{REPO}/blob/main/site/lexicon/{slug(name)}/{f}">{f}</a>'
+                        for f in ['index.html', 'showcase.css'] + ['showcase.js'] * bool(js))
         feature = (f'<header class="showhead">\n'
                    f'  <div><span class="idx">{NUM[name]:02d} / {pname}</span>\n'
                    f'    <h1 class="name" style="view-transition-name:t-{slug(name)}">{name}</h1>\n'
@@ -628,7 +644,8 @@ def term_page(i):
         detail = (f'<div class="meta showmeta">\n'
                   f'    <p class="aka">also called {akas}</p>\n'
                   f'    <p class="note">{note} {sc.NOTE}</p>\n'
-                  f'    <details class="how" open><summary>How it is built</summary><code class="api">{how}</code></details>\n'
+                  f'    <details class="how" open><summary>How it is built</summary><code class="api">{how}</code>'
+                  f'<p class="files"><span>In full, on GitHub</span> {files}</p></details>\n'
                   + (f'    <p class="credit">{sc.credit(works)}</p>\n' if hasattr(sc, 'credit') else '') +
                   f'  </div>')
     else:
@@ -645,7 +662,7 @@ def term_page(i):
             f'</div>\n'
             f'<nav class="pager" aria-label="Previous and next term">{pager}</nav>')
     head = '<link rel="stylesheet" href="showcase.css">\n' if sc else ''
-    if sc and (ROOT / 'site' / 'lexicon' / slug(name) / 'showcase.js').exists():   # a showcase may bring a little script of its own
+    if js:
         head += '<script src="showcase.js" defer></script>\n'
     head += getattr(sc, 'HEAD', '')                                                # and anything else its head needs, such as a face
     card = None

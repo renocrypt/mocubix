@@ -6,6 +6,7 @@
 <title>Scoped Rotation — Mocubix Lexicon</title>
 <meta name="description" content="The same colour change, asked of a few elements or of a great many. Press the switch and watch the counter beside it.">
 <link rel="canonical" href="https://mocubix.renocrypt.com/lexicon/scoped-rotation/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Scoped Rotation — Mocubix Lexicon","url":"https://mocubix.renocrypt.com/lexicon/scoped-rotation/","isPartOf":{"@type":"WebSite","name":"Mocubix","url":"https://mocubix.renocrypt.com/"},"isBasedOn":{"@type":"SoftwareSourceCode","url":"https://github.com/renocrypt/mocubix/tree/main/site/lexicon/scoped-rotation/","codeRepository":"https://github.com/renocrypt/mocubix","programmingLanguage":["HTML","CSS","JavaScript"]}}</script>
 <link rel="icon" href="../../favicon.ico" sizes="32x32">
 <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="../../apple-touch-icon.png">
@@ -47,6 +48,7 @@
     <a class="brand" href="../../">Mocubix</a><a class="brand" href="../../lexicon/"><i>Lexicon</i></a>
     <div class="navfams"><a class="navfam" href="../../lexicon/scroll-driven/">Scroll-driven<i>13</i></a><a class="navfam" href="../../lexicon/scroll-behaviour/">Scroll behaviour<i>11</i></a><a class="navfam" href="../../lexicon/image/">Image<i>7</i></a><a class="navfam" href="../../lexicon/type/">Type<i>5</i></a><a class="navfam" href="../../lexicon/colour/" aria-current="true">Colour<i>5</i></a></div>
     <span class="navtail">41 named effects</span>
+    <a class="source" href="https://github.com/renocrypt/mocubix/tree/main/site/lexicon/scoped-rotation/" aria-label="Source of this page, on GitHub"><span>Source</span></a>
     <span data-theme-slot></span>
   </div>
 </nav>
@@ -70,7 +72,7 @@
     <p class="scale">the last two seconds, frame by frame; the line is one frame at 60 Hz, 16.7 ms</p>
   </div>
   <ul class="swatches" aria-label="The painting’s palette, 24 swatches"><li style="--c:#4F3234"></li><li style="--c:#946A63"></li><li style="--c:#9A5D34"></li><li style="--c:#CBB098"></li><li style="--c:#9E9D9C"></li><li style="--c:#C6B367"></li><li style="--c:#D7CEA1"></li><li style="--c:#A79F5E"></li><li style="--c:#CFC570"></li><li style="--c:#989137"></li><li style="--c:#575E35"></li><li style="--c:#D6D7D4"></li><li style="--c:#718864"></li><li style="--c:#324837"></li><li style="--c:#272F2C"></li><li style="--c:#384E4B"></li><li style="--c:#585E5E"></li><li style="--c:#758B93"></li><li style="--c:#B5C7D1"></li><li style="--c:#A3B5C9"></li><li style="--c:#686D8B"></li><li style="--c:#363848"></li><li style="--c:#8E758D"></li><li style="--c:#50394C"></li></ul>
-  <figure class="source"><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7d/A_Sunday_on_La_Grande_Jatte%2C_Georges_Seurat%2C_1884.jpg/500px-A_Sunday_on_La_Grande_Jatte%2C_Georges_Seurat%2C_1884.jpg" width="20000" height="13313" style="--ar:1.5023" crossorigin="anonymous" alt="Georges Seurat, A Sunday on La Grande Jatte: Parisians at leisure on an island in the Seine, in the shade and sun of a summer afternoon, painted in small touches of colour" decoding="async"><figcaption>Georges Seurat, <i>A Sunday on La Grande Jatte — 1884</i>, 1884–86 · Art Institute of Chicago</figcaption></figure>
+  <figure class="original"><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7d/A_Sunday_on_La_Grande_Jatte%2C_Georges_Seurat%2C_1884.jpg/500px-A_Sunday_on_La_Grande_Jatte%2C_Georges_Seurat%2C_1884.jpg" width="20000" height="13313" style="--ar:1.5023" crossorigin="anonymous" alt="Georges Seurat, A Sunday on La Grande Jatte: Parisians at leisure on an island in the Seine, in the shade and sun of a summer afternoon, painted in small touches of colour" decoding="async"><figcaption>Georges Seurat, <i>A Sunday on La Grande Jatte — 1884</i>, 1884–86 · Art Institute of Chicago</figcaption></figure>
 </aside>
 </section>
 <div class="termgrid">
@@ -86,7 +88,7 @@
     <details class="how" open><summary>How it is built</summary><code class="api">@property --turn { syntax: '&lt;number&gt;'; inherits: true; initial-value: 0 }   /* degrees */
 .swatches li { background: oklch(from var(--c) l c calc(h + var(--turn))) }
 .swatches { animation: turn 8s linear infinite }   /* 25 elements re-resolve each frame */
-:root     { animation: turn 8s linear infinite }   /* all of them do, though only 24 use it */</code></details>
+:root     { animation: turn 8s linear infinite }   /* all of them do, though only 24 use it */</code><p class="files"><span>In full, on GitHub</span> <a href="https://github.com/renocrypt/mocubix/blob/main/site/lexicon/scoped-rotation/index.html">index.html</a> <a href="https://github.com/renocrypt/mocubix/blob/main/site/lexicon/scoped-rotation/showcase.css">showcase.css</a> <a href="https://github.com/renocrypt/mocubix/blob/main/site/lexicon/scoped-rotation/showcase.js">showcase.js</a></p></details>
     <p class="credit">Painting — Georges Seurat, <a href="https://commons.wikimedia.org/wiki/File:A_Sunday_on_La_Grande_Jatte,_Georges_Seurat,_1884.jpg">A Sunday on La Grande Jatte — 1884</a>, 1884–86, Art Institute of Chicago, public domain, via Wikimedia Commons; its dots sampled from the image in the browser, its swatches its 24 most representative colours. Facts — <a href="https://en.wikipedia.org/wiki/A_Sunday_Afternoon_on_the_Island_of_La_Grande_Jatte">A Sunday Afternoon on the Island of La Grande Jatte</a>; <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@property">@property (MDN)</a>.</p>
   </div>
   </article>
