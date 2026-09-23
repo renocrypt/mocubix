@@ -59,7 +59,7 @@ def render(works):
         alt = html.escape(f'{label}, photographed by the James Webb Space Telescope: {what}', quote=True)
         fit, pos = FRAME.get(label, ('cover', '50% 50%'))
         out.append(
-            f'<figure class="stop{" whole" if fit == "contain" else ""}" data-far="{short}" style="--thumb:url(\'{thumb}\');--fit:{fit};--pos:{pos}">\n'
+            f'<figure class="stop{" whole" if fit == "contain" else ""}" data-far="{short}" style="--thumb:url(\'{thumb}\');--fit:{fit};--pos:{pos};--ar:{w["w"] / w["h"]:.4f}">\n'
             f'  <img src="{w["default"]}" srcset="{w["srcset"]}" sizes="100vw" width="{w["w"]}" height="{w["h"]}" '
             f'alt="{alt}" loading="{loading}" decoding="async"{" fetchpriority=\"high\"" if i == 0 else ""}>\n'
             f'  <figcaption>\n'

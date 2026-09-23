@@ -13,7 +13,8 @@
   animation:drift linear both;animation-timeline:view(inline)}
 /* a subject shown whole takes its own shape, right of centre, and feathers into the dark:
    its photograph's black is never quite the stage's black, so it has no edge to show */
-.stop.whole img{inset:0 7% 0 auto;width:auto;height:100%;max-width:64%;object-fit:contain;
+.stop.whole{container-type:size}
+.stop.whole img{inset:0 7% 0 auto;width:min(64cqw,calc(100cqh * var(--ar)));height:100%;object-fit:contain;
   -webkit-mask-image:radial-gradient(closest-side,#000 84%,transparent);mask-image:radial-gradient(closest-side,#000 84%,transparent)}
 @keyframes drift{from{scale:1.2;translate:10% 0}50%{scale:1.03;translate:0 0}to{scale:1.2;translate:-10% 0}}
 .stop::after{content:'';position:absolute;inset:0;pointer-events:none;
