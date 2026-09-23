@@ -52,6 +52,10 @@
   background:linear-gradient(90deg,currentColor 50%,transparent 50%)}
 :root[data-theme="day"] .theme i{background:linear-gradient(270deg,currentColor 50%,transparent 50%)}
 
+/* links in the small print */
+footer a{border-bottom:1px solid var(--line);transition:border-color .35s var(--settle)}
+footer a:hover{border-color:currentColor}
+
 /* the swap is one cross-fade of the whole page, on the house curve */
 ::view-transition-old(root),::view-transition-new(root){
   animation-duration:.55s;animation-timing-function:var(--settle)}

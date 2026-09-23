@@ -714,3 +714,34 @@ pure black by day and 6.9:1 over pure white by night, whatever is beneath.
 
 Evidence: `07-day-*` (before), `07-day-after*` (after), `chrome-*` (each page's
 chrome, with the rects the contrast was read from).
+
+## Ready to be found, 2026-09-22 — the address, share cards, credits
+
+**Address.** `https://mocubix.renocrypt.com/` (the user's choice). Every page
+carries its canonical address, favicon links and share tags (`og:*`, a
+`summary_large_image` card) right after its description, above the
+stylesheets. `robots.txt` allows everything and names `sitemap.xml` (nine
+addresses). `404.html` uses root paths, because Pages serves it at whatever
+address was asked for; `build/serve.py` serves it the same way locally.
+
+**Share cards.** Each is the page's own opening, rendered at 1440×756 CSS px,
+2×, night palette, chrome hidden, scaled to 1200×630 (48–133 KB). Kīlauea's
+card is phase 3 (Fissure 8, USGS, public domain) rather than the opening's
+CC BY-SA lava lake. Florence's card and the index card (which shows the
+Florence thumbnail) carry the photograph's credit in the corner.
+
+**Favicon.** The switch's half-disc in terra on the night ground: SVG, a
+32/16 px ICO, and a 180 px touch icon.
+
+**Credits.** An audit of every Commons image against each page's visible
+credits found the index crediting none of its three CC photographs, and
+Florence calling the eye CC BY-SA 3.0 IGO where the file is CC BY-SA 2.0.
+Fixed, and every CC licence named on the site now links to its deed (the 2.0
+licences require the link). "Private preview" is gone from the index footer
+and the Lexicon's kicker. The index is now titled "Mocubix — Seven ways a page
+can move" and has a description; Kīlauea's five photographs and Night side's
+map have real alt text.
+
+**Verified** over the local server: nine pages, one canonical each matching
+the sitemap, all share tags present, share images 1200×630, zero broken local
+links, the 404 page served with status 404.

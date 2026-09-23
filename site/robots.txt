@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://mocubix.renocrypt.com/sitemap.xml
