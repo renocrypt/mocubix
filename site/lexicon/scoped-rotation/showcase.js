@@ -15,7 +15,7 @@ const oklch = (r, g, b) => {
 };
 
 for (const stage of document.querySelectorAll('.scope')) {
-  const mosaic = stage.querySelector('.mosaic'), img = stage.querySelector('.source img');
+  const mosaic = stage.querySelector('.mosaic'), img = stage.querySelector('.original img');
   const ms = stage.querySelector('.ms output'), n = stage.querySelector('.n output');
   const spark = stage.querySelector('.meter canvas'), ctx = spark.getContext('2d');
   const cols = +getComputedStyle(mosaic).getPropertyValue('--cols'), rows = +getComputedStyle(mosaic).getPropertyValue('--rows');

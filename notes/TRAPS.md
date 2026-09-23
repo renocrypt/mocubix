@@ -18,6 +18,9 @@ Each of these cost time once. One line each, the way out after the dash. When a 
 - `lexicon.css` still has an unscoped `.btn` (absolute, bottom left) from the old demos — never name a showcase class `.btn`.
 - A `span` selector inside a readout caught the counter itself — use child combinators in readouts.
 
+- A page's own class can collide with the house chrome's (Scoped Rotation's figure was `.source`) — the chrome's names `back`, `theme`, `corner` and `source` are reserved.
+- Links set apart by a flex gap read as one word to text extraction (`GitHubindex.html`) — put spaces between them in the markup; the flex row ignores them.
+
 ## Scroll-driven and animated
 
 - The `animation` shorthand resets `animation-range`: a base `.x p { animation: … }` beats a per-item `.y { animation-range: … }` — write per-item ranges in the descendant form.

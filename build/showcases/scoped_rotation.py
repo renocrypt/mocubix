@@ -71,7 +71,7 @@ def render(works):
         '  </div>\n'
         '  <ul class="swatches" aria-label="The painting’s palette, 24 swatches">'
         + ''.join(f'<li style="--c:{c}"></li>' for c in chips) + '</ul>\n'
-        f'  <figure class="source"><img src="{w["sources"]["500"]}" width="{w["w"]}" height="{w["h"]}" '
+        f'  <figure class="original"><img src="{w["sources"]["500"]}" width="{w["w"]}" height="{w["h"]}" '
         f'style="--ar:{w["w"] / w["h"]:.4f}" crossorigin="anonymous" alt="Georges Seurat, A Sunday on La Grande Jatte: '
         'Parisians at leisure on an island in the Seine, in the shade and sun of a summer afternoon, painted in small '
         'touches of colour" decoding="async"><figcaption>Georges Seurat, <i>A Sunday on La Grande Jatte — 1884</i>, '

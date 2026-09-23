@@ -6,6 +6,7 @@
 <title>Ordered Dithering — Mocubix Lexicon</title>
 <meta name="description" content="The picture is cut down to a handful of tones, and the ones that are missing are made up out of a regular grain. Drag to take more away.">
 <link rel="canonical" href="https://mocubix.renocrypt.com/lexicon/ordered-dithering/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Ordered Dithering — Mocubix Lexicon","url":"https://mocubix.renocrypt.com/lexicon/ordered-dithering/","isPartOf":{"@type":"WebSite","name":"Mocubix","url":"https://mocubix.renocrypt.com/"},"isBasedOn":{"@type":"SoftwareSourceCode","url":"https://github.com/renocrypt/mocubix/tree/main/site/lexicon/ordered-dithering/","codeRepository":"https://github.com/renocrypt/mocubix","programmingLanguage":["HTML","CSS","JavaScript"]}}</script>
 <link rel="icon" href="../../favicon.ico" sizes="32x32">
 <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="../../apple-touch-icon.png">
@@ -47,6 +48,7 @@
     <a class="brand" href="../../">Mocubix</a><a class="brand" href="../../lexicon/"><i>Lexicon</i></a>
     <div class="navfams"><a class="navfam" href="../../lexicon/scroll-driven/">Scroll-driven<i>13</i></a><a class="navfam" href="../../lexicon/scroll-behaviour/">Scroll behaviour<i>11</i></a><a class="navfam" href="../../lexicon/image/" aria-current="true">Image<i>7</i></a><a class="navfam" href="../../lexicon/type/">Type<i>5</i></a><a class="navfam" href="../../lexicon/colour/">Colour<i>5</i></a></div>
     <span class="navtail">41 named effects</span>
+    <a class="source" href="https://github.com/renocrypt/mocubix/tree/main/site/lexicon/ordered-dithering/" aria-label="Source of this page, on GitHub"><span>Source</span></a>
     <span data-theme-slot></span>
   </div>
 </nav>
@@ -85,7 +87,7 @@
     <p class="note">Real pixel work — it needs <code>crossorigin="anonymous"</code> and a CORS-clean host, otherwise the canvas is tainted and <code>getImageData</code> throws. Wikimedia sends the header; most museum CDNs do not. Every cell of the 8×8 matrix holds a threshold, and the 64 are spread so that neighbours differ as much as they can. A pixel takes the tone above its own when it lies further towards that tone than its cell’s threshold, and the tone below when it does not, so a grey a third of the way between two tones lights about a third of every tile. The decision is made in linear light, where light adds up, so the grain averages to the photograph’s own brightness. The grain never moves with the picture: it is the same regular pattern everywhere, which is what separates ordered dithering from the scattered kind.</p>
     <details class="how" open><summary>How it is built</summary><code class="api">const BAYER8 = [0, 32, 8, 40, 2, 34, 10, 42, …];      // 64 thresholds, spread as evenly as they can be
 const t = (BAYER8[(y % 8) * 8 + x % 8] + .5) / 64;   // this pixel's threshold
-out = f &gt; t ? above : below;  // f: how far the pixel lies from the tone below to the tone above, in linear light</code></details>
+out = f &gt; t ? above : below;  // f: how far the pixel lies from the tone below to the tone above, in linear light</code><p class="files"><span>In full, on GitHub</span> <a href="https://github.com/renocrypt/mocubix/blob/main/site/lexicon/ordered-dithering/index.html">index.html</a> <a href="https://github.com/renocrypt/mocubix/blob/main/site/lexicon/ordered-dithering/showcase.css">showcase.css</a> <a href="https://github.com/renocrypt/mocubix/blob/main/site/lexicon/ordered-dithering/showcase.js">showcase.js</a></p></details>
     <p class="credit">Photographs — public domain, via Wikimedia Commons: <a href="https://commons.wikimedia.org/wiki/File:Sarah_Bernhardt_1864_Nadar.jpg">Sarah Bernhardt</a> (Nadar, 1864), <a href="https://commons.wikimedia.org/wiki/File:Loewy_et_Puiseux,_Photographie_Lunaire_Blancanus_-_Tycho_-_Schiller,_1899,_NGA_136739.jpg">The Moon: Blancanus, Tycho, Schiller</a> (Maurice Loewy and Pierre Puiseux, Paris Observatory, 1899), <a href="https://commons.wikimedia.org/wiki/File:AS08-14-2383.jpg">Earthrise</a> (William Anders, Apollo 8, 24 December 1968); Earthrise is shown cropped to the Earth and the horizon. The Moon plate is from the National Gallery of Art’s open access collection; Earthrise is NASA’s. Facts — <a href="https://en.wikipedia.org/wiki/Ordered_dithering">Ordered dithering</a>; <a href="https://en.wikipedia.org/wiki/Earthrise">Earthrise</a>; <a href="https://en.wikipedia.org/wiki/Sarah_Bernhardt">Sarah Bernhardt</a>.</p>
   </div>
   </article>

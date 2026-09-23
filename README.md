@@ -36,6 +36,7 @@ https://mocubix.renocrypt.com/lexicon/
 
 - Plain HTML and CSS in `site/`, with a few small scripts, no framework and no dependencies. What Chrome does natively is the exhibit: scroll-driven animations, scroll-triggered animations, `@property`, view transitions, `corner-shape`.
 - Every word ships as real text in the served HTML, so search engines and AI crawlers read the whole site.
+- Every page links to its own source in this repository (top right), so any page can serve as a template, and [llms.txt](https://mocubix.renocrypt.com/llms.txt) lists every page with its source for language models.
 - The material comes from Wikimedia Commons, public domain or openly licensed, and each page credits its sources.
 - The typefaces are the Indian Type Foundry's, from Fontshare: Melodrama and Switzer throughout, and Boska, Panchang, Zodiak, Gambetta, Khand, Rowan and Tanker as the exhibits' display faces (labels are Geist Mono). The mark is Melodrama Bold's M, cut through the middle.
 - Made for Chrome, and checked in it at desktop and phone widths.

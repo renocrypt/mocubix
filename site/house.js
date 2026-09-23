@@ -40,7 +40,12 @@
     setTimeout(function(){ var u = t.currentSrc || t.src; t.removeAttribute('srcset'); t.src = u.split('?')[0] + '?r=' + Date.now(); }, [2000, 5000, 10000][n]);
   }, true);
 
+  /* The mark of the link to a page's source: an open tag, drawn here once for every page. */
+  var TAG = '<svg viewBox="0 0 15 11" aria-hidden="true"><path d="M4.5 1.5 1 5.5l3.5 4"/>'
+    + '<path d="M9.25.75 5.75 10.25" pathLength="1"/><path d="M10.5 1.5 14 5.5l-3.5 4"/></svg>';
+
   addEventListener('DOMContentLoaded', function(){
+    document.querySelectorAll('a.source').forEach(function(a){ a.insertAdjacentHTML('afterbegin', TAG); });
     btn = document.createElement('button');
     btn.type = 'button'; btn.className = 'theme';
     btn.appendChild(document.createElement('i')).setAttribute('aria-hidden', 'true');

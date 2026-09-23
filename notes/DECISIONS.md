@@ -1858,3 +1858,26 @@ split from 15 to 16. The V's notch ends inside the split, so the upper half
 reads as two strokes and the lower as the V. The font's licence (name table,
 ID 13) asks that ITF faces be named and ITF credited in production credits;
 the README does.
+
+## Every page shows its source, 2026-09-23
+
+The site is meant to be taken apart: a person who likes an effect, or an
+agent asked to build one, should get from the page to its code in one step.
+Each page now links to its own folder in the repository, in the chrome where
+the eye already goes for the way back and the switch: top right on the front
+door and the exhibits, where the source and the switch share one plate (the
+corner), and in the Lexicon's bar. The link is written into each page's HTML,
+so crawlers and agents read it; its mark, an open tag, is drawn once in
+`house.js` and moves only when pointed at or focused: the brackets part and
+the slash is written again. A showcase also lists its files, whole, under the
+excerpt in How it is built.
+
+For machines, each page's JSON-LD says what the page is and what it is built
+from (`isBasedOn`, a `SoftwareSourceCode` with the folder and the repository),
+and `site/llms.txt` lists every page with its description and its folder, in
+the site's own order: the exhibits as the front door shows them, the Lexicon
+by pillar, with its showcases marked. `build/sitemap.py` writes it with the
+sitemap and refuses to run while any page's link names another folder.
+
+The chrome's class names are now reserved: Scoped Rotation's thumbnail of
+the painting was `.source`, and became `.original`.

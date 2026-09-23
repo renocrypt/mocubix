@@ -6,6 +6,7 @@
 <title>Text Mask — Mocubix Lexicon</title>
 <meta name="description" content="The picture shows only through the letters. The type is the window, not the caption.">
 <link rel="canonical" href="https://mocubix.renocrypt.com/lexicon/text-mask/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Text Mask — Mocubix Lexicon","url":"https://mocubix.renocrypt.com/lexicon/text-mask/","isPartOf":{"@type":"WebSite","name":"Mocubix","url":"https://mocubix.renocrypt.com/"},"isBasedOn":{"@type":"SoftwareSourceCode","url":"https://github.com/renocrypt/mocubix/tree/main/site/lexicon/text-mask/","codeRepository":"https://github.com/renocrypt/mocubix","programmingLanguage":["HTML","CSS","JavaScript"]}}</script>
 <link rel="icon" href="../../favicon.ico" sizes="32x32">
 <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="../../apple-touch-icon.png">
@@ -47,6 +48,7 @@
     <a class="brand" href="../../">Mocubix</a><a class="brand" href="../../lexicon/"><i>Lexicon</i></a>
     <div class="navfams"><a class="navfam" href="../../lexicon/scroll-driven/">Scroll-driven<i>13</i></a><a class="navfam" href="../../lexicon/scroll-behaviour/">Scroll behaviour<i>11</i></a><a class="navfam" href="../../lexicon/image/">Image<i>7</i></a><a class="navfam" href="../../lexicon/type/" aria-current="true">Type<i>5</i></a><a class="navfam" href="../../lexicon/colour/">Colour<i>5</i></a></div>
     <span class="navtail">41 named effects</span>
+    <a class="source" href="https://github.com/renocrypt/mocubix/tree/main/site/lexicon/text-mask/" aria-label="Source of this page, on GitHub"><span>Source</span></a>
     <span data-theme-slot></span>
   </div>
 </nav>
@@ -101,7 +103,7 @@
     <p class="note">The type becomes an aperture onto the image. It needs real weight to work — thin letterforms leave too little opening for the picture to read. The pattern is fixed to the screen, not to the letters, so as the letters grow they open onto more of the same wallpaper rather than magnifying it. The last step needs no mask at all: the ground around the letters fades, and because the pattern behind is the very same fixed picture, the letters simply dissolve into it.</p>
     <details class="how" open><summary>How it is built</summary><code class="api">.word { background: var(--pattern) center / cover fixed;   /* the pattern holds still */
         background-clip: text; color: transparent;
-        font-size: calc(var(--f0) * var(--z)) }               /* --z: 1 → 7 on the scroll */</code></details>
+        font-size: calc(var(--f0) * var(--z)) }               /* --z: 1 → 7 on the scroll */</code><p class="files"><span>In full, on GitHub</span> <a href="https://github.com/renocrypt/mocubix/blob/main/site/lexicon/text-mask/index.html">index.html</a> <a href="https://github.com/renocrypt/mocubix/blob/main/site/lexicon/text-mask/showcase.css">showcase.css</a></p></details>
     <p class="credit">Patterns — William Morris, via Wikimedia Commons from the Cleveland Museum of Art and the Metropolitan Museum of Art (both CC0): <a href="https://commons.wikimedia.org/wiki/File:Clevelandart_1937.696.jpg">Strawberry Thief</a>, <a href="https://commons.wikimedia.org/wiki/File:Clevelandart_1937.697.jpg">Honeysuckle</a>, <a href="https://commons.wikimedia.org/wiki/File:Willow_Bough_MET_DP306734.jpg">Willow Bough</a>, <a href="https://commons.wikimedia.org/wiki/File:Clevelandart_1937.695.jpg">Snakeshead</a>. The lines about them follow the museums’ records.</p>
   </div>
   </article>
