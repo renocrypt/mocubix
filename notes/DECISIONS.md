@@ -1616,3 +1616,60 @@ console clean, and a sweep at the display's refresh rate (p50 6.9 ms, p99
 the title's descenders ran into the line below (padding-bottom .16em), and
 the phone switch wrapped because `right: 50%` halved its available width
 (centred with `left` instead). The card is the Silver Apron.
+
+## The twenty-fourth showcase: Blur-up (LQIP), colour first, then the line, 2026-09-23
+
+**The idea.** Sixteen of Hiroshige's *One Hundred Famous Views of Edo*
+(1856–58), four to a season, on a wall the colour of their paper. The series
+is arranged by season (spring 1–42, summer 43–72, autumn 73–98, winter
+99–118), so the wall is a year in Edo. Every print is in the page from the
+start as a stand-in: a WebP sixteen pixels across, 124–246 bytes, 3.1 KB for
+all sixteen, written into the HTML. The prints are flat fields of colour,
+graded at their edges (bokashi), bound by line. At sixteen pixels the fields
+survive and the line does not, so the rain at Atake, the fireworks at
+Ryōgoku, the eagle at Jūmantsubo and the foxes at Ōji arrive with the print,
+and a wall of stand-ins already reads as the seasons.
+
+**Material.** Chosen print by print for the freshest impression, from a
+contact sheet of 45 candidate scans (the Sudden Shower in five, the foxfires
+in three): eleven from the Met (CC0), three from the Library of Congress
+(Nihonbashi, the irises, the Moon Pine), the Kameido plums from the Cantor
+Arts Center at Stanford (a Google Art Project file: the credit is Stanford's,
+not Brooklyn's, which the file name suggests), the carp streamer from the
+MFA Boston. Every scan is cropped to its printed image. The edge is the
+strongest step from paper into keyline near each side; a darkness threshold
+failed on the dark scan backgrounds and on the pale edges of snow and cloth.
+Each edge was checked corner by corner, zoomed. The series' frame has
+notched corners. Measured on all 64 corners, their radius is 1.7% of the
+print's width (quartiles 1.4–2.1%), so every slot is cut with `corner-shape:
+scoop` at that radius and even a stand-in has the series' shape. The wall
+has one slot shape (the median proportion, 0.6586) so the rows line up; each
+print covers it and loses at most a hundredth at an edge.
+
+**How it is built.** `build/lqip.py <showcase>` (new, for any picture):
+the smallest copy Commons serves, cropped to the part shown, averaged down
+to 16 px across, padded with two pixels of its own edge, WebP at quality 50,
+into `assets/lqip.json`. The padding matters: blurred, a picture fades to
+transparency at its border; padded with its own edge, the blur finds its
+colour there. Ten pixels across lost the round window at Massaki and the
+lantern at Asakusa; twenty-four added bytes and little the eye needs. The
+stand-in is the slot's `::before`, stretched past the slot by its padding
+and blurred 3.5cqi; at 2.2cqi the 16-pixel grid shows through as blocks. The
+print is held back by `showcase.js` until its file has arrived and been
+decoded, then comes into focus over its stand-in (opacity and `blur(2cqi)`
+to none, 1.2 s). Without the script nothing is held back: each print paints
+over its stand-in. What each print cost comes from Resource Timing (Wikimedia
+sends Timing-Allow-Origin), per print and summed in the deck. Replay brings
+them in again in the order they arrived on this visit, evenly spaced: on
+their real spacing, twelve bunched into the first moment because the lazy
+winter row came seconds later. A stand-ins switch holds the wall as the page
+first has it.
+
+**Checked.** At 1324×725 and 390×844: no overflow, console and issues
+clean, all sixteen arrived; a scroll sweep p50 6.9 ms, p99 8.5 ms at 144 Hz;
+during the replay p99 14 ms, with one 26 ms frame as all sixteen fall back
+together. Found on the way: the deck's top margin collapsed through the
+stage (now the stage's padding); on a phone the sticky deck was 126 px, a
+sixth of the screen, all the way down (static there); the cost line
+orphaned its "KB" (now two unbreakable halves). The card is the winter row,
+prints and stand-ins alternating under the deck's count of bytes.

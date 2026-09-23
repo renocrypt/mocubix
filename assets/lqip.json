@@ -1,0 +1,114 @@
+{
+ "Nihonbashi": {
+  "uri": "data:image/webp;base64,UklGRsAAAABXRUJQVlA4ILQAAABwBQCdASoUABwAPtFUokuoJKMhsAgBABoJYwCdMt7A/udh/gPGGxk0t1Evx/3UGc9oOuLAAP1TvhUtw2o4A2G+c9ljA6599Gha0HZjiM07qyFQ2GsLzyGw5XJ7FdjZDG7xwVBknQxhAXTEEeIQ45J42Pru+BD5LnNqKZXacWea9w8DiJLkWR/zzkIvflXMBmsWH744sg25luuN7QRCCNwyhdeBVN7D7yRj89MlSCYubcAAAAA=",
+  "w": 16,
+  "h": 24,
+  "pad": 2,
+  "bytes": 200
+ },
+ "Sendagi": {
+  "uri": "data:image/webp;base64,UklGRr4AAABXRUJQVlA4ILIAAADwBQCdASoUABwAPtFYpU0oJSOiMBgIAQAaCWQAnTOE/3fnKVgHK2w6jeLH3ja0fA8LJAfSNXc0AAD+xe6bqhkIIC7RZ1WbRwMGcsJfqhsGd75nF4UDTuP4xIgXvQDwvXqL7aMEep9TYKLtNqAkf2UvthPxQ+0lsHvqhxr8M/NSf69spO6aGZMAIlRhy6UWR5Aw0Jo/F5WlduEbflBq0mgbyG2d1YeNFMzwFnz/ArFBQAAA",
+  "w": 16,
+  "h": 24,
+  "pad": 2,
+  "bytes": 198
+ },
+ "Kameido": {
+  "uri": "data:image/webp;base64,UklGRuAAAABXRUJQVlA4INQAAABQBQCdASoUABwAPtFcp04oJSOiKAqpABoJZgCdL3Zs1QC5Bwb85L6HHKSgalYOckS+nlIA/sv7OABuLbUyZj419iNMhBY31g1rNE9N341EU9q8B0yJ7v8r/jqKy5QC4gPLdofnGD0j0Lz2UrVS6PXXTxeSGZFiXtSRL7kVP3aYEGHmocFp1RiAnuhR5KAECFZxt5Gqc1X7x0PZDgFOKDjCTVe48JiBUjKrYa8BV2QvDt9GSjv+aQHd6xSeWbrexV2BM9Bfx/mMCD7Z807k6zWwPF4AAA==",
+  "w": 16,
+  "h": 24,
+  "pad": 2,
+  "bytes": 232
+ },
+ "Massaki": {
+  "uri": "data:image/webp;base64,UklGRrAAAABXRUJQVlA4IKQAAAAwBQCdASoUABwAPtFiqU+oJaOiKAgBABoJQBOkFTgwXJyB+cTl0xMCtfqFREEDuyvZiAD7rlVHBLJ81egJINO9zZ5J2fZrp0u0ndVR1gkw9sRl3B3tUWlRsZTFxwpwzMSdMjUB9Vb3jAfye6UYJHW3QJX3RE+2pjRmV8sbJRZxVhk0TlaJY5PrGgn7pina61hyl0+QmpV1vhNJYYg5TalrBDOIAA==",
+  "w": 16,
+  "h": 24,
+  "pad": 2,
+  "bytes": 184
+ },
+ "Suido": {
+  "uri": "data:image/webp;base64,UklGRsQAAABXRUJQVlA4ILgAAABwBQCdASoUABwAPtFWo0uoJKMhsAgBABoJQBbfUABn5AaVPe9T7ujTCMCrfCdB37MzY23AAPfDgF/DVYS13B5u840EA+4Zl7J9tJFZFbnGxx2RD0bt2KSu2u1WHsBQrmUOstDUjGNaCTsm5hwk7XpQOvGGZplxFpSILHybctssmo2ni+2VVMXaa5A9b9miYtVoPq8dlYXj4cj0s6zGatJXy8LXWN0O5zr5T1g1bQwXHfphRA+DM4AA",
+  "w": 16,
+  "h": 24,
+  "pad": 2,
+  "bytes": 204
+ },
+ "Mannen": {
+  "uri": "data:image/webp;base64,UklGRsoAAABXRUJQVlA4IL4AAADQBQCdASoUABwAPtFcp04oJSOiKAqpABoJZACxHzJOOAVxHON/uPVRet8FjB9rOe1jiI3nS5WAAP60sblH5H0AYmmiP7tBimwX4RLJS58697BJlxhboCImLtEK9b9PHQt94WmS0AtHCrgZhDIjMBnm/FQ42Ox/euEnOE8b+yWGKFMkxNpSwqLeML8dPY7nY214kkZZ2d8FQ2VSoph2c5Z0vs7U4Mnjc4axVoHvILNPTEgg6dZxy0tj1PrLAAAA",
+  "w": 16,
+  "h": 24,
+  "pad": 2,
+  "bytes": 210
+ },
+ "Atake": {
+  "uri": "data:image/webp;base64,UklGRp4AAABXRUJQVlA4IJIAAADwBACdASoUABwAPtFgqU+oJSOiKAgBABoJQBahF/j4LUOZgNu4yz+1OYFswzvwA8AA/umtSxAIgF8iRQpZLqMtlu6P+zUNDXBi9D/Su/7AUEiOX7w3MqyZyY0RlGG3XXVdHrLtXPBtoUtCcsGG1UcJ+fnf9ip2a/gEa0LQSRw3Zl7IL/QetaBFHjwo5400imwAAA==",
+  "w": 16,
+  "h": 24,
+  "pad": 2,
+  "bytes": 166
+ },
+ "Horikiri": {
+  "uri": "data:image/webp;base64,UklGRu4AAABXRUJQVlA4IOIAAABQBQCdASoUABwAPtFaqE4oJSQiKAqpABoJYgCdIL6JooIgC/NdCc1rh7W4/AbBXXoG/UAA/trPwNMhd5PiEA85yaF1pgm2KzzbRXK5LdSD//IeAl7IEGMn7RESheY0Bc1Gg6IXpmLyqu4In9Bgi1QJ/7jY5JKv8SD6Fj5A72+rzxKgDf8tyY5wsinRI9cdJIcXbVci8AXw0PWoDa3naAFP1jn9Yc3ozqiOO2Pd2PUgwsUiYcqvyrg2XXd1mDVCjykUrsv5hXRNJx9bRl0P9IKA7LBHY9PisAgH/r4i6a0ywAAA",
+  "w": 16,
+  "h": 24,
+  "pad": 2,
+  "bytes": 246
+ },
+ "Kanda": {
+  "uri": "data:image/webp;base64,UklGRroAAABXRUJQVlA4IK4AAAAwBQCdASoUABwAPtFYpEuoJSOhsAgBABoJYwCdM09smm6AeQFNFTov5slDn/dJwJ2uAAD6neF15KGuKhupQgpY4l5Xbe0P0SaJw4N9/jkH8xUgpf2uRZlTK8jQJj+3A3sHQn48CWnRpNdHwtUg7vFPm17Ke4vaI2erWQoGSlDzcYeeaFB05RXd/Ez9M4CMUOM+/+duqPooGTR+Ow3CsX0SPUBPel60oxhaX8+wAAA=",
+  "w": 16,
+  "h": 24,
+  "pad": 2,
+  "bytes": 194
+ },
+ "Moon Pine": {
+  "uri": "data:image/webp;base64,UklGRuAAAABXRUJQVlA4INQAAADwBQCdASoUABwAPtFYpk0oJSOiMBgIAQAaCUATpmaOwPvwGBbTT9P+pxxlL6tCgvc5NRrwmU3+HAD+y83C5zmvfei+Ri7+/2w44TntfHEu7F5PhrOtzhzrIlvZ4rBEmWiuFiLtFnhaLIk6TfE2dwbA2Ah3fTaTnKEoOe/99lVSCwhOBn2RSOlDgjDLq/nE4meAaj74oRdQ5usRBGpHziSNsL4lkp5S8pEvm5tU7WMRHMCgnc4Q6OB0raTfA1Kx9dy6q69+TWcsfl259ymwVBIeDwIAAA==",
+  "w": 16,
+  "h": 24,
+  "pad": 2,
+  "bytes": 232
+ },
+ "Mama": {
+  "uri": "data:image/webp;base64,UklGRr4AAABXRUJQVlA4ILIAAADwBACdASoUABwAPtFUpk2oJCOiMBgIAQAaCUAWo2ZfhASAyL0AJjVcBTVd14ccigAA/tqcfRLgOU7kuK0Rs+nl6ZTHoAn9pZICDEPd2X1JU5JlPiCjWWNOTEKKh5jh2VykucKtPgwzKkO6FnEMZExBItUHm6waD/RFxInd9nM675q5L6kKUsJJMeuWLvUzgvdODFsVPAEDx0imhkwU/CaKlIIyfxreDjgYlGOdh8OpRAAA",
+  "w": 16,
+  "h": 24,
+  "pad": 2,
+  "bytes": 198
+ },
+ "Ryogoku": {
+  "uri": "data:image/webp;base64,UklGRowAAABXRUJQVlA4IIAAAACQBQCdASoUABwAPtFcqU4oJSQiKAqpABoJQBfPXHAe6j23+BeQPB5NdlDmHqbP+q39IL4qyAD+6U2arBA9ACUHgYXPCQbihwG2E1JGCq5fbqxM6hlOYOsrtdMaRFAWrmDxplKVsNXuElcgq4+VNU0AMdV+D5UCICJYIBg3iigAAA==",
+  "w": 16,
+  "h": 24,
+  "pad": 2,
+  "bytes": 148
+ },
+ "Kinryuzan": {
+  "uri": "data:image/webp;base64,UklGRqoAAABXRUJQVlA4IJ4AAABwBACdASoUABwAPtFep0+oJKMiKAgBABoJQBOmW+AXGJscu+IuW8UA1Sz6YAD9H8i/5ci4/pIc68S0+7Lr5cuGXlPFVbDsW+bZvepUK1aLzI9oCO+InpTWPAfchK4GqA72QaHTcAY0wGhD3SxC21Zj1wtHigC9AjhKIF2uD5Xn9FDkp7QHbfYZGIs7QTK5OVKoWNJcJiPuzbYimgAAAA==",
+  "w": 16,
+  "h": 24,
+  "pad": 2,
+  "bytes": 178
+ },
+ "Asakusa": {
+  "uri": "data:image/webp;base64,UklGRsIAAABXRUJQVlA4ILYAAADQBQCdASoUAB0APtFYpE0oJSOiKA1RABoJZAC7L11s/wO0hMrZhFPL2Arh4tYdKqKFlT7FThAAAP5ONXeR/nynMDBaF7Q5K/pntTctoL8Q6Wb0PTh4UZm3Ag2nhXeoEnW/mExb++lnprq8OD2DPKUh+3CNRj09uAbZPRJvL3vLlrVsRSiIuID+sHTN/wKNeIQpJqTUNNXilZoGjn90aZm7ZKNdC9rU9Du+/2fwcmRLbPQYv1QAAA==",
+  "w": 16,
+  "h": 25,
+  "pad": 2,
+  "bytes": 202
+ },
+ "Jumantsubo": {
+  "uri": "data:image/webp;base64,UklGRqAAAABXRUJQVlA4IJQAAADQBACdASoUABwAPtFSpUuoJKOhsBgMAQAaCUAWnQT66LpQ5R6HabnQwXyIE4daAAD+u2EfVTLY24ApZcjBO3EzUA+bE0F0PUDPNZl3HZWsuXcviaA/BI8X4eeMuqbk+p9YIfyS2HpAbdy25Rd2+qUJ9qIJ9p3q74pa82xYerRAW/ei/zIjGI1PHH9oG5UBQn36gAAA",
+  "w": 16,
+  "h": 24,
+  "pad": 2,
+  "bytes": 168
+ },
+ "Oji": {
+  "uri": "data:image/webp;base64,UklGRnQAAABXRUJQVlA4IGgAAABwBACdASoUABwAPr1Sn0unJSKxt/qoAjAXiWcAxzAhtBhFKreUtqlBtssEAAD+4yez4Rk/5mDz+m2qwtEKZRQM/fW7uxHvmHJ8JfxPDmr2RKI+U1WPTY7j21s8CS30K/yhvcz/cxAAAA==",
+  "w": 16,
+  "h": 24,
+  "pad": 2,
+  "bytes": 124
+ }
+}

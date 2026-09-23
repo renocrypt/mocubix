@@ -1,0 +1,68 @@
+/* Blur-up, in full: sixteen prints on a wall the colour of their paper. Each slot shows its stand-in from the start
+   (a 16-pixel WebP written into the page, padded with two pixels of its own edge, stretched over the slot and
+   blurred) and the print comes into focus over it once its file has arrived: showcase.js marks it .in. Every slot
+   is cut with the series' own notched corners, corner-shape: scoop at the notches' median radius, 1.7% of the
+   print's width. Without the script nothing is held back: each print simply paints over its stand-in. */
+
+.edo{--paper:#EEE6D5;--ink:#221C15;--mid:#5B5143;--dim:#857A68;--line:rgb(34 28 21 / .15);color-scheme:light;
+  width:100vw;margin-inline:calc(50% - 50vw);padding:clamp(22px,3.4vw,44px) clamp(16px,4vw,64px) clamp(64px,9vw,128px);
+  border:0;border-radius:0;background:var(--paper);color:var(--ink)}
+
+/* the deck: which to show, the replay, and what it all cost; it stays in reach down the wall */
+.deck{position:sticky;top:calc(var(--bar) + 12px);z-index:5;display:flex;flex-wrap:wrap;align-items:center;
+  justify-content:center;gap:8px 18px;width:fit-content;max-width:100%;margin:0 auto clamp(26px,4vw,52px);
+  padding:6px 18px 6px 6px;border-radius:999px;background:rgb(238 230 213 / .8);
+  backdrop-filter:blur(14px) saturate(1.3);-webkit-backdrop-filter:blur(14px) saturate(1.3);box-shadow:0 0 0 1px var(--line)}
+.show{display:flex;margin:0;padding:3px;border:0;border-radius:999px;background:rgb(34 28 21 / .07)}
+.show legend,.show input{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.show label,.replay{padding:9px 15px;border-radius:999px;cursor:pointer;font:10px/1 var(--mono);letter-spacing:.14em;
+  text-transform:uppercase;color:var(--mid);transition:background-color .25s var(--settle),color .25s var(--settle)}
+.show input:checked + label{background:var(--ink);color:var(--paper)}
+.show input:focus-visible + label,.replay:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.replay{border:1px solid var(--line);background:none;color:var(--ink)}
+.replay:hover{background:var(--ink);color:var(--paper)}
+.total{display:flex;flex-wrap:wrap;gap:4px 16px;margin:0;font:10px/1.3 var(--mono);letter-spacing:.1em;
+  text-transform:uppercase;color:var(--dim);font-variant-numeric:tabular-nums}
+.total b,.total output{font-weight:500;color:var(--ink)}
+
+/* a season: its name, and four prints */
+.season{max-width:1400px;margin-inline:auto}
+.season + .season{margin-top:clamp(44px,6.5vw,96px)}
+.season h3{display:flex;align-items:baseline;gap:.5em;margin:0 0 clamp(14px,2vw,24px);
+  font:400 clamp(20px,2vw,28px)/1 var(--display);letter-spacing:-.01em}
+.season .kanji{font:500 1.9em/1 'Noto Serif JP Variable','Source Han Serif SC VF',serif;letter-spacing:0}
+.season small{margin-left:auto;font:10px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--dim)}
+.prints{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(14px,2vw,30px)}
+
+.print{margin:0;container-type:inline-size}
+.slot{position:relative;aspect-ratio:var(--ar);border-radius:1.7cqi;corner-shape:scoop;overflow:clip}
+/* the stand-in: the padded WebP over the slot and past it by its padding, so the blur meets the picture's own edge */
+.slot::before{content:'';position:absolute;inset:calc(-1 * var(--py)) calc(-1 * var(--px));
+  background:var(--lqip) 0 0 / 100% 100%;filter:blur(3.5cqi)}
+.slot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;
+  transition:opacity .45s var(--settle),filter .45s var(--settle)}
+.slot img.in{transition-duration:1.2s}
+/* held until arrived; and all of them, when the stand-ins are asked for */
+.held .slot img:not(.in),.edo:has(#edo-standins:checked) .slot img{opacity:0;filter:blur(2cqi)}
+
+.print figcaption{display:grid;gap:5px;margin-top:13px}
+.print .no{font:10px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--dim)}
+.print b{font:400 clamp(15px,1.3vw,19px)/1.2 var(--display);letter-spacing:-.005em;text-wrap:balance}
+.print .ja{font:400 12px/1.45 'Noto Serif JP Variable','Source Han Serif SC VF',serif;letter-spacing:.08em;color:var(--mid)}
+.print .cost{display:flex;flex-wrap:wrap;gap:2px 12px;font:10px/1.3 var(--mono);letter-spacing:.06em;color:var(--dim);
+  font-variant-numeric:tabular-nums}
+.print .cost > span{white-space:nowrap}
+.print .cost output{color:var(--ink)}
+
+@media (max-width:760px){
+  /* on a phone the deck stays at the head of the wall: sticky, it would cover a sixth of the screen all the way down */
+  .deck{position:static;border-radius:20px;padding:6px 6px 10px;gap:8px 6px}
+  .show label,.replay{padding:9px 11px}
+  .total{width:100%;justify-content:center}
+  .prints{grid-template-columns:repeat(2,minmax(0,1fr));gap:26px 12px}
+  .print b{font-size:15px}
+}
+@media (prefers-reduced-motion:reduce){
+  .slot img{transition-property:opacity}
+  .held .slot img:not(.in),.edo:has(#edo-standins:checked) .slot img{filter:none}
+}
