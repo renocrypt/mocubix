@@ -1077,3 +1077,28 @@ the glint ride each card's own view timeline, finished before it sticks (a stuck
 card's timeline stops). Found on the way: a sticky element is held only within
 its container's content box, so the hold after the last card is a spacer inside
 the list, not padding. Chrome holds 120 fps through the deal (p99 10 ms).
+
+## The tenth showcase: Text Mask, through the letters, 2026-09-23
+
+**The idea.** Four of William Morris's patterns — Strawberry Thief (1883),
+Honeysuckle (1876), Willow Bough (1887), Snakeshead (1877), from the Cleveland
+Museum of Art and the Met, CC0 — each seen first through the letters of its own
+name, set huge in Zodiak Black. The pattern holds still; the letters are
+windows onto it. Scrolling grows the letters toward the thickest stroke near
+the middle of the name until they are great windows, then the ground dissolves
+and the whole pattern is there, with a plate carrying the museums' lines (May
+Morris on the thrushes and on Honeysuckle, "the very symbol of a garden
+tangle"). Willow Bough stands on deep green, the rest on paper.
+
+**How it is built.** No script. The name is real text with
+`background-clip: text`; its background is `fixed`, so the pattern stays put
+while the letters grow and stays sharp (it is never magnified). Two registered
+numbers drive the zoom: `--z` scales the font size, `--k` steers the growth
+toward the chosen stroke, whose position (in em from the word's centre) and
+each word's width were measured once in Chrome by redrawing the laid-out glyphs
+on a canvas and finding the thickest ink nearest the centre. The ending needs
+no mask: the whole-pattern layer is the very same fixed picture, fading in over
+the ground, so the letters simply dissolve into it. Each scan is scaled a little
+past cover so no mount or selvedge ever shows. The face (Zodiak 900, Fontshare)
+loads on this page only. 120 fps through the zoom (p99 10 ms), though the font
+size lays out each frame.

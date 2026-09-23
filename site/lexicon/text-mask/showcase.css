@@ -1,0 +1,51 @@
+/* Text Mask, in full: through the letters. Each pattern gets a run of the page;
+   its name is pinned in the middle, filled with the pattern, which is fixed to
+   the screen. --z grows the letters towards the thickest stroke near the middle
+   (--dx, --dy, measured), --k steers there; then the ground dissolves. */
+
+@property --z{syntax:'<number>';inherits:true;initial-value:1}
+@property --k{syntax:'<number>';inherits:true;initial-value:0}
+
+.morris{position:relative;width:100vw;margin-inline:calc(50% - 50vw);border:0;border-radius:0;background:none}
+/* a fixed background's box is the screen: cover it, and a little more, so no edge of a scan ever shows */
+.pat{height:270svh;view-timeline:--pat block;view-timeline-inset:var(--bar) 0px;
+  --size:calc(var(--over) * max(100vw, 100vh * var(--ar))) auto}
+.pin{position:sticky;top:var(--bar);height:calc(100svh - var(--bar));overflow:clip;background:var(--ground)}
+
+/* the name: as large as fits, one word to a line, filled with the pattern that stays put */
+.word{--f0:min(calc(86vw / var(--wem)),24svh,19vw);
+  position:absolute;left:50%;top:50%;width:min-content;margin:0;
+  font-family:'Zodiak',Georgia,serif;font-weight:900;font-size:calc(var(--f0) * var(--z));
+  line-height:.86;letter-spacing:-.02em;text-transform:uppercase;text-align:center;
+  translate:calc(-50% - var(--k) * var(--dx) * var(--f0) * var(--z)) calc(-50% - var(--k) * var(--dy) * var(--f0) * var(--z));
+  background:var(--pattern) center / var(--size) no-repeat fixed;-webkit-background-clip:text;background-clip:text;color:transparent;
+  animation:open linear both;animation-timeline:--pat;animation-range:contain 0% contain 84%}
+@keyframes open{
+  0%{--z:.92;--k:0;opacity:0}
+  8%{opacity:1}
+  46%{--z:1.08;--k:0}
+  100%{--z:7;--k:1;opacity:1}
+}
+
+/* the whole pattern: the same fixed picture, so the letters dissolve into it */
+.whole{position:absolute;inset:0;background:var(--pattern) center / var(--size) no-repeat fixed;opacity:0;
+  animation:whole linear both;animation-timeline:--pat;animation-range:contain 62% contain 90%}
+@keyframes whole{to{opacity:1}}
+
+/* its name, dates and a line, as a plate on the pattern */
+.cap{position:absolute;left:clamp(20px,5vw,72px);bottom:clamp(20px,5vh,56px);z-index:2;margin:0;max-width:min(560px,86vw);
+  display:grid;gap:6px;padding:16px 20px 18px;border-radius:3px;color:#F2EDE5;
+  background:rgb(14 12 10 / .66);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
+  opacity:0;translate:0 10px;animation:cap linear both;animation-timeline:--pat;animation-range:contain 86% contain 96%}
+@keyframes cap{to{opacity:1;translate:0 0}}
+.cap b{font-family:var(--display);font-weight:400;font-size:clamp(24px,2.6vw,36px);line-height:1;letter-spacing:-.02em}
+.cap .when{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#B4ABA0}
+.cap .line{font-size:14px;line-height:1.5;color:#DCD5CB;text-wrap:pretty}
+
+@media (prefers-reduced-motion:reduce){
+  .pat{height:auto}
+  .pin{position:relative;top:auto;height:calc(100svh - var(--bar))}
+  .word{animation:none;--z:1;--k:0}
+  .whole{display:none}
+  .cap{animation:none;opacity:1;translate:none}
+}

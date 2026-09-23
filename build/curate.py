@@ -12,6 +12,26 @@ UA = {'User-Agent': 'Mocubix/1.0 (https://github.com/renocrypt/mocubix)'}
 
 WORKS = [
  [
+  "morris",
+  "Strawberry Thief",
+  "File:Clevelandart 1937.696.jpg"
+ ],
+ [
+  "morris",
+  "Honeysuckle",
+  "File:Clevelandart 1937.697.jpg"
+ ],
+ [
+  "morris",
+  "Willow Bough",
+  "File:Willow Bough MET DP306734.jpg"
+ ],
+ [
+  "morris",
+  "Snakeshead",
+  "File:Clevelandart 1937.695.jpg"
+ ],
+ [
   "tarot",
   "The Fool",
   "File:Bembo-Visconti-tarot-arcanum-fool.jpg"
@@ -790,7 +810,7 @@ def real_width(url):
 ONLY = set(sys.argv[1:])          # e.g. `python3 build/curate.py webb` fetches only that kind
 if ONLY: WORKS = [w for w in WORKS if w[0] in ONLY]
 # material shown large asks for the big buckets too
-WIDE = {'webb': (1920, 3840), 'glacier': (1920,), 'buson': (1920, 2560), 'adams': (1920,), 'fsa': (1920, 3840), 'tabula': (1920, 3840)}
+WIDE = {'webb': (1920, 3840), 'glacier': (1920,), 'buson': (1920, 2560), 'adams': (1920,), 'fsa': (1920, 3840), 'tabula': (1920, 3840), 'morris': (1920, 3840)}
 
 recs = {}
 for width in (330, 500, 640, 1024, 1600, 1920, 2560, 3840):   # 330, 500: tiles, thumbnails, pictures shown small

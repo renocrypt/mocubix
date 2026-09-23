@@ -3101,5 +3101,89 @@
   },
   "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2d/Bembo-Visconti-tarot-arcanum-21-world.jpg/330px-Bembo-Visconti-tarot-arcanum-21-world.jpg 330w, https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2d/Bembo-Visconti-tarot-arcanum-21-world.jpg/500px-Bembo-Visconti-tarot-arcanum-21-world.jpg 500w, https://upload.wikimedia.org/wikipedia/commons/2/2d/Bembo-Visconti-tarot-arcanum-21-world.jpg 512w",
   "default": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2d/Bembo-Visconti-tarot-arcanum-21-world.jpg/500px-Bembo-Visconti-tarot-arcanum-21-world.jpg"
+ },
+ {
+  "title": "File:Clevelandart 1937.695.jpg",
+  "label": "Snakeshead",
+  "kind": "morris",
+  "w": 3400,
+  "h": 2900,
+  "license": "CC0",
+  "artist": "William Morris",
+  "credit": "https://clevelandart.org/art/1937.695",
+  "descurl": "https://commons.wikimedia.org/wiki/File:Clevelandart_1937.695.jpg",
+  "sources": {
+   "330": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fe/Clevelandart_1937.695.jpg/330px-Clevelandart_1937.695.jpg",
+   "500": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fe/Clevelandart_1937.695.jpg/500px-Clevelandart_1937.695.jpg",
+   "960": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fe/Clevelandart_1937.695.jpg/960px-Clevelandart_1937.695.jpg",
+   "1280": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fe/Clevelandart_1937.695.jpg/1280px-Clevelandart_1937.695.jpg",
+   "1920": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fe/Clevelandart_1937.695.jpg/1920px-Clevelandart_1937.695.jpg",
+   "3400": "https://upload.wikimedia.org/wikipedia/commons/f/fe/Clevelandart_1937.695.jpg"
+  },
+  "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fe/Clevelandart_1937.695.jpg/330px-Clevelandart_1937.695.jpg 330w, https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fe/Clevelandart_1937.695.jpg/500px-Clevelandart_1937.695.jpg 500w, https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fe/Clevelandart_1937.695.jpg/960px-Clevelandart_1937.695.jpg 960w, https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fe/Clevelandart_1937.695.jpg/1280px-Clevelandart_1937.695.jpg 1280w, https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fe/Clevelandart_1937.695.jpg/1920px-Clevelandart_1937.695.jpg 1920w, https://upload.wikimedia.org/wikipedia/commons/f/fe/Clevelandart_1937.695.jpg 3400w",
+  "default": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fe/Clevelandart_1937.695.jpg/1280px-Clevelandart_1937.695.jpg"
+ },
+ {
+  "title": "File:Clevelandart 1937.696.jpg",
+  "label": "Strawberry Thief",
+  "kind": "morris",
+  "w": 3400,
+  "h": 3035,
+  "license": "CC0",
+  "artist": "William Morris",
+  "credit": "https://clevelandart.org/art/1937.696",
+  "descurl": "https://commons.wikimedia.org/wiki/File:Clevelandart_1937.696.jpg",
+  "sources": {
+   "330": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c8/Clevelandart_1937.696.jpg/330px-Clevelandart_1937.696.jpg",
+   "500": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c8/Clevelandart_1937.696.jpg/500px-Clevelandart_1937.696.jpg",
+   "960": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c8/Clevelandart_1937.696.jpg/960px-Clevelandart_1937.696.jpg",
+   "1280": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c8/Clevelandart_1937.696.jpg/1280px-Clevelandart_1937.696.jpg",
+   "1920": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c8/Clevelandart_1937.696.jpg/1920px-Clevelandart_1937.696.jpg",
+   "3400": "https://upload.wikimedia.org/wikipedia/commons/c/c8/Clevelandart_1937.696.jpg"
+  },
+  "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c8/Clevelandart_1937.696.jpg/330px-Clevelandart_1937.696.jpg 330w, https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c8/Clevelandart_1937.696.jpg/500px-Clevelandart_1937.696.jpg 500w, https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c8/Clevelandart_1937.696.jpg/960px-Clevelandart_1937.696.jpg 960w, https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c8/Clevelandart_1937.696.jpg/1280px-Clevelandart_1937.696.jpg 1280w, https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c8/Clevelandart_1937.696.jpg/1920px-Clevelandart_1937.696.jpg 1920w, https://upload.wikimedia.org/wikipedia/commons/c/c8/Clevelandart_1937.696.jpg 3400w",
+  "default": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c8/Clevelandart_1937.696.jpg/1280px-Clevelandart_1937.696.jpg"
+ },
+ {
+  "title": "File:Clevelandart 1937.697.jpg",
+  "label": "Honeysuckle",
+  "kind": "morris",
+  "w": 3400,
+  "h": 3201,
+  "license": "CC0",
+  "artist": "William Morris",
+  "credit": "https://clevelandart.org/art/1937.697",
+  "descurl": "https://commons.wikimedia.org/wiki/File:Clevelandart_1937.697.jpg",
+  "sources": {
+   "330": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/47/Clevelandart_1937.697.jpg/330px-Clevelandart_1937.697.jpg",
+   "500": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/47/Clevelandart_1937.697.jpg/500px-Clevelandart_1937.697.jpg",
+   "960": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/47/Clevelandart_1937.697.jpg/960px-Clevelandart_1937.697.jpg",
+   "1280": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/47/Clevelandart_1937.697.jpg/1280px-Clevelandart_1937.697.jpg",
+   "1920": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/47/Clevelandart_1937.697.jpg/1920px-Clevelandart_1937.697.jpg",
+   "3400": "https://upload.wikimedia.org/wikipedia/commons/4/47/Clevelandart_1937.697.jpg"
+  },
+  "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/47/Clevelandart_1937.697.jpg/330px-Clevelandart_1937.697.jpg 330w, https://thumb.wikimedia.org/wikipedia/commons/thumb/4/47/Clevelandart_1937.697.jpg/500px-Clevelandart_1937.697.jpg 500w, https://thumb.wikimedia.org/wikipedia/commons/thumb/4/47/Clevelandart_1937.697.jpg/960px-Clevelandart_1937.697.jpg 960w, https://thumb.wikimedia.org/wikipedia/commons/thumb/4/47/Clevelandart_1937.697.jpg/1280px-Clevelandart_1937.697.jpg 1280w, https://thumb.wikimedia.org/wikipedia/commons/thumb/4/47/Clevelandart_1937.697.jpg/1920px-Clevelandart_1937.697.jpg 1920w, https://upload.wikimedia.org/wikipedia/commons/4/47/Clevelandart_1937.697.jpg 3400w",
+  "default": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/47/Clevelandart_1937.697.jpg/1280px-Clevelandart_1937.697.jpg"
+ },
+ {
+  "title": "File:Willow Bough MET DP306734.jpg",
+  "label": "Willow Bough",
+  "kind": "morris",
+  "w": 2985,
+  "h": 3860,
+  "license": "CC0",
+  "artist": "William Morris / Morris &amp; Co.",
+  "credit": "This file was donated to Wikimedia Commons as part of a project by the Metropoli",
+  "descurl": "https://commons.wikimedia.org/wiki/File:Willow_Bough_MET_DP306734.jpg",
+  "sources": {
+   "330": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1b/Willow_Bough_MET_DP306734.jpg/330px-Willow_Bough_MET_DP306734.jpg",
+   "500": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1b/Willow_Bough_MET_DP306734.jpg/500px-Willow_Bough_MET_DP306734.jpg",
+   "960": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1b/Willow_Bough_MET_DP306734.jpg/960px-Willow_Bough_MET_DP306734.jpg",
+   "1280": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1b/Willow_Bough_MET_DP306734.jpg/1280px-Willow_Bough_MET_DP306734.jpg",
+   "1920": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1b/Willow_Bough_MET_DP306734.jpg/1920px-Willow_Bough_MET_DP306734.jpg",
+   "2985": "https://upload.wikimedia.org/wikipedia/commons/1/1b/Willow_Bough_MET_DP306734.jpg"
+  },
+  "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1b/Willow_Bough_MET_DP306734.jpg/330px-Willow_Bough_MET_DP306734.jpg 330w, https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1b/Willow_Bough_MET_DP306734.jpg/500px-Willow_Bough_MET_DP306734.jpg 500w, https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1b/Willow_Bough_MET_DP306734.jpg/960px-Willow_Bough_MET_DP306734.jpg 960w, https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1b/Willow_Bough_MET_DP306734.jpg/1280px-Willow_Bough_MET_DP306734.jpg 1280w, https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1b/Willow_Bough_MET_DP306734.jpg/1920px-Willow_Bough_MET_DP306734.jpg 1920w, https://upload.wikimedia.org/wikipedia/commons/1/1b/Willow_Bough_MET_DP306734.jpg 2985w",
+  "default": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1b/Willow_Bough_MET_DP306734.jpg/1280px-Willow_Bough_MET_DP306734.jpg"
  }
 ]
