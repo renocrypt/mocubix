@@ -1571,3 +1571,48 @@ source units at all.
 clean. The photograph stays in the page as the image, with its alt; the
 canvas is aria-hidden, and the tone count is an `<output>`. The card is
 Bernhardt at two tones.
+
+## The twenty-third showcase: Progressive Blur, captions that stand on the picture, 2026-09-23
+
+**The idea.** Six photochroms of the 1890s (Photoglob Zürich and the Detroit
+Publishing Company; the Library of Congress Photochrom Print Collection,
+public domain): Amalfi from the Capuchins, the Admiralty at Algiers, the Mer
+de Glace, the Stockholm Exposition of 1897, a Sami family in Nordland, and
+the Silver Apron in Yosemite. Each is shown whole and as wide as the screen,
+with its caption on the picture. Photochroms were printed from one
+black-and-white negative and ten to fifteen lithographic stones, coloured
+from the photographer's notes. Every print carries a switch (labels for one
+radio group) comparing the softening with what it replaces: a black bar, or
+nothing.
+
+**Where the blur goes is the design.** The first cut used one layout for
+all six (full-bleed, softening the bottom 52%, captions bottom-left). It
+blurred the Amalfi woman's face, the Sami children and the Mulberry Street
+crowd: a progressive blur over a subject is worse than a bar. So each print
+now declares its quiet edge, how far the softening reaches (30–42%, stopping
+short of the subject), and the caption's side and ink. The ink comes from
+the measured lightness of that corner: light over the dark granite (L .45),
+dark over the Sami sky (L .77), the ice and the sunlit quay. The Sami family
+is softened at the top, over the sky: the children fill the bottom of the
+print. Mulberry Street, busy at both edges, was replaced by the Silver
+Apron. Scans with a mount or the Library's colour target are cropped to the
+picture with `object-view-box`. On a phone each print is cropped tall,
+held on its subject by a per-print x.
+
+**How it is built.** No script. Six layers of `backdrop-filter: blur()`
+(1, 2, 4, 8, 16, 32px), each masked to its own band of the veil and
+overlapping the next, grow the blur itself towards the edge. A single
+blurred layer under a gradient mask only fades a uniform blur, which reads
+as frosted glass. The mask direction is a custom property (`--to: to
+bottom` or `to top`), so one rule serves both edges. A whisper of tint
+under the ink finishes it. The switch's radios are visually hidden with
+`aria-label`s (six sets of labels would otherwise concatenate into their
+names); the label sets are aria-hidden, styled from the radios by `:has()`,
+and show their focus ring through `:has(:focus-visible)`.
+
+**Checked.** At 1324×725 and at 390×844: no overflow, all six loaded, the
+console clean, and a sweep at the display's refresh rate (p50 6.9 ms, p99
+7.7 ms at 144 Hz) with 36 backdrop layers on the page. Found on the way:
+the title's descenders ran into the line below (padding-bottom .16em), and
+the phone switch wrapped because `right: 50%` halved its available width
+(centred with `left` instead). The card is the Silver Apron.

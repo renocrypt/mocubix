@@ -4410,5 +4410,127 @@
   },
   "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8b/Sarah_Bernhardt_1864_Nadar.jpg/330px-Sarah_Bernhardt_1864_Nadar.jpg 330w, https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8b/Sarah_Bernhardt_1864_Nadar.jpg/500px-Sarah_Bernhardt_1864_Nadar.jpg 500w, https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8b/Sarah_Bernhardt_1864_Nadar.jpg/960px-Sarah_Bernhardt_1864_Nadar.jpg 960w, https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8b/Sarah_Bernhardt_1864_Nadar.jpg/1280px-Sarah_Bernhardt_1864_Nadar.jpg 1280w, https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8b/Sarah_Bernhardt_1864_Nadar.jpg/1920px-Sarah_Bernhardt_1864_Nadar.jpg 1920w",
   "default": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8b/Sarah_Bernhardt_1864_Nadar.jpg/960px-Sarah_Bernhardt_1864_Nadar.jpg"
+ },
+ {
+  "title": "File:Amalfi, from the Capuccini, Naples, Italy-LCCN2001700908.jpg",
+  "label": "Amalfi",
+  "kind": "photochrom",
+  "w": 5099,
+  "h": 4104,
+  "license": "Public domain",
+  "artist": "Photochrom Print Collection",
+  "credit": "http://lcweb2.loc.gov/service/pnp/cph/3g10000/3g10000/3g10600/3g10677v.jpg",
+  "descurl": "https://commons.wikimedia.org/wiki/File:Amalfi,_from_the_Capuccini,_Naples,_Italy-LCCN2001700908.jpg",
+  "sources": {
+   "330": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6f/Amalfi%2C_from_the_Capuccini%2C_Naples%2C_Italy-LCCN2001700908.jpg/330px-Amalfi%2C_from_the_Capuccini%2C_Naples%2C_Italy-LCCN2001700908.jpg",
+   "500": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6f/Amalfi%2C_from_the_Capuccini%2C_Naples%2C_Italy-LCCN2001700908.jpg/500px-Amalfi%2C_from_the_Capuccini%2C_Naples%2C_Italy-LCCN2001700908.jpg",
+   "960": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6f/Amalfi%2C_from_the_Capuccini%2C_Naples%2C_Italy-LCCN2001700908.jpg/960px-Amalfi%2C_from_the_Capuccini%2C_Naples%2C_Italy-LCCN2001700908.jpg",
+   "1280": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6f/Amalfi%2C_from_the_Capuccini%2C_Naples%2C_Italy-LCCN2001700908.jpg/1280px-Amalfi%2C_from_the_Capuccini%2C_Naples%2C_Italy-LCCN2001700908.jpg",
+   "1920": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6f/Amalfi%2C_from_the_Capuccini%2C_Naples%2C_Italy-LCCN2001700908.jpg/1920px-Amalfi%2C_from_the_Capuccini%2C_Naples%2C_Italy-LCCN2001700908.jpg",
+   "3840": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6f/Amalfi%2C_from_the_Capuccini%2C_Naples%2C_Italy-LCCN2001700908.jpg/3840px-Amalfi%2C_from_the_Capuccini%2C_Naples%2C_Italy-LCCN2001700908.jpg"
+  },
+  "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6f/Amalfi%2C_from_the_Capuccini%2C_Naples%2C_Italy-LCCN2001700908.jpg/330px-Amalfi%2C_from_the_Capuccini%2C_Naples%2C_Italy-LCCN2001700908.jpg 330w, https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6f/Amalfi%2C_from_the_Capuccini%2C_Naples%2C_Italy-LCCN2001700908.jpg/500px-Amalfi%2C_from_the_Capuccini%2C_Naples%2C_Italy-LCCN2001700908.jpg 500w, https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6f/Amalfi%2C_from_the_Capuccini%2C_Naples%2C_Italy-LCCN2001700908.jpg/960px-Amalfi%2C_from_the_Capuccini%2C_Naples%2C_Italy-LCCN2001700908.jpg 960w, https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6f/Amalfi%2C_from_the_Capuccini%2C_Naples%2C_Italy-LCCN2001700908.jpg/1280px-Amalfi%2C_from_the_Capuccini%2C_Naples%2C_Italy-LCCN2001700908.jpg 1280w, https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6f/Amalfi%2C_from_the_Capuccini%2C_Naples%2C_Italy-LCCN2001700908.jpg/1920px-Amalfi%2C_from_the_Capuccini%2C_Naples%2C_Italy-LCCN2001700908.jpg 1920w, https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6f/Amalfi%2C_from_the_Capuccini%2C_Naples%2C_Italy-LCCN2001700908.jpg/3840px-Amalfi%2C_from_the_Capuccini%2C_Naples%2C_Italy-LCCN2001700908.jpg 3840w",
+  "default": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6f/Amalfi%2C_from_the_Capuccini%2C_Naples%2C_Italy-LCCN2001700908.jpg/1280px-Amalfi%2C_from_the_Capuccini%2C_Naples%2C_Italy-LCCN2001700908.jpg"
+ },
+ {
+  "title": "File:Mer de Glace, Mont-Blanc.jpg",
+  "label": "Mer de Glace",
+  "kind": "photochrom",
+  "w": 3150,
+  "h": 2320,
+  "license": "Public domain",
+  "artist": "Unknown authorUnknown author",
+  "credit": "This image  is available from the United States Library of Congress's Prints and",
+  "descurl": "https://commons.wikimedia.org/wiki/File:Mer_de_Glace,_Mont-Blanc.jpg",
+  "sources": {
+   "330": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1d/Mer_de_Glace%2C_Mont-Blanc.jpg/330px-Mer_de_Glace%2C_Mont-Blanc.jpg",
+   "500": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1d/Mer_de_Glace%2C_Mont-Blanc.jpg/500px-Mer_de_Glace%2C_Mont-Blanc.jpg",
+   "960": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1d/Mer_de_Glace%2C_Mont-Blanc.jpg/960px-Mer_de_Glace%2C_Mont-Blanc.jpg",
+   "1280": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1d/Mer_de_Glace%2C_Mont-Blanc.jpg/1280px-Mer_de_Glace%2C_Mont-Blanc.jpg",
+   "1920": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1d/Mer_de_Glace%2C_Mont-Blanc.jpg/1920px-Mer_de_Glace%2C_Mont-Blanc.jpg"
+  },
+  "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1d/Mer_de_Glace%2C_Mont-Blanc.jpg/330px-Mer_de_Glace%2C_Mont-Blanc.jpg 330w, https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1d/Mer_de_Glace%2C_Mont-Blanc.jpg/500px-Mer_de_Glace%2C_Mont-Blanc.jpg 500w, https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1d/Mer_de_Glace%2C_Mont-Blanc.jpg/960px-Mer_de_Glace%2C_Mont-Blanc.jpg 960w, https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1d/Mer_de_Glace%2C_Mont-Blanc.jpg/1280px-Mer_de_Glace%2C_Mont-Blanc.jpg 1280w, https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1d/Mer_de_Glace%2C_Mont-Blanc.jpg/1920px-Mer_de_Glace%2C_Mont-Blanc.jpg 1920w",
+  "default": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1d/Mer_de_Glace%2C_Mont-Blanc.jpg/960px-Mer_de_Glace%2C_Mont-Blanc.jpg"
+ },
+ {
+  "title": "File:Stockholm photochrom2.jpg",
+  "label": "Stockholm",
+  "kind": "photochrom",
+  "w": 3332,
+  "h": 2454,
+  "license": "Public domain",
+  "artist": "Detroit Publishing Co.",
+  "credit": "This image  is available from the United States Library of Congress's Prints and",
+  "descurl": "https://commons.wikimedia.org/wiki/File:Stockholm_photochrom2.jpg",
+  "sources": {
+   "330": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f7/Stockholm_photochrom2.jpg/330px-Stockholm_photochrom2.jpg",
+   "500": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f7/Stockholm_photochrom2.jpg/500px-Stockholm_photochrom2.jpg",
+   "960": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f7/Stockholm_photochrom2.jpg/960px-Stockholm_photochrom2.jpg",
+   "1280": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f7/Stockholm_photochrom2.jpg/1280px-Stockholm_photochrom2.jpg",
+   "1920": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f7/Stockholm_photochrom2.jpg/1920px-Stockholm_photochrom2.jpg"
+  },
+  "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f7/Stockholm_photochrom2.jpg/330px-Stockholm_photochrom2.jpg 330w, https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f7/Stockholm_photochrom2.jpg/500px-Stockholm_photochrom2.jpg 500w, https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f7/Stockholm_photochrom2.jpg/960px-Stockholm_photochrom2.jpg 960w, https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f7/Stockholm_photochrom2.jpg/1280px-Stockholm_photochrom2.jpg 1280w, https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f7/Stockholm_photochrom2.jpg/1920px-Stockholm_photochrom2.jpg 1920w",
+  "default": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f7/Stockholm_photochrom2.jpg/960px-Stockholm_photochrom2.jpg"
+ },
+ {
+  "title": "File:The admiralty, Algiers, Algeria-LCCN2001697806.jpg",
+  "label": "Algiers",
+  "kind": "photochrom",
+  "w": 3329,
+  "h": 2473,
+  "license": "Public domain",
+  "artist": "Photochrom:  Photoglob Zürich\n\n; Photograph:  Unknown photographer\n\nSubject work",
+  "credit": "This image  is available from the United States Library of Congress's Prints and",
+  "descurl": "https://commons.wikimedia.org/wiki/File:The_admiralty,_Algiers,_Algeria-LCCN2001697806.jpg",
+  "sources": {
+   "330": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/55/The_admiralty%2C_Algiers%2C_Algeria-LCCN2001697806.jpg/330px-The_admiralty%2C_Algiers%2C_Algeria-LCCN2001697806.jpg",
+   "500": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/55/The_admiralty%2C_Algiers%2C_Algeria-LCCN2001697806.jpg/500px-The_admiralty%2C_Algiers%2C_Algeria-LCCN2001697806.jpg",
+   "960": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/55/The_admiralty%2C_Algiers%2C_Algeria-LCCN2001697806.jpg/960px-The_admiralty%2C_Algiers%2C_Algeria-LCCN2001697806.jpg",
+   "1280": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/55/The_admiralty%2C_Algiers%2C_Algeria-LCCN2001697806.jpg/1280px-The_admiralty%2C_Algiers%2C_Algeria-LCCN2001697806.jpg",
+   "1920": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/55/The_admiralty%2C_Algiers%2C_Algeria-LCCN2001697806.jpg/1920px-The_admiralty%2C_Algiers%2C_Algeria-LCCN2001697806.jpg"
+  },
+  "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/55/The_admiralty%2C_Algiers%2C_Algeria-LCCN2001697806.jpg/330px-The_admiralty%2C_Algiers%2C_Algeria-LCCN2001697806.jpg 330w, https://thumb.wikimedia.org/wikipedia/commons/thumb/5/55/The_admiralty%2C_Algiers%2C_Algeria-LCCN2001697806.jpg/500px-The_admiralty%2C_Algiers%2C_Algeria-LCCN2001697806.jpg 500w, https://thumb.wikimedia.org/wikipedia/commons/thumb/5/55/The_admiralty%2C_Algiers%2C_Algeria-LCCN2001697806.jpg/960px-The_admiralty%2C_Algiers%2C_Algeria-LCCN2001697806.jpg 960w, https://thumb.wikimedia.org/wikipedia/commons/thumb/5/55/The_admiralty%2C_Algiers%2C_Algeria-LCCN2001697806.jpg/1280px-The_admiralty%2C_Algiers%2C_Algeria-LCCN2001697806.jpg 1280w, https://thumb.wikimedia.org/wikipedia/commons/thumb/5/55/The_admiralty%2C_Algiers%2C_Algeria-LCCN2001697806.jpg/1920px-The_admiralty%2C_Algiers%2C_Algeria-LCCN2001697806.jpg 1920w",
+  "default": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/55/The_admiralty%2C_Algiers%2C_Algeria-LCCN2001697806.jpg/960px-The_admiralty%2C_Algiers%2C_Algeria-LCCN2001697806.jpg"
+ },
+ {
+  "title": "File:Saami Family 1900.jpg",
+  "label": "Sami",
+  "kind": "photochrom",
+  "w": 3320,
+  "h": 2440,
+  "license": "Public domain",
+  "artist": "Unknown authorUnknown author",
+  "credit": "This image  is available from the United States Library of Congress's Prints and",
+  "descurl": "https://commons.wikimedia.org/wiki/File:Saami_Family_1900.jpg",
+  "sources": {
+   "330": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/87/Saami_Family_1900.jpg/330px-Saami_Family_1900.jpg",
+   "500": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/87/Saami_Family_1900.jpg/500px-Saami_Family_1900.jpg",
+   "960": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/87/Saami_Family_1900.jpg/960px-Saami_Family_1900.jpg",
+   "1280": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/87/Saami_Family_1900.jpg/1280px-Saami_Family_1900.jpg",
+   "1920": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/87/Saami_Family_1900.jpg/1920px-Saami_Family_1900.jpg"
+  },
+  "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/87/Saami_Family_1900.jpg/330px-Saami_Family_1900.jpg 330w, https://thumb.wikimedia.org/wikipedia/commons/thumb/8/87/Saami_Family_1900.jpg/500px-Saami_Family_1900.jpg 500w, https://thumb.wikimedia.org/wikipedia/commons/thumb/8/87/Saami_Family_1900.jpg/960px-Saami_Family_1900.jpg 960w, https://thumb.wikimedia.org/wikipedia/commons/thumb/8/87/Saami_Family_1900.jpg/1280px-Saami_Family_1900.jpg 1280w, https://thumb.wikimedia.org/wikipedia/commons/thumb/8/87/Saami_Family_1900.jpg/1920px-Saami_Family_1900.jpg 1920w",
+  "default": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/87/Saami_Family_1900.jpg/960px-Saami_Family_1900.jpg"
+ },
+ {
+  "title": "File:Silver Apron, Yosemite Valley-LCCN2008678176.jpg",
+  "label": "Silver Apron",
+  "kind": "photochrom",
+  "w": 7366,
+  "h": 5492,
+  "license": "Public domain",
+  "artist": "",
+  "credit": "Library of Congress\n\n''Catalog:'' http://lccn.loc.gov/2008678176",
+  "descurl": "https://commons.wikimedia.org/wiki/File:Silver_Apron,_Yosemite_Valley-LCCN2008678176.jpg",
+  "sources": {
+   "330": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4e/Silver_Apron%2C_Yosemite_Valley-LCCN2008678176.jpg/330px-Silver_Apron%2C_Yosemite_Valley-LCCN2008678176.jpg",
+   "500": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4e/Silver_Apron%2C_Yosemite_Valley-LCCN2008678176.jpg/500px-Silver_Apron%2C_Yosemite_Valley-LCCN2008678176.jpg",
+   "960": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4e/Silver_Apron%2C_Yosemite_Valley-LCCN2008678176.jpg/960px-Silver_Apron%2C_Yosemite_Valley-LCCN2008678176.jpg",
+   "1280": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4e/Silver_Apron%2C_Yosemite_Valley-LCCN2008678176.jpg/1280px-Silver_Apron%2C_Yosemite_Valley-LCCN2008678176.jpg",
+   "1920": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4e/Silver_Apron%2C_Yosemite_Valley-LCCN2008678176.jpg/1920px-Silver_Apron%2C_Yosemite_Valley-LCCN2008678176.jpg",
+   "3840": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4e/Silver_Apron%2C_Yosemite_Valley-LCCN2008678176.jpg/3840px-Silver_Apron%2C_Yosemite_Valley-LCCN2008678176.jpg"
+  },
+  "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4e/Silver_Apron%2C_Yosemite_Valley-LCCN2008678176.jpg/330px-Silver_Apron%2C_Yosemite_Valley-LCCN2008678176.jpg 330w, https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4e/Silver_Apron%2C_Yosemite_Valley-LCCN2008678176.jpg/500px-Silver_Apron%2C_Yosemite_Valley-LCCN2008678176.jpg 500w, https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4e/Silver_Apron%2C_Yosemite_Valley-LCCN2008678176.jpg/960px-Silver_Apron%2C_Yosemite_Valley-LCCN2008678176.jpg 960w, https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4e/Silver_Apron%2C_Yosemite_Valley-LCCN2008678176.jpg/1280px-Silver_Apron%2C_Yosemite_Valley-LCCN2008678176.jpg 1280w, https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4e/Silver_Apron%2C_Yosemite_Valley-LCCN2008678176.jpg/1920px-Silver_Apron%2C_Yosemite_Valley-LCCN2008678176.jpg 1920w, https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4e/Silver_Apron%2C_Yosemite_Valley-LCCN2008678176.jpg/3840px-Silver_Apron%2C_Yosemite_Valley-LCCN2008678176.jpg 3840w",
+  "default": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4e/Silver_Apron%2C_Yosemite_Valley-LCCN2008678176.jpg/1280px-Silver_Apron%2C_Yosemite_Valley-LCCN2008678176.jpg"
  }
 ]
