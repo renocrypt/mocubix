@@ -11,6 +11,7 @@ ROOT = Path(__file__).resolve().parents[1]
 UA = {'User-Agent': 'Mocubix/1.0 (https://github.com/renocrypt/mocubix)'}
 
 WORKS = [
+ ["chevreul", "Premier cercle", "File:Plate V- Premier cercle chromatique renfermant les couleurs franches - DPLA - 3cd2620beae8c9ed77e3afb7f2762da8.jpg"],
  ["verne", "Wager", "File:'Around the World in Eighty Days' by Neuville and Benett 06.jpg"],
  ["verne", "Pagoda", "File:'Around the World in Eighty Days' by Neuville and Benett 15.jpg"],
  ["verne", "Elephant", "File:'Around the World in Eighty Days' by Neuville and Benett 18.jpg"],
@@ -971,7 +972,7 @@ def real_width(url):
 ONLY = set(sys.argv[1:])          # e.g. `python3 build/curate.py webb` fetches only that kind
 if ONLY: WORKS = [w for w in WORKS if w[0] in ONLY]
 # material shown large asks for the big buckets too
-WIDE = {'webb': (1920, 3840), 'glacier': (1920,), 'buson': (1920, 2560), 'adams': (1920,), 'fsa': (1920, 3840), 'tabula': (1920, 3840), 'morris': (1920, 3840), 'monet': (1920,), 'posters': (1920,), 'heures': (1920,), 'prokudin': (1920,), 'bayeux': (1920,), 'caslon': (1920, 3840)}
+WIDE = {'webb': (1920, 3840), 'glacier': (1920,), 'buson': (1920, 2560), 'adams': (1920,), 'fsa': (1920, 3840), 'tabula': (1920, 3840), 'morris': (1920, 3840), 'monet': (1920,), 'posters': (1920,), 'heures': (1920,), 'prokudin': (1920,), 'bayeux': (1920,), 'caslon': (1920, 3840), 'chevreul': (1920,)}
 
 recs = {}
 for width in (330, 500, 640, 1024, 1600, 1920, 2560, 3840):   # 330, 500: tiles, thumbnails, pictures shown small

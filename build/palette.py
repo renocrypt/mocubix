@@ -1,12 +1,18 @@
 """Take a picture's palette: the ground, ink and accent a page can wear to stand in its light.
 
     python3 build/palette.py threshold_flip      # the labels in the showcase's PAINTINGS
+    python3 build/palette.py ring gamut_arc      # the sectors of the colour circle in the showcase's RING
 
 Writes assets/palettes.json, keyed by label. Every colour is chosen in OKLab from the
 picture's own colours (a median cut of its 500px copy): the ground is its most common
 colour, its lightness moved out of the middle band where no type reads well on it; the
 accent is its most colourful colour, moved in lightness until it stands off the ground;
 the ink is the ground's own hue at the far end of lightness.
+
+A ring is a printed colour circle: RING gives its picture, its centre and the radii of its coloured band (as
+fractions of the picture's width, the centre's y of its height), how many sectors it has and the screen angle of
+the first sector's centre (degrees clockwise from three o'clock; the sectors run anticlockwise). Each sector's
+colour is the median of its middle, clear of the lines between sectors, written as 'ring:<label>'.
 """
 import io, json, math, sys, time, urllib.request
 from pathlib import Path
@@ -56,15 +62,19 @@ def to_hex(L, C, h):
     return '#%02X%02X%02X' % tuple(gam(v) for v in rgb)
 
 
-def colours(label):
-    url = works[label]['sources']['500']
-    for wait in (0, 5, 15, 30):
+def fetch(label, width='500'):
+    url = works[label]['sources'][width]
+    for wait in (0, 5, 15, 30, 45):
         time.sleep(wait)
         try:
-            im = Image.open(io.BytesIO(urllib.request.urlopen(urllib.request.Request(url, headers=UA), timeout=60).read()))
-            break
+            return Image.open(io.BytesIO(urllib.request.urlopen(urllib.request.Request(url, headers=UA), timeout=60).read()))
         except Exception:
             pass
+    raise SystemExit(f'could not fetch {label}')
+
+
+def colours(label):
+    im = fetch(label)
     q = im.convert('RGB').quantize(colors=10, method=Image.Quantize.MEDIANCUT)
     pal = q.getpalette()
     out = []
@@ -89,6 +99,33 @@ def palette(label):
             'mid': to_hex((ink[0] * 0.72 + L * 0.28), 0.025, h), 'dark': dark}
 
 
+def ring(name):
+    sys.path.insert(0, str(ROOT / 'build' / 'showcases'))
+    r = __import__(name).RING
+    width = max(works[r['label']]['sources'], key=int)
+    im = fetch(r['label'], width).convert('RGB')
+    W, H = im.size
+    px = im.load()
+    cx, cy = r['centre'][0] * W, r['centre'][1] * H
+    r0, r1 = r['radii'][0] * W, r['radii'][1] * W
+    step = 360 / r['sectors']
+    out = []
+    for k in range(r['sectors']):
+        th0 = r['first'] - k * step
+        got = [px[int(cx + rr * math.cos(math.radians(th0 + d))), int(cy + rr * math.sin(math.radians(th0 + d)))]
+               for d in [step * f / 10 for f in range(-3, 4)]
+               for rr in range(int(r0 + (r1 - r0) * .15), int(r1 - (r1 - r0) * .1), 4)]
+        rgb = [sorted(c[i] for c in got)[len(got) // 2] for i in range(3)]
+        L, a, b = oklab(rgb)
+        out.append({'L': round(L, 4), 'C': round(math.hypot(a, b), 4), 'h': round(math.degrees(math.atan2(b, a)) % 360, 2),
+                    'print': '#%02X%02X%02X' % tuple(rgb)})
+    path = ROOT / 'assets/palettes.json'
+    data = json.load(open(path)) if path.exists() else {}
+    data[f'ring:{r["label"]}'] = out
+    json.dump(data, open(path, 'w'), indent=1, ensure_ascii=False)
+    print(f'wrote the {len(out)} sectors of {r["label"]} into {path.relative_to(ROOT)}')
+
+
 def main(name):
     sys.path.insert(0, str(ROOT / 'build' / 'showcases'))
     showcase = __import__(name)
@@ -102,4 +139,4 @@ def main(name):
 
 
 if __name__ == '__main__':
-    main(sys.argv[1])
+    ring(sys.argv[2]) if sys.argv[1] == 'ring' else main(sys.argv[1])

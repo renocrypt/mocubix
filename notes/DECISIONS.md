@@ -1429,3 +1429,48 @@ hidden).
 **Checked.** Above the stage leg I is current; at the end all seven are
 ticked and VIII is current; a click lands at the bar and marks its leg; no
 overflow at 1324 or 390. The card is leg V with four legs ticked.
+
+## The twentieth showcase: Gamut Arc, round the circle or straight across, 2026-09-23
+
+**The idea.** Michel Eugène Chevreul's first chromatic circle (1864, engraved
+by René-Henri Digeon; Science History Institute, public domain): seventy-two
+hues "franches", twelve named, five numbered steps between each. It sits on
+the seam between two screen-high fields that go from one of his colours to
+its opposite. Round the outside, the left field passes through every sector
+of his circle between the two. Straight across, the right field takes the
+line CSS takes unless asked otherwise. A white dot rides the rim of the plate
+along the round route and a ring rides the dashed chord. The left field names
+the sector in his notation ("Jaune-vert 3"); the right gives the mixture as a
+recipe ("58% jaune / 42% bleu-violet"). A meter under each shows the chroma
+left.
+
+**Measured, not assumed.** `palette.py ring` samples the plate's 72 sectors
+from the geometry declared in the module (RING). The circle's centre was
+first fitted to the coloured band with a chroma mask, and came out 29px wrong:
+Chevreul's surviving blues and violets are so dull (C ≈ 0.04) that the mask
+missed them. Refitted to the disc's edge against the paper (residual 4.7px),
+with the separators fitted to the white lines, every sector lands in its
+cell. His hues run monotonically round Oklab's full circle. The pairs are the
+ones that are opposites in Oklab as well: Jaune and Bleu-violet 182.5° apart,
+Vert and Violet 177.6°, Rouge-orangé and Bleu 178.4°. His own opposites (red
+across from green) are perceptual, not Oklab's. In every pair the straight
+route falls to grey (C 0.003–0.005). The round route never drops below 0.082,
+at Bleu, where sRGB pinches near cyan, and peaks at 0.237 in the violets. Each
+round stop keeps the sector's measured hue and lightness and takes all the
+chroma sRGB holds there (bisection on the Oklab→sRGB transform).
+
+**How it is built.** Almost no script, and none for the colour. One sticky
+frame on the run's view timeline drives `--t`; the round field's colour and
+chroma are keyframes written from the measured sectors into the page's head,
+one set per pair; the straight field is `color-mix(in oklab, …)`, its chroma
+`sqrt()` of the mixed a and b. The pair is a radio, and `:has()` hands its
+numbers to the stage. The dot rides by `cos()`/`sin()` of an angle on `--t`,
+and the arc is a conic gradient masked to a ring, travelled part solid. Ink
+flips with each field's lightness by relative colour syntax. Counters make
+the readouts. Found on the way: `.kicker` is taken by the page header
+(renamed `.road`), and grid auto-placement swapped the meter's number and bar
+(explicit order).
+
+**Checked.** At 1324×725 and 390×844 (stacked, plate on the seam): no
+overflow, 120 fps (p99 9.4 ms) with either pair, console clean. The card is
+the violet moment: Violet at chroma .20 against a taupe mud at .03.
