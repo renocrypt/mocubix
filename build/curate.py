@@ -11,6 +11,12 @@ ROOT = Path(__file__).resolve().parents[1]
 UA = {'User-Agent': 'Mocubix/1.0 (https://github.com/renocrypt/mocubix)'}
 
 WORKS = [
+ ["blake", "Introduction", "File:Songs of Innocence and of Experience, copy Z, 1826 (Library of Congress) object 04 SI - Intro.jpg"],
+ ["blake", "The Lamb", "File:Songs of Innocence and of Experience, copy Z, 1826 (Library of Congress) object 08 The Lamb.jpg"],
+ ["blake", "Infant Joy", "File:Songs of Innocence and of Experience, copy Z, 1826 (Library of Congress) object 25 Infant Joy.jpg"],
+ ["blake", "The Tyger", "File:Songs of Innocence and of Experience, copy Z, 1826 (Library of Congress) object 42 The Tyger.jpg"],
+ ["blake", "The Sick Rose", "File:Songs of Innocence and of Experience, copy Z, 1826 (Library of Congress) Object 39 The Sick Rose.jpg"],
+ ["blake", "London", "File:Songs of Innocence and of Experience, copy Z, 1826 (Library of Congress) object 46 London.jpg"],
  ["dubois", "Slaves and free", "File:The Georgia Negro LCCN2013650431.jpg"],
  ["dubois", "City and rural", "File:The Georgia Negro LCCN2013650430.jpg"],
  ["dubois", "Schools", "File:The Georgia Negro LCCN2013650434.jpg"],

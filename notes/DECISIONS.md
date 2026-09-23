@@ -1233,3 +1233,35 @@ computed at build). A smooth sweep through all six: 120 fps, p99 10.2 ms; all
 every frame on this site (`scroll-behavior: smooth`) keeps restarting a smooth
 scroll, and triggers stop firing mid-sweep. With `behavior: 'instant'`, and
 with real Page Down scrolling, every trigger fires.
+
+## The fifteenth showcase: Split Text Reveal, two contrary states, 2026-09-23
+
+**The idea.** Six of William Blake's Songs of Innocence and of Experience, from
+copy Z (printed and painted in 1826, the year before he died; Library of
+Congress, public domain): Introduction, The Lamb and Infant Joy from
+Innocence; The Tyger, The Sick Rose and London from Experience, a hundred
+lines in the book's own order. Each poem is set beside its plate. Innocence
+stands on paper with sepia verse and Blake's orange-brown for titles;
+Experience stands on night with parchment verse and gold. The page turns dark
+at The Tyger, after the book's own subtitle, "Shewing the Two Contrary States
+of the Human Soul". The verse is set in IM Fell English, whose inky,
+hand-cut irregularity sits well beside etched letters. The text is Blake's,
+with his spelling (chear, vanish'd, sieze, charter'd, mind-forg'd, blackning)
+and his ampersands, read against the plates at full resolution. Where his ?
+and ! are indistinguishable, the standard reading stands.
+
+**How it is built.** No script. Every line is a window (`overflow: clip`,
+with a little clip margin for the ascenders), its words translated 105 %
+below the sill and tilted 2.5° about their left foot. A trigger on each
+stanza (`timeline-trigger: --verse view() entry 70% exit 30%`, so a stanza
+taller than the screen still fires) starts every line in it once, and
+`animation-delay` from `sibling-index()` makes each a beat (85 ms) behind the
+one before. Chrome resolves `animation-trigger` names from ancestors, which
+was checked before relying on it. Triggering per line was tried first: the
+beat then reset at every stanza and meant nothing while scrolling. The plate
+is sticky beside its poem while the verse passes. On phones it stacks above.
+
+**Checked.** At 1324×725 and at 390×844: all 106 windows (100 lines, 6
+titles) rise, no line wraps on the phone, no overflow; a sweep through the
+page runs at 120 fps (p99 10.2 ms); the console is clean. The card is The
+Tyger on night with its second stanza caught rising.

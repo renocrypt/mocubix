@@ -1,0 +1,47 @@
+/* Split Text Reveal, in full: six of Blake's Songs, from copy Z. Each plate holds still beside
+   its poem while the verse passes. Every line of verse is a window with its words below the
+   sill; once the whole line is on screen they rise into it, a beat behind the line before.
+   Innocence stands on paper, Experience on night. No script. */
+
+@property --rise{syntax:'<number>';inherits:true;initial-value:1}
+
+.songs{position:relative;width:100vw;margin-inline:calc(50% - 50vw);border:0;border-radius:0;overflow:clip;
+  font-family:'IM Fell English',Georgia,serif}
+.song{--pad:clamp(24px,6vh,64px);--ground:#F2EADB;--ink:#35251A;--title:#A5531D;--dim:#8A7560;
+  display:grid;grid-template-columns:auto minmax(0,1fr);align-items:start;column-gap:clamp(32px,7vw,140px);
+  min-height:calc(100svh - var(--bar));box-sizing:border-box;padding:var(--pad) clamp(20px,8vw,150px);
+  background:var(--ground);color:var(--ink)}
+.song.experience{--ground:#15121A;--ink:#E9DFCC;--title:#D9AE5B;--dim:#8F8577}
+.song.right{grid-template-columns:minmax(0,1fr) auto}
+.song.right .leaf{order:2}
+
+/* the plate holds still beside its poem while the verse passes */
+.leaf{position:sticky;top:calc(var(--bar) + var(--pad));margin:0}
+.leaf img{--h:min(calc(100svh - var(--bar) - 2 * var(--pad)),calc(40vw / var(--ar)));display:block;
+  height:var(--h);width:calc(var(--h) * var(--ar));
+  box-shadow:0 26px 60px -24px rgb(60 30 0 / .42),0 2px 6px rgb(60 30 0 / .16)}
+.experience .leaf img{box-shadow:0 30px 90px -20px rgb(0 0 0 / .85)}
+
+.poem{padding-block:clamp(16px,11vh,120px) clamp(40px,14vh,160px);max-width:32em;font-size:clamp(17px,1.5vw,23px);line-height:1.5}
+.poem .book{margin:0 0 14px;font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--dim)}
+.poem h2{margin:0 0 .45em;font-weight:400;font-style:italic;font-size:clamp(40px,4.6vw,74px);line-height:1.12;color:var(--title)}
+.stanza{margin:0 0 1.1em}
+
+/* every line is a window with its words below the sill. When its stanza (or the title) is mostly
+   on screen, the words rise into it, one line after another */
+.stanza,.poem h2{timeline-trigger:--verse view() entry 70% exit 30%}
+.songs .l{display:block;overflow:clip;overflow-clip-margin:.15em;
+  animation:rise .95s cubic-bezier(.19,.8,.22,1) calc((sibling-index() - 1) * 85ms) both;animation-trigger:--verse play-once}
+.songs .l > span{display:block;translate:0 calc(var(--rise) * 105%);rotate:calc(var(--rise) * 2.5deg);transform-origin:0 100%}
+@keyframes rise{from{--rise:1}to{--rise:0}}
+
+@media (max-width:760px){
+  .song,.song.right{grid-template-columns:minmax(0,1fr);row-gap:10px}
+  .song.right .leaf{order:0}
+  .leaf{position:relative;top:auto;justify-self:center}
+  .leaf img{--h:min(60svh,calc(80vw / var(--ar)))}
+  .poem{padding-block:26px 48px}
+}
+@media (prefers-reduced-motion:reduce){
+  .songs .l{animation:none;--rise:0}
+}

@@ -3816,5 +3816,115 @@
   },
   "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/77/The_Georgia_Negro_LCCN2013650445.jpg/330px-The_Georgia_Negro_LCCN2013650445.jpg 330w, https://thumb.wikimedia.org/wikipedia/commons/thumb/7/77/The_Georgia_Negro_LCCN2013650445.jpg/500px-The_Georgia_Negro_LCCN2013650445.jpg 500w, https://thumb.wikimedia.org/wikipedia/commons/thumb/7/77/The_Georgia_Negro_LCCN2013650445.jpg/960px-The_Georgia_Negro_LCCN2013650445.jpg 960w, https://thumb.wikimedia.org/wikipedia/commons/thumb/7/77/The_Georgia_Negro_LCCN2013650445.jpg/1280px-The_Georgia_Negro_LCCN2013650445.jpg 1280w, https://thumb.wikimedia.org/wikipedia/commons/thumb/7/77/The_Georgia_Negro_LCCN2013650445.jpg/1920px-The_Georgia_Negro_LCCN2013650445.jpg 1920w",
   "default": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/77/The_Georgia_Negro_LCCN2013650445.jpg/960px-The_Georgia_Negro_LCCN2013650445.jpg"
+ },
+ {
+  "title": "File:Songs of Innocence and of Experience, copy Z, 1826 (Library of Congress) object 04 SI - Intro.jpg",
+  "label": "Introduction",
+  "kind": "blake",
+  "w": 1045,
+  "h": 1549,
+  "license": "Public domain",
+  "artist": "William Blake",
+  "credit": "The William Blake Archive",
+  "descurl": "https://commons.wikimedia.org/wiki/File:Songs_of_Innocence_and_of_Experience,_copy_Z,_1826_(Library_of_Congress)_object_04_SI_-_Intro.jpg",
+  "sources": {
+   "330": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e9/Songs_of_Innocence_and_of_Experience%2C_copy_Z%2C_1826_%28Library_of_Congress%29_object_04_SI_-_Intro.jpg/330px-Songs_of_Innocence_and_of_Experience%2C_copy_Z%2C_1826_%28Library_of_Congress%29_object_04_SI_-_Intro.jpg",
+   "500": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e9/Songs_of_Innocence_and_of_Experience%2C_copy_Z%2C_1826_%28Library_of_Congress%29_object_04_SI_-_Intro.jpg/500px-Songs_of_Innocence_and_of_Experience%2C_copy_Z%2C_1826_%28Library_of_Congress%29_object_04_SI_-_Intro.jpg",
+   "960": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e9/Songs_of_Innocence_and_of_Experience%2C_copy_Z%2C_1826_%28Library_of_Congress%29_object_04_SI_-_Intro.jpg/960px-Songs_of_Innocence_and_of_Experience%2C_copy_Z%2C_1826_%28Library_of_Congress%29_object_04_SI_-_Intro.jpg",
+   "1045": "https://upload.wikimedia.org/wikipedia/commons/e/e9/Songs_of_Innocence_and_of_Experience%2C_copy_Z%2C_1826_%28Library_of_Congress%29_object_04_SI_-_Intro.jpg"
+  },
+  "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e9/Songs_of_Innocence_and_of_Experience%2C_copy_Z%2C_1826_%28Library_of_Congress%29_object_04_SI_-_Intro.jpg/330px-Songs_of_Innocence_and_of_Experience%2C_copy_Z%2C_1826_%28Library_of_Congress%29_object_04_SI_-_Intro.jpg 330w, https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e9/Songs_of_Innocence_and_of_Experience%2C_copy_Z%2C_1826_%28Library_of_Congress%29_object_04_SI_-_Intro.jpg/500px-Songs_of_Innocence_and_of_Experience%2C_copy_Z%2C_1826_%28Library_of_Congress%29_object_04_SI_-_Intro.jpg 500w, https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e9/Songs_of_Innocence_and_of_Experience%2C_copy_Z%2C_1826_%28Library_of_Congress%29_object_04_SI_-_Intro.jpg/960px-Songs_of_Innocence_and_of_Experience%2C_copy_Z%2C_1826_%28Library_of_Congress%29_object_04_SI_-_Intro.jpg 960w, https://upload.wikimedia.org/wikipedia/commons/e/e9/Songs_of_Innocence_and_of_Experience%2C_copy_Z%2C_1826_%28Library_of_Congress%29_object_04_SI_-_Intro.jpg 1045w",
+  "default": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e9/Songs_of_Innocence_and_of_Experience%2C_copy_Z%2C_1826_%28Library_of_Congress%29_object_04_SI_-_Intro.jpg/960px-Songs_of_Innocence_and_of_Experience%2C_copy_Z%2C_1826_%28Library_of_Congress%29_object_04_SI_-_Intro.jpg"
+ },
+ {
+  "title": "File:Songs of Innocence and of Experience, copy Z, 1826 (Library of Congress) object 08 The Lamb.jpg",
+  "label": "The Lamb",
+  "kind": "blake",
+  "w": 1042,
+  "h": 1573,
+  "license": "Public domain",
+  "artist": "William Blake",
+  "credit": "The William Blake Archive",
+  "descurl": "https://commons.wikimedia.org/wiki/File:Songs_of_Innocence_and_of_Experience,_copy_Z,_1826_(Library_of_Congress)_object_08_The_Lamb.jpg",
+  "sources": {
+   "330": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a7/Songs_of_Innocence_and_of_Experience%2C_copy_Z%2C_1826_%28Library_of_Congress%29_object_08_The_Lamb.jpg/330px-Songs_of_Innocence_and_of_Experience%2C_copy_Z%2C_1826_%28Library_of_Congress%29_object_08_The_Lamb.jpg",
+   "500": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a7/Songs_of_Innocence_and_of_Experience%2C_copy_Z%2C_1826_%28Library_of_Congress%29_object_08_The_Lamb.jpg/500px-Songs_of_Innocence_and_of_Experience%2C_copy_Z%2C_1826_%28Library_of_Congress%29_object_08_The_Lamb.jpg",
+   "960": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a7/Songs_of_Innocence_and_of_Experience%2C_copy_Z%2C_1826_%28Library_of_Congress%29_object_08_The_Lamb.jpg/960px-Songs_of_Innocence_and_of_Experience%2C_copy_Z%2C_1826_%28Library_of_Congress%29_object_08_The_Lamb.jpg",
+   "1042": "https://upload.wikimedia.org/wikipedia/commons/a/a7/Songs_of_Innocence_and_of_Experience%2C_copy_Z%2C_1826_%28Library_of_Congress%29_object_08_The_Lamb.jpg"
+  },
+  "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a7/Songs_of_Innocence_and_of_Experience%2C_copy_Z%2C_1826_%28Library_of_Congress%29_object_08_The_Lamb.jpg/330px-Songs_of_Innocence_and_of_Experience%2C_copy_Z%2C_1826_%28Library_of_Congress%29_object_08_The_Lamb.jpg 330w, https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a7/Songs_of_Innocence_and_of_Experience%2C_copy_Z%2C_1826_%28Library_of_Congress%29_object_08_The_Lamb.jpg/500px-Songs_of_Innocence_and_of_Experience%2C_copy_Z%2C_1826_%28Library_of_Congress%29_object_08_The_Lamb.jpg 500w, https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a7/Songs_of_Innocence_and_of_Experience%2C_copy_Z%2C_1826_%28Library_of_Congress%29_object_08_The_Lamb.jpg/960px-Songs_of_Innocence_and_of_Experience%2C_copy_Z%2C_1826_%28Library_of_Congress%29_object_08_The_Lamb.jpg 960w, https://upload.wikimedia.org/wikipedia/commons/a/a7/Songs_of_Innocence_and_of_Experience%2C_copy_Z%2C_1826_%28Library_of_Congress%29_object_08_The_Lamb.jpg 1042w",
+  "default": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a7/Songs_of_Innocence_and_of_Experience%2C_copy_Z%2C_1826_%28Library_of_Congress%29_object_08_The_Lamb.jpg/960px-Songs_of_Innocence_and_of_Experience%2C_copy_Z%2C_1826_%28Library_of_Congress%29_object_08_The_Lamb.jpg"
+ },
+ {
+  "title": "File:Songs of Innocence and of Experience, copy Z, 1826 (Library of Congress) object 25 Infant Joy.jpg",
+  "label": "Infant Joy",
+  "kind": "blake",
+  "w": 916,
+  "h": 1423,
+  "license": "Public domain",
+  "artist": "William Blake",
+  "credit": "The William Blake Archive",
+  "descurl": "https://commons.wikimedia.org/wiki/File:Songs_of_Innocence_and_of_Experience,_copy_Z,_1826_(Library_of_Congress)_object_25_Infant_Joy.jpg",
+  "sources": {
+   "330": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f3/Songs_of_Innocence_and_of_Experience%2C_copy_Z%2C_1826_%28Library_of_Congress%29_object_25_Infant_Joy.jpg/330px-Songs_of_Innocence_and_of_Experience%2C_copy_Z%2C_1826_%28Library_of_Congress%29_object_25_Infant_Joy.jpg",
+   "500": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f3/Songs_of_Innocence_and_of_Experience%2C_copy_Z%2C_1826_%28Library_of_Congress%29_object_25_Infant_Joy.jpg/500px-Songs_of_Innocence_and_of_Experience%2C_copy_Z%2C_1826_%28Library_of_Congress%29_object_25_Infant_Joy.jpg",
+   "916": "https://upload.wikimedia.org/wikipedia/commons/f/f3/Songs_of_Innocence_and_of_Experience%2C_copy_Z%2C_1826_%28Library_of_Congress%29_object_25_Infant_Joy.jpg"
+  },
+  "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f3/Songs_of_Innocence_and_of_Experience%2C_copy_Z%2C_1826_%28Library_of_Congress%29_object_25_Infant_Joy.jpg/330px-Songs_of_Innocence_and_of_Experience%2C_copy_Z%2C_1826_%28Library_of_Congress%29_object_25_Infant_Joy.jpg 330w, https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f3/Songs_of_Innocence_and_of_Experience%2C_copy_Z%2C_1826_%28Library_of_Congress%29_object_25_Infant_Joy.jpg/500px-Songs_of_Innocence_and_of_Experience%2C_copy_Z%2C_1826_%28Library_of_Congress%29_object_25_Infant_Joy.jpg 500w, https://upload.wikimedia.org/wikipedia/commons/f/f3/Songs_of_Innocence_and_of_Experience%2C_copy_Z%2C_1826_%28Library_of_Congress%29_object_25_Infant_Joy.jpg 916w",
+  "default": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f3/Songs_of_Innocence_and_of_Experience%2C_copy_Z%2C_1826_%28Library_of_Congress%29_object_25_Infant_Joy.jpg/500px-Songs_of_Innocence_and_of_Experience%2C_copy_Z%2C_1826_%28Library_of_Congress%29_object_25_Infant_Joy.jpg"
+ },
+ {
+  "title": "File:Songs of Innocence and of Experience, copy Z, 1826 (Library of Congress) object 42 The Tyger.jpg",
+  "label": "The Tyger",
+  "kind": "blake",
+  "w": 865,
+  "h": 1427,
+  "license": "Public domain",
+  "artist": "William Blake",
+  "credit": "The William Blake Archive",
+  "descurl": "https://commons.wikimedia.org/wiki/File:Songs_of_Innocence_and_of_Experience,_copy_Z,_1826_(Library_of_Congress)_object_42_The_Tyger.jpg",
+  "sources": {
+   "330": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f8/Songs_of_Innocence_and_of_Experience%2C_copy_Z%2C_1826_%28Library_of_Congress%29_object_42_The_Tyger.jpg/330px-Songs_of_Innocence_and_of_Experience%2C_copy_Z%2C_1826_%28Library_of_Congress%29_object_42_The_Tyger.jpg",
+   "500": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f8/Songs_of_Innocence_and_of_Experience%2C_copy_Z%2C_1826_%28Library_of_Congress%29_object_42_The_Tyger.jpg/500px-Songs_of_Innocence_and_of_Experience%2C_copy_Z%2C_1826_%28Library_of_Congress%29_object_42_The_Tyger.jpg",
+   "865": "https://upload.wikimedia.org/wikipedia/commons/f/f8/Songs_of_Innocence_and_of_Experience%2C_copy_Z%2C_1826_%28Library_of_Congress%29_object_42_The_Tyger.jpg"
+  },
+  "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f8/Songs_of_Innocence_and_of_Experience%2C_copy_Z%2C_1826_%28Library_of_Congress%29_object_42_The_Tyger.jpg/330px-Songs_of_Innocence_and_of_Experience%2C_copy_Z%2C_1826_%28Library_of_Congress%29_object_42_The_Tyger.jpg 330w, https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f8/Songs_of_Innocence_and_of_Experience%2C_copy_Z%2C_1826_%28Library_of_Congress%29_object_42_The_Tyger.jpg/500px-Songs_of_Innocence_and_of_Experience%2C_copy_Z%2C_1826_%28Library_of_Congress%29_object_42_The_Tyger.jpg 500w, https://upload.wikimedia.org/wikipedia/commons/f/f8/Songs_of_Innocence_and_of_Experience%2C_copy_Z%2C_1826_%28Library_of_Congress%29_object_42_The_Tyger.jpg 865w",
+  "default": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f8/Songs_of_Innocence_and_of_Experience%2C_copy_Z%2C_1826_%28Library_of_Congress%29_object_42_The_Tyger.jpg/500px-Songs_of_Innocence_and_of_Experience%2C_copy_Z%2C_1826_%28Library_of_Congress%29_object_42_The_Tyger.jpg"
+ },
+ {
+  "title": "File:Songs of Innocence and of Experience, copy Z, 1826 (Library of Congress) Object 39 The Sick Rose.jpg",
+  "label": "The Sick Rose",
+  "kind": "blake",
+  "w": 939,
+  "h": 1459,
+  "license": "Public domain",
+  "artist": "William Blake",
+  "credit": "The William Blake Archive",
+  "descurl": "https://commons.wikimedia.org/wiki/File:Songs_of_Innocence_and_of_Experience,_copy_Z,_1826_(Library_of_Congress)_Object_39_The_Sick_Rose.jpg",
+  "sources": {
+   "330": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a8/Songs_of_Innocence_and_of_Experience%2C_copy_Z%2C_1826_%28Library_of_Congress%29_Object_39_The_Sick_Rose.jpg/330px-Songs_of_Innocence_and_of_Experience%2C_copy_Z%2C_1826_%28Library_of_Congress%29_Object_39_The_Sick_Rose.jpg",
+   "500": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a8/Songs_of_Innocence_and_of_Experience%2C_copy_Z%2C_1826_%28Library_of_Congress%29_Object_39_The_Sick_Rose.jpg/500px-Songs_of_Innocence_and_of_Experience%2C_copy_Z%2C_1826_%28Library_of_Congress%29_Object_39_The_Sick_Rose.jpg",
+   "939": "https://upload.wikimedia.org/wikipedia/commons/a/a8/Songs_of_Innocence_and_of_Experience%2C_copy_Z%2C_1826_%28Library_of_Congress%29_Object_39_The_Sick_Rose.jpg"
+  },
+  "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a8/Songs_of_Innocence_and_of_Experience%2C_copy_Z%2C_1826_%28Library_of_Congress%29_Object_39_The_Sick_Rose.jpg/330px-Songs_of_Innocence_and_of_Experience%2C_copy_Z%2C_1826_%28Library_of_Congress%29_Object_39_The_Sick_Rose.jpg 330w, https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a8/Songs_of_Innocence_and_of_Experience%2C_copy_Z%2C_1826_%28Library_of_Congress%29_Object_39_The_Sick_Rose.jpg/500px-Songs_of_Innocence_and_of_Experience%2C_copy_Z%2C_1826_%28Library_of_Congress%29_Object_39_The_Sick_Rose.jpg 500w, https://upload.wikimedia.org/wikipedia/commons/a/a8/Songs_of_Innocence_and_of_Experience%2C_copy_Z%2C_1826_%28Library_of_Congress%29_Object_39_The_Sick_Rose.jpg 939w",
+  "default": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a8/Songs_of_Innocence_and_of_Experience%2C_copy_Z%2C_1826_%28Library_of_Congress%29_Object_39_The_Sick_Rose.jpg/500px-Songs_of_Innocence_and_of_Experience%2C_copy_Z%2C_1826_%28Library_of_Congress%29_Object_39_The_Sick_Rose.jpg"
+ },
+ {
+  "title": "File:Songs of Innocence and of Experience, copy Z, 1826 (Library of Congress) object 46 London.jpg",
+  "label": "London",
+  "kind": "blake",
+  "w": 925,
+  "h": 1457,
+  "license": "Public domain",
+  "artist": "William Blake",
+  "credit": "The William Blake Archive",
+  "descurl": "https://commons.wikimedia.org/wiki/File:Songs_of_Innocence_and_of_Experience,_copy_Z,_1826_(Library_of_Congress)_object_46_London.jpg",
+  "sources": {
+   "330": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7e/Songs_of_Innocence_and_of_Experience%2C_copy_Z%2C_1826_%28Library_of_Congress%29_object_46_London.jpg/330px-Songs_of_Innocence_and_of_Experience%2C_copy_Z%2C_1826_%28Library_of_Congress%29_object_46_London.jpg",
+   "500": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7e/Songs_of_Innocence_and_of_Experience%2C_copy_Z%2C_1826_%28Library_of_Congress%29_object_46_London.jpg/500px-Songs_of_Innocence_and_of_Experience%2C_copy_Z%2C_1826_%28Library_of_Congress%29_object_46_London.jpg",
+   "925": "https://upload.wikimedia.org/wikipedia/commons/7/7e/Songs_of_Innocence_and_of_Experience%2C_copy_Z%2C_1826_%28Library_of_Congress%29_object_46_London.jpg"
+  },
+  "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7e/Songs_of_Innocence_and_of_Experience%2C_copy_Z%2C_1826_%28Library_of_Congress%29_object_46_London.jpg/330px-Songs_of_Innocence_and_of_Experience%2C_copy_Z%2C_1826_%28Library_of_Congress%29_object_46_London.jpg 330w, https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7e/Songs_of_Innocence_and_of_Experience%2C_copy_Z%2C_1826_%28Library_of_Congress%29_object_46_London.jpg/500px-Songs_of_Innocence_and_of_Experience%2C_copy_Z%2C_1826_%28Library_of_Congress%29_object_46_London.jpg 500w, https://upload.wikimedia.org/wikipedia/commons/7/7e/Songs_of_Innocence_and_of_Experience%2C_copy_Z%2C_1826_%28Library_of_Congress%29_object_46_London.jpg 925w",
+  "default": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7e/Songs_of_Innocence_and_of_Experience%2C_copy_Z%2C_1826_%28Library_of_Congress%29_object_46_London.jpg/500px-Songs_of_Innocence_and_of_Experience%2C_copy_Z%2C_1826_%28Library_of_Congress%29_object_46_London.jpg"
  }
 ]
