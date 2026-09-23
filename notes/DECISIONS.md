@@ -1722,3 +1722,47 @@ along a straight line (clipped to the disc), a sliver of text showed right
 of the disc at the bottom band (the bands now end at the hole), and on a
 phone, where the record sits above, the bands run the full width below it
 instead. The card is the stage itself.
+
+## The twenty-sixth showcase: Token Interpolation, one angle, every colour, 2026-09-23
+
+**The idea.** Philipp Otto Runge's *Farben-Kugel* (Hamburg, 1810) beside an
+interface whose every colour is one number. Runge's sphere has the geometry
+of OKLCH: lightness is the axis between his white and black poles, hue the
+angle round the equator, chroma the distance out from the grey core. Each
+token (ground, surface, rule, soft ink, ink, accent, complement) is a point
+on it with its own lightness and chroma; they share one angle, and scrolling
+a runway four screens tall turns it through the whole circle. A table of the
+tokens gives each value live, only its hue moving.
+
+**Chosen to hold.** The lightnesses and chromas sit inside sRGB at every
+hue (computed: the accent's 0.118 is the most an L 0.72 colour can have at
+the cyan, where sRGB is narrowest; the ground's 0.016 the most at L 0.965
+near blue), so no colour is clipped out of step on the way round, and the
+contrasts hold: ink on ground 13.45–13.78:1, soft ink on ground
+5.96–6.39:1, ink on accent 5.84–6.30:1, all computed over 360 hues. The
+turn starts at 18.17°, the hue of Runge's own red.
+
+**Runge's plate, measured.** His section through the equator fitted as a
+circle against the paper (120 edge points, residual 0.9 px), and its twelve
+sectors measured in OKLCH with `palette.py ring` (the broad second ring,
+where his inks are purest). A needle on that section points, at every step,
+at the ink he printed at the palette's hue: its keyframes are generated from
+the measurements and run on the same view timeline as the turn. The
+measurements show his circle has no cyan: from his green at 142° to his
+blue at 217° is one sector step, a fifth of the circle, and the needle slows
+across it.
+
+**How it is built.** `@property --turn` (an angle) animated by the runway's
+view timeline (inset by the top bar); every token is `oklch(L C
+calc(18.17deg + var(--turn)))`, declared on the pinned frame, not the root.
+The hue readouts are counters fed by a registered integer turning with it
+(`counter-reset: d mod(calc(18 + var(--deg)), 360)`). Four chart series a
+quarter-turn apart use `sibling-index()`. Found on the way: the shared
+Lexicon stylesheet's unscoped `.btn` (from the old demos) pulled the card's
+links out to the frame's corner (renamed `.act`), and the display face's
+tabular zero is slashed (proportional figures, a fixed-width readout).
+
+**Checked.** At 1324×725 and 390×844, through the whole turn: no overflow,
+console clean, p50 6.9 ms, worst 7.9 ms at 144 Hz with the frame recoloured
+every frame. The card is the frame at 179°, the needle upright in Runge's
+missing cyan.
