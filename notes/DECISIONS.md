@@ -879,3 +879,32 @@ pinned stage reads. Showcases name their own material in the footer and can
 add a credit line. `curate.py` also asks Commons for 330 and 500 px, so small
 tiles stop downloading 960 px files. Chrome paints the whole reading at 120
 fps with a p99 frame of about 10 ms.
+
+## The third showcase: Image Comparison Slider, where the ice was, 2026-09-23
+
+**The idea.** Five views in Glacier National Park, each photographed from the
+same spot decades apart (1907–2025), from the park's repeat-photography
+project and archives, all public domain: Grinnell Glacier from Lower Grinnell
+Ridge (1910 | 2025), Jackson Glacier below Mount Jackson (1914 | 2020), Sperry
+Glacier below Mount Edwards (1907, Morton J. Elrod | 2023), Jackson Glacier
+from Going-to-the-Sun Road (1941, Marian Post | 2025) and Boulder Glacier's ice
+cave (1932, T. J. Hileman, four people standing in it | 1988, Jerry DeSanto,
+rubble). The lede's numbers are the USGS's: about 80 glaciers larger than
+0.1 km² at the Little Ice Age peak, 32 by 2005.
+
+**Registration is the craft.** "Same spot" photographs are never framed alike
+(Grinnell's 2025 frame is turned 3.2°, Road's is zoomed 1.5×), and a divider
+across misregistered pictures lies. `build/register.py` picks the most
+contrasty patches on each pair's stable rock, finds each in the later picture
+by correlation, keeps the placement most matches agree on, fits scale, turn
+and shift by least squares (worst residual under 3 px of 960) and computes the
+window both pictures fill. Checked by red/cyan overlays and checkerboards, and
+at the divider in Chrome. A global edge-correlation search was tried first and
+found false optima; two candidate pairs (Gem Glacier from Mount Gould, Grinnell
+from Mount Gould) would not register and were dropped.
+
+**The control.** A native range input, invisible over the whole picture:
+drag anywhere, click, arrow keys, screen readers. `showcase.js` (a dozen
+lines) hands its value to `--x`, and the first time a pair is seen the
+divider eases from the whole old picture back to the middle. The handle is
+clamped inside the frame with container units.

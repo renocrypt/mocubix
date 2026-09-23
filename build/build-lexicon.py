@@ -634,6 +634,8 @@ def term_page(i):
             f'</div>\n'
             f'<nav class="pager" aria-label="Previous and next term">{pager}</nav>')
     head = '<link rel="stylesheet" href="showcase.css">\n' if sc else ''
+    if sc and (ROOT / 'site' / 'lexicon' / slug(name) / 'showcase.js').exists():   # a showcase may bring a little script of its own
+        head += '<script src="showcase.js" defer></script>\n'
     return shell(f'{plain(name)} — Mocubix Lexicon', plain(s[3]), f'lexicon/{slug(name)}/', rel, body, current=pkey, head=head,
                  material=getattr(sc, 'MATERIAL', MATERIAL))
 

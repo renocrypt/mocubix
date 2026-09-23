@@ -12,6 +12,56 @@ UA = {'User-Agent': 'Mocubix/1.0 (https://github.com/renocrypt/mocubix)'}
 
 WORKS = [
  [
+  "glacier",
+  "Road 1941",
+  "File:Jackson Glacier Distant in 1941 (54209695863).jpg"
+ ],
+ [
+  "glacier",
+  "Road 2025",
+  "File:Jackson Glacier Distant in 2025 (54748630053).jpg"
+ ],
+ [
+  "glacier",
+  "Grinnell 1910",
+  "File:Grinnell Glacier from Lower Grinnell Ridge in 1910 (54209461966).jpg"
+ ],
+ [
+  "glacier",
+  "Grinnell 2025",
+  "File:Grinnell Glacier from Lower Grinnell Ridge in 2025 (54774556535).jpg"
+ ],
+ [
+  "glacier",
+  "Jackson 1914",
+  "File:Jackson Glacier and Mount Jackson in 1914 (54209695843).jpg"
+ ],
+ [
+  "glacier",
+  "Jackson 2020",
+  "File:Jackson Glacier and Mount Jackson in 2020 (54208559982).jpg"
+ ],
+ [
+  "glacier",
+  "Boulder 1932",
+  "File:Boulder Glacier in 1932 (54209867980).jpg"
+ ],
+ [
+  "glacier",
+  "Boulder 1988",
+  "File:Boulder Glacier in 1988 (54209462241).jpg"
+ ],
+ [
+  "glacier",
+  "Sperry 1907",
+  "File:Sperry Glacier arm below Mount Edwards in 1907 (54209702914).jpg"
+ ],
+ [
+  "glacier",
+  "Sperry 2023",
+  "File:Sperry Glacier arm below Mount Edwards in 2023 (54208559892).jpg"
+ ],
+ [
   "haeckel",
   "Lichenes",
   "File:Haeckel Lichenes.jpg"
@@ -509,12 +559,12 @@ def real_width(url):
 
 ONLY = set(sys.argv[1:])          # e.g. `python3 build/curate.py webb` fetches only that kind
 if ONLY: WORKS = [w for w in WORKS if w[0] in ONLY]
-# material shown full-bleed on large screens asks for the big buckets
-WIDE = {'webb'}
+# material shown large asks for the big buckets too
+WIDE = {'webb': (1920, 3840), 'glacier': (1920,)}
 
 recs = {}
 for width in (330, 500, 640, 1024, 1600, 1920, 3840):   # 330, 500: tiles, thumbnails, pictures shown small
-    titles = [w[2] for w in WORKS if width <= 1600 or w[0] in WIDE]
+    titles = [w[2] for w in WORKS if width <= 1600 or width in WIDE.get(w[0], ())]
     if not titles: continue
     for i in range(0, len(titles), 4):
         chunk = titles[i:i+4]
