@@ -12,6 +12,36 @@ UA = {'User-Agent': 'Mocubix/1.0 (https://github.com/renocrypt/mocubix)'}
 
 WORKS = [
  [
+  "gottlieb",
+  "Billie Holiday",
+  "File:Billie Holiday, Downbeat, New York, N.Y., ca. Feb. 1947 (William P. Gottlieb 04251).jpg"
+ ],
+ [
+  "gottlieb",
+  "Charlie Parker",
+  "File:Charlie Parker, (Gottlieb 06851) (cropped).jpg"
+ ],
+ [
+  "gottlieb",
+  "Thelonious Monk",
+  "File:Thelonious Monk, Minton's Playhouse, New York, N.Y., ca. Sept. 1947 (William P. Gottlieb 06191).jpg"
+ ],
+ [
+  "gottlieb",
+  "Sarah Vaughan",
+  "File:Sarah Vaughan - William P. Gottlieb - No. 1.jpg"
+ ],
+ [
+  "gottlieb",
+  "Ella Fitzgerald",
+  "File:Ella Fitzgerald (Gottlieb 02871).jpg"
+ ],
+ [
+  "gottlieb",
+  "Billy Strayhorn",
+  "File:Billy Strayhorn, New York, N.Y., between 1946 and 1948 (William P. Gottlieb 08211).jpg"
+ ],
+ [
   "fsa",
   "Dust storm",
   "File:Farmer walking in dust storm Cimarron County Oklahoma.jpg"

@@ -1,0 +1,66 @@
+/* Duotone, in full: two inks. A sleeve's ground is its dark ink; its light ink
+   lies over it through a mask made of the photograph's luminance, so each tone
+   lands between the two. --p presses the inks in as a sleeve scrolls into view,
+   --h lifts them while the pointer rests; at 0 the sleeve is the photograph. */
+
+@property --dark{syntax:'<color>';inherits:true;initial-value:#000}
+@property --light{syntax:'<color>';inherits:true;initial-value:#fff}
+@property --p{syntax:'<number>';inherits:true;initial-value:1}
+@property --h{syntax:'<number>';inherits:true;initial-value:1}
+
+.duo{position:relative;width:100vw;margin-inline:calc(50% - 50vw);border:0;border-radius:0;background:#0E0D0C;color:#F2EDE5;
+  padding:clamp(28px,6vh,64px) clamp(20px,5vw,72px) clamp(40px,8vh,96px)}
+
+/* the inks: one pair for all six, or each its own */
+/* the choices stay in reach while the sleeves pass under them */
+.inks{position:sticky;top:calc(var(--bar) + 12px);z-index:5;display:flex;flex-wrap:wrap;gap:10px 22px;justify-content:center;
+  width:max-content;max-width:100%;box-sizing:border-box;margin:0 auto clamp(24px,4.5vh,48px);padding:8px;border:0;border-radius:40px;
+  background:rgb(14 13 12 / .72);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}
+.inks legend{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.inks label{display:inline-flex;align-items:center;gap:9px;cursor:pointer;font-family:var(--mono);font-size:10px;letter-spacing:.14em;
+  text-transform:uppercase;color:#B4ABA0;padding:6px 10px 6px 6px;border:1px solid rgb(242 237 229 / .14);border-radius:40px;
+  transition:color .35s var(--settle),border-color .35s var(--settle)}
+.inks label i{width:20px;height:20px;border-radius:50%;background:linear-gradient(135deg,var(--a) 50%,var(--b) 50%)}
+.inks label:first-of-type i{background:conic-gradient(#A9CFEA 0 60deg,#F08A2C 0 120deg,#D6E36A 0 180deg,#F3A2BE 0 240deg,#F1C24F 0 300deg,#EFE4C6 0)}
+.inks label:hover{color:#F2EDE5;border-color:rgb(242 237 229 / .4)}
+/* each choice is a real radio, kept out of sight just before its label */
+.inks input{position:absolute;opacity:0;width:1px;height:1px;margin:0;pointer-events:none}
+.inks input:checked + label{color:#F2EDE5;border-color:var(--accent)}
+.inks input:focus-visible + label{outline:1px solid var(--accent);outline-offset:3px}
+
+/* the sleeves: square, three to a row */
+.sleeves{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(16px,2.4vw,34px);max-width:1180px;margin:0 auto}
+.sleeve{margin:0;aspect-ratio:1;position:relative;container-type:inline-size;display:grid;grid-template-rows:minmax(0,1fr) 29%;
+  --dark:var(--own-dark);--light:var(--own-light);
+  transition:--dark .9s var(--settle),--light .9s var(--settle),--h .6s var(--settle);
+  /* the inks as printed: toward black and white while unpressed or lifted */
+  --d:color-mix(in oklab,var(--dark) calc(var(--p) * var(--h) * 100%),#000);
+  --l:color-mix(in oklab,var(--light) calc(var(--p) * var(--h) * 100%),#fff);
+  background:var(--d);box-shadow:0 26px 60px -30px rgb(0 0 0 / .9);
+  animation:press linear both;animation-timeline:view();
+  animation-range:entry calc(15% + var(--i) * 5%) cover calc(38% + var(--i) * 3%)}
+@keyframes press{from{--p:0}to{--p:1}}
+.sleeve:hover{--h:0}
+.print{position:relative;overflow:clip;min-height:0}
+.print img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 22%;opacity:0}
+.ink{position:absolute;inset:0;background:var(--l);
+  -webkit-mask:var(--src) 50% 22% / cover no-repeat;mask:var(--src) 50% 22% / cover no-repeat luminance}
+
+/* the sleeve's type is printed in the same two inks */
+.sleeve figcaption{padding:5cqi 6cqi 5.5cqi;display:grid;align-content:start;gap:2.2cqi;color:var(--l)}
+.sleeve b{font-family:var(--sans);font-weight:600;font-size:9.4cqi;line-height:.92;letter-spacing:-.035em;text-transform:uppercase}
+.sleeve span{font-family:var(--mono);font-size:max(9px,2.9cqi);letter-spacing:.12em;text-transform:uppercase;
+  color:color-mix(in oklab,var(--l) 72%,var(--d))}
+
+@media (max-width:900px){.sleeves{grid-template-columns:repeat(2,minmax(0,1fr))}}
+/* on a phone the choices are swatches, and only the chosen one says its name */
+@media (max-width:560px){
+  .inks{flex-wrap:nowrap;gap:6px;padding:6px}
+  .inks label{padding:4px;gap:0}
+  /* hidden from sight, not from the radios' names */
+  .inks label span{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+  .inks input:checked + label{padding-right:12px;gap:8px}
+  .inks input:checked + label span{position:static;width:auto;height:auto;overflow:visible;clip-path:none}
+  .sleeve{grid-template-rows:minmax(0,1fr) 38%}
+}
+@media (prefers-reduced-motion:reduce){.sleeve{animation:none;transition:none}}

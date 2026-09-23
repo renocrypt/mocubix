@@ -149,6 +149,11 @@ code.api{display:block;font-family:var(--mono);font-size:10.5px;line-height:1.85
 .rng::-webkit-slider-thumb{appearance:none;width:13px;height:13px;border-radius:50%;
   background:var(--accent);cursor:ew-resize;border:2px solid var(--ground)}
 
+/* ── the specimens ─────────────────────────────────────────── */
+/* Every demo style lives inside a card: @scope keeps a specimen's class names
+   (.duo, .frame, .plate…) from ever reaching a showcase or the page. */
+@scope (.spec) {
+
 /* ── 01 dial ───────────────────────────────────────────────── */
 .dial{height:clamp(270px,46vh,400px);display:grid;place-items:center;padding:26px}
 .ring{width:min(58vw,clamp(210px,34vh,320px));aspect-ratio:1;border:1px solid var(--line);
@@ -581,7 +586,7 @@ code.api{display:block;font-family:var(--mono);font-size:10.5px;line-height:1.85
   --a:oklch(0.637 0.145 calc(40.2deg + var(--rot)));
   background:var(--g);min-height:clamp(230px,36vh,300px);display:grid;
   align-content:center;gap:18px;padding:clamp(20px,4vw,34px)}
-:root[data-theme="day"] .ti{
+:root[data-theme="day"] :scope .ti{
   --g:oklch(0.930 0.012 calc(78deg + var(--rot)));
   --i:oklch(0.215 0.012 calc(68deg + var(--rot)));
   --d:oklch(0.480 0.016 calc(70deg + var(--rot)));
@@ -605,7 +610,7 @@ code.api{display:block;font-family:var(--mono);font-size:10.5px;line-height:1.85
 /* one hue, varied by weight — three rotating hues read as noise, not as a field */
 .scgrid i{display:block;border-radius:1px;
   background:oklch(0.637 0.145 calc(40.2deg + var(--rot)))}
-:root[data-theme="day"] .scgrid i{background:oklch(0.560 0.150 calc(40.2deg + var(--rot)))}
+:root[data-theme="day"] :scope .scgrid i{background:oklch(0.560 0.150 calc(40.2deg + var(--rot)))}
 .scgrid i:nth-child(3n){opacity:.52}
 .scgrid i:nth-child(7n){opacity:.26}
 .scout{position:absolute;left:16px;bottom:15px;margin:0;font-family:var(--mono);font-size:10px;
@@ -626,7 +631,7 @@ code.api{display:block;font-family:var(--mono);font-size:10.5px;line-height:1.85
   padding:clamp(14px,2vw,22px);
   animation:gaturn linear both;animation-timeline:view();
   animation-range:entry 14% cover 74%}
-:root[data-theme="day"] .ga{--gaL:.559;--gaC:.150;--gaH:40.1deg}
+:root[data-theme="day"] :scope .ga{--gaL:.559;--gaC:.150;--gaH:40.1deg}
 @keyframes gaturn{to{--gat:1}}
 .gacol{display:flex;flex-direction:column;gap:7px;min-width:0}
 .gafield{flex:1;min-height:clamp(132px,23vh,196px);border-radius:2px}
@@ -675,32 +680,21 @@ code.api{display:block;font-family:var(--mono);font-size:10.5px;line-height:1.85
 .tf[data-flip="a"]{background:#0B0A09;color:#F2EDE5;--tfa:#D4673F}
 .tf[data-flip="b"]{background:#191021;color:#EFDCF2;--tfa:#B478D8}
 .tf[data-flip="c"]{background:#0E161B;color:#DCEAF2;--tfa:#5BA8C9}
-:root[data-theme="day"] .tf[data-flip="a"]{background:#F4F0E9;color:#1D1814;--tfa:#BA4E24}
-:root[data-theme="day"] .tf[data-flip="b"]{background:#EFDDE6;color:#33182C;--tfa:#8B3FB0}
-:root[data-theme="day"] .tf[data-flip="c"]{background:#DDE7EC;color:#15262F;--tfa:#1F6E8C}
-
-footer{border-top:1px solid var(--line);margin-top:clamp(40px,7vh,86px);
-  padding-block:40px 74px;display:flex;flex-wrap:wrap;gap:12px 44px;
-  justify-content:space-between;font-family:var(--mono);font-size:10px;
-  letter-spacing:.04em;color:var(--dim);line-height:1.8}
-footer a{color:var(--mid);border-bottom:1px solid var(--line)}
-footer a:hover{color:var(--accent)}
+:root[data-theme="day"] :scope .tf[data-flip="a"]{background:#F4F0E9;color:#1D1814;--tfa:#BA4E24}
+:root[data-theme="day"] :scope .tf[data-flip="b"]{background:#EFDDE6;color:#33182C;--tfa:#8B3FB0}
+:root[data-theme="day"] :scope .tf[data-flip="c"]{background:#DDE7EC;color:#15262F;--tfa:#1F6E8C}
 
 @media (max-width:880px){
-  .spec{grid-template-columns:minmax(0,1fr);gap:20px}
-  .meta{position:static}
   .plate{grid-template-columns:62px minmax(0,1fr)}
-  .index{grid-template-columns:1fr;gap:26px}
   .osb{grid-template-columns:1fr}
   .cnt{grid-template-columns:1fr;gap:24px;padding-block:26px 48px}
   .spy{grid-template-columns:84px minmax(0,1fr)}
   .spyrail{padding-left:12px}
 }
 @media (prefers-reduced-motion:reduce){
-  html{scroll-behavior:auto}
   *{animation-duration:1ms!important;animation-iteration-count:1!important;
     transition-duration:1ms!important}
-  .readbar,.plate .bar i,.tscbar i{transform:scaleX(1)}
+  .plate .bar i,.tscbar i{transform:scaleX(1)}
   .plate img{opacity:1;transform:none}
   .reveal .ln span{transform:none}
   .kb{transform:none}
@@ -714,6 +708,25 @@ footer a:hover{color:var(--accent)}
   .ti,.sc,.ga{animation-play-state:running}
   /* this one does move, so it parks straddling the grey band instead */
   .dirun{animation:none;transform:translateX(-52%)}
+}
+}
+
+
+footer{border-top:1px solid var(--line);margin-top:clamp(40px,7vh,86px);
+  padding-block:40px 74px;display:flex;flex-wrap:wrap;gap:12px 44px;
+  justify-content:space-between;font-family:var(--mono);font-size:10px;
+  letter-spacing:.04em;color:var(--dim);line-height:1.8}
+footer a{color:var(--mid);border-bottom:1px solid var(--line)}
+footer a:hover{color:var(--accent)}
+
+@media (max-width:880px){
+  .spec{grid-template-columns:minmax(0,1fr);gap:20px}
+  .meta{position:static}
+  .index{grid-template-columns:1fr;gap:26px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .readbar{transform:scaleX(1)}
 }
 
 /* ── the Lexicon as a book: an entrance, and a page per term ─── */

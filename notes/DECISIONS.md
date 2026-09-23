@@ -994,3 +994,33 @@ screen, phone portrait included. One 54 s cycle per picture, staggered by
 Chrome holds 120 fps through a dissolve (p99 10 ms), though the focus animates
 on the main thread. The Dust storm scan includes the print's edge, so its move
 starts at 1.08. The card uses the Coldwater farm rather than anyone's face.
+
+## The seventh showcase: Duotone, two inks — and the demos scoped to their cards, 2026-09-23
+
+**The idea.** Six of William P. Gottlieb's jazz portraits (1946–47; the
+collection entered the public domain at his wish on 16 February 2010) printed
+as record sleeves, two inks each in the Blue Note tradition: Billie Holiday in
+blue, Charlie Parker in orange, Thelonious Monk in green, Sarah Vaughan in
+pink, Ella Fitzgerald in gold, Billy Strayhorn in teal. Scrolling in presses
+each sleeve from its grey into its inks; a row of ink choices (real radio
+inputs, CSS `:has()`, pinned while the sleeves pass) gives all six one pair
+and shows how duotone makes disparate photographs a set; resting the pointer
+lifts the ink. The sleeve's type is printed in the same two inks.
+
+**How it is built.** Exact, not approximate: the dark ink is the ground and
+the light ink lies over it through a mask made of the photograph's own
+luminance (`mask-mode: luminance`; Commons serves CORS), so every grey lands
+on the line between the inks. Both inks are registered colours, so a change of
+pair eases; the press (`--p`) and the lift (`--h`) mix the inks toward black
+and white, where the sleeve is the photograph. The ink rules are written by the
+build from the module's one list of pairs.
+
+**The systemic fix.** Three showcases in a row inherited an old demo's rules
+through a shared class name (`.cover`, `.frame`, `.duo` — the last made the
+stage a scroll container and killed the pinned ink row). The demos' styles now
+live inside `@scope (.spec)`: verified in Chrome that scoped `@keyframes`,
+`@property` and `@media` work, that `:root[data-theme="day"] :scope …` matches
+(a bare `:root …` does not inside a scope), and that the cards still render
+in both palettes. The demos' reduced-motion rule (`*{animation-duration:1ms}`)
+had been global — it would have left the Ken Burns film black for visitors who
+prefer less motion — and now applies to the cards alone.
