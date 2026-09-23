@@ -1,0 +1,71 @@
+/* Kinetic Drag, in full: throw the Roman world. The strip is the eight sheets of
+   Miller's facsimile, each placed by the numbers build/register.py measured: a
+   shift, a turn, a scale and a cut, in units of --u (display pixels per sheet
+   pixel). The map is a native horizontal scroller; showcase.js adds the throw. */
+
+.tabula{position:relative;width:100vw;margin-inline:calc(50% - 50vw);border:0;border-radius:0;color:#F2EDE5;
+  background:radial-gradient(120% 90% at 50% 40%,#2A241D,#12100D 70%);padding-block:clamp(18px,3.5vh,40px) clamp(28px,5vh,56px);
+  timeline-scope:--roads;--mapH:clamp(300px,56svh,620px)}
+.cue{margin:0 clamp(20px,5vw,72px) 14px;font-family:var(--mono);font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:#7E766D}
+
+/* the map: as tall as the screen allows, as long as it is */
+.roads{--h:var(--mapH);--u:calc(var(--h) / var(--mh));
+  overflow-x:auto;overflow-y:hidden;overscroll-behavior-x:contain;scrollbar-width:none;scroll-timeline:--roads x;
+  cursor:grab;outline:none;user-select:none;-webkit-user-select:none}
+.roads.held{cursor:grabbing}
+.roads:focus-visible{box-shadow:inset 0 0 0 1px var(--accent)}
+/* the strip spans every sheet's band; where a sheet's falls short, its ground is the map's own sea, hatched as the facsimile hatches it */
+.strip{position:relative;width:calc(var(--mw) * var(--u));height:calc(var(--mh) * var(--u));overflow:clip;
+  background:repeating-linear-gradient(0deg,rgb(0 0 0 / .1) 0 1px,transparent 1px 3px),var(--sea)}
+.sheet{position:absolute;left:0;top:0;width:calc(var(--iw) * var(--u));height:calc(var(--ih) * var(--u));max-width:none;
+  transform-origin:0 0;
+  transform:translate(calc(var(--x) * var(--u)),calc(var(--y) * var(--u))) rotate(var(--r)) scale(var(--s));
+  clip-path:inset(calc(var(--ct) * var(--u)) calc(var(--cr) * var(--u)) calc(var(--cb) * var(--u)) calc(var(--cl) * var(--u)));
+  -webkit-user-drag:none;pointer-events:none}
+
+/* the pins: a point on the map and what is there */
+.pins{position:absolute;inset:0;margin:0;padding:0;list-style:none;pointer-events:none}
+.pin{position:absolute;left:calc(var(--px) * var(--u));top:calc(var(--py) * var(--u));width:0;height:0}
+.pin::before{content:'';position:absolute;left:-5px;top:-5px;width:10px;height:10px;border-radius:50%;
+  background:var(--accent);box-shadow:0 0 0 3px rgb(242 237 229 / .85),0 2px 10px rgb(0 0 0 / .4)}
+.pin b,.pin span{position:absolute;left:14px;white-space:nowrap}
+.pin b{bottom:6px;font-family:var(--display);font-weight:400;font-style:italic;font-size:clamp(17px,1.5vw,22px);line-height:1;
+  color:#1E1710;background:rgb(244 236 219 / .92);padding:5px 8px 6px;border-radius:2px;box-shadow:0 6px 18px -8px rgb(0 0 0 / .6)}
+.pin span{top:6px;max-width:30ch;white-space:normal;width:max-content;font-size:12px;line-height:1.35;color:#3A2E22;
+  background:rgb(244 236 219 / .86);padding:4px 8px 5px;border-radius:2px}
+/* low on the map: both lines above the point; near the east end: to its west */
+.pin.low span{top:auto;bottom:6px}
+.pin.low b{bottom:calc(6px + 2.9em)}
+.pin.west b,.pin.west span{left:auto;right:14px;text-align:right}
+.pin.south b{bottom:auto;top:26px;left:-6px}
+.pin.south span{top:64px;left:-6px}
+
+/* under the map: the one number, and where you are */
+.under{container-type:inline-size;display:grid;justify-items:center;gap:clamp(14px,2.4vh,22px);margin-top:clamp(16px,3vh,28px);
+  padding-inline:clamp(20px,5vw,72px)}
+.decay{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 12px;margin:0;padding:0;border:0}
+.decay legend{float:left;width:100%;margin-bottom:10px;text-align:center;font-family:var(--mono);font-size:9.5px;letter-spacing:.18em;
+  text-transform:uppercase;color:#7E766D}
+.decay input{position:absolute;opacity:0;width:1px;height:1px;margin:0;pointer-events:none}
+.decay label{display:inline-flex;align-items:baseline;gap:9px;padding:7px 13px;border:1px solid rgb(242 237 229 / .16);border-radius:40px;
+  cursor:pointer;transition:border-color .35s var(--settle),color .35s var(--settle);color:#B4ABA0}
+.decay label b{font-family:var(--mono);font-weight:400;font-size:13px;letter-spacing:.04em;color:#F2EDE5}
+.decay label span{font-size:12.5px}
+.decay input:checked + label{border-color:var(--accent);color:#F2EDE5}
+.decay input:checked + label b{color:var(--accent)}
+.decay input:focus-visible + label{outline:1px solid var(--accent);outline-offset:3px}
+
+/* the whole scroll, small, with a window that follows the map (a scroll timeline, no script) */
+.mini{--k:.1;--h:calc(var(--mapH) * var(--k));--u:calc(var(--h) / var(--mh));
+  position:relative;width:calc(var(--mw) * var(--u));height:var(--h);cursor:pointer;opacity:.9}
+.mini .strip{pointer-events:none}
+.window{position:absolute;top:-4px;bottom:-4px;left:0;width:calc(100cqw * var(--k));box-sizing:border-box;
+  border:1.5px solid var(--accent);border-radius:2px;background:rgb(212 103 63 / .08);
+  animation:follow linear both;animation-timeline:--roads}
+@keyframes follow{to{translate:calc(var(--mw) * var(--u) - 100cqw * var(--k)) 0}}
+
+@media (max-width:760px){
+  .tabula{--mapH:clamp(280px,52svh,460px)}
+  .mini{display:none}
+  .pin span{display:none}
+}

@@ -1024,3 +1024,36 @@ live inside `@scope (.spec)`: verified in Chrome that scoped `@keyframes`,
 in both palettes. The demos' reduced-motion rule (`*{animation-duration:1ms}`)
 had been global — it would have left the Ken Burns film black for visitors who
 prefer less motion — and now applies to the cards alone.
+
+## The eighth showcase: Kinetic Drag, throw the Roman world, 2026-09-23
+
+**The idea.** The Tabula Peutingeriana — every road of the Roman Empire on one
+parchment scroll 6.75 m long and 35 cm high, from the Channel to India —
+laid out whole in Konrad Miller's facsimile of 1888 (National Library of
+Australia, public domain), as one strip to grab and throw. Pins mark the lost
+first segment, Rome enthroned, Constantinople, Antioch, "Hic Alexander
+responsum accepit" at the edge of the known world, and Taprobane. Under the
+map, the one number that decides how a throw feels — the share of its speed
+the map keeps each frame: 0.90 stops dead, 0.94 like an object, 0.98 slides
+for ever — and the whole scroll small, with a window that follows the map on
+a scroll timeline (no script) and takes you where you click.
+
+**Stitching.** The eight sheets overlap by 400–900 px (at 1920). `register.py
+stitch` finds each seam by sliding the end of one sheet over the next at a
+quarter size, then matching patches across the overlap and fitting what
+nearly all of them agree on (54–83 patches a seam, worst residual 2.4 px; the
+sheets differ by up to 0.6 % in scale and 0.4° in turn). Each sheet is set in
+the first one's frame by a composed transform and cut at the middle of its
+overlap; the strip ends where the map's torn edge ends, found past the scan's
+border. A sheet's map band is measured between the paper's blank margins —
+two earlier definitions (dark rows; the longest run of sea rows) broke on
+sheet 6's border and on the Mediterranean's gaps. Where a sheet's band falls
+short, the strip's ground is the map's own sea, sampled from every sheet's
+edges and hatched as the facsimile hatches it.
+
+**The throw.** The map is a native horizontal scroller, so touch, trackpads
+and keys move it as they always do; `showcase.js` adds the grab and the throw
+for a mouse (a pause before release is a put-down, not a throw), frame-rate
+independent (`decay ** (dt / 16.7)`), and none of it when the visitor prefers
+less motion. Measured in Chrome: from the same flick, 0.90 glides 598 px in
+0.8 s, 0.94 1,104 px in 1.5 s, 0.98 3,522 px in 4.4 s.

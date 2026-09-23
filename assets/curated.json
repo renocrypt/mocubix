@@ -2573,5 +2573,173 @@
   },
   "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a1/Ella_Fitzgerald_%28Gottlieb_02871%29.jpg/330px-Ella_Fitzgerald_%28Gottlieb_02871%29.jpg 330w, https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a1/Ella_Fitzgerald_%28Gottlieb_02871%29.jpg/500px-Ella_Fitzgerald_%28Gottlieb_02871%29.jpg 500w, https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a1/Ella_Fitzgerald_%28Gottlieb_02871%29.jpg/960px-Ella_Fitzgerald_%28Gottlieb_02871%29.jpg 960w, https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a1/Ella_Fitzgerald_%28Gottlieb_02871%29.jpg/1280px-Ella_Fitzgerald_%28Gottlieb_02871%29.jpg 1280w, https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a1/Ella_Fitzgerald_%28Gottlieb_02871%29.jpg/1920px-Ella_Fitzgerald_%28Gottlieb_02871%29.jpg 1920w",
   "default": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a1/Ella_Fitzgerald_%28Gottlieb_02871%29.jpg/960px-Ella_Fitzgerald_%28Gottlieb_02871%29.jpg"
+ },
+ {
+  "title": "File:1888 Konrad Miller edition of the Tabula Peutingeriana (NLA) Sheet 01.jpg",
+  "label": "Sheet 1",
+  "kind": "tabula",
+  "w": 5000,
+  "h": 2007,
+  "license": "Public domain",
+  "artist": "Unknown authorUnknown author; Konrad Miller",
+  "credit": "https://nla.gov.au/nla.obj-231630824",
+  "descurl": "https://commons.wikimedia.org/wiki/File:1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_(NLA)_Sheet_01.jpg",
+  "sources": {
+   "330": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/87/1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_01.jpg/330px-1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_01.jpg",
+   "500": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/87/1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_01.jpg/500px-1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_01.jpg",
+   "960": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/87/1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_01.jpg/960px-1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_01.jpg",
+   "1280": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/87/1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_01.jpg/1280px-1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_01.jpg",
+   "1920": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/87/1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_01.jpg/1920px-1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_01.jpg",
+   "3840": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/87/1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_01.jpg/3840px-1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_01.jpg"
+  },
+  "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/87/1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_01.jpg/330px-1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_01.jpg 330w, https://thumb.wikimedia.org/wikipedia/commons/thumb/8/87/1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_01.jpg/500px-1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_01.jpg 500w, https://thumb.wikimedia.org/wikipedia/commons/thumb/8/87/1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_01.jpg/960px-1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_01.jpg 960w, https://thumb.wikimedia.org/wikipedia/commons/thumb/8/87/1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_01.jpg/1280px-1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_01.jpg 1280w, https://thumb.wikimedia.org/wikipedia/commons/thumb/8/87/1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_01.jpg/1920px-1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_01.jpg 1920w, https://thumb.wikimedia.org/wikipedia/commons/thumb/8/87/1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_01.jpg/3840px-1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_01.jpg 3840w",
+  "default": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/87/1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_01.jpg/1280px-1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_01.jpg"
+ },
+ {
+  "title": "File:1888 Konrad Miller edition of the Tabula Peutingeriana (NLA) Sheet 02.jpg",
+  "label": "Sheet 2",
+  "kind": "tabula",
+  "w": 5000,
+  "h": 1991,
+  "license": "Public domain",
+  "artist": "Unknown authorUnknown author\nCastorius\nPeutinger, Konrad (1465-1547)\n\nMiller, Ko",
+  "credit": "https://nla.gov.au/nla.obj-231630824",
+  "descurl": "https://commons.wikimedia.org/wiki/File:1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_(NLA)_Sheet_02.jpg",
+  "sources": {
+   "330": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9b/1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_02.jpg/330px-1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_02.jpg",
+   "500": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9b/1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_02.jpg/500px-1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_02.jpg",
+   "960": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9b/1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_02.jpg/960px-1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_02.jpg",
+   "1280": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9b/1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_02.jpg/1280px-1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_02.jpg",
+   "1920": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9b/1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_02.jpg/1920px-1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_02.jpg",
+   "3840": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9b/1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_02.jpg/3840px-1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_02.jpg"
+  },
+  "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9b/1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_02.jpg/330px-1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_02.jpg 330w, https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9b/1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_02.jpg/500px-1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_02.jpg 500w, https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9b/1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_02.jpg/960px-1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_02.jpg 960w, https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9b/1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_02.jpg/1280px-1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_02.jpg 1280w, https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9b/1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_02.jpg/1920px-1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_02.jpg 1920w, https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9b/1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_02.jpg/3840px-1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_02.jpg 3840w",
+  "default": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9b/1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_02.jpg/1280px-1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_02.jpg"
+ },
+ {
+  "title": "File:1888 Konrad Miller edition of the Tabula Peutingeriana (NLA) Sheet 03.jpg",
+  "label": "Sheet 3",
+  "kind": "tabula",
+  "w": 5000,
+  "h": 1987,
+  "license": "Public domain",
+  "artist": "Unknown authorUnknown author\nCastorius\nPeutinger, Konrad (1465-1547)\n\nMiller, Ko",
+  "credit": "https://nla.gov.au/nla.obj-231630824",
+  "descurl": "https://commons.wikimedia.org/wiki/File:1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_(NLA)_Sheet_03.jpg",
+  "sources": {
+   "330": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1d/1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_03.jpg/330px-1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_03.jpg",
+   "500": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1d/1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_03.jpg/500px-1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_03.jpg",
+   "960": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1d/1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_03.jpg/960px-1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_03.jpg",
+   "1280": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1d/1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_03.jpg/1280px-1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_03.jpg",
+   "1920": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1d/1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_03.jpg/1920px-1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_03.jpg",
+   "3840": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1d/1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_03.jpg/3840px-1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_03.jpg"
+  },
+  "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1d/1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_03.jpg/330px-1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_03.jpg 330w, https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1d/1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_03.jpg/500px-1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_03.jpg 500w, https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1d/1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_03.jpg/960px-1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_03.jpg 960w, https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1d/1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_03.jpg/1280px-1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_03.jpg 1280w, https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1d/1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_03.jpg/1920px-1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_03.jpg 1920w, https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1d/1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_03.jpg/3840px-1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_03.jpg 3840w",
+  "default": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1d/1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_03.jpg/1280px-1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_03.jpg"
+ },
+ {
+  "title": "File:1888 Konrad Miller edition of the Tabula Peutingeriana (NLA) Sheet 04.jpg",
+  "label": "Sheet 4",
+  "kind": "tabula",
+  "w": 5000,
+  "h": 2008,
+  "license": "Public domain",
+  "artist": "Unknown authorUnknown author\nCastorius\nPeutinger, Konrad (1465-1547)\n\nMiller, Ko",
+  "credit": "https://nla.gov.au/nla.obj-231630824",
+  "descurl": "https://commons.wikimedia.org/wiki/File:1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_(NLA)_Sheet_04.jpg",
+  "sources": {
+   "330": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/89/1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_04.jpg/330px-1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_04.jpg",
+   "500": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/89/1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_04.jpg/500px-1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_04.jpg",
+   "960": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/89/1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_04.jpg/960px-1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_04.jpg",
+   "1280": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/89/1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_04.jpg/1280px-1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_04.jpg",
+   "1920": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/89/1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_04.jpg/1920px-1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_04.jpg",
+   "3840": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/89/1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_04.jpg/3840px-1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_04.jpg"
+  },
+  "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/89/1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_04.jpg/330px-1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_04.jpg 330w, https://thumb.wikimedia.org/wikipedia/commons/thumb/8/89/1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_04.jpg/500px-1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_04.jpg 500w, https://thumb.wikimedia.org/wikipedia/commons/thumb/8/89/1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_04.jpg/960px-1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_04.jpg 960w, https://thumb.wikimedia.org/wikipedia/commons/thumb/8/89/1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_04.jpg/1280px-1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_04.jpg 1280w, https://thumb.wikimedia.org/wikipedia/commons/thumb/8/89/1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_04.jpg/1920px-1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_04.jpg 1920w, https://thumb.wikimedia.org/wikipedia/commons/thumb/8/89/1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_04.jpg/3840px-1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_04.jpg 3840w",
+  "default": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/89/1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_04.jpg/1280px-1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_04.jpg"
+ },
+ {
+  "title": "File:1888 Konrad Miller edition of the Tabula Peutingeriana (NLA) Sheet 05.jpg",
+  "label": "Sheet 5",
+  "kind": "tabula",
+  "w": 5000,
+  "h": 2039,
+  "license": "Public domain",
+  "artist": "Unknown authorUnknown author\nCastorius\nPeutinger, Konrad (1465-1547)\n\nMiller, Ko",
+  "credit": "https://nla.gov.au/nla.obj-231630824",
+  "descurl": "https://commons.wikimedia.org/wiki/File:1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_(NLA)_Sheet_05.jpg",
+  "sources": {
+   "330": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c6/1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_05.jpg/330px-1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_05.jpg",
+   "500": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c6/1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_05.jpg/500px-1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_05.jpg",
+   "960": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c6/1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_05.jpg/960px-1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_05.jpg",
+   "1280": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c6/1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_05.jpg/1280px-1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_05.jpg",
+   "1920": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c6/1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_05.jpg/1920px-1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_05.jpg",
+   "3840": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c6/1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_05.jpg/3840px-1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_05.jpg"
+  },
+  "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c6/1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_05.jpg/330px-1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_05.jpg 330w, https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c6/1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_05.jpg/500px-1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_05.jpg 500w, https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c6/1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_05.jpg/960px-1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_05.jpg 960w, https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c6/1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_05.jpg/1280px-1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_05.jpg 1280w, https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c6/1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_05.jpg/1920px-1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_05.jpg 1920w, https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c6/1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_05.jpg/3840px-1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_05.jpg 3840w",
+  "default": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c6/1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_05.jpg/1280px-1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_05.jpg"
+ },
+ {
+  "title": "File:1888 Konrad Miller edition of the Tabula Peutingeriana (NLA) Sheet 06.jpg",
+  "label": "Sheet 6",
+  "kind": "tabula",
+  "w": 5000,
+  "h": 2055,
+  "license": "Public domain",
+  "artist": "Unknown authorUnknown author\nCastorius\nPeutinger, Konrad (1465-1547)\n\nMiller, Ko",
+  "credit": "https://nla.gov.au/nla.obj-231630824",
+  "descurl": "https://commons.wikimedia.org/wiki/File:1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_(NLA)_Sheet_06.jpg",
+  "sources": {
+   "330": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/56/1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_06.jpg/330px-1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_06.jpg",
+   "500": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/56/1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_06.jpg/500px-1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_06.jpg",
+   "960": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/56/1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_06.jpg/960px-1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_06.jpg",
+   "1280": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/56/1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_06.jpg/1280px-1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_06.jpg",
+   "1920": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/56/1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_06.jpg/1920px-1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_06.jpg",
+   "3840": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/56/1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_06.jpg/3840px-1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_06.jpg"
+  },
+  "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/56/1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_06.jpg/330px-1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_06.jpg 330w, https://thumb.wikimedia.org/wikipedia/commons/thumb/5/56/1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_06.jpg/500px-1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_06.jpg 500w, https://thumb.wikimedia.org/wikipedia/commons/thumb/5/56/1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_06.jpg/960px-1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_06.jpg 960w, https://thumb.wikimedia.org/wikipedia/commons/thumb/5/56/1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_06.jpg/1280px-1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_06.jpg 1280w, https://thumb.wikimedia.org/wikipedia/commons/thumb/5/56/1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_06.jpg/1920px-1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_06.jpg 1920w, https://thumb.wikimedia.org/wikipedia/commons/thumb/5/56/1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_06.jpg/3840px-1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_06.jpg 3840w",
+  "default": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/56/1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_06.jpg/1280px-1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_06.jpg"
+ },
+ {
+  "title": "File:1888 Konrad Miller edition of the Tabula Peutingeriana (NLA) Sheet 07.jpg",
+  "label": "Sheet 7",
+  "kind": "tabula",
+  "w": 5000,
+  "h": 2004,
+  "license": "Public domain",
+  "artist": "Unknown authorUnknown author\nCastorius\nPeutinger, Konrad (1465-1547)\n\nMiller, Ko",
+  "credit": "https://nla.gov.au/nla.obj-231630824",
+  "descurl": "https://commons.wikimedia.org/wiki/File:1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_(NLA)_Sheet_07.jpg",
+  "sources": {
+   "330": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b4/1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_07.jpg/330px-1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_07.jpg",
+   "500": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b4/1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_07.jpg/500px-1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_07.jpg",
+   "960": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b4/1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_07.jpg/960px-1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_07.jpg",
+   "1280": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b4/1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_07.jpg/1280px-1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_07.jpg",
+   "1920": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b4/1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_07.jpg/1920px-1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_07.jpg",
+   "3840": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b4/1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_07.jpg/3840px-1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_07.jpg"
+  },
+  "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b4/1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_07.jpg/330px-1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_07.jpg 330w, https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b4/1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_07.jpg/500px-1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_07.jpg 500w, https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b4/1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_07.jpg/960px-1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_07.jpg 960w, https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b4/1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_07.jpg/1280px-1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_07.jpg 1280w, https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b4/1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_07.jpg/1920px-1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_07.jpg 1920w, https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b4/1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_07.jpg/3840px-1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_07.jpg 3840w",
+  "default": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b4/1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_07.jpg/1280px-1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_07.jpg"
+ },
+ {
+  "title": "File:1888 Konrad Miller edition of the Tabula Peutingeriana (NLA) Sheet 08.jpg",
+  "label": "Sheet 8",
+  "kind": "tabula",
+  "w": 5000,
+  "h": 2004,
+  "license": "Public domain",
+  "artist": "Unknown authorUnknown author\nCastorius\nPeutinger, Konrad (1465-1547)\n\nMiller, Ko",
+  "credit": "https://nla.gov.au/nla.obj-231630824",
+  "descurl": "https://commons.wikimedia.org/wiki/File:1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_(NLA)_Sheet_08.jpg",
+  "sources": {
+   "330": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/18/1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_08.jpg/330px-1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_08.jpg",
+   "500": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/18/1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_08.jpg/500px-1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_08.jpg",
+   "960": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/18/1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_08.jpg/960px-1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_08.jpg",
+   "1280": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/18/1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_08.jpg/1280px-1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_08.jpg",
+   "1920": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/18/1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_08.jpg/1920px-1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_08.jpg",
+   "3840": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/18/1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_08.jpg/3840px-1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_08.jpg"
+  },
+  "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/18/1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_08.jpg/330px-1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_08.jpg 330w, https://thumb.wikimedia.org/wikipedia/commons/thumb/1/18/1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_08.jpg/500px-1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_08.jpg 500w, https://thumb.wikimedia.org/wikipedia/commons/thumb/1/18/1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_08.jpg/960px-1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_08.jpg 960w, https://thumb.wikimedia.org/wikipedia/commons/thumb/1/18/1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_08.jpg/1280px-1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_08.jpg 1280w, https://thumb.wikimedia.org/wikipedia/commons/thumb/1/18/1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_08.jpg/1920px-1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_08.jpg 1920w, https://thumb.wikimedia.org/wikipedia/commons/thumb/1/18/1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_08.jpg/3840px-1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_08.jpg 3840w",
+  "default": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/18/1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_08.jpg/1280px-1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_08.jpg"
  }
 ]

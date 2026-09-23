@@ -12,6 +12,46 @@ UA = {'User-Agent': 'Mocubix/1.0 (https://github.com/renocrypt/mocubix)'}
 
 WORKS = [
  [
+  "tabula",
+  "Sheet 1",
+  "File:1888 Konrad Miller edition of the Tabula Peutingeriana (NLA) Sheet 01.jpg"
+ ],
+ [
+  "tabula",
+  "Sheet 2",
+  "File:1888 Konrad Miller edition of the Tabula Peutingeriana (NLA) Sheet 02.jpg"
+ ],
+ [
+  "tabula",
+  "Sheet 3",
+  "File:1888 Konrad Miller edition of the Tabula Peutingeriana (NLA) Sheet 03.jpg"
+ ],
+ [
+  "tabula",
+  "Sheet 4",
+  "File:1888 Konrad Miller edition of the Tabula Peutingeriana (NLA) Sheet 04.jpg"
+ ],
+ [
+  "tabula",
+  "Sheet 5",
+  "File:1888 Konrad Miller edition of the Tabula Peutingeriana (NLA) Sheet 05.jpg"
+ ],
+ [
+  "tabula",
+  "Sheet 6",
+  "File:1888 Konrad Miller edition of the Tabula Peutingeriana (NLA) Sheet 06.jpg"
+ ],
+ [
+  "tabula",
+  "Sheet 7",
+  "File:1888 Konrad Miller edition of the Tabula Peutingeriana (NLA) Sheet 07.jpg"
+ ],
+ [
+  "tabula",
+  "Sheet 8",
+  "File:1888 Konrad Miller edition of the Tabula Peutingeriana (NLA) Sheet 08.jpg"
+ ],
+ [
   "gottlieb",
   "Billie Holiday",
   "File:Billie Holiday, Downbeat, New York, N.Y., ca. Feb. 1947 (William P. Gottlieb 04251).jpg"
@@ -650,7 +690,7 @@ def real_width(url):
 ONLY = set(sys.argv[1:])          # e.g. `python3 build/curate.py webb` fetches only that kind
 if ONLY: WORKS = [w for w in WORKS if w[0] in ONLY]
 # material shown large asks for the big buckets too
-WIDE = {'webb': (1920, 3840), 'glacier': (1920,), 'buson': (1920, 2560), 'adams': (1920,), 'fsa': (1920, 3840)}
+WIDE = {'webb': (1920, 3840), 'glacier': (1920,), 'buson': (1920, 2560), 'adams': (1920,), 'fsa': (1920, 3840), 'tabula': (1920, 3840)}
 
 recs = {}
 for width in (330, 500, 640, 1024, 1600, 1920, 2560, 3840):   # 330, 500: tiles, thumbnails, pictures shown small
