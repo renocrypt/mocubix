@@ -959,3 +959,15 @@ with `mod()`, so every numeral reads on its own band. Facts sourced: the Zone
 System (Wikipedia), the Tetons print on the Voyager Golden Record (NASA's list),
 the captions (National Archives, via their Commons records). Chrome holds
 120 fps through the whole walk, p99 frame 10 ms.
+
+## Share cards for the showcases, 2026-09-23
+
+Each showcase now has its own 1200×630 card (`site/share/lexicon-<term>.jpg`),
+taken in Chrome at a telling moment of its stage — the Pillars of Creation,
+Darwin's last line with the colour plates, Grinnell 1910 | 2025 at the
+divider, the scroll's cover and first columns, Old Faithful under the inverted
+line — with a small "Mocubix Lexicon · <term>" plate. The generator uses a
+term's card when the file exists, otherwise the Lexicon's. The Lexicon's own
+card was stale (it still showed the one-page Lexicon) and was retaken from the
+entrance. The showcase dot in the index is now held to its term's last word,
+so it never wraps onto a line of its own.

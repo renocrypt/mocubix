@@ -873,6 +873,7 @@ footer a:hover{color:var(--accent)}
 /* a term with a full showcase carries a small terracotta dot */
 .shows{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--accent);margin-left:9px;vertical-align:.2em}
 .keys .shows{margin:0 7px 0 0}
+.nw{white-space:nowrap}
 
 /* Japanese and Chinese in labels, aliases and code fall to the Lexicon's own Han face,
    never to the system's: its fallback can be missing (it was, on macOS 27), and a

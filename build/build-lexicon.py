@@ -424,15 +424,25 @@ import importlib, sys
 sys.path.insert(0, str(ROOT / 'build' / 'showcases'))
 SHOWCASES = {slug(t[2][1]): importlib.import_module(slug(t[2][1]).replace('-', '_')) for t in TERMS
              if (ROOT / 'build' / 'showcases' / (slug(t[2][1]).replace('-', '_') + '.py')).exists()}
-SHOW = ' <i class="shows" title="Has a full showcase"></i>'
+SHOW = '<i class="shows" title="Has a full showcase"></i>'
+
+
+def marked(name):
+    """A term's name, with the showcase dot held to its last word so the dot never wraps alone."""
+    if slug(name) not in SHOWCASES:
+        return name
+    head, _, last = name.rpartition(' ')
+    return f'{head} <span class="nw">{last}{SHOW}</span>' if head else f'<span class="nw">{last}{SHOW}</span>'
 
 
 MATERIAL = ('Material — Kamisaka Sekka 神坂雪佳, <i>Momoyogusa</i> 百々世草, 1909–10<br>'
             'Rijksmuseum scans via Wikimedia Commons, CC0. Anna Atkins cyanotypes, 1843.')
 
 
-def shell(title, desc, path, rel, body, current=None, head='', material=MATERIAL):
+def shell(title, desc, path, rel, body, current=None, head='', material=MATERIAL, card=None):
     url = BASE + path
+    # a showcase with its own share card (site/share/lexicon-<term>.jpg) shows it; every other page the Lexicon's
+    card_name, card_alt = card or ('lexicon', 'The Mocubix Lexicon: forty-one named interface effects')
     nav = ''
     for k, n, _, _ in PILLARS:
         count = sum(1 for t in TERMS if t[0] == k)
@@ -440,7 +450,8 @@ def shell(title, desc, path, rel, body, current=None, head='', material=MATERIAL
         nav += f'<a class="navfam" href="{rel}lexicon/{k}/"{mark}>{n}<i>{count}</i></a>'
     return (SHELL.replace('__TITLE__', title).replace('__TITLE_ATTR__', attr(title)).replace('__DESC__', attr(desc))
             .replace('__URL__', url).replace('__NAV__', nav).replace('__COUNT__', str(len(TERMS)))
-            .replace('__BODY__', body).replace('__HEAD__', head).replace('__MATERIAL__', material).replace('__REL__', rel))
+            .replace('__BODY__', body).replace('__HEAD__', head).replace('__MATERIAL__', material).replace('__REL__', rel)
+            .replace('__CARD__', card_name).replace('__CARD_ALT__', attr(card_alt)))
 
 
 SHELL = """<!doctype html>
@@ -459,10 +470,10 @@ SHELL = """<!doctype html>
 <meta property="og:title" content="__TITLE_ATTR__">
 <meta property="og:description" content="__DESC__">
 <meta property="og:url" content="__URL__">
-<meta property="og:image" content="https://mocubix.renocrypt.com/share/lexicon.jpg">
+<meta property="og:image" content="https://mocubix.renocrypt.com/share/__CARD__.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="The Mocubix Lexicon: forty-one named interface effects">
+<meta property="og:image:alt" content="__CARD_ALT__">
 <meta name="twitter:card" content="summary_large_image">
 
 <link rel="preconnect" href="https://api.fontshare.com">
@@ -547,7 +558,7 @@ def entrance():
         for t in items:
             s = t[2]; sl = slug(s[1])
             lis += (f'<li><a href="{sl}/" data-aka="{attr(s[2])}" data-gloss="{attr(s[3])}">'
-                    f'<b>{NUM[s[1]]:02d}</b><span style="view-transition-name:t-{sl}">{s[1]}{SHOW if sl in SHOWCASES else ""}</span></a></li>')
+                    f'<b>{NUM[s[1]]:02d}</b><span style="view-transition-name:t-{sl}">{marked(s[1])}</span></a></li>')
         cols.append(f'<div class="idxcol"><h4><a href="{key}/">{pname}</a><em>{len(items)}</em></h4>'
                     f'<p class="blurb">{blurb}</p><ol>{lis}</ol></div>')
     body = (f'<header class="entrance">\n'
@@ -637,8 +648,11 @@ def term_page(i):
     if sc and (ROOT / 'site' / 'lexicon' / slug(name) / 'showcase.js').exists():   # a showcase may bring a little script of its own
         head += '<script src="showcase.js" defer></script>\n'
     head += getattr(sc, 'HEAD', '')                                                # and anything else its head needs, such as a face
+    card = None
+    if sc and (ROOT / 'site' / 'share' / f'lexicon-{slug(name)}.jpg').exists():
+        card = (f'lexicon-{slug(name)}', f'{plain(name)}, in the Mocubix Lexicon: {plain(sc.TITLE).lower()}')
     return shell(f'{plain(name)} — Mocubix Lexicon', plain(s[3]), f'lexicon/{slug(name)}/', rel, body, current=pkey, head=head,
-                 material=getattr(sc, 'MATERIAL', MATERIAL))
+                 material=getattr(sc, 'MATERIAL', MATERIAL), card=card)
 
 
 out = ROOT / 'site' / 'lexicon'
