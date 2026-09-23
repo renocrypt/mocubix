@@ -1,0 +1,33 @@
+/* Difference Inversion, in full: every tone but one. One line of white type is held
+   in the middle of the screen, set to difference, while Adams's prints and then the
+   eleven zones pass under it. The stage is isolated, so the line blends with nothing
+   but what is on it. */
+
+.walk{position:relative;width:100vw;margin-inline:calc(50% - 50vw);border:0;border-radius:0;isolation:isolate;
+  background:#0A0A0A;color:#F2EDE5}
+
+/* the line: in flow it takes no room, so it is already at the middle when the first print arrives */
+.line{position:sticky;z-index:2;top:calc(var(--bar) + (100svh - var(--bar)) / 2);height:0;margin:0;overflow:visible;
+  display:flex;align-items:center;justify-content:center;pointer-events:none;
+  font-family:var(--display);font-weight:500;font-size:clamp(46px,10.5vw,176px);line-height:1;letter-spacing:-.03em;
+  white-space:nowrap;color:#FFF;mix-blend-mode:difference}
+
+/* the prints hang one after another on the dark, each a little over a screen of travel */
+.print{margin:0;min-height:128svh;display:grid;align-content:center;justify-items:center;gap:16px;padding:0 4vw}
+.print img{display:block;width:auto;height:auto;max-width:92vw;max-height:80svh;box-shadow:0 30px 70px -30px rgb(0 0 0 / .9)}
+.print figcaption{display:grid;justify-items:center;gap:4px;text-align:center;max-width:min(92vw,720px)}
+.print figcaption span{font-size:13.5px;line-height:1.5;color:#B4ABA0}
+.print figcaption span + span{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:#7E766D}
+.print figcaption .aside{font-family:var(--display);font-style:italic;font-size:15px;letter-spacing:0;text-transform:none;color:#B4ABA0}
+
+/* the zones: even steps of lightness, 0 to X; each band's label takes the lightness half a scale away, so it always reads */
+.zones{margin:0;padding:0;list-style:none}
+.zone{--l:calc(var(--z) * 10%);height:24svh;background:lab(var(--l) 0 0);display:flex;align-items:flex-end;gap:18px;
+  padding:0 clamp(20px,5vw,72px) 16px;color:lab(calc(mod(var(--z) * 10 + 50, 100) * 1%) 0 0)}
+.zone b{font-family:var(--display);font-weight:400;font-size:clamp(28px,3vw,44px);line-height:1}
+.zone span{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;padding-bottom:4px}
+
+@media (max-width:760px){
+  .line{font-size:11.6vw}
+  .print{min-height:110svh;padding:0}
+}

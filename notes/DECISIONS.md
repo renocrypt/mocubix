@@ -938,3 +938,24 @@ fitted to the scan (centre, radii, angles). The endpaper's gold is scattered by
 the build from a fixed seed. A class named `cover` collided with an old demo's
 absolute positioning; renamed. Without motion the scroll lies open as a native
 vertical-rl scroller, which starts at its right end by itself.
+
+## The fifth showcase: Difference Inversion, every tone but one, 2026-09-23
+
+**The idea.** One line of white type, "Every tone but one", held in the middle
+of the screen and set to `mix-blend-mode: difference`, while four of Ansel
+Adams's photographs for the Department of the Interior (1941–42, National
+Archives, public domain) pass beneath it — the Tetons and the Snake River,
+Old Faithful at dusk, Yellowstone Lake, the Giant Dome in Carlsbad Caverns —
+and then the eleven zones of the Zone System he worked out with Fred Archer,
+pure black to pure white. The line turns into the opposite of every tone it
+crosses, and on Zone V, middle grey, it all but vanishes. The one weakness of
+the effect is the payoff, and Adams's own scale names the tone.
+
+**How it is built.** No script. The stage is isolated so the line blends only
+with what is on it; the line is sticky with no height in flow, so it is already
+at the middle when the first print arrives. The zones are `lab(n×10% 0 0)`,
+even steps of lightness, and each label takes the lightness half a scale away
+with `mod()`, so every numeral reads on its own band. Facts sourced: the Zone
+System (Wikipedia), the Tetons print on the Voyager Golden Record (NASA's list),
+the captions (National Archives, via their Commons records). Chrome holds
+120 fps through the whole walk, p99 frame 10 ms.
