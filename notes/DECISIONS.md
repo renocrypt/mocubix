@@ -1474,3 +1474,59 @@ the readouts. Found on the way: `.kicker` is taken by the page header
 **Checked.** At 1324×725 and 390×844 (stacked, plate on the seam): no
 overflow, 120 fps (p99 9.4 ms) with either pair, console clean. The card is
 the violet moment: Violet at chroma .20 against a taupe mud at .03.
+
+## The twenty-first showcase: Path Drawing, the march drawn again, 2026-09-23
+
+**The idea.** Charles Joseph Minard's map of the French army's losses in
+Russia, 1812–13 (Paris, 20 November 1869; BnF via Gallica, public domain;
+the sheet also carries its companion, Hannibal's march, which is cropped
+away). The bands draw themselves as you scroll, and nothing is redrawn: the
+bands on screen are Minard's own lithograph. Rose goes in from the Niemen to
+Moscow, splitting off the northern corps (22,000) and the column to Polotzk.
+Black comes out: down from Moscow, west past Smolensk, joined at Bobr by the
+30,000 from Polotzk, across the Berezina, and back to Kowno, where the
+6,000 rejoin. The thermometer under it draws itself in step. A ledger below
+reads Minard's figures as the pen passes them, each with the stretch it is
+written on ("24,000 · Smolensk → Orscha", positions read against the town
+names on the scan), and his readings with their dates.
+
+**Minard's calendar.** The black band keeps the dates in his temperature
+table: each dated reading is tied to a place on the retreat by one of his
+thin vertical lines, so the band reaches that line on that day (0° on 18
+October … −30° on 6 December, −26° on 7 December), and the thermometer
+reaches the same reading at the same moment. The −11° is undated on the map
+and the page shows no date for it; placed between its neighbours by
+position, it falls on 24 November, the date usually given. The rose band is
+timed by distance (its dates are not on the map).
+
+**How it is built.** Over each band lies a veil, the paper's colour with
+`mix-blend-mode: lighten` at .9, so it lifts only ink: bands and figures
+become a ghost, and the paper is untouched. The veil is an SVG mask holding
+the band's own outline in white (traced from the scan) and its pens in
+black: strokes with `pathLength="1"` whose dashoffset follows the route's
+progress. Each route's progress is a registered number on the run's view
+timeline, its keyframes written into the page's head from the tracings and
+the calendar. The pens are split where the band narrows by a third, each as
+wide as its stretch, and they run past the line's ends by half the widest
+nearby run, along the last 60px of the line's direction, so their square
+ends clear a band cut obliquely. On a phone the map is 60svh tall and
+follows the pens (`--fx`, a keyframed number).
+
+**The tools.** `build/trace.py` is new and general: it follows a line of
+one ink from a start, one step at a time, taking the run of ink nearest the
+last centre (a band's runs a few px apart merged, so figures written across
+it don't break it; a running median against letters), simplifies it, and
+keeps each vertex's width. It also traces a band's whole outline (the
+largest region of an ink, holes closed, thin strokes opened away). A line
+that can't be followed (the thermometer, crossed by the table's rulings) is
+given by its vertices. The thinnest miles of the retreat are lost to the
+outline's opening; there the veil is a stroke along the traced line instead.
+
+**Checked.** At the end of the run the map is exactly the lithograph: a
+screenshot with the veils diffed against one without them, 0 pixels differ.
+The first diff found 89: the rose band's slanted end at Kowno, and the branch
+at Polotzk, fixed by extending the pens along each line's local direction.
+It runs at the display's refresh rate (p50 6.9 ms, p99 7.7 ms at 144 Hz),
+with no overflow at 1324 or 390, and the console is clean. On the phone the
+frame's implicit grid column grew to the 1083px map and carried the ledger
+off-screen; the fix was an explicit `minmax(0,1fr)`.
