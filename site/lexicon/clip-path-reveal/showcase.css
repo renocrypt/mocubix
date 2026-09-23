@@ -1,0 +1,50 @@
+/* Clip-path Reveal, in full: Prokudin-Gorsky's colour photographs, laid down record by record.
+   Each picture is held on black; an edge in each filter's colour uncovers the red record, then
+   the green, then the blue, on the picture's own view timeline. Each record is the picture
+   multiplied by its filter's colour; the three are screened back together on black. No script. */
+
+@property --p{syntax:'<number>';inherits:true;initial-value:0}
+
+.empire{position:relative;width:100vw;margin-inline:calc(50% - 50vw);border:0;border-radius:0;background:#0A0A0B;overflow:clip;color:#E8E4DC}
+.picture{height:230svh;view-timeline:--picture block;view-timeline-inset:var(--bar) 0px}
+.frame{position:sticky;top:var(--bar);height:calc(100svh - var(--bar));box-sizing:border-box;
+  display:grid;place-items:center;padding:clamp(16px,4vh,40px) clamp(16px,4vw,64px)}
+.empire figure{margin:0;display:grid;gap:14px}
+
+/* the plate: black until a record is laid on it */
+.pic{--h:min(calc(100svh - var(--bar) - 124px),calc(92vw / var(--ar)));position:relative;isolation:isolate;
+  height:var(--h);width:calc(var(--h) * var(--ar));background:#000;box-shadow:0 0 0 1px rgb(255 255 255 / .07)}
+/* a record: the picture seen through one filter (multiplied by pure red, green or blue) */
+.rec{position:absolute;inset:0;isolation:isolate;background:var(--c);
+  clip-path:inset(0 calc(100% - var(--p) * 100%) 0 0);animation:uncover linear both;animation-timeline:--picture}
+.rec img{display:block;width:100%;height:100%;mix-blend-mode:multiply}
+.rec + .rec{mix-blend-mode:screen}          /* the records add up, as light does */
+.r{--c:#f00;animation-range:contain 4% contain 30%}
+.g{--c:#0f0;animation-range:contain 34% contain 60%}
+.b{--c:#00f;animation-range:contain 64% contain 90%}
+@keyframes uncover{from{--p:0}to{--p:1}}
+/* the edge that carries each record across, in its filter's colour */
+.rec::after{content:'';position:absolute;top:0;bottom:0;left:calc(var(--p) * 100% - 2px);width:2px;background:var(--c);
+  box-shadow:0 0 24px 3px var(--c);opacity:clamp(0,min(var(--p),1 - var(--p)) * 40,1)}
+
+.empire figcaption{display:flex;justify-content:space-between;align-items:baseline;gap:12px 28px;flex-wrap:wrap}
+.who b{display:block;font-family:var(--display);font-weight:400;font-size:clamp(20px,2.1vw,30px);line-height:1.1;letter-spacing:-.01em}
+.who span{display:block;margin-top:6px;font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#8E8A83}
+/* which records are down */
+.records{display:flex;gap:18px;margin:0;padding:0;list-style:none;font:10px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase}
+.records li{display:flex;align-items:center;gap:7px;opacity:.3;animation:lit linear both;animation-timeline:--picture}
+.records li::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--c);box-shadow:0 0 10px var(--c)}
+.records .r{--c:#ff2a2a;animation-range:contain 4% contain 30%}
+.records .g{--c:#2aff5a;animation-range:contain 34% contain 60%}
+.records .b{--c:#4a5cff;animation-range:contain 64% contain 90%}
+@keyframes lit{to{opacity:1}}
+
+@media (max-width:760px){
+  .pic{--h:min(calc(100svh - var(--bar) - 170px),calc(92vw / var(--ar)))}
+  .empire figcaption{flex-direction:column;align-items:start}
+}
+@media (prefers-reduced-motion:reduce){
+  .rec{animation:none;--p:1}
+  .rec::after{display:none}
+  .records li{animation:none;opacity:1}
+}

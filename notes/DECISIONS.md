@@ -1265,3 +1265,40 @@ is sticky beside its poem while the verse passes. On phones it stacks above.
 titles) rise, no line wraps on the phone, no overflow; a sweep through the
 page runs at 120 fps (p99 10.2 ms); the console is clean. The card is The
 Tyger on night with its second stanza caught rising.
+
+## The sixteenth showcase: Clip-path Reveal, red, then green, then blue, 2026-09-23
+
+**The idea.** Sergei Prokudin-Gorsky photographed the Russian Empire in
+colour with a camera that made three black-and-white exposures through red,
+green and blue filters. The Library of Congress's colour renderings were put
+together from those three records, so each channel of the rendering is one of
+them. Five renderings (Alim Khan, Emir of Bukhara, 1911; peasant girls on the
+Sheksna near Kirillov, 1909; the Gur-e Amir, Samarkand; harvesting tea,
+Chakva; the Nilov Monastery, Lake Seliger, 1910; LOC, public domain) are
+each laid down record by record. An edge in the filter's colour carries the
+red record across, then the green, then the blue, and the colour comes right
+only where all three have passed. A first choice, Tolstoy at Yasnaya
+Polyana, was dropped: that file is a scan of a printed reproduction (its
+halftone dots show), so its channels are not his records. The glass-plate
+scans themselves are not on Commons under any findable name, and the house
+rule is Commons URLs only; the channels of the renderings stand in for them.
+
+**How it is built.** No script. Each picture's article is 230svh, with a
+sticky frame and a named view timeline (inset by the bar). Three layers of
+the same file make it: each `.rec` has its filter's pure colour as
+background, and the image multiplies onto it, so only that record survives.
+The layers screen onto each other over black, which adds light exactly
+because the channels are disjoint. The same URL three times is one request.
+Each layer's `clip-path: inset(0 calc(100% - var(--p) * 100%) 0 0)` runs on
+the timeline, in the contain ranges 4–30 %, 34–60 % and 64–90 %. Its
+`::after` is the travelling edge, a 2px line with a glow in the filter's
+colour, visible only mid-sweep. A legend (red, green, blue) lights on the
+same ranges. Only the blue layer carries the alt text; the other two are
+empty-alt duplicates.
+
+**Checked.** At 1324×725 and at 390×844: a sweep runs at 120 fps (p99
+10.2 ms) with three blended layers per picture; every picture ends in full
+colour; no overflow; the console is clean. In the tea harvest, a girl who
+moved between exposures keeps a colour fringe, and the note points to it.
+The card is the Emir with blue two-thirds across: full colour behind the
+edge, red and green ahead of it.
