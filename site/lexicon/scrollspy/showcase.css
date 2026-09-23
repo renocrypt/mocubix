@@ -41,7 +41,8 @@
 .leg h2{grid-column:1/-1;margin:0 0 clamp(18px,3.4vh,32px);font-weight:400;font-size:clamp(28px,3.4vw,48px);line-height:1.05;letter-spacing:-.01em}
 .leg h2 span{font-style:italic;color:var(--dim);margin-right:.2em}
 .leg figure{margin:0;grid-row:3}
-.leg img{display:block;height:auto;width:min(40vw,calc(46svh * 2262 / 3270),520px);
+/* sized from each engraving's own proportions, so a lazy image holds its place before it arrives */
+.leg img{--iw:min(40vw,calc(54svh * var(--ar)),560px);display:block;width:var(--iw);height:calc(var(--iw) / var(--ar));
   box-shadow:0 1px 0 var(--rule),0 24px 50px -30px rgb(60 40 10 / .5)}
 .leg figcaption{margin-top:10px;font-size:13px;font-style:italic;color:var(--dim)}
 .leg blockquote{grid-row:3;align-self:center;margin:0;max-width:24em;font-size:clamp(19px,1.7vw,26px);line-height:1.38;text-wrap:pretty}
@@ -63,6 +64,6 @@
   .plan a:target-current::before{left:-10px}
   .legs{padding-top:20px}
   .leg{grid-template-columns:minmax(0,1fr);grid-template-rows:auto auto auto auto;min-height:auto;scroll-margin-top:calc(var(--bar) + 44px)}
-  .leg img{width:min(78vw,calc(52svh * 2262 / 3270))}
+  .leg img{--iw:min(78vw,calc(52svh * var(--ar)))}
   .leg blockquote{grid-row:4;margin-top:20px}
 }
