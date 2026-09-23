@@ -1057,3 +1057,23 @@ for a mouse (a pause before release is a put-down, not a throw), frame-rate
 independent (`decay ** (dt / 16.7)`), and none of it when the visitor prefers
 less motion. Measured in Chrome: from the same flick, 0.90 glides 598 px in
 0.8 s, 0.94 1,104 px in 1.5 s, 0.98 3,522 px in 4.4 s.
+
+## The ninth showcase: Sticky Stacking Cards, twenty of twenty-two, 2026-09-23
+
+**The idea.** The trumps of the Visconti-Sforza tarot (the Pierpont
+Morgan–Bergamo deck, about 1451, public domain) dealt onto a candle-lit table
+as you scroll: each card comes in turned and a little to the side, lands on the
+pile five pixels below the last, and the gold leaf catches the light once as it
+comes down. Beside the pile, each card's name and what is painted on it travel
+with the card and dim once it lands. Of the deck's 78 cards 74 survive; the two
+lost trumps, the Devil and the Tower, keep their places in the list, struck
+through, while the deal pauses and nothing lands. The names and descriptions
+are ours, from looking at the cards; the facts are Wikipedia's.
+
+**How it is built.** No script. Every card is sticky at nearly the same place
+(`top: calc(var(--bar) + 6svh + var(--i) * 5px)`); a card's box is one step of
+the deal and its face overflows it, so each arrives over the last. The deal and
+the glint ride each card's own view timeline, finished before it sticks (a stuck
+card's timeline stops). Found on the way: a sticky element is held only within
+its container's content box, so the hold after the last card is a spacer inside
+the list, not padding. Chrome holds 120 fps through the deal (p99 10 ms).

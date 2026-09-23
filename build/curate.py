@@ -12,6 +12,106 @@ UA = {'User-Agent': 'Mocubix/1.0 (https://github.com/renocrypt/mocubix)'}
 
 WORKS = [
  [
+  "tarot",
+  "The Fool",
+  "File:Bembo-Visconti-tarot-arcanum-fool.jpg"
+ ],
+ [
+  "tarot",
+  "The Magician",
+  "File:Bembo-Visconti-tarot-arcanum-01-magician.jpg"
+ ],
+ [
+  "tarot",
+  "The Popess",
+  "File:Bembo-Visconti-tarot-arcanum-02-high priestess.jpg"
+ ],
+ [
+  "tarot",
+  "The Empress",
+  "File:Bembo-Visconti-tarot-arcanum-03-empress.jpg"
+ ],
+ [
+  "tarot",
+  "The Emperor",
+  "File:Bembo-Visconti-tarot-arcanum-04-emperor.jpg"
+ ],
+ [
+  "tarot",
+  "The Pope",
+  "File:Bembo-Visconti-tarot-arcanum-05-hierophant.jpg"
+ ],
+ [
+  "tarot",
+  "The Lovers",
+  "File:Bembo-Visconti-tarot-arcanum-06-lovers.jpg"
+ ],
+ [
+  "tarot",
+  "The Chariot",
+  "File:Bembo-Visconti-tarot-arcanum-07-chariot.jpg"
+ ],
+ [
+  "tarot",
+  "Justice",
+  "File:Bembo-Visconti-tarot-arcanum-08-justice.jpg"
+ ],
+ [
+  "tarot",
+  "The Hermit",
+  "File:Bembo-Visconti-tarot-arcanum-09-hermit.jpg"
+ ],
+ [
+  "tarot",
+  "The Wheel of Fortune",
+  "File:Bembo-Visconti-tarot-arcanum-10-wheel of fortune.jpg"
+ ],
+ [
+  "tarot",
+  "Strength",
+  "File:Bembo-Visconti-tarot-arcanum-11-strength.jpg"
+ ],
+ [
+  "tarot",
+  "The Hanged Man",
+  "File:Bembo-Visconti-tarot-arcanum-12-hanged man.jpg"
+ ],
+ [
+  "tarot",
+  "Death",
+  "File:Bembo-Visconti-tarot-arcanum-13.jpg"
+ ],
+ [
+  "tarot",
+  "Temperance",
+  "File:Bembo-Visconti-tarot-arcanum-14-temperance.jpg"
+ ],
+ [
+  "tarot",
+  "The Star",
+  "File:Bembo-Visconti-tarot-arcanum-17-star.jpg"
+ ],
+ [
+  "tarot",
+  "The Moon",
+  "File:Bembo-Visconti-tarot-arcanum-18-moon.jpg"
+ ],
+ [
+  "tarot",
+  "The Sun",
+  "File:Bembo-Visconti-tarot-arcanum-19-sun.jpg"
+ ],
+ [
+  "tarot",
+  "Judgement",
+  "File:Bembo-Visconti-tarot-arcanum-20-judgement.jpg"
+ ],
+ [
+  "tarot",
+  "The World",
+  "File:Bembo-Visconti-tarot-arcanum-21-world.jpg"
+ ],
+ [
   "tabula",
   "Sheet 1",
   "File:1888 Konrad Miller edition of the Tabula Peutingeriana (NLA) Sheet 01.jpg"

@@ -2741,5 +2741,365 @@
   },
   "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/18/1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_08.jpg/330px-1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_08.jpg 330w, https://thumb.wikimedia.org/wikipedia/commons/thumb/1/18/1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_08.jpg/500px-1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_08.jpg 500w, https://thumb.wikimedia.org/wikipedia/commons/thumb/1/18/1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_08.jpg/960px-1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_08.jpg 960w, https://thumb.wikimedia.org/wikipedia/commons/thumb/1/18/1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_08.jpg/1280px-1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_08.jpg 1280w, https://thumb.wikimedia.org/wikipedia/commons/thumb/1/18/1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_08.jpg/1920px-1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_08.jpg 1920w, https://thumb.wikimedia.org/wikipedia/commons/thumb/1/18/1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_08.jpg/3840px-1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_08.jpg 3840w",
   "default": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/18/1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_08.jpg/1280px-1888_Konrad_Miller_edition_of_the_Tabula_Peutingeriana_%28NLA%29_Sheet_08.jpg"
+ },
+ {
+  "title": "File:Bembo-Visconti-tarot-arcanum-01-magician.jpg",
+  "label": "The Magician",
+  "kind": "tarot",
+  "w": 512,
+  "h": 1024,
+  "license": "Public domain",
+  "artist": "Bonifacio Bembo",
+  "credit": "The card images were scanned by David Madore and published on the internet in 20",
+  "descurl": "https://commons.wikimedia.org/wiki/File:Bembo-Visconti-tarot-arcanum-01-magician.jpg",
+  "sources": {
+   "330": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/00/Bembo-Visconti-tarot-arcanum-01-magician.jpg/330px-Bembo-Visconti-tarot-arcanum-01-magician.jpg",
+   "500": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/00/Bembo-Visconti-tarot-arcanum-01-magician.jpg/500px-Bembo-Visconti-tarot-arcanum-01-magician.jpg",
+   "512": "https://upload.wikimedia.org/wikipedia/commons/0/00/Bembo-Visconti-tarot-arcanum-01-magician.jpg"
+  },
+  "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/00/Bembo-Visconti-tarot-arcanum-01-magician.jpg/330px-Bembo-Visconti-tarot-arcanum-01-magician.jpg 330w, https://thumb.wikimedia.org/wikipedia/commons/thumb/0/00/Bembo-Visconti-tarot-arcanum-01-magician.jpg/500px-Bembo-Visconti-tarot-arcanum-01-magician.jpg 500w, https://upload.wikimedia.org/wikipedia/commons/0/00/Bembo-Visconti-tarot-arcanum-01-magician.jpg 512w",
+  "default": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/00/Bembo-Visconti-tarot-arcanum-01-magician.jpg/500px-Bembo-Visconti-tarot-arcanum-01-magician.jpg"
+ },
+ {
+  "title": "File:Bembo-Visconti-tarot-arcanum-02-high priestess.jpg",
+  "label": "The Popess",
+  "kind": "tarot",
+  "w": 512,
+  "h": 1024,
+  "license": "Public domain",
+  "artist": "Bonifacio Bembo",
+  "credit": "The card images were scanned by David Madore and published on the internet in 20",
+  "descurl": "https://commons.wikimedia.org/wiki/File:Bembo-Visconti-tarot-arcanum-02-high_priestess.jpg",
+  "sources": {
+   "330": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/14/Bembo-Visconti-tarot-arcanum-02-high_priestess.jpg/330px-Bembo-Visconti-tarot-arcanum-02-high_priestess.jpg",
+   "500": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/14/Bembo-Visconti-tarot-arcanum-02-high_priestess.jpg/500px-Bembo-Visconti-tarot-arcanum-02-high_priestess.jpg",
+   "512": "https://upload.wikimedia.org/wikipedia/commons/1/14/Bembo-Visconti-tarot-arcanum-02-high_priestess.jpg"
+  },
+  "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/14/Bembo-Visconti-tarot-arcanum-02-high_priestess.jpg/330px-Bembo-Visconti-tarot-arcanum-02-high_priestess.jpg 330w, https://thumb.wikimedia.org/wikipedia/commons/thumb/1/14/Bembo-Visconti-tarot-arcanum-02-high_priestess.jpg/500px-Bembo-Visconti-tarot-arcanum-02-high_priestess.jpg 500w, https://upload.wikimedia.org/wikipedia/commons/1/14/Bembo-Visconti-tarot-arcanum-02-high_priestess.jpg 512w",
+  "default": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/14/Bembo-Visconti-tarot-arcanum-02-high_priestess.jpg/500px-Bembo-Visconti-tarot-arcanum-02-high_priestess.jpg"
+ },
+ {
+  "title": "File:Bembo-Visconti-tarot-arcanum-03-empress.jpg",
+  "label": "The Empress",
+  "kind": "tarot",
+  "w": 512,
+  "h": 1024,
+  "license": "Public domain",
+  "artist": "Bonifacio Bembo",
+  "credit": "The card images were scanned by David Madore and published on the internet in 20",
+  "descurl": "https://commons.wikimedia.org/wiki/File:Bembo-Visconti-tarot-arcanum-03-empress.jpg",
+  "sources": {
+   "330": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/50/Bembo-Visconti-tarot-arcanum-03-empress.jpg/330px-Bembo-Visconti-tarot-arcanum-03-empress.jpg",
+   "500": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/50/Bembo-Visconti-tarot-arcanum-03-empress.jpg/500px-Bembo-Visconti-tarot-arcanum-03-empress.jpg",
+   "512": "https://upload.wikimedia.org/wikipedia/commons/5/50/Bembo-Visconti-tarot-arcanum-03-empress.jpg"
+  },
+  "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/50/Bembo-Visconti-tarot-arcanum-03-empress.jpg/330px-Bembo-Visconti-tarot-arcanum-03-empress.jpg 330w, https://thumb.wikimedia.org/wikipedia/commons/thumb/5/50/Bembo-Visconti-tarot-arcanum-03-empress.jpg/500px-Bembo-Visconti-tarot-arcanum-03-empress.jpg 500w, https://upload.wikimedia.org/wikipedia/commons/5/50/Bembo-Visconti-tarot-arcanum-03-empress.jpg 512w",
+  "default": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/50/Bembo-Visconti-tarot-arcanum-03-empress.jpg/500px-Bembo-Visconti-tarot-arcanum-03-empress.jpg"
+ },
+ {
+  "title": "File:Bembo-Visconti-tarot-arcanum-fool.jpg",
+  "label": "The Fool",
+  "kind": "tarot",
+  "w": 512,
+  "h": 1024,
+  "license": "Public domain",
+  "artist": "Bonifacio Bembo",
+  "credit": "The card images were scanned by David Madore and published on the internet in 20",
+  "descurl": "https://commons.wikimedia.org/wiki/File:Bembo-Visconti-tarot-arcanum-fool.jpg",
+  "sources": {
+   "330": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ec/Bembo-Visconti-tarot-arcanum-fool.jpg/330px-Bembo-Visconti-tarot-arcanum-fool.jpg",
+   "500": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ec/Bembo-Visconti-tarot-arcanum-fool.jpg/500px-Bembo-Visconti-tarot-arcanum-fool.jpg",
+   "512": "https://upload.wikimedia.org/wikipedia/commons/e/ec/Bembo-Visconti-tarot-arcanum-fool.jpg"
+  },
+  "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ec/Bembo-Visconti-tarot-arcanum-fool.jpg/330px-Bembo-Visconti-tarot-arcanum-fool.jpg 330w, https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ec/Bembo-Visconti-tarot-arcanum-fool.jpg/500px-Bembo-Visconti-tarot-arcanum-fool.jpg 500w, https://upload.wikimedia.org/wikipedia/commons/e/ec/Bembo-Visconti-tarot-arcanum-fool.jpg 512w",
+  "default": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ec/Bembo-Visconti-tarot-arcanum-fool.jpg/500px-Bembo-Visconti-tarot-arcanum-fool.jpg"
+ },
+ {
+  "title": "File:Bembo-Visconti-tarot-arcanum-04-emperor.jpg",
+  "label": "The Emperor",
+  "kind": "tarot",
+  "w": 512,
+  "h": 1024,
+  "license": "Public domain",
+  "artist": "Bonifacio Bembo",
+  "credit": "The card images were scanned by David Madore and published on the internet in 20",
+  "descurl": "https://commons.wikimedia.org/wiki/File:Bembo-Visconti-tarot-arcanum-04-emperor.jpg",
+  "sources": {
+   "330": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/20/Bembo-Visconti-tarot-arcanum-04-emperor.jpg/330px-Bembo-Visconti-tarot-arcanum-04-emperor.jpg",
+   "500": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/20/Bembo-Visconti-tarot-arcanum-04-emperor.jpg/500px-Bembo-Visconti-tarot-arcanum-04-emperor.jpg",
+   "512": "https://upload.wikimedia.org/wikipedia/commons/2/20/Bembo-Visconti-tarot-arcanum-04-emperor.jpg"
+  },
+  "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/20/Bembo-Visconti-tarot-arcanum-04-emperor.jpg/330px-Bembo-Visconti-tarot-arcanum-04-emperor.jpg 330w, https://thumb.wikimedia.org/wikipedia/commons/thumb/2/20/Bembo-Visconti-tarot-arcanum-04-emperor.jpg/500px-Bembo-Visconti-tarot-arcanum-04-emperor.jpg 500w, https://upload.wikimedia.org/wikipedia/commons/2/20/Bembo-Visconti-tarot-arcanum-04-emperor.jpg 512w",
+  "default": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/20/Bembo-Visconti-tarot-arcanum-04-emperor.jpg/500px-Bembo-Visconti-tarot-arcanum-04-emperor.jpg"
+ },
+ {
+  "title": "File:Bembo-Visconti-tarot-arcanum-05-hierophant.jpg",
+  "label": "The Pope",
+  "kind": "tarot",
+  "w": 512,
+  "h": 1024,
+  "license": "Public domain",
+  "artist": "Bonifacio Bembo",
+  "credit": "The card images were scanned by David Madore and published on the internet in 20",
+  "descurl": "https://commons.wikimedia.org/wiki/File:Bembo-Visconti-tarot-arcanum-05-hierophant.jpg",
+  "sources": {
+   "330": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e1/Bembo-Visconti-tarot-arcanum-05-hierophant.jpg/330px-Bembo-Visconti-tarot-arcanum-05-hierophant.jpg",
+   "500": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e1/Bembo-Visconti-tarot-arcanum-05-hierophant.jpg/500px-Bembo-Visconti-tarot-arcanum-05-hierophant.jpg",
+   "512": "https://upload.wikimedia.org/wikipedia/commons/e/e1/Bembo-Visconti-tarot-arcanum-05-hierophant.jpg"
+  },
+  "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e1/Bembo-Visconti-tarot-arcanum-05-hierophant.jpg/330px-Bembo-Visconti-tarot-arcanum-05-hierophant.jpg 330w, https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e1/Bembo-Visconti-tarot-arcanum-05-hierophant.jpg/500px-Bembo-Visconti-tarot-arcanum-05-hierophant.jpg 500w, https://upload.wikimedia.org/wikipedia/commons/e/e1/Bembo-Visconti-tarot-arcanum-05-hierophant.jpg 512w",
+  "default": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e1/Bembo-Visconti-tarot-arcanum-05-hierophant.jpg/500px-Bembo-Visconti-tarot-arcanum-05-hierophant.jpg"
+ },
+ {
+  "title": "File:Bembo-Visconti-tarot-arcanum-06-lovers.jpg",
+  "label": "The Lovers",
+  "kind": "tarot",
+  "w": 512,
+  "h": 1024,
+  "license": "Public domain",
+  "artist": "Bonifacio Bembo",
+  "credit": "The card images were scanned by David Madore and published on the internet in 20",
+  "descurl": "https://commons.wikimedia.org/wiki/File:Bembo-Visconti-tarot-arcanum-06-lovers.jpg",
+  "sources": {
+   "330": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/40/Bembo-Visconti-tarot-arcanum-06-lovers.jpg/330px-Bembo-Visconti-tarot-arcanum-06-lovers.jpg",
+   "500": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/40/Bembo-Visconti-tarot-arcanum-06-lovers.jpg/500px-Bembo-Visconti-tarot-arcanum-06-lovers.jpg",
+   "512": "https://upload.wikimedia.org/wikipedia/commons/4/40/Bembo-Visconti-tarot-arcanum-06-lovers.jpg"
+  },
+  "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/40/Bembo-Visconti-tarot-arcanum-06-lovers.jpg/330px-Bembo-Visconti-tarot-arcanum-06-lovers.jpg 330w, https://thumb.wikimedia.org/wikipedia/commons/thumb/4/40/Bembo-Visconti-tarot-arcanum-06-lovers.jpg/500px-Bembo-Visconti-tarot-arcanum-06-lovers.jpg 500w, https://upload.wikimedia.org/wikipedia/commons/4/40/Bembo-Visconti-tarot-arcanum-06-lovers.jpg 512w",
+  "default": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/40/Bembo-Visconti-tarot-arcanum-06-lovers.jpg/500px-Bembo-Visconti-tarot-arcanum-06-lovers.jpg"
+ },
+ {
+  "title": "File:Bembo-Visconti-tarot-arcanum-07-chariot.jpg",
+  "label": "The Chariot",
+  "kind": "tarot",
+  "w": 512,
+  "h": 1024,
+  "license": "Public domain",
+  "artist": "Bonifacio Bembo",
+  "credit": "The card images were scanned by David Madore and published on the internet in 20",
+  "descurl": "https://commons.wikimedia.org/wiki/File:Bembo-Visconti-tarot-arcanum-07-chariot.jpg",
+  "sources": {
+   "330": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/53/Bembo-Visconti-tarot-arcanum-07-chariot.jpg/330px-Bembo-Visconti-tarot-arcanum-07-chariot.jpg",
+   "500": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/53/Bembo-Visconti-tarot-arcanum-07-chariot.jpg/500px-Bembo-Visconti-tarot-arcanum-07-chariot.jpg",
+   "512": "https://upload.wikimedia.org/wikipedia/commons/5/53/Bembo-Visconti-tarot-arcanum-07-chariot.jpg"
+  },
+  "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/53/Bembo-Visconti-tarot-arcanum-07-chariot.jpg/330px-Bembo-Visconti-tarot-arcanum-07-chariot.jpg 330w, https://thumb.wikimedia.org/wikipedia/commons/thumb/5/53/Bembo-Visconti-tarot-arcanum-07-chariot.jpg/500px-Bembo-Visconti-tarot-arcanum-07-chariot.jpg 500w, https://upload.wikimedia.org/wikipedia/commons/5/53/Bembo-Visconti-tarot-arcanum-07-chariot.jpg 512w",
+  "default": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/53/Bembo-Visconti-tarot-arcanum-07-chariot.jpg/500px-Bembo-Visconti-tarot-arcanum-07-chariot.jpg"
+ },
+ {
+  "title": "File:Bembo-Visconti-tarot-arcanum-08-justice.jpg",
+  "label": "Justice",
+  "kind": "tarot",
+  "w": 512,
+  "h": 1024,
+  "license": "Public domain",
+  "artist": "Bonifacio Bembo",
+  "credit": "The card images were scanned by David Madore and published on the internet in 20",
+  "descurl": "https://commons.wikimedia.org/wiki/File:Bembo-Visconti-tarot-arcanum-08-justice.jpg",
+  "sources": {
+   "330": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/83/Bembo-Visconti-tarot-arcanum-08-justice.jpg/330px-Bembo-Visconti-tarot-arcanum-08-justice.jpg",
+   "500": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/83/Bembo-Visconti-tarot-arcanum-08-justice.jpg/500px-Bembo-Visconti-tarot-arcanum-08-justice.jpg",
+   "512": "https://upload.wikimedia.org/wikipedia/commons/8/83/Bembo-Visconti-tarot-arcanum-08-justice.jpg"
+  },
+  "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/83/Bembo-Visconti-tarot-arcanum-08-justice.jpg/330px-Bembo-Visconti-tarot-arcanum-08-justice.jpg 330w, https://thumb.wikimedia.org/wikipedia/commons/thumb/8/83/Bembo-Visconti-tarot-arcanum-08-justice.jpg/500px-Bembo-Visconti-tarot-arcanum-08-justice.jpg 500w, https://upload.wikimedia.org/wikipedia/commons/8/83/Bembo-Visconti-tarot-arcanum-08-justice.jpg 512w",
+  "default": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/83/Bembo-Visconti-tarot-arcanum-08-justice.jpg/500px-Bembo-Visconti-tarot-arcanum-08-justice.jpg"
+ },
+ {
+  "title": "File:Bembo-Visconti-tarot-arcanum-09-hermit.jpg",
+  "label": "The Hermit",
+  "kind": "tarot",
+  "w": 512,
+  "h": 1024,
+  "license": "Public domain",
+  "artist": "Bonifacio Bembo",
+  "credit": "The card images were scanned by David Madore and published on the internet in 20",
+  "descurl": "https://commons.wikimedia.org/wiki/File:Bembo-Visconti-tarot-arcanum-09-hermit.jpg",
+  "sources": {
+   "330": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2e/Bembo-Visconti-tarot-arcanum-09-hermit.jpg/330px-Bembo-Visconti-tarot-arcanum-09-hermit.jpg",
+   "500": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2e/Bembo-Visconti-tarot-arcanum-09-hermit.jpg/500px-Bembo-Visconti-tarot-arcanum-09-hermit.jpg",
+   "512": "https://upload.wikimedia.org/wikipedia/commons/2/2e/Bembo-Visconti-tarot-arcanum-09-hermit.jpg"
+  },
+  "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2e/Bembo-Visconti-tarot-arcanum-09-hermit.jpg/330px-Bembo-Visconti-tarot-arcanum-09-hermit.jpg 330w, https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2e/Bembo-Visconti-tarot-arcanum-09-hermit.jpg/500px-Bembo-Visconti-tarot-arcanum-09-hermit.jpg 500w, https://upload.wikimedia.org/wikipedia/commons/2/2e/Bembo-Visconti-tarot-arcanum-09-hermit.jpg 512w",
+  "default": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2e/Bembo-Visconti-tarot-arcanum-09-hermit.jpg/500px-Bembo-Visconti-tarot-arcanum-09-hermit.jpg"
+ },
+ {
+  "title": "File:Bembo-Visconti-tarot-arcanum-10-wheel of fortune.jpg",
+  "label": "The Wheel of Fortune",
+  "kind": "tarot",
+  "w": 512,
+  "h": 1024,
+  "license": "Public domain",
+  "artist": "Bonifacio Bembo",
+  "credit": "The card images were scanned by David Madore and published on the internet in 20",
+  "descurl": "https://commons.wikimedia.org/wiki/File:Bembo-Visconti-tarot-arcanum-10-wheel_of_fortune.jpg",
+  "sources": {
+   "330": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/19/Bembo-Visconti-tarot-arcanum-10-wheel_of_fortune.jpg/330px-Bembo-Visconti-tarot-arcanum-10-wheel_of_fortune.jpg",
+   "500": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/19/Bembo-Visconti-tarot-arcanum-10-wheel_of_fortune.jpg/500px-Bembo-Visconti-tarot-arcanum-10-wheel_of_fortune.jpg",
+   "512": "https://upload.wikimedia.org/wikipedia/commons/1/19/Bembo-Visconti-tarot-arcanum-10-wheel_of_fortune.jpg"
+  },
+  "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/19/Bembo-Visconti-tarot-arcanum-10-wheel_of_fortune.jpg/330px-Bembo-Visconti-tarot-arcanum-10-wheel_of_fortune.jpg 330w, https://thumb.wikimedia.org/wikipedia/commons/thumb/1/19/Bembo-Visconti-tarot-arcanum-10-wheel_of_fortune.jpg/500px-Bembo-Visconti-tarot-arcanum-10-wheel_of_fortune.jpg 500w, https://upload.wikimedia.org/wikipedia/commons/1/19/Bembo-Visconti-tarot-arcanum-10-wheel_of_fortune.jpg 512w",
+  "default": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/19/Bembo-Visconti-tarot-arcanum-10-wheel_of_fortune.jpg/500px-Bembo-Visconti-tarot-arcanum-10-wheel_of_fortune.jpg"
+ },
+ {
+  "title": "File:Bembo-Visconti-tarot-arcanum-11-strength.jpg",
+  "label": "Strength",
+  "kind": "tarot",
+  "w": 512,
+  "h": 1024,
+  "license": "Public domain",
+  "artist": "Bonifacio Bembo",
+  "credit": "The card images were scanned by David Madore and published on the internet in 20",
+  "descurl": "https://commons.wikimedia.org/wiki/File:Bembo-Visconti-tarot-arcanum-11-strength.jpg",
+  "sources": {
+   "330": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/72/Bembo-Visconti-tarot-arcanum-11-strength.jpg/330px-Bembo-Visconti-tarot-arcanum-11-strength.jpg",
+   "500": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/72/Bembo-Visconti-tarot-arcanum-11-strength.jpg/500px-Bembo-Visconti-tarot-arcanum-11-strength.jpg",
+   "512": "https://upload.wikimedia.org/wikipedia/commons/7/72/Bembo-Visconti-tarot-arcanum-11-strength.jpg"
+  },
+  "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/72/Bembo-Visconti-tarot-arcanum-11-strength.jpg/330px-Bembo-Visconti-tarot-arcanum-11-strength.jpg 330w, https://thumb.wikimedia.org/wikipedia/commons/thumb/7/72/Bembo-Visconti-tarot-arcanum-11-strength.jpg/500px-Bembo-Visconti-tarot-arcanum-11-strength.jpg 500w, https://upload.wikimedia.org/wikipedia/commons/7/72/Bembo-Visconti-tarot-arcanum-11-strength.jpg 512w",
+  "default": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/72/Bembo-Visconti-tarot-arcanum-11-strength.jpg/500px-Bembo-Visconti-tarot-arcanum-11-strength.jpg"
+ },
+ {
+  "title": "File:Bembo-Visconti-tarot-arcanum-12-hanged man.jpg",
+  "label": "The Hanged Man",
+  "kind": "tarot",
+  "w": 512,
+  "h": 1024,
+  "license": "Public domain",
+  "artist": "Bonifacio Bembo",
+  "credit": "The card images were scanned by David Madore and published on the internet in 20",
+  "descurl": "https://commons.wikimedia.org/wiki/File:Bembo-Visconti-tarot-arcanum-12-hanged_man.jpg",
+  "sources": {
+   "330": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/14/Bembo-Visconti-tarot-arcanum-12-hanged_man.jpg/330px-Bembo-Visconti-tarot-arcanum-12-hanged_man.jpg",
+   "500": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/14/Bembo-Visconti-tarot-arcanum-12-hanged_man.jpg/500px-Bembo-Visconti-tarot-arcanum-12-hanged_man.jpg",
+   "512": "https://upload.wikimedia.org/wikipedia/commons/1/14/Bembo-Visconti-tarot-arcanum-12-hanged_man.jpg"
+  },
+  "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/14/Bembo-Visconti-tarot-arcanum-12-hanged_man.jpg/330px-Bembo-Visconti-tarot-arcanum-12-hanged_man.jpg 330w, https://thumb.wikimedia.org/wikipedia/commons/thumb/1/14/Bembo-Visconti-tarot-arcanum-12-hanged_man.jpg/500px-Bembo-Visconti-tarot-arcanum-12-hanged_man.jpg 500w, https://upload.wikimedia.org/wikipedia/commons/1/14/Bembo-Visconti-tarot-arcanum-12-hanged_man.jpg 512w",
+  "default": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/14/Bembo-Visconti-tarot-arcanum-12-hanged_man.jpg/500px-Bembo-Visconti-tarot-arcanum-12-hanged_man.jpg"
+ },
+ {
+  "title": "File:Bembo-Visconti-tarot-arcanum-13.jpg",
+  "label": "Death",
+  "kind": "tarot",
+  "w": 512,
+  "h": 1024,
+  "license": "Public domain",
+  "artist": "Bonifacio Bembo",
+  "credit": "The card images were scanned by David Madore and published on the internet in 20",
+  "descurl": "https://commons.wikimedia.org/wiki/File:Bembo-Visconti-tarot-arcanum-13.jpg",
+  "sources": {
+   "330": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e2/Bembo-Visconti-tarot-arcanum-13.jpg/330px-Bembo-Visconti-tarot-arcanum-13.jpg",
+   "500": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e2/Bembo-Visconti-tarot-arcanum-13.jpg/500px-Bembo-Visconti-tarot-arcanum-13.jpg",
+   "512": "https://upload.wikimedia.org/wikipedia/commons/e/e2/Bembo-Visconti-tarot-arcanum-13.jpg"
+  },
+  "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e2/Bembo-Visconti-tarot-arcanum-13.jpg/330px-Bembo-Visconti-tarot-arcanum-13.jpg 330w, https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e2/Bembo-Visconti-tarot-arcanum-13.jpg/500px-Bembo-Visconti-tarot-arcanum-13.jpg 500w, https://upload.wikimedia.org/wikipedia/commons/e/e2/Bembo-Visconti-tarot-arcanum-13.jpg 512w",
+  "default": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e2/Bembo-Visconti-tarot-arcanum-13.jpg/500px-Bembo-Visconti-tarot-arcanum-13.jpg"
+ },
+ {
+  "title": "File:Bembo-Visconti-tarot-arcanum-14-temperance.jpg",
+  "label": "Temperance",
+  "kind": "tarot",
+  "w": 512,
+  "h": 1024,
+  "license": "Public domain",
+  "artist": "Bonifacio Bembo",
+  "credit": "The card images were scanned by David Madore and published on the internet in 20",
+  "descurl": "https://commons.wikimedia.org/wiki/File:Bembo-Visconti-tarot-arcanum-14-temperance.jpg",
+  "sources": {
+   "330": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/52/Bembo-Visconti-tarot-arcanum-14-temperance.jpg/330px-Bembo-Visconti-tarot-arcanum-14-temperance.jpg",
+   "500": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/52/Bembo-Visconti-tarot-arcanum-14-temperance.jpg/500px-Bembo-Visconti-tarot-arcanum-14-temperance.jpg",
+   "512": "https://upload.wikimedia.org/wikipedia/commons/5/52/Bembo-Visconti-tarot-arcanum-14-temperance.jpg"
+  },
+  "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/52/Bembo-Visconti-tarot-arcanum-14-temperance.jpg/330px-Bembo-Visconti-tarot-arcanum-14-temperance.jpg 330w, https://thumb.wikimedia.org/wikipedia/commons/thumb/5/52/Bembo-Visconti-tarot-arcanum-14-temperance.jpg/500px-Bembo-Visconti-tarot-arcanum-14-temperance.jpg 500w, https://upload.wikimedia.org/wikipedia/commons/5/52/Bembo-Visconti-tarot-arcanum-14-temperance.jpg 512w",
+  "default": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/52/Bembo-Visconti-tarot-arcanum-14-temperance.jpg/500px-Bembo-Visconti-tarot-arcanum-14-temperance.jpg"
+ },
+ {
+  "title": "File:Bembo-Visconti-tarot-arcanum-17-star.jpg",
+  "label": "The Star",
+  "kind": "tarot",
+  "w": 512,
+  "h": 1024,
+  "license": "Public domain",
+  "artist": "Bonifacio Bembo",
+  "credit": "The card images were scanned by David Madore and published on the internet in 20",
+  "descurl": "https://commons.wikimedia.org/wiki/File:Bembo-Visconti-tarot-arcanum-17-star.jpg",
+  "sources": {
+   "330": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b6/Bembo-Visconti-tarot-arcanum-17-star.jpg/330px-Bembo-Visconti-tarot-arcanum-17-star.jpg",
+   "500": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b6/Bembo-Visconti-tarot-arcanum-17-star.jpg/500px-Bembo-Visconti-tarot-arcanum-17-star.jpg",
+   "512": "https://upload.wikimedia.org/wikipedia/commons/b/b6/Bembo-Visconti-tarot-arcanum-17-star.jpg"
+  },
+  "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b6/Bembo-Visconti-tarot-arcanum-17-star.jpg/330px-Bembo-Visconti-tarot-arcanum-17-star.jpg 330w, https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b6/Bembo-Visconti-tarot-arcanum-17-star.jpg/500px-Bembo-Visconti-tarot-arcanum-17-star.jpg 500w, https://upload.wikimedia.org/wikipedia/commons/b/b6/Bembo-Visconti-tarot-arcanum-17-star.jpg 512w",
+  "default": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b6/Bembo-Visconti-tarot-arcanum-17-star.jpg/500px-Bembo-Visconti-tarot-arcanum-17-star.jpg"
+ },
+ {
+  "title": "File:Bembo-Visconti-tarot-arcanum-18-moon.jpg",
+  "label": "The Moon",
+  "kind": "tarot",
+  "w": 512,
+  "h": 1024,
+  "license": "Public domain",
+  "artist": "Bonifacio Bembo",
+  "credit": "The card images were scanned by David Madore and published on the internet in 20",
+  "descurl": "https://commons.wikimedia.org/wiki/File:Bembo-Visconti-tarot-arcanum-18-moon.jpg",
+  "sources": {
+   "330": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/15/Bembo-Visconti-tarot-arcanum-18-moon.jpg/330px-Bembo-Visconti-tarot-arcanum-18-moon.jpg",
+   "500": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/15/Bembo-Visconti-tarot-arcanum-18-moon.jpg/500px-Bembo-Visconti-tarot-arcanum-18-moon.jpg",
+   "512": "https://upload.wikimedia.org/wikipedia/commons/1/15/Bembo-Visconti-tarot-arcanum-18-moon.jpg"
+  },
+  "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/15/Bembo-Visconti-tarot-arcanum-18-moon.jpg/330px-Bembo-Visconti-tarot-arcanum-18-moon.jpg 330w, https://thumb.wikimedia.org/wikipedia/commons/thumb/1/15/Bembo-Visconti-tarot-arcanum-18-moon.jpg/500px-Bembo-Visconti-tarot-arcanum-18-moon.jpg 500w, https://upload.wikimedia.org/wikipedia/commons/1/15/Bembo-Visconti-tarot-arcanum-18-moon.jpg 512w",
+  "default": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/15/Bembo-Visconti-tarot-arcanum-18-moon.jpg/500px-Bembo-Visconti-tarot-arcanum-18-moon.jpg"
+ },
+ {
+  "title": "File:Bembo-Visconti-tarot-arcanum-19-sun.jpg",
+  "label": "The Sun",
+  "kind": "tarot",
+  "w": 512,
+  "h": 1024,
+  "license": "Public domain",
+  "artist": "Bonifacio Bembo",
+  "credit": "The card images were scanned by David Madore and published on the internet in 20",
+  "descurl": "https://commons.wikimedia.org/wiki/File:Bembo-Visconti-tarot-arcanum-19-sun.jpg",
+  "sources": {
+   "330": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4e/Bembo-Visconti-tarot-arcanum-19-sun.jpg/330px-Bembo-Visconti-tarot-arcanum-19-sun.jpg",
+   "500": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4e/Bembo-Visconti-tarot-arcanum-19-sun.jpg/500px-Bembo-Visconti-tarot-arcanum-19-sun.jpg",
+   "512": "https://upload.wikimedia.org/wikipedia/commons/4/4e/Bembo-Visconti-tarot-arcanum-19-sun.jpg"
+  },
+  "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4e/Bembo-Visconti-tarot-arcanum-19-sun.jpg/330px-Bembo-Visconti-tarot-arcanum-19-sun.jpg 330w, https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4e/Bembo-Visconti-tarot-arcanum-19-sun.jpg/500px-Bembo-Visconti-tarot-arcanum-19-sun.jpg 500w, https://upload.wikimedia.org/wikipedia/commons/4/4e/Bembo-Visconti-tarot-arcanum-19-sun.jpg 512w",
+  "default": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4e/Bembo-Visconti-tarot-arcanum-19-sun.jpg/500px-Bembo-Visconti-tarot-arcanum-19-sun.jpg"
+ },
+ {
+  "title": "File:Bembo-Visconti-tarot-arcanum-20-judgement.jpg",
+  "label": "Judgement",
+  "kind": "tarot",
+  "w": 512,
+  "h": 1024,
+  "license": "Public domain",
+  "artist": "Bonifacio Bembo",
+  "credit": "The card images were scanned by David Madore and published on the internet in 20",
+  "descurl": "https://commons.wikimedia.org/wiki/File:Bembo-Visconti-tarot-arcanum-20-judgement.jpg",
+  "sources": {
+   "330": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f4/Bembo-Visconti-tarot-arcanum-20-judgement.jpg/330px-Bembo-Visconti-tarot-arcanum-20-judgement.jpg",
+   "500": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f4/Bembo-Visconti-tarot-arcanum-20-judgement.jpg/500px-Bembo-Visconti-tarot-arcanum-20-judgement.jpg",
+   "512": "https://upload.wikimedia.org/wikipedia/commons/f/f4/Bembo-Visconti-tarot-arcanum-20-judgement.jpg"
+  },
+  "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f4/Bembo-Visconti-tarot-arcanum-20-judgement.jpg/330px-Bembo-Visconti-tarot-arcanum-20-judgement.jpg 330w, https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f4/Bembo-Visconti-tarot-arcanum-20-judgement.jpg/500px-Bembo-Visconti-tarot-arcanum-20-judgement.jpg 500w, https://upload.wikimedia.org/wikipedia/commons/f/f4/Bembo-Visconti-tarot-arcanum-20-judgement.jpg 512w",
+  "default": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f4/Bembo-Visconti-tarot-arcanum-20-judgement.jpg/500px-Bembo-Visconti-tarot-arcanum-20-judgement.jpg"
+ },
+ {
+  "title": "File:Bembo-Visconti-tarot-arcanum-21-world.jpg",
+  "label": "The World",
+  "kind": "tarot",
+  "w": 512,
+  "h": 1024,
+  "license": "Public domain",
+  "artist": "Bonifacio Bembo",
+  "credit": "The card images were scanned by David Madore and published on the internet in 20",
+  "descurl": "https://commons.wikimedia.org/wiki/File:Bembo-Visconti-tarot-arcanum-21-world.jpg",
+  "sources": {
+   "330": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2d/Bembo-Visconti-tarot-arcanum-21-world.jpg/330px-Bembo-Visconti-tarot-arcanum-21-world.jpg",
+   "500": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2d/Bembo-Visconti-tarot-arcanum-21-world.jpg/500px-Bembo-Visconti-tarot-arcanum-21-world.jpg",
+   "512": "https://upload.wikimedia.org/wikipedia/commons/2/2d/Bembo-Visconti-tarot-arcanum-21-world.jpg"
+  },
+  "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2d/Bembo-Visconti-tarot-arcanum-21-world.jpg/330px-Bembo-Visconti-tarot-arcanum-21-world.jpg 330w, https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2d/Bembo-Visconti-tarot-arcanum-21-world.jpg/500px-Bembo-Visconti-tarot-arcanum-21-world.jpg 500w, https://upload.wikimedia.org/wikipedia/commons/2/2d/Bembo-Visconti-tarot-arcanum-21-world.jpg 512w",
+  "default": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2d/Bembo-Visconti-tarot-arcanum-21-world.jpg/500px-Bembo-Visconti-tarot-arcanum-21-world.jpg"
  }
 ]
