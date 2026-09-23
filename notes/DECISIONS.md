@@ -745,3 +745,30 @@ map have real alt text.
 **Verified** over the local server: nine pages, one canonical each matching
 the sitemap, all share tags present, share images 1200×630, zero broken local
 links, the 404 page served with status 404.
+
+## Published, 2026-09-22 — https://mocubix.renocrypt.com/
+
+The user approved making the repository public and serving it at the
+subdomain. Before the flip, the whole history was scanned for the personal
+email and token-like strings: none.
+
+- **Pages by Actions.** `.github/workflows/pages.yml` uploads `site/` and
+  deploys it (checkout v7, configure-pages v6, upload-pages-artifact v5,
+  deploy-pages v5 — the latest releases on the day). It runs only when
+  `site/` or the workflow changes, so notes and research never redeploy.
+- **Domain, in the safe order.** The custom domain was set on the repository
+  first, then one Cloudflare record added: CNAME `mocubix` →
+  `renocrypt.github.io`, proxy off, TTL auto — the same as `futur` and `kb`.
+  It went through the user's sanctioned wrapper (`armada/bin/cf`), which reads
+  the token itself; the token never entered a command line or this log.
+- **The certificate stalled** at "DNS check in progress" for over twenty
+  minutes (a redeploy did not help), because the domain had been attached
+  before its record existed. `renocrypt.com` is verified for Pages (both the
+  organization and the user hold a `_github-pages-challenge` TXT record), so
+  removing and re-adding the domain carried no takeover risk; authorization
+  succeeded and the certificate was approved within a minute. HTTPS enforced.
+- **Verified live:** Let's Encrypt certificate for the host (to 2026-12-22,
+  renewed by GitHub); every page, `robots.txt`, `sitemap.xml`, favicon and
+  share cards 200; unknown addresses 404 with our page; `http://` and
+  `renocrypt.github.io/mocubix/` both 301 to the canonical address; in Chrome,
+  no console messages, no broken images, Kīlauea lands on phase 4 at its foot.

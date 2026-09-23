@@ -67,7 +67,7 @@ Every law below was written after breaking it. None is decorative.
 - `assets/` — curated material. Only URLs the Wikimedia API actually returned; widths are the buckets it really serves. Never hand-typed, never width-rewritten. `build/curate.py` holds the works list (one `kind` per exhibit: `muybridge`, `iss`, `storm`, `blossfeldt`, `solari`, `planet`, `kilauea`, plus the Lexicon's `sekka` and `atkins`) and merges into `assets/curated.json`. Pages inline the resulting `<img>` tags; nothing is fetched at runtime but the images themselves.
 - `notes/DECISIONS.md` — the asset and typography evidence log: what was tested, what loaded, what was rejected and why.
 - `notes/evidence/` — before/after screenshots and measurement crops per exhibit, named `NN-before-*`, `NN-after-*`. Local only: ignored by git (72 MB).
-- Repository: `renocrypt/mocubix` on GitHub. Only `site/` is published.
+- Repository: `renocrypt/mocubix` on GitHub (public). Only `site/` is published, at **https://mocubix.renocrypt.com/**: a push to `main` that touches `site/` runs `.github/workflows/pages.yml` and the change is live in about a minute. The domain is a CNAME in Cloudflare (`renocrypt.com` zone) to `renocrypt.github.io`, proxy off; GitHub issues and renews the certificate; HTTPS is enforced.
 - `probes/` — the one-off browser pages that produced those verdicts. Kept as evidence, not as deliverables.
 - `docs/RESEARCH-METHOD.md` — how evidence enters this project, the failure modes that made the provenance rule necessary, and the source map.
 - `docs/MEASURED-ANATOMY.md` — first-party measurements taken here against live sites: type ramps, area-weighted palettes, easing and radius censuses.
