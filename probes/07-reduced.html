@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kīlauea — Mocubix</title>
+<meta name="description" content="Kīlauea's 2018 eruption in four phases. Scroll past each dated line and the whole screen changes state at once: the photograph, the palette, the alert level and the observatory's instruments.">
+
+<link rel="preconnect" href="https://api.fontshare.com">
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="preconnect" href="https://thumb.wikimedia.org">
+<!-- One request per family. A combined f[] request silently delivers only the first. -->
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f%5B%5D=melodrama@400,500&display=swap">
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f%5B%5D=switzer@400,500,600&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource-variable/geist-mono/index.css">
+<link rel="stylesheet" href="../artifacts/house.css">
+<script>(function(){var mm=matchMedia;window.matchMedia=function(q){return q.indexOf("reduced-motion")>-1?{matches:true,addEventListener:function(){},addListener:function(){}}:mm.call(window,q)}})();</script>
+<script src="../artifacts/house.js"></script>
+
+<style>
+@property --rot { syntax: '<angle>'; inherits: true; initial-value: 0deg }
+
+/* House tokens with the phase angle inside them. Each phase sets the angle to
+   the hue of its own photograph, and the whole set turns together. */
+:root{
+  --ground: oklch(0.146 0.024 calc( 68.6deg + var(--rot)));
+  --raise:  oklch(0.190 0.028 calc( 48.5deg + var(--rot)));
+  --lift:   oklch(0.225 0.032 calc( 56.0deg + var(--rot)));
+  --ink:    oklch(0.948 0.014 calc( 79.8deg + var(--rot)));
+  --mid:    oklch(0.760 0.022 calc( 73.0deg + var(--rot)));
+  --dim:    oklch(0.580 0.020 calc( 70.7deg + var(--rot)));
+  --accent: oklch(0.660 0.160 calc( 40.2deg + var(--rot)));
+  --pad:clamp(20px,5vw,72px);
+}
+:root[data-theme="day"]{
+  --ground: oklch(0.955 0.018 calc( 80.0deg + var(--rot)));
+  --raise:  oklch(0.925 0.022 calc( 78.0deg + var(--rot)));
+  --lift:   oklch(0.895 0.026 calc( 76.0deg + var(--rot)));
+  --ink:    oklch(0.215 0.012 calc( 68.0deg + var(--rot)));
+  --mid:    oklch(0.440 0.016 calc( 70.0deg + var(--rot)));
+  --dim:    oklch(0.565 0.016 calc( 71.0deg + var(--rot)));
+  --accent: oklch(0.560 0.150 calc( 40.2deg + var(--rot)));
+}
+html{transition:--rot .14s var(--settle)}
+
+*{box-sizing:border-box}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--sans);
+  font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{display:block}
+h1,h2{font-weight:400;margin:0}
+
+.back{position:fixed;top:22px;left:clamp(16px,4vw,40px);z-index:80;
+  font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ink);text-shadow:0 1px 14px var(--ground),0 0 3px var(--ground)}
+.theme{color:var(--ink);text-shadow:0 1px 14px var(--ground),0 0 3px var(--ground)}
+
+/* ── the deck: one fixed photograph, one pinned panel, text that scrolls ── */
+.deck{position:relative}
+.backdrop{position:sticky;top:0;height:100svh;overflow:hidden;z-index:0}
+.backdrop figure{position:absolute;inset:0;margin:0;opacity:0}
+.backdrop img{width:100%;height:100%;object-fit:cover}
+.backdrop::after{content:'';position:absolute;inset:0;
+  background:linear-gradient(180deg,color-mix(in srgb,var(--ground) 40%,transparent),transparent 24%,transparent 46%,color-mix(in srgb,var(--ground) 70%,transparent) 76%,color-mix(in srgb,var(--ground) 94%,transparent) 100%)}
+/* the cut: which photograph is up is decided at the break, no fade */
+.deck[data-phase="0"] figure[data-p="0"],.deck[data-phase="1"] figure[data-p="1"],.deck[data-phase="2"] figure[data-p="2"],
+.deck[data-phase="3"] figure[data-p="3"],.deck[data-phase="4"] figure[data-p="4"]{opacity:1}
+
+.panel{position:sticky;top:0;height:100svh;margin-top:-100svh;z-index:10;pointer-events:none;
+  display:grid;grid-template-columns:minmax(0,1fr) minmax(320px,38%);align-items:center;padding:0 var(--pad)}
+.console{pointer-events:auto;grid-column:2;display:grid;gap:14px;
+  background:color-mix(in srgb,var(--ground) 80%,transparent);backdrop-filter:blur(18px);
+  border:1px solid var(--line);border-radius:4px;padding:18px 18px 16px;
+  transition:opacity .14s var(--settle),translate .14s var(--settle)}
+.deck[data-phase="0"] .console{opacity:0;translate:0 14px}
+.console .top{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.console .top>span{font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim)}
+.chips{display:flex;gap:6px}
+.chip{font-family:var(--mono);font-size:9px;letter-spacing:.16em;text-transform:uppercase;
+  padding:5px 9px;border-radius:2px;border:1px solid var(--accent);color:var(--accent)}
+.chip.fill{background:var(--accent);color:var(--ground)}
+.console h2{font-family:var(--display);font-size:clamp(26px,2.6vw,36px);line-height:.95;letter-spacing:-.03em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.console h2 i{font-style:italic;color:var(--accent)}
+
+/* the instrument changes with the phase */
+.inst{height:132px;position:relative;border-top:1px solid var(--line);padding-top:10px}
+.inst>div{position:absolute;inset:10px 0 0 0;display:none}
+.inst svg{width:100%;height:100%;display:block;overflow:visible}
+.inst text{font-family:var(--mono);font-size:9px;letter-spacing:.08em;fill:var(--dim)}
+.inst .ln{stroke:color-mix(in srgb,var(--ink) 30%,transparent);stroke-width:1;fill:none}
+.inst .acc{fill:var(--accent)}
+.inst .accl{stroke:var(--accent);stroke-width:1.5;fill:none;stroke-linecap:square}
+.inst .soft{fill:color-mix(in srgb,var(--accent) 38%,transparent)}
+.inst .lit{fill:var(--accent)}
+.deck[data-phase="1"] .i1,.deck[data-phase="2"] .i2,.deck[data-phase="3"] .i3,.deck[data-phase="4"] .i4{display:block}
+
+.seis{height:60px;border-block:1px solid var(--line);position:relative}
+.seis svg{width:100%;height:100%;display:block}
+.seis path{fill:none;stroke:var(--accent);stroke-width:1.2;vector-effect:non-scaling-stroke}
+.seis span{position:absolute;left:0;top:6px;font-family:var(--mono);font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim)}
+
+.reads{display:grid;grid-template-areas:'r'}
+.reads dl{grid-area:r;margin:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;visibility:hidden}
+.deck[data-phase="1"] .r1,.deck[data-phase="2"] .r2,.deck[data-phase="3"] .r3,.deck[data-phase="4"] .r4{visibility:visible}
+.reads div{display:grid;gap:5px;min-width:0}
+.reads dt{font-family:var(--mono);font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim)}
+.reads dd{margin:0;font-family:var(--mono);font-size:clamp(15px,1.5vw,20px);letter-spacing:-.02em;color:var(--indigo);font-variant-numeric:tabular-nums;white-space:nowrap}
+.reads dd small{font-size:.6em;color:var(--dim);margin-left:3px;letter-spacing:0}
+.console .foot{display:flex;justify-content:space-between;gap:12px;font-family:var(--mono);font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim)}
+.console .foot b{font-weight:400;color:var(--mid)}
+.console .foot b span{display:none}
+.deck[data-phase="1"] .foot .d1,.deck[data-phase="2"] .foot .d2,.deck[data-phase="3"] .foot .d3,.deck[data-phase="4"] .foot .d4{display:inline}
+
+/* the text scrolls over the photograph; each phase begins at a dated line */
+.phases{position:relative;z-index:5;margin-top:-100svh}
+.phases::after{content:'';display:block;height:34svh}
+.phase{position:relative;min-height:100svh;display:grid;align-content:end;padding:0 var(--pad) clamp(36px,7vh,72px)}
+.phase .bp{position:absolute;left:var(--pad);right:var(--pad);top:0;border-top:1px dashed color-mix(in srgb,var(--ink) 40%,transparent)}
+.phase .bp span{position:absolute;left:50%;translate:-50% 0;top:9px;white-space:nowrap;font-family:var(--mono);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--mid)}
+.phase .txt{max-width:58%}
+.phase .n{font-family:var(--display);font-style:italic;font-size:clamp(100px,18vw,260px);line-height:.78;letter-spacing:-.05em;color:var(--accent)}
+.phase h2{font-family:var(--display);font-size:clamp(34px,5vw,72px);line-height:.98;letter-spacing:-.03em;margin-top:8px;max-width:12ch;text-wrap:balance}
+.phase p{margin:16px 0 0;font-size:clamp(14px,1.5vw,17px);color:var(--mid);max-width:46ch;text-wrap:pretty}
+.phase p b{color:var(--ink);font-weight:500}
+.phase .cr{margin-top:14px;font-family:var(--mono);font-size:9px;letter-spacing:.06em;color:var(--dim)}
+.phase .cr a{border-bottom:1px solid var(--line)}
+
+/* the opening */
+.hero .txt{max-width:none}
+.hero .eyebrow{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--mid);margin:0 0 18px;max-width:none}
+.hero h1{font-family:var(--display);font-size:clamp(72px,14vw,210px);line-height:.82;letter-spacing:-.04em}
+.hero h1 em{font-style:italic;color:var(--accent)}
+.hero .lede{font-size:clamp(15px,1.8vw,20px);color:var(--mid);max-width:44ch;margin:24px 0 0;text-wrap:pretty}
+.hero .lede b{color:var(--ink);font-weight:500}
+.hero .cue{margin:28px 0 0;max-width:none;font-size:10px;font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim);display:flex;align-items:center;gap:12px}
+.cue i{width:36px;height:1px;background:var(--accent);display:block;transform-origin:0 50%;animation:cue 2.6s var(--settle) infinite}
+@keyframes cue{0%{transform:scaleX(0)}55%{transform:scaleX(1)}100%{transform:scaleX(0)}}
+
+footer{position:relative;z-index:5;padding:34px var(--pad) 70px;border-top:1px solid var(--line);background:var(--ground);
+  display:flex;flex-wrap:wrap;gap:12px 44px;justify-content:space-between;
+  font-family:var(--mono);font-size:10px;letter-spacing:.04em;color:var(--dim);line-height:1.8}
+
+@media (max-width:900px){
+  .panel{height:auto;align-items:start;grid-template-columns:1fr;padding:52px 14px 0}
+  .console{grid-column:1;padding:12px 12px 10px;gap:9px}
+  .console h2{font-size:22px}
+  .inst,.seis{display:none}
+  .reads dl{gap:8px}
+  .reads dd{font-size:13px}
+  .phase .txt{max-width:none}
+  .phase .n{font-size:clamp(90px,26vw,150px)}
+  .phase h2{font-size:clamp(30px,8vw,44px)}
+  .hero h1{font-size:clamp(56px,17vw,96px)}
+}
+@media all{
+  html{transition:none}
+  .console{transition:none}
+  .cue i{animation:none}
+}
+</style>
+</head>
+<body>
+
+<a class="back" href="../artifacts/index.html">← Mocubix</a>
+
+<div class="deck" data-phase="0">
+
+  <div class="backdrop" aria-hidden="true">
+    <figure data-p="0"><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c4/Halemaumau_Lava_Lake%2C_April_19th_2018%2C_Vulcanoes_National_Park%2C_Big_Island%2C_Hawaii_%2828887175718%29.jpg/1280px-Halemaumau_Lava_Lake%2C_April_19th_2018%2C_Vulcanoes_National_Park%2C_Big_Island%2C_Hawaii_%2828887175718%29.jpg" srcset="https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c4/Halemaumau_Lava_Lake%2C_April_19th_2018%2C_Vulcanoes_National_Park%2C_Big_Island%2C_Hawaii_%2828887175718%29.jpg/960px-Halemaumau_Lava_Lake%2C_April_19th_2018%2C_Vulcanoes_National_Park%2C_Big_Island%2C_Hawaii_%2828887175718%29.jpg 960w, https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c4/Halemaumau_Lava_Lake%2C_April_19th_2018%2C_Vulcanoes_National_Park%2C_Big_Island%2C_Hawaii_%2828887175718%29.jpg/1280px-Halemaumau_Lava_Lake%2C_April_19th_2018%2C_Vulcanoes_National_Park%2C_Big_Island%2C_Hawaii_%2828887175718%29.jpg 1280w, https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c4/Halemaumau_Lava_Lake%2C_April_19th_2018%2C_Vulcanoes_National_Park%2C_Big_Island%2C_Hawaii_%2828887175718%29.jpg/1920px-Halemaumau_Lava_Lake%2C_April_19th_2018%2C_Vulcanoes_National_Park%2C_Big_Island%2C_Hawaii_%2828887175718%29.jpg 1920w" sizes="100vw" width="6586" height="3705" alt="" style="object-position:50% 45%" decoding="async" loading="eager" fetchpriority="high"></figure>
+    <figure data-p="1"><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/4/42/North_portion_of_Kilauea_volcano.jpg/1280px-North_portion_of_Kilauea_volcano.jpg" srcset="https://thumb.wikimedia.org/wikipedia/commons/thumb/4/42/North_portion_of_Kilauea_volcano.jpg/960px-North_portion_of_Kilauea_volcano.jpg 960w, https://thumb.wikimedia.org/wikipedia/commons/thumb/4/42/North_portion_of_Kilauea_volcano.jpg/1280px-North_portion_of_Kilauea_volcano.jpg 1280w, https://thumb.wikimedia.org/wikipedia/commons/thumb/4/42/North_portion_of_Kilauea_volcano.jpg/1920px-North_portion_of_Kilauea_volcano.jpg 1920w" sizes="100vw" width="4608" height="2592" alt="" style="object-position:50% 42%" decoding="async" loading="eager"></figure>
+    <figure data-p="2"><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/1/14/Kilauea_eastern_rift_zone_fissure_eruption_May_2018.jpg/1280px-Kilauea_eastern_rift_zone_fissure_eruption_May_2018.jpg" srcset="https://thumb.wikimedia.org/wikipedia/commons/thumb/1/14/Kilauea_eastern_rift_zone_fissure_eruption_May_2018.jpg/960px-Kilauea_eastern_rift_zone_fissure_eruption_May_2018.jpg 960w, https://thumb.wikimedia.org/wikipedia/commons/thumb/1/14/Kilauea_eastern_rift_zone_fissure_eruption_May_2018.jpg/1280px-Kilauea_eastern_rift_zone_fissure_eruption_May_2018.jpg 1280w, https://thumb.wikimedia.org/wikipedia/commons/thumb/1/14/Kilauea_eastern_rift_zone_fissure_eruption_May_2018.jpg/1920px-Kilauea_eastern_rift_zone_fissure_eruption_May_2018.jpg 1920w" sizes="100vw" width="4032" height="3024" alt="" style="object-position:50% 50%" decoding="async"></figure>
+    <figure data-p="3"><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/3/38/Kilauea_Fissure_8_cone_erupting_on_6-28-2018.jpg/1280px-Kilauea_Fissure_8_cone_erupting_on_6-28-2018.jpg" srcset="https://thumb.wikimedia.org/wikipedia/commons/thumb/3/38/Kilauea_Fissure_8_cone_erupting_on_6-28-2018.jpg/960px-Kilauea_Fissure_8_cone_erupting_on_6-28-2018.jpg 960w, https://thumb.wikimedia.org/wikipedia/commons/thumb/3/38/Kilauea_Fissure_8_cone_erupting_on_6-28-2018.jpg/1280px-Kilauea_Fissure_8_cone_erupting_on_6-28-2018.jpg 1280w, https://thumb.wikimedia.org/wikipedia/commons/thumb/3/38/Kilauea_Fissure_8_cone_erupting_on_6-28-2018.jpg/1920px-Kilauea_Fissure_8_cone_erupting_on_6-28-2018.jpg 1920w" sizes="100vw" width="3504" height="2336" alt="" style="object-position:50% 50%" decoding="async"></figure>
+    <figure data-p="4"><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5c/USGS_K%C4%ABlauea_multimediaFile-2329_%282018-06-27%29.jpg/1280px-USGS_K%C4%ABlauea_multimediaFile-2329_%282018-06-27%29.jpg" srcset="https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5c/USGS_K%C4%ABlauea_multimediaFile-2329_%282018-06-27%29.jpg/960px-USGS_K%C4%ABlauea_multimediaFile-2329_%282018-06-27%29.jpg 960w, https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5c/USGS_K%C4%ABlauea_multimediaFile-2329_%282018-06-27%29.jpg/1280px-USGS_K%C4%ABlauea_multimediaFile-2329_%282018-06-27%29.jpg 1280w, https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5c/USGS_K%C4%ABlauea_multimediaFile-2329_%282018-06-27%29.jpg/1920px-USGS_K%C4%ABlauea_multimediaFile-2329_%282018-06-27%29.jpg 1920w" sizes="100vw" width="4032" height="3024" alt="" style="object-position:50% 80%" decoding="async"></figure>
+  </div>
+
+  <aside class="panel" aria-label="Observatory panel">
+    <div class="console">
+      <div class="top"><span>HVO · Kīlauea · 2018</span><div class="chips"><span class="chip fill" id="alert">Watch</span><span class="chip" id="code">Orange</span></div></div>
+      <h2><i id="pn">01</i> · <span id="pt">The lake glows</span></h2>
+
+      <div class="inst" aria-hidden="true">
+        <div class="i1"><svg viewBox="0 0 400 122">
+          <text x="0" y="18">HALEMAʻUMAʻU · CROSS-SECTION</text>
+          <path class="ln" d="M0 30 H140 M260 30 H400"/>
+          <path class="ln" d="M140 30 L172 112 H228 L260 30"/>
+          <path class="soft" d="M142 34 L173 111 H227 L258 34 Z"/>
+          <path class="accl" d="M142 34 H258"/>
+          <text x="270" y="38" class="lbl">LAKE SURFACE · AT THE RIM</text>
+          <path class="ln" d="M330 58 H336 M330 84 H336 M330 110 H336"/>
+          <text x="342" y="61">−100 M</text><text x="342" y="87">−200 M</text><text x="342" y="113">−300 M</text>
+        </svg></div>
+        <div class="i2"><svg viewBox="0 0 400 122" id="rift">
+          <text x="0" y="18">LOWER EAST RIFT ZONE · LEILANI ESTATES</text>
+          <text x="400" y="18" text-anchor="end">24 FISSURES · 3 – 27 MAY</text>
+          <path class="ln" d="M0 70 H400"/>
+        </svg></div>
+        <div class="i3"><svg viewBox="0 0 400 122">
+          <path class="ln" d="M40 112 H400 M40 22 H400" stroke-dasharray="2 4"/>
+          <path class="ln" d="M40 67 H400" stroke-dasharray="2 4"/>
+          <text x="0" y="25">100 M</text><text x="0" y="70">50 M</text><text x="0" y="115">0</text>
+          <rect class="acc" x="120" y="40" width="42" height="72"/>
+          <text x="120" y="34">FOUNTAIN · 80 M</text>
+          <path class="soft" d="M230 112 L254 67 H296 L320 112 Z"/>
+          <text x="230" y="61">CONE · 50 M</text>
+        </svg></div>
+        <div class="i4"><svg viewBox="0 0 400 122">
+          <text x="0" y="18">LAVA ON THE LAND · BY AUGUST 2018</text>
+          <rect class="soft" x="0" y="30" width="400" height="24"/>
+          <text x="0" y="70">COVERED · 35.5 KM²</text>
+          <rect class="acc" x="0" y="84" width="40" height="24"/>
+          <text x="50" y="100">NEW LAND · 3.5 KM² · 875 ACRES</text>
+        </svg></div>
+      </div>
+
+      <div class="seis"><span>Seismogram · simulated trace</span><svg viewBox="0 0 400 60" preserveAspectRatio="none" aria-hidden="true"><path id="trace" d="M0 30 L400 30"/></svg></div>
+
+      <div class="reads">
+        <dl class="r1"><div><dt>Lake</dt><dd>10<small>years</small></dd></div><div><dt>Surface</dt><dd>0<small>m · at the rim</small></dd></div><div><dt>Fissures</dt><dd>0</dd></div></dl>
+        <dl class="r2"><div><dt>Lake surface</dt><dd>−220<small>m</small></dd></div><div><dt>Earthquake</dt><dd>M 6.9</dd></div><div><dt>Fissures</dt><dd>24</dd></div></dl>
+        <dl class="r3"><div><dt>Fountain</dt><dd>80<small>m</small></dd></div><div><dt>Cone</dt><dd>50<small>m</small></dd></div><div><dt>Homes lost</dt><dd>700+</dd></div></dl>
+        <dl class="r4"><div><dt>New land</dt><dd>875<small>acres</small></dd></div><div><dt>Summit floor</dt><dd>−500<small>m</small></dd></div><div><dt>SO₂</dt><dd>200k<small>t/d</small></dd></div></dl>
+      </div>
+
+      <div class="foot"><span>Phase dates</span><b><span class="d1">to 30 April 2018</span><span class="d2">3 – 27 May 2018</span><span class="d3">late May – August 2018</span><span class="d4">3 June – 21 August 2018</span></b></div>
+    </div>
+  </aside>
+
+  <main class="phases">
+
+    <header class="phase hero" data-n="0" data-rot="0deg">
+      <div class="txt">
+        <p class="eyebrow">Mocubix · Exhibit 07 · Kīlauea, Hawaiʻi · 2018</p>
+        <h1>Kīlauea,<br>in four <em>phases</em></h1>
+        <p class="lede">Four phases of one eruption, each with its own light. Scroll past each dated line and <b>the whole screen changes state at once</b>: the photograph, the palette, the alert level, the instruments. Not before the line, and not gradually.</p>
+        <p class="cue"><i></i>Scroll</p>
+      </div>
+    </header>
+
+    <section class="phase" data-n="1" data-rot="-150deg" data-alert="Watch" data-code="Orange" data-amp="1">
+      <div class="bp"><span>April 2018</span></div>
+      <div class="txt">
+        <div class="n">01</div>
+        <h2>The lake glows</h2>
+        <p>Halemaʻumaʻu from the air. A lake of lava has filled the summit crater for ten years, lighting its own plume from below. On 30 April the floor of Puʻu ʻŌʻō collapses and the lake begins to drain: <b>magma is on the move</b>, underground, forty kilometres down the rift.</p>
+        <p class="cr">USGS · <a href="https://commons.wikimedia.org/wiki/File:North_portion_of_Kilauea_volcano.jpg">Public domain</a></p>
+      </div>
+    </section>
+
+    <section class="phase" data-n="2" data-rot="15deg" data-alert="Warning" data-code="Red" data-amp="3">
+      <div class="bp"><span>3 May 2018</span></div>
+      <div class="txt">
+        <div class="n">02</div>
+        <h2>The ground opens</h2>
+        <p>The lower East Rift Zone cracks open along a residential street in Leilani Estates, and lava spatters through the palms. <b>Twenty-four fissures</b> open in three weeks. By 6 May the summit lake has fallen 220 metres.</p>
+        <p class="cr">USGS Hawaiian Volcano Observatory · <a href="https://commons.wikimedia.org/wiki/File:Kilauea_eastern_rift_zone_fissure_eruption_May_2018.jpg">Public domain</a></p>
+      </div>
+    </section>
+
+    <section class="phase" data-n="3" data-rot="-115deg" data-alert="Warning" data-code="Red" data-amp="6">
+      <div class="bp"><span>Late May 2018</span></div>
+      <div class="txt">
+        <div class="n">03</div>
+        <h2>Fissure 8 takes over</h2>
+        <p>One vent wins. Fissure 8 fountains <b>eighty metres</b> into the air, builds a cone fifty metres high, and feeds a river of lava that runs for weeks toward the sea.</p>
+        <p class="cr">USGS Hawaiian Volcano Observatory · <a href="https://commons.wikimedia.org/wiki/File:Kilauea_Fissure_8_cone_erupting_on_6-28-2018.jpg">Public domain</a></p>
+      </div>
+    </section>
+
+    <section class="phase" data-n="4" data-rot="-200deg" data-alert="Warning" data-code="Red" data-amp="4">
+      <div class="bp"><span>3 June 2018</span></div>
+      <div class="txt">
+        <div class="n">04</div>
+        <h2>Lava meets the sea</h2>
+        <p>Half past ten at night. The river reaches Kapoho Bay and boils it into a plume of acid steam; the bay is gone in two days. By August the flows have covered 35 square kilometres, added <b>875 acres of new land</b> and taken more than 700 homes, and the summit floor has fallen 500 metres. Scroll back up, and every break snaps in reverse.</p>
+        <p class="cr">USGS Hawaiian Volcano Observatory · <a href="https://commons.wikimedia.org/wiki/File:USGS_K%C4%ABlauea_multimediaFile-2329_(2018-06-27).jpg">Public domain</a></p>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<footer>
+  <span>Photography — USGS Hawaiian Volcano Observatory, 2018 (public domain);<br>lava lake at night — Christoph Strässler, via Wikimedia Commons, CC BY-SA 2.0.</span>
+  <span>Readings from USGS reports on the 2018 eruption.<br>The seismogram is a simulated trace, not a recording.</span>
+</footer>
+
+<script>
+(function(){
+  var root = document.documentElement, deck = document.querySelector('.deck');
+  var $ = function(id){ return document.getElementById(id); };
+  var still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var amp = 1;
+
+  /* the rift line: twenty-four fissures, the eighth taller because it is the one that lasts */
+  (function(){
+    var svg = $('rift'), ns = 'http://www.w3.org/2000/svg';
+    for (var i = 0; i < 24; i++){
+      var x = 6 + i * (388 / 23), p = document.createElementNS(ns, 'path');
+      p.setAttribute('class', 'accl');
+      p.setAttribute('d', i === 7 ? 'M' + x.toFixed(1) + ' 48 V92' : 'M' + x.toFixed(1) + ' 60 V80');
+      svg.appendChild(p);
+      if (i === 0 || i === 23 || i === 7){ var t = document.createElementNS(ns, 'text'); t.setAttribute('x', (x - (i === 23 ? 8 : i === 7 ? 22 : 2)).toFixed(1)); t.setAttribute('y', i === 7 ? '106' : '94'); t.textContent = i === 7 ? 'FISSURE 8' : i + 1; svg.appendChild(t); }
+    }
+  })();
+
+  /* A phase trips the break when its dated line crosses the middle of the screen. */
+  function trip(sec){
+    var d = sec.dataset;
+    deck.dataset.phase = d.n;
+    root.style.setProperty('--rot', d.rot);
+    if (d.n !== '0'){
+      $('pn').textContent = ('0' + d.n).slice(-2);
+      $('pt').textContent = sec.querySelector('h2').textContent;
+      $('alert').textContent = d.alert; $('code').textContent = d.code;
+      amp = +d.amp;
+    }
+  }
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if (e.isIntersecting) trip(e.target); });
+  }, { rootMargin: '-50% 0px -50% 0px', threshold: 0 });
+  document.querySelectorAll('.phase').forEach(function(s){ io.observe(s); });
+  trip(document.querySelector('.phase'));
+
+  /* seismogram: a rolling trace whose amplitude belongs to the phase */
+  var N = 160, pts = [], trace = $('trace'), last = 0;
+  for (var i = 0; i < N; i++) pts.push(30);
+  function frame(t){
+    if (t - last > 50){
+      last = t;
+      var burst = Math.random() < 0.04 * amp ? amp * 2.5 : 1;
+      var v = 30 + (Math.random() - 0.5) * 5 * amp * burst + Math.sin(t / 90) * amp * 0.8;
+      pts.push(Math.max(2, Math.min(58, v))); pts.shift();
+      var d = 'M0 ' + pts[0].toFixed(1);
+      for (var k = 1; k < N; k++) d += ' L' + (k * 400 / (N - 1)).toFixed(1) + ' ' + pts[k].toFixed(1);
+      trace.setAttribute('d', d);
+    }
+    requestAnimationFrame(frame);
+  }
+  if (!still) requestAnimationFrame(frame);
+})();
+</script>
+
+</body>
+</html>

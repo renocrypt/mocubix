@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><title>CORS probe</title>
+<style>body{font-family:monospace;background:#111;color:#eee;padding:20px}
+img{height:70px;border:1px solid #444}</style></head>
+<body>
+<h1>crossorigin=anonymous probe</h1>
+<!-- Without the crossorigin attribute an image ALWAYS taints the canvas,
+     regardless of the server's Access-Control-Allow-Origin header.
+     With it, the load itself fails if the server does not send the header. -->
+<img id="met" crossorigin="anonymous" src="https://images.metmuseum.org/CRDImages/as/web-large/DP130155.jpg" alt="met">
+<img id="wm" crossorigin="anonymous" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Tsunami_by_hokusai_19th_century.jpg/1280px-Tsunami_by_hokusai_19th_century.jpg" alt="wm">
+<img id="pic" crossorigin="anonymous" src="https://picsum.photos/id/1015/1200/800" alt="pic">
+<pre id="out">pending</pre>
+</body>
+</html>

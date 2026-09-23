@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<title>Probe — Black Marble crop, route dots, SVG offset-path in viewBox units</title>
+<style>
+  body{margin:0;background:#000;color:#ccc;font:12px/1.4 ui-monospace,monospace;padding:20px}
+  .map{position:relative;width:1296px;aspect-ratio:270/114;overflow:hidden;background:#02030a}
+  .map img{position:absolute;width:133.3333%;height:auto;left:-27.7778%;top:-21.0526%;aspect-ratio:2/1}
+  .map svg{position:absolute;inset:0;width:100%;height:100%}
+  .route{fill:none;stroke:#6E86B8;stroke-width:.35}
+  .dot{fill:#fff}
+  .mk{fill:#D4673F;offset-path:path('M31 25.29 C61 20.03 101.22 10.88 121 9.5 C130.63 8.83 136.32 8.54 142.62 10.25 C148.1 11.73 152.35 14.04 157 18 C163.26 23.33 167.46 36.16 175 41.5 C182.25 46.64 196.03 45.28 201 50 C204.55 53.37 202.58 57.94 206 63 C213.1 73.49 235.31 90.21 249.96 103.81');offset-distance:61.014%;offset-rotate:0deg}
+  pre{white-space:pre-wrap}
+</style>
+<div class="map">
+  <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/a/af/BlackMarble20161km.jpg/1920px-BlackMarble20161km.jpg" alt="">
+  <svg viewBox="0 0 270 114" preserveAspectRatio="none">
+    <path class="route" d="M31 25.29 C61 20.03 101.22 10.88 121 9.5 C130.63 8.83 136.32 8.54 142.62 10.25 C148.1 11.73 152.35 14.04 157 18 C163.26 23.33 167.46 36.16 175 41.5 C182.25 46.64 196.03 45.28 201 50 C204.55 53.37 202.58 57.94 206 63 C213.1 73.49 235.31 90.21 249.96 103.81"/>
+    <g class="dot"><circle cx="31" cy="25.29" r=".7"/><circle cx="121" cy="9.5" r=".7"/><circle cx="142.62" cy="10.25" r=".7"/><circle cx="157" cy="18" r=".7"/><circle cx="175" cy="41.5" r=".7"/><circle cx="201" cy="50" r=".7"/><circle cx="206" cy="63" r=".7"/><circle cx="249.96" cy="103.81" r=".7"/></g>
+    <circle class="mk" id="mk" r="1.3"/>
+  </svg>
+</div>
+<pre id="out">pending</pre>
+<script>
+addEventListener('load', () => {
+  const mk = document.getElementById('mk'), b = mk.getBBox(), r = mk.getBoundingClientRect(), svg = document.querySelector('svg').getBoundingClientRect();
+  const cx = (r.left + r.width / 2 - svg.left) / svg.width * 270, cy = (r.top + r.height / 2 - svg.top) / svg.height * 114;
+  document.getElementById('out').textContent = 'marker at 61.014% → viewBox (' + cx.toFixed(2) + ', ' + cy.toFixed(2) + ')  expected ≈ (175, 41.5) [India]\n' +
+    'offset-path computed: ' + getComputedStyle(mk).offsetPath.slice(0, 40) + '…\nimg ' + document.querySelector('img').naturalWidth + 'x' + document.querySelector('img').naturalHeight;
+});
+</script>

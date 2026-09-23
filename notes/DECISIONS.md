@@ -1,0 +1,607 @@
+# Mocubix — asset & typography decisions
+
+Recorded 2026-09-15. Every line below is a measured result, not an assumption.
+
+## Typography — non-Google, verified loading in Chrome from `file://`
+
+| Role | Face | Source | Evidence |
+|---|---|---|---|
+| Display | **Melodrama** | Fontshare | `loaded`, visually distinct in probe 2 |
+| Sans | **Switzer** | Fontshare | `loaded` |
+| Mono | **Geist Mono Variable** | Vercel via jsDelivr | `loaded`, distinct from system mono |
+| CJK display | **Smiley Sans 得意黑** | jsDelivr `cn-fontsource-smiley-sans-oblique-regular` | 14 faces loaded |
+| CJK text | **LXGW WenKai 霞鹜文楷** | jsDelivr `cn-fontsource-lxgw-wen-kai-gb-screen` | 19 faces loaded |
+| CJK song | **Source Han Serif SC** | jsDelivr `cn-fontsource-source-han-serif-sc-vf` | 19 faces loaded |
+
+### Two traps, both hit and both fixed
+
+1. **One Fontshare request per family.** A single combined
+   `f[]=a&f[]=b&f[]=c` request silently delivered only the first family.
+   Everything else fell back with no error. Symptom: four different serif
+   specimens rendering identically.
+
+2. **Width comparison cannot verify a CJK face.** Every ideograph is 1em wide
+   in every CJK font, so advance width matches the fallback exactly even when
+   the face loaded correctly. Enumerate `document.fonts` instead.
+
+### A third trap, found 2026-09-17: loading is not working
+
+**Smiley Sans Oblique advances 0 in `writing-mode: vertical-rl`.** The package
+`cn-fontsource-smiley-sans-oblique-regular` loads all 14 faces and renders
+horizontally, and `document.fonts` lists it — so every check in the table above
+passed. Set vertically it collapsed: six ideographs occupied 0px of vertical
+advance, and the whole column rendered as a 19px smear. The other two lines in
+the specimen only survived because the face does not cover kana or Hangul and
+they fell back.
+
+Measured at 100px in a `vertical-rl` box, vertical advance per glyph:
+
+| face | 中文 | 日本語 | 한글 |
+|---|---|---|---|
+| Smiley Sans Oblique | **0** | — falls back | — falls back |
+| LXGW WenKai GB Screen | 1.088em | 1.175em | 0.992em |
+| **Source Han Serif SC VF** | **1.000em** | **1.000em** | **1.000em** |
+
+Vertical setting stands on a square em. WenKai renders but its advance wanders
+18% between scripts, which shows as three different rhythms in three columns.
+Source Han Serif is exact in all three, so the specimen is now one face across
+all three scripts, differentiated by size and colour.
+
+**Rule: a face used vertically is verified a second time, by measuring the
+height of a `vertical-rl` box.** `document.fonts` only proves the file arrived.
+
+Two more things this cost:
+
+- **The family name is `Source Han Serif SC VF`, not `Source Han Serif SC`.**
+  The bare name silently matched the system 宋体 instead. Read the family name
+  out of `document.fonts`, never off the package name.
+- `document.fonts.check(font, text)` is **not** a coverage oracle for a
+  subsetted CJK package — it reports on the subsets that happen to have loaded,
+  so it returns false for characters the font certainly contains. Discriminate
+  by measuring advance against the candidate fallbacks instead.
+
+### Rejected
+
+- **Any Google Fonts face** — house constraint.
+- `cn-fontsource-source-han-serif-cn-vf` — package does not exist (`-sc-` not `-cn-`).
+- `Fontquan-XinYiJiXiangSong` 新艺吉祥宋 — 70 faces declared, **0 loaded**.
+- Clash Display — loads fine, but too widely used to lead with.
+
+## Motion — what the audit of 2026-09-17 found
+
+Easing held: every transition and animation in the Lexicon resolves to the
+house curve, the authored `--pan` curve, or `linear` (correct, and only, for
+scrub). Zero stock curves.
+
+What did not hold was **scale**. Measuring stage fill per specimen — the union
+box of everything that paints, over the stage box — gave a median of 0.90 and
+five outliers, all of them a small thing centred in a large empty box:
+
+| | was | now |
+|---|---|---|
+| 01 dial | 180px ring | fills 76% of stage height |
+| 03 pinned frame | 540px | 780px |
+| 14 path drawing | 328px of a ~840px stage | 95% of stage width |
+| 34 text mask | capped at 92px | 114px, measured to fit |
+| 35 vertical writing | 25% of stage width, no motion at all | 47%, four columns, written downward on scroll |
+
+Two measurement traps met while doing it:
+
+- **`a.effect.getTiming().easing` is always `linear` for a CSS animation.** The
+  real curve lives per-keyframe in `getKeyframes()`. An easing census built on
+  the effect-level value reports nothing and looks clean.
+- **The `animation` shorthand resets `animation-range`.** `.vert p{animation:…}`
+  is specificity (0,1,1) and beat the per-column `.vt1{animation-range:…}` at
+  (0,1,0), so all four columns staggered identically. Per-item ranges need the
+  descendant form — which `.pdraw .p1` already used and I did not copy.
+
+## Imagery — CC0 / public domain, CORS-clean
+
+**Source: Wikimedia Commons.** The only source tested that serves
+`access-control-allow-origin: *`, so `crossorigin="anonymous"` images are
+canvas-readable — pixel-level work (palette extraction, dithering,
+displacement, WebGL textures) is available.
+
+### Primary body of work
+
+**Kamisaka Sekka 神坂雪佳, _Momoyogusa_ 百々世草 (1909–10)** — Rijksmuseum CC0
+scans, 12 plates at 5,800–10,400 px native. Flat, graphic, radically modern
+in construction. `assets/curated.json` carries a full `srcset` per plate.
+
+**Anna Atkins, _Photographs of British Algae_ (1843)** — 3 cyanotypes.
+Monochrome Prussian blue; the texture lane.
+
+### Rejected
+
+- **JWST / Hubble nebula imagery** — technically perfect, aesthetically
+  stock. Overused to the point of being wallpaper.
+- Hokusai *Great Wave*, *Red Fuji* — same problem. Sekka's *Tatsunami*
+  is a better wave and is not on every laptop sticker.
+- **Art Institute of Chicago IIIF** — 403 to curl *and* to Chrome. Dead for
+  hotlinking despite an excellent API.
+- **Met Museum CDN** — loads bare, but fails with `crossorigin="anonymous"`.
+  No CORS header, so no pixel access.
+
+## 3D
+
+- **Poly Haven** — CC0, `access-control-allow-origin: *` on `dl.polyhaven.org`.
+  521 models, plus HDRIs for image-based lighting.
+- **Khronos glTF samples** — serve fine, but `DamagedHelmet` is the single
+  most overexposed model in the three.js ecosystem. Not using it.
+
+## Libraries
+
+CDN is permitted for this preview. Classic (non-module) builds only —
+ES module imports are blocked by CORS on a `file://` page.
+
+## Rate limits
+
+The Commons API returns 429 under a burst. Batch titles (3 per request) and
+back off exponentially.
+
+## Two traps in Wikimedia image delivery
+
+### curl is blocked; the browser is not
+
+`upload.wikimedia.org` and `thumb.wikimedia.org` return **400 to curl** for
+URLs that Chrome loads without complaint — including URLs copied verbatim out
+of the API response. An entire round of "broken URL" diagnosis was a false
+alarm caused by trusting curl.
+
+**Rule: image URLs are verified in the browser, never with curl.** curl remains
+fine for the JSON API, which is not gated the same way.
+
+### Thumbnail widths snap to a bucket ladder
+
+The API's `thumbwidth` field echoes what was *requested*; the URL carries what
+is actually *served*:
+
+| requested | URL delivered |
+|---|---|
+| 640 | `960px-…` |
+| 1024 | `1280px-…` |
+| 1600 | `1920px-…` |
+
+So rewriting the `/<N>px-` segment by hand fabricates a bucket that may not
+exist. Parse the width back off each returned URL and key the `srcset` by
+that, which is what `build-manifest.py` now does.
+
+## Exhibit 01 rebuilt, 2026-09-20 — plate 626 measured, the scrub moved to CSS
+
+**Why.** The projected frame was cut from whichever thumbnail the strip's
+`sizes` had picked — the 960px one — so each frame had 232 source pixels
+stretched to ~600px. The opening was a text-only hero with the plate off
+screen, and the run floated two unrelated objects in a black field.
+
+**Resolution ceiling.** The Commons API, asked for a 2560px thumbnail of the
+NGA scan (3000px original), returned the *unscaled original* (4.65 MB) as
+`thumbnail_unscaled`: there is no bucket between 1920 and the original for
+this file. 1920 is the ceiling, 465 source px per frame, one file used three
+times (opening object, index, projection).
+
+**Frame geometry, measured on the 1920 thumb (1920×1482).** Each row is a
+separately mounted strip: rows are split by dark bands, but frames within a
+row are printed edge to edge with only a faint line between them, and the
+backdrop carries a ~60px grid of threads, so column-mean profiles find the
+horses and the threads before they find the frame edges. What worked: a
+1:1 screenshot of the rendered image analysed locally (PIL), rows from
+full-width dark runs, columns from the per-column "consistently darker than
+both neighbours" score plus the tonal step where one print meets the next.
+
+| | px on 1920×1482 |
+|---|---|
+| rows (y0–y1) | 35–371 · 409–735 · 775–1094 · 1135–1456 |
+| columns (x0–x1) | 25–477 · 478–947 · 948–1419 · 1420–1882 |
+
+Frame widths therefore differ (452, 469, 471, 462 px) and aspects run
+1.345–1.476. The gate is fixed at 1.44; each frame fills its height,
+left-aligned, with up to 1.5% invisible stretch; frames narrower than the
+gate are clipped on the right (`clip-path` per keyframe), never allowed to
+show the neighbour's edge. Keyframes were generated from these numbers;
+`probes/plate-grid.html` and `probes/plate-raw.html` are the measurement
+pages, `notes/evidence/plate-cells.png` the sixteen cuts.
+
+**The stride, read at 3–5× zoom (`notes/evidence/hooves-*.png`).** Frames
+2, 3, 4: all four hooves off the ground, legs gathered. 5–6: one hind hoof
+down. 7–8: both hinds. 9–11: a hind and a fore. 12–15: forelegs. 16 and 1:
+the last forehoof leaving, dust visible. Frame 1 read as a landing until the
+leg angle showed it trailing; the earlier per-frame gait labels were replaced
+with phase names, which stay true when a hoof is a pixel off the ground.
+
+**Mechanism.** No JavaScript in the run. One view timeline on the runway;
+`--i` is a registered `<integer>` stepped 0→15 with `steps(16, jump-none)`;
+the projection's `background-size/position/clip-path` and the gate's box are
+17-keyframe animations on `steps(1, jump-end)` over the same range, so the
+picture, the gate and the counter switch in the same frame. The stride label
+is seven real spans whose opacity is `clamp(0, 1 - max(a - i, i - b), 1)`.
+Measured under 4× CPU throttle on a scripted scroll through the whole run:
+191 frames, median 8.3 ms, p99 10.4 ms, none over 16.7 ms.
+
+**Reduced motion** turns the opening→run transition into a cut on the first
+scroll (`steps(1, jump-end)` over a 2% range — `jump-start` with `fill: both`
+applies the end value at progress 0, so the cut fired before any scroll); the
+frame stepping stays,
+because it is the content and it is entirely under the visitor's hand.
+
+## Exhibit 07 rebuilt, 2026-09-20 — colour photographs, a palette that follows them, an instrument per phase
+
+**Why.** The four phases were one treatment (grayscale photograph under a
+colour blend) in four hues, so the palette snap was the only thing that
+changed; the Warning pill was unreadable in the pink phase; the readings were
+invented. The 2018 photographs are the strongest material in the collection
+and the tint was throwing them away.
+
+**What changed.** The photographs are shown in colour on one fixed backdrop
+that cuts at each break, and the palette angle is set per phase to the hue of
+that phase's own light: lava lake at night → terra (0°), crater from the air →
+blue-grey (−150°), sparks in the palms → amber (+15°), dusk river → violet
+(−115°), steam over the sea → teal (−200°, the short way round from −115°).
+Teal clips in sRGB at C 0.16 and comes out muted, which suits steam. Each
+break is a dated dashed line, and the panel changes instrument: a
+cross-section of the crater with the lake at the rim; the rift line with 24
+fissures and the eighth taller; a fountain and cone against a metre scale;
+land covered against land made. Readings are USGS figures for the 2018
+eruption (first fissure 3 May; lake −220 m by 6 May; 24 fissures by 27 May;
+M 6.9 on 4 May; fountain 80 m; cone ≈50 m; ocean entry at Kapoho 3 June;
+35.5 km² covered; 875 acres of new land; over 700 structures; 62 collapse
+events and more than 500 m of summit subsidence; SO₂ near 200,000 t/d at the
+peak). Alert levels are HVO's: Watch/Orange before 3 May, Warning/Red after.
+The seismogram is the one simulated element and is labelled so.
+
+**Mechanism, kept distinct from 01.** 01 is scroll-driven (position is the
+frame); 07 is scroll-triggered (crossing a line trips a state): an
+IntersectionObserver with a one-pixel band at mid-screen sets `data-phase` on
+the deck and `--rot` on the root; CSS does the rest (which photograph, which
+instrument, which readings). Measured under 4× CPU throttle on a scripted
+scroll through the deck: 119 frames, median 8.3 ms, p99 10.3 ms, none over
+16.7 ms, with `backdrop-filter: blur(18px)` on the panel over full-bleed
+photographs.
+
+**Two layout traps.** A `.phase .txt{max-width:58%}` rule reached the hero
+once the hero became a phase section and wrapped the headline to three lines,
+pushing the eyebrow under the fixed chrome — hero rules need their own
+max-width. On phone, a sticky panel with `height:auto` and
+`margin-top:-100svh` shifted the whole text column up by its own height
+(the hero started at −643px); the panel now keeps `height:0` and lets its
+content overflow, and the text column starts at 0.
+
+## The height-attribute trap, found by the user on 03 and 05, 2026-09-20
+
+Every `<img>` here carries its true `width` and `height` attributes so the
+browser can reserve space before the file arrives. Those attributes are
+presentational hints: `width="8105" height="6923"` is `width:8105px;
+height:6923px` in the cascade. A rule like `.grid img{width:100%;
+aspect-ratio:1;object-fit:cover}` overrides the width and leaves the height
+hint standing, so the image is laid out 300px wide and 6,923px tall and
+`object-fit:cover` magnifies a sliver of it about twenty times. On 03 the four
+typhoons became full-height blurry strips and the page grew to 12,230px; on 05
+the two Solari boards became tall empty crops. The images were never
+low-resolution.
+
+**Rule: any image rule that sets `width` and relies on `aspect-ratio` must
+also set `height:auto`.** A script listing img rules with width and
+aspect-ratio but no height found exactly these two across `artifacts/`; both
+are fixed. 05's boards were also stacked at column width with `sizes` raised
+to match, because the crisp version showed how small they had been.
+
+## Type palette and guest display faces, 2026-09-20
+
+**Decision (the user's direction, my structure).** Every subpage gets its own
+display voice; the frame stays constant. Switzer, Geist Mono, navigation, the
+switch, the wall-label structure and the house curve never change. Melodrama
+becomes the institution's face (index, Lexicon index). Each exhibit sets one
+guest display face as `--display` and carries the reason in a comment beside
+its font link.
+
+**Verified on `probes/type-palette.html`** (25 Fontshare families, one request
+each, real headlines at 92px, `document.fonts` enumerated after load):
+
+| face | true italic | verdict |
+|---|---|---|
+| Boska | yes | 01 · Didone bones for an 1887 plate |
+| Zodiak | yes | 03 · sharp, fast, a lively italic for velocity |
+| Gambetta | yes | 04 · warm old-style for 1928 botanical plates |
+| Rowan | yes | 06 · calm classical serif for an orrery |
+| Bespoke Serif, Sentient | yes | palette, reserved for Lexicon specimens |
+| Stardom, Britney | no | palette, display-only Didones for type specimens |
+| Panchang | no | 02 · extra-wide engineered face for a window that travels sideways |
+| Khand | no | 05 · condensed, the cadence of station signage (the flaps themselves letter in Switzer, as Solari's did in Helvetica — corrected 2026-09-22) |
+| Tanker | no, caps only | 07 · heavy capitals for warning signage and molten mass |
+| Technor, Plein | no / yes | palette |
+| Erode, Excon, Alpino, Chillax, Ranade, Gambarino | — | rejected as generic |
+| Kola, Kihim, Telma, Array | — | rejected as gimmick (Array kept in mind for a pixel type specimen) |
+| Pilcrow | did not load under that name | dropped |
+
+Melodrama itself has no italic: every italic accent the house has shipped so
+far was a synthesized oblique. Faces without italics now carry the accent word
+in colour alone (`em{font-style:normal}`), never in fake oblique.
+
+**Per-face tuning.** Each face needed its own tracking and size: Didones and
+old-styles lose the −.04em display tracking (−.02em), Panchang drops the
+headline to 8.2vw because it is nearly twice as wide as Melodrama, Khand and
+Tanker go larger because they are condensed, and 07's phase numerals stop
+being italic. Verified on all seven pages at 1440 and 390: the guest face is
+the computed family of the headline, the italic face is loaded where the
+design uses it, no horizontal overflow, no console messages.
+
+Chrome also flags any lazy-loaded image whose box it cannot reserve, even
+with `width`/`height` attributes present, once a stylesheet sets one
+dimension to `auto`. Every lazy image now carries an inline
+`aspect-ratio:W/H` from its own attributes — except where the stylesheet
+crops to a fixed ratio (03's square typhoons), because an inline ratio would
+win over the stylesheet's.
+
+## Exhibit 05 rebuilt, 2026-09-22 — the Secaucus boards, flap for flap; the first part
+
+**What was wrong** (the user: "cheesy… it only flicked once… amateur"). A
+generic dark table in letterspaced Geist Mono, grey squares standing in for
+flaps with an empty band through the middle, nothing like the boards
+photographed beneath it. The hall ran at 12× with 3–15 minute headways, so a
+visitor saw one event at most, and each "flip" was a 90 ms wobble of a whole
+glyph, not a flap falling.
+
+**Material first.** The seven curated Commons photographs (4300streetcar,
+June 2026) looked at 1:1 at 1920 (`probes/solari-sheet.html`,
+`notes/evidence/solari-*.png`). What they show, and the page now reproduces:
+one board per line in the line's own enamel — Northeast Corridor red, Coast
+blue, Morristown teal, Main Line yellow with black print, Pascack Valley
+purple — with the flaps printed in that enamel; the hour flap carries its own
+colon, minutes are two digit flaps; destinations and stops are whole printed
+name flaps with a split line and pin marks; one letter flap for the track, a
+blank status flap; printed, underlined column heads; a black message row of
+letter flaps (the three messages used are the ones in the photographs); a red
+seven-segment LED clock in the header; the "solari udine" mark. Enamel was
+sampled with PIL from the photographs; the hue is kept and the lightness
+lifted out of the shade.
+
+**Idea and sequence: object → mechanism → scale → reality.** The Morristown
+board is the opening object and wakes blank, then settles unevenly. The bench
+slows one destination flap to 520 ms at full width, lays its drum out in
+order and strikes through the journey: "it only turns forward" — distance,
+not an authored delay, is what makes a board settle like rain. The concourse
+shows four more lines, each waking the first time it is seen, 750 ms apart
+when seen together. The photographs close it.
+
+**Time.** 30× (a minute every two seconds), opening at 5:44 so the first
+departure comes ~10 s in. Each line has a clock-face timetable repeating
+hourly; seeded delays (~10%) and cancellations (~2.5%); status blank →
+Boarding (4 min) → All Aboard (1 min) → the rows shift up. Morristown's
+message alternates every 20 hall minutes; a narrow board turns long messages
+in lines. Pause (WCAG 2.2.2) freezes the hall clock; Sound is opt-in.
+
+**The first part.** `artifacts/parts/split-flap.js`, a custom element, is the
+reason the charter's "exactly two shared files" law was amended (see
+`AGENTS.md`). One module, any drum, value as real DOM text, themed through
+`--flap-*` properties, optional synthesized sound, reduced motion and
+off-screen modules cut instead of turning.
+
+**Performance — four designs, measured, not guessed.**
+
+| design | result | cause |
+|---|---|---|
+| `--p` custom property per module per frame; CSS derives rotateX and shade | 4× hero wake p95 62 ms, 56/120 frames > 33 ms | an inherited custom property restyles the whole shadow subtree (~17 style objects per module) |
+| a pair of compositor animations (rotateX + brightness) per flap | 4× hero wake median 215 ms | every flap promotes both leaves to layers and cancelling demotes them: layer churn and re-raster |
+| flat fall: scaleY + colour shade, one write per leaf | 4× hero 13.9 ms median, but 1× four-board wake still 14 ms median, 168/435 frames > 16.7 | not JS — the same with or without CPU throttle. Trace: Layerize 629 ms, GPU process 5.6 s in 7.7 s. ~5,600 paint-property nodes at rest (static `translate` on lettering, axle and pins; overflow clips on four halves; paint-containment clip on the host) walked every frame |
+| rest state is one unclipped face with the axle drawn over it; halves exist only while turning; no static transforms; `contain:size layout style` | 1× four-board wake median 7.0, max 14.5, 0 > 16.7. 4×: opening wake max 14.7 (0 > 16.7), bench in true 3D max 7.9, running max 27.2 (1 frame), four boards woken at once by a jump p99 21.3 | — |
+
+**Rule: a component instantiated by the hundred must cost nothing at rest.**
+True perspective is kept behind a `depth` attribute for the one large flap
+where it shows; at board sizes and 60–95 ms per flap a foreshortened fall
+reads the same.
+
+**Two custom-element traps.** (1) Defined before the document is parsed,
+`connectedCallback` fires at the start tag, before the element's text exists:
+the bench flap initialised blank. The part now reads its value at
+DOMContentLoaded or on first use, whichever comes first. (2) A drum
+registered after the element connects is adopted on first turn.
+
+**Verified** at 1440 and 390, night and day, reduced motion (no module ever
+enters the turning state; departures cut), no console messages, no horizontal
+overflow, Khand / Switzer 500 / DSEG7 Classic italic loaded, Sound creates
+and suspends its AudioContext, Pause freezes the clock. Evidence:
+`05-before-*`, `05-after-*`.
+
+## Exhibit 02 rebuilt, 2026-09-22 — eight passes along the way the station flies
+
+**What was wrong.** The track's `animation-range: contain …` sat on a
+`scroll(root)` timeline, where `contain` means nothing, so the window moved
+across the whole page instead of the pin and the exit dragged half-cropped
+photographs and the HUD upward. The route jumped around the planet (New York,
+Northern Europe, Moscow… then back west to the Nile). The clock was the
+scroll position dressed as time; the orbit dial and the altitude were
+decoration. The hero was the collection's shared full-bleed-photo pattern.
+
+**The idea: ride the station east across the night side.** The Commons
+descriptions gave every photograph a date, an expedition and, for six of
+them, the altitude (262 mi → 422 km, etc.); Moscow and Central Asia are
+12 frames apart on the same pass, 16 September 2024. Eight of the nine
+passes lie along the shape an ISS ground track actually has — climbing to
+northern Europe, then descending south-east over Moscow, Kazakhstan, India
+and Southeast Asia to Melbourne — so they are ordered by it. The Nile sits
+too far south-west for that line and was dropped (still curated).
+
+**The instrument.** NASA Earth Observatory's Black Marble 2016
+(`BlackMarble20161km.jpg`, 43,200 × 21,600, equirectangular, public domain),
+added through `build/curate.py` with a 3840 bucket requested only for it.
+Crop lon −105…165, lat 66…−48, so longitude and latitude map straight onto a
+270 × 114 viewBox. The route is a centripetal Catmull–Rom spline through the
+eight places (the uniform spline looped west between Southeast Asia and
+Malaysia); x is monotonic, so on the map the route is always east. Arc-length
+fractions at the dots were sampled once and written into the keyframes.
+Verified on `probes/02-map-probe.html`: dots land on the lights of New York,
+Moscow, the strait and Melbourne; `offset-path` on an SVG element uses
+viewBox units, so the marker lands on India at exactly 61.014%.
+
+**Readouts are measured, not decorative.** Ground covered is the sum of
+great-circle distances along the route (22,858 km); the time is that
+distance at 7.66 km/s (49:44); altitude is each photograph's own, or "not
+recorded". Both counters are registered `<integer>` properties interpolated
+by the scroll animation and printed through `counter()` — mm:ss with
+`round()` and `mod()` inside `counter-reset`.
+
+**Sequence (one view timeline, no script).** Opening: the whole route on the
+night map, the title beside it. 0–12% the map docks into the corner (house
+curve) while the window arrives; 15–85% one pass is centred every 10% and
+the station, the drawn route and the counters move with it; labels switch
+halfway between passes (`--i` stepped over 10–90%). 88–92% the window
+clears; 91–100% the map opens again with the route complete and the arrival
+— "22,858 km" — takes the title's place. Phone: the map lifts under the
+words at the opening and closing and docks at the foot during the run.
+
+**Reduced motion** (forced on `probes/02-reduced.html`): the map docks in one
+cut, the window steps from pass to pass at the midpoints, the station and
+counters jump with it; multi-keyframe animations use `steps(1, jump-end)`
+over a range shifted half an interval earlier so the jumps land at the
+midpoints too.
+
+**Verified** 1440 and 390, no horizontal overflow, no console messages, no
+palette tokens used (the page is the night in both palettes), 4× CPU
+throttle scripted scroll across the whole run: median 6.9 ms, p99 13.6 ms,
+one frame over 16.7 ms. Evidence: `02-before-*`, `02-after-*`.
+
+## Exhibit 06 rebuilt, 2026-09-22 — an orrery that is true where it claims to be
+
+**What was wrong.** No Venus, Pluto included ("eight rings" for Mercury…Pluto);
+periods that "keep their order, not their scale" (Neptune ran 26× Mercury's
+period instead of 684×); a false-colour green ultraviolet Sun; a "light"
+layer that was a decorative glow; names sitting on their planets; an
+exploded view that ran off the stage; on a phone, the model below the fold.
+
+**The idea: a true orrery.** It opens on today — each planet at its
+heliocentric longitude from JPL's approximate Keplerian elements (Standish,
+1800–2050: e, L, ϖ and their rates; Kepler's equation solved per frame; the
+orbital tilts ignored) — and runs at the true relative pace, one Earth year
+every four seconds, so the inner planets whirl and Neptune creeps (Kepler's
+third law, visible). Distances and sizes are not to scale and the copy says
+so; directions and periods are. Checked against the sky of September 2026:
+Earth on the 0° line at the September equinox; Uranus ≈ 63°, Saturn ≈ 10°,
+Neptune ≈ 3°.
+
+**The layers now mean something.** L0 the ecliptic — the plane, a degree
+ring and the ♈ direction the longitudes are measured from; L1 the orbits;
+L2 the bodies; L3 the names, which billboard to face the viewer when the
+model tilts and drop leaders to their planets as the layers part, like an
+exploded technical drawing.
+
+**Material.** Venus (Mariner 10 real colour, 480 px, public domain) and the
+Sun in visible light (SDO HMI continuum, 10 August 2024, public domain)
+curated through `build/curate.py`, which now keeps a small file's unscaled
+original when the API returns it (Venus is smaller than any bucket). Saturn
+keeps its rings: a soft elliptical mask instead of a blend mode, because
+`mix-blend-mode` is isolated inside preserve-3d layers. The model's sky
+stays dark in both palettes; the side panel follows the switch.
+
+**Verified** 1440 and 390 (phone order: title, model, controls, intro — the
+model is in the first screen), night and day, reduced motion (opens on
+today, still, with a Run button), no console messages, no horizontal
+overflow; 4× CPU throttle while running: flat, exploding and exploded all
+under 16.7 ms (max 13.2 ms). Planet sizes are measured once per resize, not
+per frame. Evidence: `06-before-*`, `06-after-*`.
+
+## Exhibit 03 rebuilt, 2026-09-22 — velocity read on the scale that measures storms
+
+**What was wrong.** One frozen composition for ~3,800 px — only the eye
+turned. Scroll velocity was displayed as Florence's "sustained wind",
+"pressure" and "Category TS" under a real, dated storm: false on its face
+(NASA's caption for these photographs gives 130 mph, Category 4). The eye
+turned clockwise; a northern-hemisphere hurricane turns counter-clockwise.
+The loop ran every frame forever. The headline ran into the disc.
+
+**The idea: both signals of one scroll, kept apart.** Position walks the
+three minutes the station spent over the storm — NASA's external-camera
+frames stamped 11:50 (over the horizon, the robotic arm in view) and 11:52
+(straight down into the eyewall), then Alexander Gerst's long-lens view of
+the eye (11:51). Velocity is measured in px/s and read, at a declared 30 px/s
+to the knot, on the real Saffir–Simpson bands (34 / 64 / 83 / 96 / 113 /
+137 kt), beside Florence's actual reading from the caption (130 mph = 113 kt,
+the bottom of Category 4). Over the eye, the whole storm turns
+counter-clockwise at a rate proportional to your knots, and stops when you
+stop.
+
+**Composition.** The eye frame takes two thirds of a 7,200 px pin so a
+real throw lands inside it (a scripted 4,000 px/s throw with momentum moved
+2,548 px and stayed in the pin). The eye sits at the centre of a square as
+wide as the screen's diagonal (`hypot(100vw, 100svh)`), so it can turn any
+distance without an edge. The title carries its own scrim and takes it away.
+Teleports — a jump of more than a screen in one frame — are not throws;
+readings cap at 200 kt. `sizes` describe the width actually drawn: a 3:2
+cover on a portrait phone is ~330vw wide, the turning eye ~450vw.
+
+**Verified** 1440 and 390, no overflow, no console messages, reduced motion
+forced on `probes/03-reduced.html` (frames cut at 16.5% and 33%, no push-in,
+no rotation, the gauge still reads), 4× CPU throttle across the whole pass
+including a throw over the turning eye: median 6.9 ms, max 13.8 ms, none
+over 16.7 ms. Frames curated through `build/curate.py` (the eye at 3840).
+Evidence: `03-before-*`, `03-after-*`.
+
+## Exhibit 04 revised, 2026-09-22 — prints that develop on their own clocks, and their real names
+
+**What was wrong.** Each plate was revealed by a clip from the bottom over
+`entry 0% → cover 38%`, so for its first stretch on screen a plate was
+mostly an empty box — the black voids. Captions read "Plate 11", "Plate 11,
+second study", "third study": wrong (they are plates 111, 115 and 119) and
+empty. The lede was about the mechanism ("that disagreement is the whole
+piece"), the junior tell. The Getty print appeared twice.
+
+**Names from the book.** The Rijksmuseum records give each loose plate's
+printed number and "…facher Vergrößerung" but no species. The 1929 English
+edition, *Art Forms in Nature* (Commons, public domain), carries the plate
+descriptions: species, part and enlargement for all 120 plates, same
+numbering. Text extracted with `pdftotext`; the OCR misread 82–89 as 62–69
+on one page, so plate 84 is the second "64" entry (Cirsium canum, flower
+head ×12) — sequence checked against its neighbours, and plates 46 (ostrich
+fern frond) and 115 (milkweed umbel) checked against their images.
+
+**Develop, don't reveal.** Each print now comes up out of its own paper (a
+`--paper` overlay sampled from the scans, #f6f2e3, fading 0.93 → 0 over
+`entry 0% → cover 40%`) — a photogravure in the bath, on its own clock. The
+plate is always present, so there is no void; only its tone arrives. The
+page rail and each plate's own progress number stay as the instruments.
+Plates run in book order.
+
+**Also** `house.css` gives `.back` and `.theme` a halo of the page's own
+ground, so the fixed chrome stays legible over whatever scrolls beneath it
+on every page.
+
+**Verified** 1440 and 390, no overflow, no console messages, 4× CPU throttle
+scripted scroll through the whole garden: median 8.3 ms, max 16.5 ms, none
+over 16.7 ms. Evidence: `04-before-*`, `04-after-*`.
+
+## Closing the audit, 2026-09-22 — 01, 07, the index, and 03 by day
+
+**01.** The legend's orange row was a fixed `.hot` on frames 2–4, so it read
+as "the frame you are on" whatever frame you were on. Each row now carries its
+frame range (`--a/--b`, plus `--a2/--b2` for "1 · 16", which wraps) and lights
+by the same clamp the frame labels use against the stepped `--i`: only the
+stride on screen is orange. Checked at frames 3, 8 and 16.
+
+**07.** The "Seismogram · simulated trace" label was absolutely placed over
+the SVG, so bursts in phases 3–4 wrote through it. `.seis` is now a two-row
+grid, label above, trace below, and the SVG clips its own row — no amplitude
+can reach the label. Phase 4 said "half past ten at night" over a daytime
+aerial of Kapoho Bay; its copy now describes what the photograph shows (June,
+the bay boiled away, 875 acres of new land).
+
+**Index.** The lede was a synthesized oblique of Melodrama (it has no italic);
+it is set roman. The "House curve" strip that recited the bezier to visitors
+is gone (a copy-voice leak). Card copy rewritten for the rebuilt 02–06, the 02
+card shows the night map, each card title is set in its exhibit's guest face,
+and the footer credits the frame faces plus "a guest face for every exhibit".
+
+**03 by day.** The fixed chrome was hard-set light for the storm photographs,
+so in the day palette it ghosted on the paper sections after the pass. It is
+now light over the photographs and takes the palette once the gauge — the
+stage's last band, set on the page's ground — rises under it: a registered
+`--paper` cuts 0 → 1 (`steps(1,jump-end)`) on the runway's view timeline,
+scoped to `body` with `timeline-scope`, range end
+`exit calc(100% - 29px - var(--gh))`. Colours mix from `--paper`, so hover
+still works (animating `color` itself would override `:hover`). The animation
+sits on the two chrome elements, not on `body` — an inherited custom property
+animated on `body` would restyle the whole page. `--gh` moved to `:root` so the
+chrome can read it. Measured: the cut lands with the gauge's top at 29 px, at
+1440 (gauge 135 px) and 390 (gauge 188 px), in both palettes.
+
+**Regression sweep** after the shared `house.css` change: index and all seven
+at 1440 and 390, scrolled end to end — no console messages, no horizontal
+overflow, no broken or stalled images. Evidence: `07-after-*`,
+`01-after-legend-1440`, `index-after-1440`, `03-before/after-day-chrome-1440`.

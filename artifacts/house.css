@@ -1,0 +1,43 @@
+/* House tokens. Night is the house; day is the same hues re-set for paper.
+   Pages consume the tokens and never write a colour of their own.
+   Terra marks what is active or what to look at. Indigo is for numbers the
+   page measures live, and nothing else. */
+:root{
+  color-scheme:dark;
+  --ground:#0B0A09; --raise:#131110; --lift:#1A1715;
+  --ink:#F2EDE5; --mid:#B4ABA0; --dim:#7E766D;
+  --accent:#D4673F; --indigo:#6E86B8;
+  --line:color-mix(in srgb,var(--ink) 13%,transparent);
+  --settle:cubic-bezier(.16,.84,.24,1);
+  --display:'Melodrama',Georgia,serif;
+  --sans:'Switzer',-apple-system,system-ui,sans-serif;
+  --mono:'Geist Mono Variable',ui-monospace,SFMono-Regular,monospace;
+}
+:root[data-theme="day"]{
+  color-scheme:light;
+  --ground:#F4F0E9; --raise:#ECE7DF; --lift:#E5DFD6;
+  --ink:#1D1814; --mid:#585149; --dim:#7C756C;
+  --accent:#BA4E24; --indigo:#49649F;
+}
+
+/* the switch */
+.theme{position:fixed;top:19px;right:clamp(16px,4vw,40px);z-index:90;
+  display:inline-flex;align-items:center;gap:9px;padding:4px 0;margin:0;
+  background:none;border:0;cursor:pointer;color:var(--dim);
+  font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;
+  transition:color .35s var(--settle)}
+.theme:hover,.theme:focus-visible{color:var(--ink);outline:none}
+.theme i{width:11px;height:11px;border-radius:50%;border:1px solid currentColor;
+  background:linear-gradient(90deg,currentColor 50%,transparent 50%)}
+:root[data-theme="day"] .theme i{background:linear-gradient(270deg,currentColor 50%,transparent 50%)}
+.theme[data-inline]{position:static}
+/* the fixed chrome stays legible over whatever scrolls beneath it: a halo of
+   the page's own ground, not a bar */
+.theme,.back{text-shadow:0 1px 12px var(--ground),0 0 3px var(--ground)}
+
+/* the swap is one cross-fade of the whole page, on the house curve */
+::view-transition-old(root),::view-transition-new(root){
+  animation-duration:.55s;animation-timing-function:var(--settle)}
+@media (prefers-reduced-motion:reduce){
+  ::view-transition-old(root),::view-transition-new(root){animation:none}
+}

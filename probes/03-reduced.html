@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Florence — Mocubix</title>
+<meta name="description" content="Three minutes over Hurricane Florence from the space station. Where you are on the page decides what you see; how fast you move is read on the scale that measures hurricanes.">
+
+<link rel="preconnect" href="https://api.fontshare.com">
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="preconnect" href="https://thumb.wikimedia.org">
+<!-- One request per family. A combined f[] request silently delivers only the first. -->
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f%5B%5D=zodiak@400,401&display=swap">
+<!-- Zodiak: sharp, fast letterforms with a true italic for a page about velocity. -->
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f%5B%5D=switzer@400,500,600&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource-variable/geist-mono/index.css">
+<link rel="stylesheet" href="../artifacts/house.css">
+<script src="../artifacts/house.js"></script>
+
+<style>
+:root{--display:'Zodiak',Georgia,serif} /* guest display face for this exhibit */
+@property --ph{syntax:'<integer>';inherits:true;initial-value:0}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ground);color:var(--ink);font:15px/1.55 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{display:block}
+h1,h2,p,figure,dl,dd{margin:0}
+h1,h2{font-weight:400}
+.back{position:fixed;top:22px;left:clamp(16px,4vw,40px);z-index:80;font-family:var(--mono);font-size:10px;
+  letter-spacing:.14em;text-transform:uppercase;color:#E9E4DC;text-shadow:0 1px 10px rgb(0 0 0 / .6)}
+.theme{color:#E9E4DC;text-shadow:0 1px 10px rgb(0 0 0 / .6)}
+
+/* ── the pass ──────────────────────────────────────────────────
+   Position walks the three minutes the station spent over the storm:
+   0–16% on the horizon, 16–33% straight down, 33–100% the eye through a
+   long lens — two thirds of the pin, so a hard throw has room to land.
+   Velocity is a separate signal, read by the gauge and, over the eye,
+   turning the storm. */
+.runway{--pin:7200px;--pad:clamp(20px,5vw,72px);position:relative;height:calc(100svh + var(--pin));view-timeline:--run block}
+.stage{position:sticky;top:0;height:100svh;overflow:clip;background:#000;
+  animation:phase steps(3,jump-none) both;animation-timeline:--run;animation-range:contain 0% contain 49.5%}
+@keyframes phase{from{--ph:0}to{--ph:2}}
+.shot{position:absolute;inset:0;overflow:hidden}
+.shot > img{width:100%;height:100%;object-fit:cover}
+.s1 > img{object-position:55% 30%;transform-origin:55% 24%;animation:push1 linear both;animation-timeline:--run;animation-range:contain 0% contain 19%}
+@keyframes push1{to{scale:1.1}}
+.s2{opacity:0;animation:in linear both,out linear forwards;animation-timeline:--run,--run;animation-range:contain 13% contain 19%,contain 30% contain 36%}
+.s2 > img{object-position:54% 44%;transform-origin:54% 44%;animation:push2 linear both;animation-timeline:--run;animation-range:contain 13% contain 36%}
+@keyframes push2{from{scale:1}to{scale:1.22}}
+.s3{opacity:0;animation:in linear both;animation-timeline:--run;animation-range:contain 30% contain 36%}
+@keyframes in{from{opacity:0}to{opacity:1}}
+@keyframes out{from{opacity:1}to{opacity:0}}
+/* the eye sits at the centre of a square as wide as the screen's diagonal, so
+   it can turn any distance without showing an edge */
+.spin{position:absolute;left:50%;top:50%;width:hypot(100vw,100svh);aspect-ratio:1;translate:-50% -50%;overflow:hidden;
+  rotate:var(--a,0deg);will-change:rotate}
+.spin img{position:absolute;width:187%;max-width:none;height:auto;left:-57.2%;top:0;
+  animation:arrive linear both;animation-timeline:--run;animation-range:contain 30% contain 44%}
+@keyframes arrive{from{scale:1.18}to{scale:1}}
+.s3 .spin img{transform-origin:57.2% 40%}
+.shade{position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(180deg,rgb(0 0 0 / .42),rgb(0 0 0 / 0) 26%,rgb(0 0 0 / 0) 58%,rgb(0 0 0 / .55))}
+
+/* the label, on the black above the horizon */
+.title{position:absolute;top:clamp(76px,11vh,110px);left:var(--pad);max-width:min(620px,50vw);color:#F4F0EA;
+  animation:leave linear both;animation-timeline:--run;animation-range:contain 5% contain 11%}
+@keyframes leave{to{opacity:0;translate:0 -24px}}
+/* the title carries its own shade and takes it away when it goes */
+.title::before{content:'';position:absolute;z-index:-1;left:calc(-1 * var(--pad) - 40px);top:-140px;width:calc(100% + var(--pad) + 360px);height:calc(100% + 300px);
+  background:radial-gradient(closest-side at 38% 52%,rgb(0 0 0 / .66),rgb(0 0 0 / .42) 55%,rgb(0 0 0 / 0));pointer-events:none}
+.title{isolation:isolate}
+.eyebrow{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#C9C2B8;margin-bottom:16px}
+h1{font-family:var(--display);font-size:clamp(56px,8.4vw,128px);line-height:.88;letter-spacing:-.025em}
+h1 em{font-style:italic;color:var(--accent)}
+.lede{font-size:clamp(14px,1.25vw,17px);color:#D8D2C8;max-width:44ch;margin-top:20px;text-wrap:pretty}
+.lede b{color:#fff;font-weight:500}
+
+/* what you are looking at, by position */
+.stack{display:grid}
+.stack > span{grid-area:1/1;opacity:clamp(0,1 - max(var(--k) - var(--ph),var(--ph) - var(--k)),1)}
+.when{position:absolute;left:var(--pad);bottom:calc(var(--gh) + 22px);font-family:var(--mono);font-size:10px;letter-spacing:.16em;
+  text-transform:uppercase;color:#E9E4DC;text-shadow:0 1px 12px rgb(0 0 0 / .7)}
+.when b{font-weight:400;color:#fff;margin-right:.8em}
+
+/* ── the gauge: your velocity, on the hurricane scale ──────── */
+.gauge{--gh:clamp(118px,15vh,150px);--kt:0;--max:170;position:absolute;left:0;right:0;bottom:0;height:var(--gh);
+  display:grid;grid-template-columns:minmax(260px,1fr) minmax(0,2.3fr);gap:clamp(20px,3vw,56px);align-items:center;padding:0 var(--pad);
+  background:color-mix(in srgb,var(--ground) 84%,transparent);backdrop-filter:blur(14px);border-top:1px solid var(--line)}
+.stage{--gh:clamp(118px,15vh,150px)}
+.you{display:grid;grid-template-columns:auto 1fr;gap:4px 20px;align-items:end}
+.you .lab{grid-column:1/-1;font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim)}
+.cat{font-family:var(--display);font-style:italic;font-size:clamp(34px,3.4vw,52px);line-height:.9;letter-spacing:-.02em;color:var(--ink);white-space:nowrap}
+.cat.hot{color:var(--accent)}
+.nums{display:grid;gap:3px;font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim)}
+.nums b{font-weight:400;font-size:15px;letter-spacing:0;color:var(--indigo);font-variant-numeric:tabular-nums;text-transform:none;margin-right:6px}
+.scale{position:relative;height:74px}
+.bands{position:absolute;left:0;right:0;top:26px;height:10px;display:flex}
+.bands i{flex:none;height:100%;border-right:1px solid var(--ground)}
+.bands i:nth-child(1){width:calc(34 / 170 * 100%);background:color-mix(in srgb,var(--ink) 7%,transparent)}
+.bands i:nth-child(2){width:calc(30 / 170 * 100%);background:color-mix(in srgb,var(--ink) 14%,transparent)}
+.bands i:nth-child(3){width:calc(19 / 170 * 100%);background:color-mix(in srgb,var(--ink) 22%,transparent)}
+.bands i:nth-child(4){width:calc(13 / 170 * 100%);background:color-mix(in srgb,var(--ink) 30%,transparent)}
+.bands i:nth-child(5){width:calc(17 / 170 * 100%);background:color-mix(in srgb,var(--ink) 40%,transparent)}
+.bands i:nth-child(6){width:calc(24 / 170 * 100%);background:color-mix(in srgb,var(--ink) 52%,transparent)}
+.bands i:nth-child(7){flex:1;background:color-mix(in srgb,var(--ink) 66%,transparent);border:0}
+.ticks{position:absolute;left:0;right:0;top:42px;font-family:var(--mono);font-size:9px;letter-spacing:.08em;color:var(--dim)}
+.ticks span{position:absolute;translate:-50% 0;white-space:nowrap}
+.ticks span b{display:block;font-weight:400;color:var(--mid);letter-spacing:.12em;text-transform:uppercase;font-size:8.5px}
+.needle{position:absolute;top:14px;height:34px;width:2px;margin-left:-1px;background:var(--accent);
+  left:calc(min(var(--kt),var(--max)) / var(--max) * 100%)}
+.needle::before{content:'';position:absolute;top:-6px;left:50%;translate:-50% 0;border:5px solid transparent;border-top-color:var(--accent)}
+.flo{position:absolute;top:0;left:calc(113 / 170 * 100%);font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--mid);
+  white-space:nowrap;display:flex;align-items:center;gap:8px}
+.flo::before{content:'';width:1px;height:36px;background:var(--ink);position:absolute;left:0;top:10px}
+.flo span{padding-left:8px}
+.flo.met span{color:var(--ink)}
+
+/* ── the others ────────────────────────────────────────────── */
+.others{padding:clamp(60px,10vh,120px) var(--pad-o,clamp(20px,5vw,72px));border-top:1px solid var(--line)}
+.others .head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,46ch);gap:clamp(24px,4vw,72px);align-items:end}
+.others h2{font-family:var(--display);font-size:clamp(34px,4.6vw,66px);line-height:1;letter-spacing:-.02em}
+.others h2 em{font-style:italic;color:var(--accent)}
+.others .head p{color:var(--mid);text-wrap:pretty}
+.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(12px,2vw,24px);margin-top:clamp(32px,5vh,56px)}
+.grid figure{display:grid;gap:10px}
+.grid img{width:100%;height:auto;aspect-ratio:1;object-fit:cover;background:var(--lift)}
+.grid figcaption{font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;color:var(--dim);line-height:1.7}
+.grid figcaption b{display:block;font-family:var(--display);font-weight:400;font-size:20px;letter-spacing:-.02em;color:var(--ink);margin-bottom:2px}
+footer{padding:0 clamp(20px,5vw,72px) 70px;display:flex;flex-wrap:wrap;gap:12px 44px;justify-content:space-between;
+  font-family:var(--mono);font-size:10px;letter-spacing:.04em;color:var(--dim);line-height:1.8}
+
+@media (max-width:820px){
+  .runway{--pin:6000px}
+  .title{max-width:none;right:var(--pad)}
+  h1{font-size:clamp(52px,15vw,84px)}
+  .stage,.gauge{--gh:188px}
+  .gauge{grid-template-columns:1fr;gap:10px;align-content:center;padding-block:14px}
+  .scale{height:70px}
+  .flo span{display:none}
+  .ticks span b{display:none}
+  .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .others .head{grid-template-columns:1fr;gap:18px}
+}
+@media all{ /* forced for the probe */
+  .s1 > img,.s2 > img,.spin img{animation:none}
+  .s2{animation-timing-function:steps(1,jump-end),steps(1,jump-end);animation-range:contain 15.5% contain 16.5%,contain 32% contain 33%}
+  .s3{animation-timing-function:steps(1,jump-end);animation-range:contain 32% contain 33%}
+  .title{animation-timing-function:steps(1,jump-end);animation-range:contain 7% contain 8%}
+}
+</style>
+</head>
+<body>
+
+<a class="back" href="../artifacts/index.html">← Mocubix</a>
+
+<div class="runway">
+  <div class="stage">
+    <figure class="shot s1"><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ab/Dramatic_Views_of_Hurricane_Florence_from_the_International_Space_Station_From_9_12_%2842828606570%29.jpg/1280px-Dramatic_Views_of_Hurricane_Florence_from_the_International_Space_Station_From_9_12_%2842828606570%29.jpg" srcset="https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ab/Dramatic_Views_of_Hurricane_Florence_from_the_International_Space_Station_From_9_12_%2842828606570%29.jpg/960px-Dramatic_Views_of_Hurricane_Florence_from_the_International_Space_Station_From_9_12_%2842828606570%29.jpg 960w, https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ab/Dramatic_Views_of_Hurricane_Florence_from_the_International_Space_Station_From_9_12_%2842828606570%29.jpg/1280px-Dramatic_Views_of_Hurricane_Florence_from_the_International_Space_Station_From_9_12_%2842828606570%29.jpg 1280w, https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ab/Dramatic_Views_of_Hurricane_Florence_from_the_International_Space_Station_From_9_12_%2842828606570%29.jpg/1920px-Dramatic_Views_of_Hurricane_Florence_from_the_International_Space_Station_From_9_12_%2842828606570%29.jpg 1920w" sizes="(max-width:820px) 330vw, 112vw" width="5568" height="3712" alt="The station&#x27;s robotic arm over Hurricane Florence, the storm spread across the Atlantic to the horizon" decoding="async" loading="eager" fetchpriority="high"></figure>
+    <figure class="shot s2"><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/4/42/Dramatic_Views_of_Hurricane_Florence_from_the_International_Space_Station_From_9_12_%2842828604840%29.jpg/1280px-Dramatic_Views_of_Hurricane_Florence_from_the_International_Space_Station_From_9_12_%2842828604840%29.jpg" srcset="https://thumb.wikimedia.org/wikipedia/commons/thumb/4/42/Dramatic_Views_of_Hurricane_Florence_from_the_International_Space_Station_From_9_12_%2842828604840%29.jpg/960px-Dramatic_Views_of_Hurricane_Florence_from_the_International_Space_Station_From_9_12_%2842828604840%29.jpg 960w, https://thumb.wikimedia.org/wikipedia/commons/thumb/4/42/Dramatic_Views_of_Hurricane_Florence_from_the_International_Space_Station_From_9_12_%2842828604840%29.jpg/1280px-Dramatic_Views_of_Hurricane_Florence_from_the_International_Space_Station_From_9_12_%2842828604840%29.jpg 1280w, https://thumb.wikimedia.org/wikipedia/commons/thumb/4/42/Dramatic_Views_of_Hurricane_Florence_from_the_International_Space_Station_From_9_12_%2842828604840%29.jpg/1920px-Dramatic_Views_of_Hurricane_Florence_from_the_International_Space_Station_From_9_12_%2842828604840%29.jpg 1920w" sizes="(max-width:820px) 330vw, 125vw" width="5568" height="3712" alt="Looking straight down into Florence&#x27;s eyewall through the station window" decoding="async" loading="eager"></figure>
+    <figure class="shot s3"><div class="spin" id="spin"><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/9/99/Staring_down_a_hurricane_%2844636242351%29.jpg/1280px-Staring_down_a_hurricane_%2844636242351%29.jpg" srcset="https://thumb.wikimedia.org/wikipedia/commons/thumb/9/99/Staring_down_a_hurricane_%2844636242351%29.jpg/960px-Staring_down_a_hurricane_%2844636242351%29.jpg 960w, https://thumb.wikimedia.org/wikipedia/commons/thumb/9/99/Staring_down_a_hurricane_%2844636242351%29.jpg/1280px-Staring_down_a_hurricane_%2844636242351%29.jpg 1280w, https://thumb.wikimedia.org/wikipedia/commons/thumb/9/99/Staring_down_a_hurricane_%2844636242351%29.jpg/1920px-Staring_down_a_hurricane_%2844636242351%29.jpg 1920w, https://thumb.wikimedia.org/wikipedia/commons/thumb/9/99/Staring_down_a_hurricane_%2844636242351%29.jpg/3840px-Staring_down_a_hurricane_%2844636242351%29.jpg 3840w" sizes="(max-width:820px) 450vw, 225vw" width="5322" height="3558" alt="The eye of Hurricane Florence close up, a well of cloud open to the sea" decoding="async" loading="eager"></div></figure>
+    <div class="shade" aria-hidden="true"></div>
+
+    <header class="title">
+      <p class="eyebrow">Mocubix · Exhibit 03 · Hurricane Florence, 12 September 2018</p>
+      <h1>Throw the <em>page</em></h1>
+      <p class="lede">Three minutes over Hurricane Florence, photographed from the space station. Where you are on the page decides what you see. <b>How fast you move is a separate signal</b>, read on the scale that measures hurricanes: throw the page hard enough and you reach the Category 4 Florence was that morning.</p>
+    </header>
+
+    <p class="when stack" aria-live="off">
+      <span style="--k:0"><b>11:50 GMT</b>The station comes over the storm</span>
+      <span style="--k:1"><b>11:52 GMT</b>Straight down into the eyewall</span>
+      <span style="--k:2"><b>11:51 GMT</b>The eye, through Alexander Gerst's long lens. Now throw the page.</span>
+    </p>
+
+    <div class="gauge" id="gauge">
+      <div class="you">
+        <p class="lab">Your throw · 30 px a second to the knot</p>
+        <p class="cat" id="cat" aria-live="polite">Calm</p>
+        <p class="nums"><span><b id="px">0</b>px/s</span><span><b id="kt">0</b>knots</span></p>
+      </div>
+      <div class="scale" aria-hidden="true">
+        <p class="flo" id="flo"><span>Florence · 130 mph that morning</span></p>
+        <div class="bands"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        <p class="ticks">
+          <span style="left:0">0</span>
+          <span style="left:calc(34 / 170 * 100%)">34<b>Storm</b></span>
+          <span style="left:calc(64 / 170 * 100%)">64<b>Cat 1</b></span>
+          <span style="left:calc(83 / 170 * 100%)">83<b>2</b></span>
+          <span style="left:calc(96 / 170 * 100%)">96<b>3</b></span>
+          <span style="left:calc(113 / 170 * 100%)">113<b>4</b></span>
+          <span style="left:calc(137 / 170 * 100%)">137<b>5</b></span>
+        </p>
+        <i class="needle"></i>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="others">
+  <div class="head">
+    <h2>Position is a <em>where</em>. Velocity is a <em>how</em>.</h2>
+    <p>Everything else in this collection answers to where you are. This page also listens to how you are moving. It reacts at once and lets go slowly, so a trackpad's small jitters never register and a hard throw reads as momentum. Four more storms from the other side of the world, seen by NASA's MODIS cameras.</p>
+  </div>
+  <div class="grid">
+    <figure><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9b/Typhoon_Lingling_%28MODIS_2019-09-08%29.jpg/1280px-Typhoon_Lingling_%28MODIS_2019-09-08%29.jpg" srcset="https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9b/Typhoon_Lingling_%28MODIS_2019-09-08%29.jpg/960px-Typhoon_Lingling_%28MODIS_2019-09-08%29.jpg 960w, https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9b/Typhoon_Lingling_%28MODIS_2019-09-08%29.jpg/1280px-Typhoon_Lingling_%28MODIS_2019-09-08%29.jpg 1280w, https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9b/Typhoon_Lingling_%28MODIS_2019-09-08%29.jpg/1920px-Typhoon_Lingling_%28MODIS_2019-09-08%29.jpg 1920w" sizes="(max-width:820px) 50vw, 25vw" width="8105" height="6923" alt="Lingling" decoding="async" loading="lazy"><figcaption><b>Lingling</b>Western Pacific · 8 September 2019 · NASA MODIS</figcaption></figure>
+    <figure><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a5/Typhoon_Talim_Barrels_towards_China_%28MODIS%29.jpg/1280px-Typhoon_Talim_Barrels_towards_China_%28MODIS%29.jpg" srcset="https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a5/Typhoon_Talim_Barrels_towards_China_%28MODIS%29.jpg/960px-Typhoon_Talim_Barrels_towards_China_%28MODIS%29.jpg 960w, https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a5/Typhoon_Talim_Barrels_towards_China_%28MODIS%29.jpg/1280px-Typhoon_Talim_Barrels_towards_China_%28MODIS%29.jpg 1280w, https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a5/Typhoon_Talim_Barrels_towards_China_%28MODIS%29.jpg/1920px-Typhoon_Talim_Barrels_towards_China_%28MODIS%29.jpg 1920w" sizes="(max-width:820px) 50vw, 25vw" width="6951" height="6016" alt="Talim" decoding="async" loading="lazy"><figcaption><b>Talim</b>South China Sea · 17 July 2023 · NASA MODIS</figcaption></figure>
+    <figure><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/7/71/Typhoon_Yinxing_%28MODIS_2024-11-10%29.jpg/1280px-Typhoon_Yinxing_%28MODIS_2024-11-10%29.jpg" srcset="https://thumb.wikimedia.org/wikipedia/commons/thumb/7/71/Typhoon_Yinxing_%28MODIS_2024-11-10%29.jpg/960px-Typhoon_Yinxing_%28MODIS_2024-11-10%29.jpg 960w, https://thumb.wikimedia.org/wikipedia/commons/thumb/7/71/Typhoon_Yinxing_%28MODIS_2024-11-10%29.jpg/1280px-Typhoon_Yinxing_%28MODIS_2024-11-10%29.jpg 1280w, https://thumb.wikimedia.org/wikipedia/commons/thumb/7/71/Typhoon_Yinxing_%28MODIS_2024-11-10%29.jpg/1920px-Typhoon_Yinxing_%28MODIS_2024-11-10%29.jpg 1920w" sizes="(max-width:820px) 50vw, 25vw" width="6986" height="5305" alt="Yinxing" decoding="async" loading="lazy"><figcaption><b>Yinxing</b>Philippine Sea · 8 November 2024 · NASA MODIS</figcaption></figure>
+    <figure><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/6/69/Typhoon_Nesat_%28MODIS%29.jpg/1280px-Typhoon_Nesat_%28MODIS%29.jpg" srcset="https://thumb.wikimedia.org/wikipedia/commons/thumb/6/69/Typhoon_Nesat_%28MODIS%29.jpg/960px-Typhoon_Nesat_%28MODIS%29.jpg 960w, https://thumb.wikimedia.org/wikipedia/commons/thumb/6/69/Typhoon_Nesat_%28MODIS%29.jpg/1280px-Typhoon_Nesat_%28MODIS%29.jpg 1280w, https://thumb.wikimedia.org/wikipedia/commons/thumb/6/69/Typhoon_Nesat_%28MODIS%29.jpg/1920px-Typhoon_Nesat_%28MODIS%29.jpg 1920w" sizes="(max-width:820px) 50vw, 25vw" width="5824" height="5064" alt="Nesat" decoding="async" loading="lazy"><figcaption><b>Nesat</b>South China Sea · 16 October 2022 · NASA MODIS</figcaption></figure>
+  </div>
+</section>
+
+<footer>
+  <span>Florence — NASA Goddard, ISS external cameras, CC BY 2.0; the eye — ESA/Alexander Gerst, CC BY-SA 3.0 IGO. Typhoons — NASA Earth Observatory, MODIS, public domain.<br>Florence's wind is from NASA's caption for these photographs. Yours is your scroll.</span>
+  <span><a href="../artifacts/index.html">← All seven exhibits</a></span>
+</footer>
+
+<script>
+(() => {
+  /* Velocity, not position. Fast attack, slow release: a symmetric smooth
+     either lags the gesture or passes trackpad jitter straight through. */
+  const ATTACK = 40, RELEASE = 480;               /* time constants, ms */
+  const PX_PER_KT = 30, TURN = 0.6;               /* degrees a second of storm rotation per knot */
+  const MAX = 200 * PX_PER_KT;                    /* the reading tops out past Category 5 */
+  const gauge = document.getElementById('gauge'), spin = document.getElementById('spin');
+  const out = { px: document.getElementById('px'), kt: document.getElementById('kt'), cat: document.getElementById('cat'), flo: document.getElementById('flo') };
+  const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let y = scrollY, t = performance.now(), v = 0, a = 0, raf = 0, shownCat = '';
+
+  function category(kt){
+    return kt >= 137 ? 'Category 5' : kt >= 113 ? 'Category 4' : kt >= 96 ? 'Category 3' : kt >= 83 ? 'Category 2'
+         : kt >= 64 ? 'Category 1' : kt >= 34 ? 'Tropical storm' : 'Calm';
+  }
+  function frame(now){
+    const dt = Math.max(1, now - t), ny = scrollY, jump = Math.abs(ny - y);
+    /* a jump of more than a screen in one frame is a teleport — a key, a link — not a throw */
+    const target = jump > innerHeight ? v : Math.min(MAX, jump / dt * 1000);
+    y = ny; t = now;
+    v += (target - v) * (1 - Math.exp(-dt / (target > v ? ATTACK : RELEASE)));
+    if (v < 2) v = 0;
+    const kt = v / PX_PER_KT;
+    gauge.style.setProperty('--kt', kt.toFixed(1));
+    out.px.textContent = Math.round(v).toLocaleString('en');
+    out.kt.textContent = Math.round(kt);
+    const c = category(kt);
+    if (c !== shownCat){ shownCat = c; out.cat.textContent = c; out.cat.classList.toggle('hot', kt >= 64); out.flo.classList.toggle('met', kt >= 113); }
+    if (!still){ a -= kt * TURN * dt / 1000; spin.style.setProperty('--a', a.toFixed(2) + 'deg'); }   /* northern hemisphere: counter-clockwise */
+    raf = v > 0 ? requestAnimationFrame(frame) : 0;
+  }
+  addEventListener('scroll', () => { if (!raf){ t = performance.now(); raf = requestAnimationFrame(frame); } }, { passive: true });
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Font probe 3 — CJK and mono, corrected package names</title>
+
+<!-- CJK. The earlier failure was a wrong package name: the registry has
+     ...-serif-sc-vf, not ...-serif-cn-vf. -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cn-fontsource-source-han-serif-sc-vf/font.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cn-fontsource-lxgw-wen-kai-gb-screen/font.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cn-fontsource-smiley-sans-oblique-regular/font.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cn-fontsource-alimama-dong-fang-da-kai-regular/font.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cn-fontsource-xiaolai-sc-regular/font.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cn-fontsource-fontquan-xin-yi-ji-xiang-song-regular/font.css">
+
+<!-- Mono. JetBrains and Vercel faces — neither is a Google typeface. -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource-variable/jetbrains-mono/index.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource-variable/geist-mono/index.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/ibm-plex-mono/400.css">
+
+<style>
+body{background:#0E0D0C;color:#EDE8E0;margin:0;padding:26px;
+  font-family:ui-monospace,SFMono-Regular,monospace}
+h1{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#8A827A;font-weight:400;margin:0 0 8px}
+.row{border-top:1px solid rgba(237,232,224,.16);padding:13px 0}
+.name{font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:#C8613F;margin-bottom:6px}
+.cjk{font-size:33px;line-height:1.45;margin:0}
+.mono{font-size:22px;line-height:1.4;margin:0;letter-spacing:-.01em}
+</style>
+</head>
+<body>
+<h1>Font probe 3 — CJK + mono</h1>
+
+<div class="row"><div class="name">Source Han Serif SC 思源宋体</div>
+  <p class="cjk" style="font-family:'Source Han Serif SC VF','Source Han Serif SC',serif">观察、拆解、重建 —— 滚动即时间轴</p></div>
+
+<div class="row"><div class="name">LXGW WenKai GB 霞鹜文楷</div>
+  <p class="cjk" style="font-family:'LXGW WenKai GB Screen','LXGW WenKai',serif">观察、拆解、重建 —— 滚动即时间轴</p></div>
+
+<div class="row"><div class="name">Smiley Sans 得意黑</div>
+  <p class="cjk" style="font-family:'Smiley Sans Oblique','Smiley Sans',sans-serif">观察、拆解、重建 —— 滚动即时间轴</p></div>
+
+<div class="row"><div class="name">Alimama DongFangDaKai 东方大楷</div>
+  <p class="cjk" style="font-family:'Alimama DongFangDaKai',serif">观察、拆解、重建 —— 滚动即时间轴</p></div>
+
+<div class="row"><div class="name">Xiaolai SC 小赖字体</div>
+  <p class="cjk" style="font-family:'Xiaolai SC',serif">观察、拆解、重建 —— 滚动即时间轴</p></div>
+
+<div class="row"><div class="name">Xin Yi Ji Xiang Song 新艺吉祥宋</div>
+  <p class="cjk" style="font-family:'Fontquan XinYiJiXiangSong',serif">观察、拆解、重建 —— 滚动即时间轴</p></div>
+
+<div class="row"><div class="name">系统回退基线 (serif) — reference</div>
+  <p class="cjk" style="font-family:serif">观察、拆解、重建 —— 滚动即时间轴</p></div>
+
+<div class="row"><div class="name">JetBrains Mono Variable</div>
+  <p class="mono" style="font-family:'JetBrains Mono Variable',monospace">animation-timeline: view(); 0.16 0.84 0.24 1</p></div>
+
+<div class="row"><div class="name">Geist Mono Variable — Vercel</div>
+  <p class="mono" style="font-family:'Geist Mono Variable',monospace">animation-timeline: view(); 0.16 0.84 0.24 1</p></div>
+
+<div class="row"><div class="name">IBM Plex Mono</div>
+  <p class="mono" style="font-family:'IBM Plex Mono',monospace">animation-timeline: view(); 0.16 0.84 0.24 1</p></div>
+
+<div class="row"><div class="name">系统回退基线 (monospace) — reference</div>
+  <p class="mono" style="font-family:monospace">animation-timeline: view(); 0.16 0.84 0.24 1</p></div>
+
+<script>
+window.probe = async function(){
+  await document.fonts.ready;
+  var fams = {};
+  document.fonts.forEach(function(f){
+    var e = fams[f.family] || (fams[f.family] = { faces: 0, loaded: 0 });
+    e.faces++;
+    if (f.status === 'loaded') e.loaded++;
+  });
+  /* Latin advance width does separate mono faces from the fallback,
+     unlike CJK where every ideograph is 1em in every face. */
+  function w(family){
+    var s = document.createElement('span');
+    s.textContent = 'animation-timeline';
+    s.style.cssText = 'position:absolute;visibility:hidden;white-space:nowrap;font-size:60px;font-family:' + family;
+    document.body.appendChild(s);
+    var r = Math.round(s.getBoundingClientRect().width);
+    s.remove();
+    return r;
+  }
+  return {
+    families: fams,
+    monoWidths: {
+      fallback: w('monospace'),
+      jetbrains: w('"JetBrains Mono Variable", monospace'),
+      geist: w('"Geist Mono Variable", monospace'),
+      plex: w('"IBM Plex Mono", monospace')
+    }
+  };
+};
+</script>
+</body>
+</html>

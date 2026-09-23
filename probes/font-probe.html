@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Font source probe — non-Google</title>
+
+<!-- Fontshare (Indian Type Foundry) — free for commercial use, foundry-grade -->
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600&f[]=satoshi@400,500,700&f[]=general-sans@400,500&f[]=cabinet-grotesk@400,800&f[]=zodiak@400&f[]=melodrama@400&f[]=sentient@400&f[]=erode@400&display=swap">
+
+<!-- LXGW WenKai 霞鹜文楷 — open source CJK, npm via jsDelivr -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/style.css">
+
+<!-- Source Han Serif via cdnjs style package (Adobe, SIL OFL — not Google) -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cn-fontsource-source-han-serif-cn-vf/font.css">
+
+<style>
+body{background:#0E0D0C;color:#EDE8E0;margin:0;padding:28px;
+  font-family:ui-monospace,SFMono-Regular,monospace}
+h1{font-size:14px;letter-spacing:.14em;text-transform:uppercase;color:#8A827A;font-weight:400}
+.row{border-top:1px solid rgba(237,232,224,.16);padding:14px 0}
+.name{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#C8613F;
+  font-family:ui-monospace,monospace;margin-bottom:8px}
+.spec{font-size:34px;line-height:1.15;margin:0}
+.cjk{font-size:30px;line-height:1.5;margin:0}
+pre{font-size:11px;color:#8A827A;white-space:pre-wrap;line-height:1.7}
+</style>
+</head>
+<body>
+<h1>Non-Google font source probe</h1>
+
+<div class="row"><div class="name">Clash Display — Fontshare</div>
+  <p class="spec" style="font-family:'Clash Display',serif">Frontier typography, 2027 &amp; beyond</p></div>
+
+<div class="row"><div class="name">Zodiak — Fontshare</div>
+  <p class="spec" style="font-family:'Zodiak',serif">Frontier typography, 2027 &amp; beyond</p></div>
+
+<div class="row"><div class="name">Melodrama — Fontshare</div>
+  <p class="spec" style="font-family:'Melodrama',serif">Frontier typography, 2027 &amp; beyond</p></div>
+
+<div class="row"><div class="name">Sentient — Fontshare</div>
+  <p class="spec" style="font-family:'Sentient',serif">Frontier typography, 2027 &amp; beyond</p></div>
+
+<div class="row"><div class="name">Erode — Fontshare</div>
+  <p class="spec" style="font-family:'Erode',serif">Frontier typography, 2027 &amp; beyond</p></div>
+
+<div class="row"><div class="name">Cabinet Grotesk — Fontshare</div>
+  <p class="spec" style="font-family:'Cabinet Grotesk',sans-serif">Frontier typography, 2027</p></div>
+
+<div class="row"><div class="name">Satoshi — Fontshare</div>
+  <p class="spec" style="font-family:'Satoshi',sans-serif">Frontier typography, 2027</p></div>
+
+<div class="row"><div class="name">General Sans — Fontshare</div>
+  <p class="spec" style="font-family:'General Sans',sans-serif">Frontier typography, 2027</p></div>
+
+<div class="row"><div class="name">LXGW WenKai 霞鹜文楷 — jsDelivr npm</div>
+  <p class="cjk" style="font-family:'LXGW WenKai',serif">字体、排版、配色、动效必须极致优雅</p></div>
+
+<div class="row"><div class="name">Source Han Serif 思源宋体 — jsDelivr npm</div>
+  <p class="cjk" style="font-family:'Source Han Serif CN VF','Source Han Serif CN',serif">字体、排版、配色、动效必须极致优雅</p></div>
+
+<pre id="out">measuring…</pre>
+
+<script>
+/* document.fonts.check() only reports faces the browser has actually loaded.
+   Width comparison against a known fallback is the second, harder proof. */
+function widthOf(family, text){
+  var s = document.createElement('span');
+  s.textContent = text;
+  s.style.cssText = 'position:absolute;visibility:hidden;white-space:nowrap;font-size:80px;font-family:' + family;
+  document.body.appendChild(s);
+  var w = s.getBoundingClientRect().width;
+  s.remove();
+  return Math.round(w);
+}
+window.probe = async function(){
+  await document.fonts.ready;
+  var latin = ['Clash Display','Zodiak','Melodrama','Sentient','Erode','Cabinet Grotesk','Satoshi','General Sans'];
+  var cjk = ['LXGW WenKai','Source Han Serif CN VF','Source Han Serif CN'];
+  var res = { loadedFaces: document.fonts.size, latin: {}, cjk: {} };
+  var baseLatin = widthOf('monospace', 'Frontier typography');
+  var baseCjk = widthOf('monospace', '字体排版配色');
+  latin.forEach(function(f){
+    res.latin[f] = {
+      check: document.fonts.check('80px "' + f + '"'),
+      width: widthOf('"' + f + '", monospace', 'Frontier typography'),
+      fallbackWidth: baseLatin
+    };
+  });
+  cjk.forEach(function(f){
+    res.cjk[f] = {
+      check: document.fonts.check('80px "' + f + '"'),
+      width: widthOf('"' + f + '", monospace', '字体排版配色'),
+      fallbackWidth: baseCjk
+    };
+  });
+  document.getElementById('out').textContent = JSON.stringify(res, null, 1);
+  return res;
+};
+</script>
+</body>
+</html>

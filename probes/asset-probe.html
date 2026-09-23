@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><title>Asset source probe</title>
+<style>body{font-family:monospace;background:#111;color:#eee;padding:20px}
+img{height:90px;display:block;border:1px solid #444;margin:4px 0}
+div{margin-bottom:14px}</style></head>
+<body>
+<h1>Asset source probe</h1>
+<div id="out">pending</div>
+
+<div>AIC IIIF: <span id="s-aic">pending</span>
+<img id="i-aic" src="https://www.artic.edu/iiif/2/b3974542-b9b4-7568-fc4b-966738f61d78/full/843,/0/default.jpg" alt="aic"></div>
+
+<div>Met CDN: <span id="s-met">pending</span>
+<img id="i-met" src="https://images.metmuseum.org/CRDImages/as/original/DP130155.jpg" alt="met"></div>
+
+<div>Wikimedia: <span id="s-wm">pending</span>
+<img id="i-wm" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Tsunami_by_hokusai_19th_century.jpg/1280px-Tsunami_by_hokusai_19th_century.jpg" alt="wm"></div>
+
+<div>Picsum: <span id="s-pic">pending</span>
+<img id="i-pic" src="https://picsum.photos/id/1015/1200/800" alt="pic"></div>
+
+<script>
+var results = {};
+[['aic','i-aic','s-aic'],['met','i-met','s-met'],['wm','i-wm','s-wm'],['pic','i-pic','s-pic']].forEach(function(t){
+  var img = document.getElementById(t[1]), span = document.getElementById(t[2]);
+  function done(state){
+    results[t[0]] = state + ' ' + img.naturalWidth + 'x' + img.naturalHeight;
+    span.textContent = results[t[0]];
+    document.getElementById('out').textContent = JSON.stringify(results);
+  }
+  img.addEventListener('load', function(){ done('OK'); });
+  img.addEventListener('error', function(){ done('FAIL'); });
+  if (img.complete) done(img.naturalWidth ? 'OK' : 'FAIL');
+});
+/* Canvas readback test: proves whether the CDN sends Access-Control-Allow-Origin,
+   which decides if we can sample pixels for palette extraction. */
+window.corsTest = function(id){
+  var img = document.getElementById(id);
+  try {
+    var c = document.createElement('canvas');
+    c.width = c.height = 8;
+    c.getContext('2d').drawImage(img, 0, 0, 8, 8);
+    c.getContext('2d').getImageData(0, 0, 1, 1);
+    return 'canvas-readable';
+  } catch (e) { return 'tainted: ' + e.name; }
+};
+</script>
+</body>
+</html>

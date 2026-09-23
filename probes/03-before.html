@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Florence — Mocubix</title>
+<meta name="description" content="Hurricane Florence from the International Space Station. The storm listens to how fast you scroll, not where you are: throw the page and it spins up.">
+
+<link rel="preconnect" href="https://api.fontshare.com">
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="preconnect" href="https://upload.wikimedia.org">
+<!-- One request per family. A combined f[] request silently delivers only the first. -->
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f%5B%5D=zodiak@400,401&display=swap">
+<!-- Zodiak: sharp, fast letterforms with a true italic for a page about velocity. -->
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f%5B%5D=switzer@400,500,600&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource-variable/geist-mono/index.css">
+<link rel="stylesheet" href="../artifacts/house.css">
+<script src="../artifacts/house.js"></script>
+
+<style>
+:root{--display:'Zodiak',Georgia,serif} /* guest display face for this exhibit */
+:root{--v:0}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.55;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{display:block}
+h1,h2,h3{font-weight:400;margin:0}
+.back{position:fixed;top:22px;left:clamp(16px,4vw,40px);z-index:80;font-family:var(--mono);font-size:10px;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--dim)}
+.back:hover{color:var(--ink)}
+
+/* ── the storm, pinned ─────────────────────────────────────── */
+.runway{height:520vh;position:relative}
+.stage{position:sticky;top:0;height:100svh;overflow:clip;isolation:isolate}
+.sky{position:absolute;inset:0;z-index:-2;overflow:hidden}
+.sky img{width:100%;height:100%;object-fit:cover;object-position:62% 50%;
+  transform:scale(calc(1.06 + var(--v) * .08));transition:transform .5s var(--settle);filter:saturate(.75)}
+.sky::after{content:'';position:absolute;inset:0;background:
+  linear-gradient(90deg,color-mix(in srgb,var(--ground) 82%,transparent) 0%,color-mix(in srgb,var(--ground) 55%,transparent) 32%,transparent 58%),
+  linear-gradient(180deg,color-mix(in srgb,var(--ground) 70%,transparent) 0%,transparent 24%),
+  linear-gradient(0deg,color-mix(in srgb,var(--ground) 75%,transparent) 0%,transparent 30%),
+  radial-gradient(ellipse at 62% 52%,transparent 22%,color-mix(in srgb,var(--ground) 45%,transparent) 60%,var(--ground) 100%)}
+/* the eye: a circular crop of the same photograph, turning */
+.eye{position:absolute;left:62%;top:52%;width:min(72svh,72vw);aspect-ratio:1;translate:-50% -50%;border-radius:50%;overflow:hidden;
+  z-index:-1;box-shadow:0 0 0 1px color-mix(in srgb,var(--ink) 25%,transparent),0 40px 120px -20px rgba(0,0,0,.7);
+  transform:rotate(var(--a,0deg)) scale(calc(1 + var(--v) * .1))}
+.eye img{width:100%;height:100%;object-fit:cover;object-position:62% 50%;transform:scale(1.9)}
+
+.wrap{position:absolute;inset:0;display:grid;grid-template-rows:auto 1fr auto;padding:clamp(60px,9vh,88px) clamp(20px,5vw,72px) clamp(24px,4vh,40px)}
+.eyebrow{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--dim);margin:0 0 14px}
+h1{font-family:var(--display);font-size:clamp(56px,10vw,150px);line-height:.88;letter-spacing:-.025em;max-width:7ch}
+h1 em{font-style:italic;color:var(--accent)}
+.lede{font-size:clamp(14px,1.6vw,18px);color:var(--mid);max-width:40ch;margin:18px 0 0;text-wrap:pretty}
+.lede b{color:var(--ink);font-weight:500}
+
+.hud{align-self:end;display:flex;flex-wrap:wrap;gap:14px 40px;align-items:end;justify-content:space-between}
+.reads{display:flex;flex-wrap:wrap;gap:12px 34px}
+.reads div{display:grid;gap:5px}
+.reads dt{font-family:var(--mono);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim)}
+.reads dd{margin:0;font-family:var(--mono);font-size:clamp(26px,4vw,54px);line-height:1;letter-spacing:-.03em;color:var(--indigo);font-variant-numeric:tabular-nums}
+.reads dd small{font-size:.38em;color:var(--dim);margin-left:6px;letter-spacing:.06em}
+.cat{display:grid;gap:8px;justify-items:end}
+.cat b{font-family:var(--display);font-style:italic;font-weight:400;font-size:clamp(54px,9vw,140px);line-height:.8;letter-spacing:-.03em;color:var(--accent);
+  transition:transform .35s var(--settle)}
+.cat.up b{transform:scale(1.08)}
+.cat span{font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim)}
+.gust{height:3px;width:min(46vw,420px);background:color-mix(in srgb,var(--ink) 14%,transparent);position:relative;justify-self:end}
+.gust i{position:absolute;inset:0;background:var(--accent);transform-origin:0 50%;transform:scaleX(var(--v));display:block}
+.hint{position:absolute;right:clamp(20px,5vw,72px);top:clamp(60px,9vh,88px);font-family:var(--mono);font-size:10px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--mid);text-align:right;line-height:1.7;max-width:22ch;text-shadow:0 1px 12px var(--ground)}
+
+/* ── the others ────────────────────────────────────────────── */
+.others{padding:clamp(50px,9vh,110px) clamp(20px,5vw,72px);border-top:1px solid var(--line)}
+.others h2{font-family:var(--display);font-size:clamp(32px,4.6vw,64px);line-height:1.02;letter-spacing:-.02em;max-width:16ch}
+.others h2 em{font-style:italic;color:var(--accent)}
+.others > p{color:var(--mid);max-width:50ch;margin:16px 0 0;text-wrap:pretty}
+.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(12px,2vw,24px);margin-top:clamp(28px,4vh,44px)}
+.grid figure{margin:0;display:grid;gap:10px}
+.grid img{width:100%;height:auto;aspect-ratio:1;object-fit:cover;background:var(--lift);filter:saturate(.8)}
+.grid figcaption{font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;color:var(--dim);line-height:1.7}
+.grid figcaption b{display:block;font-family:var(--display);font-weight:400;font-size:20px;letter-spacing:-.02em;color:var(--ink);margin-bottom:2px}
+footer{padding:0 clamp(20px,5vw,72px) 70px;display:flex;flex-wrap:wrap;gap:12px 44px;justify-content:space-between;
+  font-family:var(--mono);font-size:10px;letter-spacing:.04em;color:var(--dim);line-height:1.8}
+
+@media (max-width:820px){
+  .runway{height:420vh}
+  .eye{left:50%;top:44%;width:min(80vw,60svh)}
+  .sky img{object-position:62% 40%}
+  h1{font-size:clamp(56px,17vw,90px)}
+  .lede{display:none}
+  .hint{display:none}
+  .reads dd{font-size:26px}
+  .cat b{font-size:64px}
+  .gust{width:60vw}
+  .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (prefers-reduced-motion:reduce){
+  .sky img,.eye{transition:none;transform:none}
+}
+</style>
+</head>
+<body>
+
+<a class="back" href="../artifacts/index.html">← Mocubix</a>
+
+<div class="runway">
+  <div class="stage">
+    <div class="sky" aria-hidden="true"><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/4/41/Dramatic_Views_of_Hurricane_Florence_from_the_International_Space_Station_From_9_12_%2842828604100%29.jpg/1280px-Dramatic_Views_of_Hurricane_Florence_from_the_International_Space_Station_From_9_12_%2842828604100%29.jpg" srcset="https://thumb.wikimedia.org/wikipedia/commons/thumb/4/41/Dramatic_Views_of_Hurricane_Florence_from_the_International_Space_Station_From_9_12_%2842828604100%29.jpg/960px-Dramatic_Views_of_Hurricane_Florence_from_the_International_Space_Station_From_9_12_%2842828604100%29.jpg 960w, https://thumb.wikimedia.org/wikipedia/commons/thumb/4/41/Dramatic_Views_of_Hurricane_Florence_from_the_International_Space_Station_From_9_12_%2842828604100%29.jpg/1280px-Dramatic_Views_of_Hurricane_Florence_from_the_International_Space_Station_From_9_12_%2842828604100%29.jpg 1280w, https://thumb.wikimedia.org/wikipedia/commons/thumb/4/41/Dramatic_Views_of_Hurricane_Florence_from_the_International_Space_Station_From_9_12_%2842828604100%29.jpg/1920px-Dramatic_Views_of_Hurricane_Florence_from_the_International_Space_Station_From_9_12_%2842828604100%29.jpg 1920w" sizes="100vw" width="5568" height="3712" alt="Florence, the eye" decoding="async" loading="eager" fetchpriority="high"></div>
+    <div class="eye" id="eye" aria-hidden="true"><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/4/41/Dramatic_Views_of_Hurricane_Florence_from_the_International_Space_Station_From_9_12_%2842828604100%29.jpg/1280px-Dramatic_Views_of_Hurricane_Florence_from_the_International_Space_Station_From_9_12_%2842828604100%29.jpg" srcset="https://thumb.wikimedia.org/wikipedia/commons/thumb/4/41/Dramatic_Views_of_Hurricane_Florence_from_the_International_Space_Station_From_9_12_%2842828604100%29.jpg/960px-Dramatic_Views_of_Hurricane_Florence_from_the_International_Space_Station_From_9_12_%2842828604100%29.jpg 960w, https://thumb.wikimedia.org/wikipedia/commons/thumb/4/41/Dramatic_Views_of_Hurricane_Florence_from_the_International_Space_Station_From_9_12_%2842828604100%29.jpg/1280px-Dramatic_Views_of_Hurricane_Florence_from_the_International_Space_Station_From_9_12_%2842828604100%29.jpg 1280w, https://thumb.wikimedia.org/wikipedia/commons/thumb/4/41/Dramatic_Views_of_Hurricane_Florence_from_the_International_Space_Station_From_9_12_%2842828604100%29.jpg/1920px-Dramatic_Views_of_Hurricane_Florence_from_the_International_Space_Station_From_9_12_%2842828604100%29.jpg 1920w" sizes="80vh" width="5568" height="3712" alt="Florence, the eye" decoding="async" loading="eager"></div>
+
+    <div class="wrap">
+      <div>
+        <p class="eyebrow">Mocubix · Exhibit 03 · Hurricane Florence, 12 September 2018</p>
+        <h1>Throw the <em>page</em></h1>
+        <p class="lede">Position says where you are. <b>How fast you move is a signal of its own</b>, and this storm listens to it. Scroll gently and it turns. Throw the page and it spins up.</p>
+      </div>
+      <p class="hint">Photographed from the International Space Station at 400 km. The eye turns with your scroll velocity, not your position.</p>
+      <div class="hud">
+        <dl class="reads">
+          <div><dt>Sustained wind</dt><dd><span id="wind">45</span><small>kt</small></dd></div>
+          <div><dt>Pressure</dt><dd><span id="mb">990</span><small>mb</small></dd></div>
+          <div><dt>Velocity</dt><dd><span id="vel">0.00</span></dd></div>
+        </dl>
+        <div class="cat" id="cat"><span>Saffir–Simpson</span><b id="catOut">TS</b><div class="gust" aria-hidden="true"><i></i></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="others">
+  <h2>Position is a <em>where</em>. Velocity is a <em>how</em>.</h2>
+  <p>Every other page here answers to where you are. This one answers to how you are moving: it reacts at once and settles about six times more slowly, so a trackpad's small jitters never register and a hard throw reads as momentum. The same season, seen from orbit, below.</p>
+  <div class="grid">
+    <figure><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9b/Typhoon_Lingling_%28MODIS_2019-09-08%29.jpg/1280px-Typhoon_Lingling_%28MODIS_2019-09-08%29.jpg" srcset="https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9b/Typhoon_Lingling_%28MODIS_2019-09-08%29.jpg/960px-Typhoon_Lingling_%28MODIS_2019-09-08%29.jpg 960w, https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9b/Typhoon_Lingling_%28MODIS_2019-09-08%29.jpg/1280px-Typhoon_Lingling_%28MODIS_2019-09-08%29.jpg 1280w, https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9b/Typhoon_Lingling_%28MODIS_2019-09-08%29.jpg/1920px-Typhoon_Lingling_%28MODIS_2019-09-08%29.jpg 1920w" sizes="25vw" width="8105" height="6923" alt="Lingling" decoding="async" loading="lazy"><figcaption><b>Lingling</b>Western Pacific · 8 September 2019 · NASA MODIS</figcaption></figure>
+    <figure><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a5/Typhoon_Talim_Barrels_towards_China_%28MODIS%29.jpg/1280px-Typhoon_Talim_Barrels_towards_China_%28MODIS%29.jpg" srcset="https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a5/Typhoon_Talim_Barrels_towards_China_%28MODIS%29.jpg/960px-Typhoon_Talim_Barrels_towards_China_%28MODIS%29.jpg 960w, https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a5/Typhoon_Talim_Barrels_towards_China_%28MODIS%29.jpg/1280px-Typhoon_Talim_Barrels_towards_China_%28MODIS%29.jpg 1280w, https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a5/Typhoon_Talim_Barrels_towards_China_%28MODIS%29.jpg/1920px-Typhoon_Talim_Barrels_towards_China_%28MODIS%29.jpg 1920w" sizes="25vw" width="6951" height="6016" alt="Talim" decoding="async" loading="lazy"><figcaption><b>Talim</b>South China Sea · 17 July 2023 · NASA MODIS</figcaption></figure>
+    <figure><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/7/71/Typhoon_Yinxing_%28MODIS_2024-11-10%29.jpg/1280px-Typhoon_Yinxing_%28MODIS_2024-11-10%29.jpg" srcset="https://thumb.wikimedia.org/wikipedia/commons/thumb/7/71/Typhoon_Yinxing_%28MODIS_2024-11-10%29.jpg/960px-Typhoon_Yinxing_%28MODIS_2024-11-10%29.jpg 960w, https://thumb.wikimedia.org/wikipedia/commons/thumb/7/71/Typhoon_Yinxing_%28MODIS_2024-11-10%29.jpg/1280px-Typhoon_Yinxing_%28MODIS_2024-11-10%29.jpg 1280w, https://thumb.wikimedia.org/wikipedia/commons/thumb/7/71/Typhoon_Yinxing_%28MODIS_2024-11-10%29.jpg/1920px-Typhoon_Yinxing_%28MODIS_2024-11-10%29.jpg 1920w" sizes="25vw" width="6986" height="5305" alt="Yinxing" decoding="async" loading="lazy"><figcaption><b>Yinxing</b>Philippine Sea · 8 November 2024 · NASA MODIS</figcaption></figure>
+    <figure><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/6/69/Typhoon_Nesat_%28MODIS%29.jpg/1280px-Typhoon_Nesat_%28MODIS%29.jpg" srcset="https://thumb.wikimedia.org/wikipedia/commons/thumb/6/69/Typhoon_Nesat_%28MODIS%29.jpg/960px-Typhoon_Nesat_%28MODIS%29.jpg 960w, https://thumb.wikimedia.org/wikipedia/commons/thumb/6/69/Typhoon_Nesat_%28MODIS%29.jpg/1280px-Typhoon_Nesat_%28MODIS%29.jpg 1280w, https://thumb.wikimedia.org/wikipedia/commons/thumb/6/69/Typhoon_Nesat_%28MODIS%29.jpg/1920px-Typhoon_Nesat_%28MODIS%29.jpg 1920w" sizes="25vw" width="5824" height="5064" alt="Nesat" decoding="async" loading="lazy"><figcaption><b>Nesat</b>South China Sea · 16 October 2022 · NASA MODIS</figcaption></figure>
+  </div>
+</section>
+
+<footer>
+  <span>Florence — NASA Goddard Space Flight Center, ISS external cameras, CC BY 2.0. Typhoons — NASA Earth Observatory, MODIS, public domain.<br>Wind, pressure and category are driven by your scroll; they are not the storm's records.</span>
+  <span><a href="../artifacts/index.html">← All seven exhibits</a></span>
+</footer>
+
+<script>
+(function(){
+  var root = document.documentElement, eye = document.getElementById('eye');
+  var wind = document.getElementById('wind'), mb = document.getElementById('mb'), vel = document.getElementById('vel');
+  var cat = document.getElementById('cat'), catOut = document.getElementById('catOut');
+  var last = scrollY, v = 0, a = 0, raf = 0, lastCat = '';
+  /* Fast attack, slow release: a symmetric smooth either lags the gesture or passes jitter through. */
+  var ATTACK = 0.34, RELEASE = 0.05, SCALE = 90;
+  function category(kt){ return kt >= 137 ? '5' : kt >= 113 ? '4' : kt >= 96 ? '3' : kt >= 83 ? '2' : kt >= 64 ? '1' : 'TS'; }
+  function frame(){
+    var now = scrollY, target = Math.min(1, Math.abs(now - last) / SCALE); last = now;
+    v += (target - v) * (target > v ? ATTACK : RELEASE);
+    if (v < 0.0006) v = 0;
+    a += 0.12 + v * 4.2;
+    root.style.setProperty('--v', v.toFixed(4));
+    eye.style.setProperty('--a', (a % 360).toFixed(2) + 'deg');
+    var kt = 45 + v * 110;
+    wind.textContent = Math.round(kt); mb.textContent = Math.round(990 - v * 72); vel.textContent = v.toFixed(2);
+    var c = category(kt);
+    if (c !== lastCat){ lastCat = c; catOut.textContent = c; cat.classList.add('up'); setTimeout(function(){ cat.classList.remove('up'); }, 360); }
+    raf = requestAnimationFrame(frame);
+  }
+  raf = requestAnimationFrame(frame);
+})();
+</script>
+
+</body>
+</html>

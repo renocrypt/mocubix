@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Urformen — Mocubix</title>
+<meta name="description" content="Nine of Karl Blossfeldt's magnified plant photographs, each developing on its own clock as it passes. The page has no single beat.">
+
+<link rel="preconnect" href="https://api.fontshare.com">
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="preconnect" href="https://upload.wikimedia.org">
+<!-- One request per family. A combined f[] request silently delivers only the first. -->
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f%5B%5D=gambetta@400,401&display=swap">
+<!-- Gambetta: a warm old-style with a calligraphic italic for Blossfeldt's 1928 plates. -->
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f%5B%5D=switzer@400,500,600&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource-variable/geist-mono/index.css">
+<link rel="stylesheet" href="house.css">
+<script src="house.js"></script>
+
+<style>
+:root{--display:'Gambetta',Georgia,serif} /* guest display face for this exhibit */
+/* material — the prints' own paper, sampled from the Rijksmuseum scans. A plate
+   develops out of it the way a photogravure comes up in the bath. */
+.plate{--paper:#f6f2e3}
+/* each plate's own progress, as a number the page can print */
+@property --p { syntax: '<integer>'; inherits: true; initial-value: 0 }
+
+*{box-sizing:border-box}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.55;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{display:block}
+h1,h2{font-weight:400;margin:0}
+.back{position:fixed;top:22px;left:clamp(16px,4vw,40px);z-index:80;font-family:var(--mono);font-size:10px;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--dim)}
+.back:hover{color:var(--ink)}
+
+/* the page's one rail, for contrast with the plates' own clocks */
+.rail{position:fixed;inset:0 0 auto 0;height:2px;background:color-mix(in srgb,var(--ink) 20%,transparent);z-index:70;
+  transform-origin:0 50%;transform:scaleX(0);animation:grow linear both;animation-timeline:scroll(root)}
+@keyframes grow{to{transform:scaleX(1)}}
+
+.wrap{max-width:1320px;margin:0 auto;padding-inline:clamp(20px,5vw,72px)}
+
+header{min-height:88svh;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(24px,5vw,80px);align-items:end;
+  padding-block:clamp(90px,14vh,150px) clamp(30px,6vh,60px)}
+.eyebrow{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--dim);margin:0 0 20px}
+h1{font-family:var(--display);font-size:clamp(54px,7.8vw,116px);line-height:.92;letter-spacing:-.025em}
+h1 em{font-style:italic;color:var(--accent)}
+.lede{font-size:clamp(15px,1.7vw,19px);color:var(--mid);max-width:42ch;margin:0;text-wrap:pretty}
+.lede b{color:var(--ink);font-weight:500}
+.lede small{display:block;margin-top:18px;font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim)}
+.herofig{margin:0;position:relative;justify-self:end;width:min(100%,380px)}
+.herofig img{width:100%;height:auto;display:block}
+.herofig figcaption{margin-top:10px;font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim)}
+
+/* ── the garden: two columns, each plate on its own clock ──── */
+.garden{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(32px,6vh,84px) clamp(24px,6vw,110px);
+  padding-block:clamp(40px,8vh,100px) clamp(60px,14vh,160px);border-top:1px solid var(--line)}
+.plate{margin:0;display:grid;grid-template-columns:minmax(0,1fr) 26px;gap:16px;align-items:start;
+  view-timeline-name:--plate;view-timeline-axis:block;
+  --p:0;animation:count linear both;animation-timeline:--plate;animation-range:cover 0% cover 100%}
+.plate:nth-child(even){margin-top:clamp(40px,18vh,200px)}
+@keyframes count{to{--p:100}}
+.plate .art{grid-column:1;grid-row:1;position:relative;overflow:hidden;background:var(--paper)}
+.plate .art::after{content:'';position:absolute;inset:0;background:var(--paper);pointer-events:none;
+  animation:develop linear both;animation-timeline:--plate;animation-range:entry 0% cover 40%}
+@keyframes develop{from{opacity:.93}to{opacity:0}}
+.plate img{width:100%;height:auto;display:block;scale:1.04;transform-origin:50% 60%;
+  animation:settle linear both;animation-timeline:--plate;animation-range:entry 0% cover 45%}
+@keyframes settle{to{scale:1}}
+.plate figcaption{grid-column:1;grid-row:2;margin-top:14px;display:flex;justify-content:space-between;gap:16px;align-items:baseline;
+  opacity:0;transform:translateY(12px);animation:rise linear both;animation-timeline:--plate;animation-range:cover 12% cover 40%}
+@keyframes rise{to{opacity:1;transform:none}}
+.plate figcaption{flex-direction:column;align-items:stretch;gap:8px}
+.plate .sp{margin:0;display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 14px}
+.plate .sp i{font-family:var(--display);font-style:italic;font-size:clamp(21px,2.2vw,30px);letter-spacing:-.015em;line-height:1.1}
+.plate .sp span{font-size:13px;color:var(--mid)}
+.plate .meta{margin:0;display:flex;justify-content:space-between;gap:16px;font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--dim)}
+.plate .meta span:last-child{color:var(--indigo)}
+/* the plate's own meter and its own number */
+.plate .own{grid-column:2;grid-row:1;align-self:start;position:sticky;top:clamp(40vh,45vh,50vh);display:grid;gap:8px;justify-items:center}
+.plate .own i{width:2px;height:120px;background:color-mix(in srgb,var(--ink) 14%,transparent);position:relative;display:block}
+.plate .own i::after{content:'';position:absolute;inset:0;background:var(--accent);transform-origin:50% 0;transform:scaleY(0);
+  animation:fill linear both;animation-timeline:--plate;animation-range:cover 0% cover 100%}
+@keyframes fill{to{transform:scaleY(1)}}
+.plate .own b{font-family:var(--mono);font-weight:400;font-size:10px;color:var(--indigo);font-variant-numeric:tabular-nums;writing-mode:vertical-rl}
+.plate .own b::after{counter-reset:p var(--p);content:counter(p) '%'}
+
+.after{padding:clamp(50px,9vh,110px) 0 clamp(60px,10vh,120px);border-top:1px solid var(--line);
+  display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,5vw,80px);align-items:end}
+.after h2{font-family:var(--display);font-size:clamp(34px,5vw,72px);line-height:1;letter-spacing:-.02em}
+.after h2 em{font-style:italic;color:var(--accent)}
+.after p{margin:0;color:var(--mid);max-width:46ch;text-wrap:pretty}
+.after p b{color:var(--ink);font-weight:500}
+footer{padding-bottom:70px;display:flex;flex-wrap:wrap;gap:12px 44px;justify-content:space-between;
+  font-family:var(--mono);font-size:10px;letter-spacing:.04em;color:var(--dim);line-height:1.8}
+
+@media (max-width:820px){
+  header{grid-template-columns:1fr;min-height:0;padding-top:80px}
+  .herofig{display:none}
+  .garden{grid-template-columns:1fr;gap:clamp(40px,8vh,80px)}
+  .plate:nth-child(even){margin-top:0}
+  .plate{grid-template-columns:minmax(0,1fr) 22px}
+  .plate .own i{height:80px}
+  .after{grid-template-columns:1fr;gap:20px}
+}
+@media (prefers-reduced-motion:reduce){
+  .rail,.plate,.plate .art::after,.plate img,.plate figcaption,.plate .own i::after{animation:none}
+  .plate .art::after{opacity:0}.plate img{scale:1}.plate figcaption{opacity:1;transform:none}
+  .plate .own i::after{transform:scaleY(1)}
+}
+</style>
+</head>
+<body>
+
+<div class="rail" aria-hidden="true"></div>
+<a class="back" href="index.html">← Mocubix</a>
+
+<div class="wrap">
+
+<header>
+  <div>
+    <p class="eyebrow">Mocubix · Exhibit 04 · Karl Blossfeldt, Urformen der Kunst, 1928</p>
+    <h1>Every plant<br>on its own <em>clock</em></h1>
+    <p class="lede" style="margin-top:26px">Karl Blossfeldt built his own cameras to photograph plants enlarged up to thirty times, until a fern frond read as a bishop's crozier and a thistle as wrought iron. Nine of his plates, <b>each developing on its own clock</b> as it passes. The thin line at the top is the page's progress; the number beside each plate is that plate's own.<small>Scroll · no two prints arrive together</small></p>
+  </div>
+  <figure class="herofig"><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a9/Blossfeldt_-_Thorned_bulbous_plant%2C_84.XM.142.5.jpg/1280px-Blossfeldt_-_Thorned_bulbous_plant%2C_84.XM.142.5.jpg" srcset="https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a9/Blossfeldt_-_Thorned_bulbous_plant%2C_84.XM.142.5.jpg/960px-Blossfeldt_-_Thorned_bulbous_plant%2C_84.XM.142.5.jpg 960w, https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a9/Blossfeldt_-_Thorned_bulbous_plant%2C_84.XM.142.5.jpg/1280px-Blossfeldt_-_Thorned_bulbous_plant%2C_84.XM.142.5.jpg 1280w, https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a9/Blossfeldt_-_Thorned_bulbous_plant%2C_84.XM.142.5.jpg/1920px-Blossfeldt_-_Thorned_bulbous_plant%2C_84.XM.142.5.jpg 1920w" sizes="380px" width="4315" height="6203" alt="Thorned bulb" decoding="async" loading="eager" fetchpriority="high"><figcaption>Thorned bulbous plant · Getty Museum, public domain</figcaption></figure>
+</header>
+
+<section class="garden">
+  <figure class="plate"><div class="art"><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/2/25/Plantstudie_Urformen_der_Kunst_%28serietitel%29%2C_RP-F-2008-51-2170-22.jpg/1280px-Plantstudie_Urformen_der_Kunst_%28serietitel%29%2C_RP-F-2008-51-2170-22.jpg" srcset="https://thumb.wikimedia.org/wikipedia/commons/thumb/2/25/Plantstudie_Urformen_der_Kunst_%28serietitel%29%2C_RP-F-2008-51-2170-22.jpg/960px-Plantstudie_Urformen_der_Kunst_%28serietitel%29%2C_RP-F-2008-51-2170-22.jpg 960w, https://thumb.wikimedia.org/wikipedia/commons/thumb/2/25/Plantstudie_Urformen_der_Kunst_%28serietitel%29%2C_RP-F-2008-51-2170-22.jpg/1280px-Plantstudie_Urformen_der_Kunst_%28serietitel%29%2C_RP-F-2008-51-2170-22.jpg 1280w, https://thumb.wikimedia.org/wikipedia/commons/thumb/2/25/Plantstudie_Urformen_der_Kunst_%28serietitel%29%2C_RP-F-2008-51-2170-22.jpg/1920px-Plantstudie_Urformen_der_Kunst_%28serietitel%29%2C_RP-F-2008-51-2170-22.jpg 1920w" sizes="(max-width:820px) 90vw, 44vw" width="4228" height="5276" alt="Acer rufinerve, plate 22 of Urformen der Kunst, enlarged 10 times" decoding="async" loading="lazy" style="aspect-ratio:4228/5276"></div>
+    <figcaption><p class="sp"><i>Acer rufinerve</i><span>Maple · shoots</span></p><p class="meta"><span>Plate 22</span><span>Enlarged 10 times</span></p></figcaption>
+    <div class="own" aria-hidden="true"><i></i><b></b></div></figure>
+  <figure class="plate"><div class="art"><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cc/Plantstudie_Urformen_der_Kunst_%28serietitel%29%2C_RP-F-2008-51-2170-39.jpg/1280px-Plantstudie_Urformen_der_Kunst_%28serietitel%29%2C_RP-F-2008-51-2170-39.jpg" srcset="https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cc/Plantstudie_Urformen_der_Kunst_%28serietitel%29%2C_RP-F-2008-51-2170-39.jpg/960px-Plantstudie_Urformen_der_Kunst_%28serietitel%29%2C_RP-F-2008-51-2170-39.jpg 960w, https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cc/Plantstudie_Urformen_der_Kunst_%28serietitel%29%2C_RP-F-2008-51-2170-39.jpg/1280px-Plantstudie_Urformen_der_Kunst_%28serietitel%29%2C_RP-F-2008-51-2170-39.jpg 1280w, https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cc/Plantstudie_Urformen_der_Kunst_%28serietitel%29%2C_RP-F-2008-51-2170-39.jpg/1920px-Plantstudie_Urformen_der_Kunst_%28serietitel%29%2C_RP-F-2008-51-2170-39.jpg 1920w" sizes="(max-width:820px) 90vw, 44vw" width="4228" height="5244" alt="Verbena canadensis, plate 39 of Urformen der Kunst, enlarged 10 times" decoding="async" loading="lazy" style="aspect-ratio:4228/5244"></div>
+    <figcaption><p class="sp"><i>Verbena canadensis</i><span>Canadian vervain · a leaf</span></p><p class="meta"><span>Plate 39</span><span>Enlarged 10 times</span></p></figcaption>
+    <div class="own" aria-hidden="true"><i></i><b></b></div></figure>
+  <figure class="plate"><div class="art"><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/1/15/Plantstudie_Urformen_der_Kunst_%28serietitel%29%2C_RP-F-2008-51-2170-46.jpg/1280px-Plantstudie_Urformen_der_Kunst_%28serietitel%29%2C_RP-F-2008-51-2170-46.jpg" srcset="https://thumb.wikimedia.org/wikipedia/commons/thumb/1/15/Plantstudie_Urformen_der_Kunst_%28serietitel%29%2C_RP-F-2008-51-2170-46.jpg/960px-Plantstudie_Urformen_der_Kunst_%28serietitel%29%2C_RP-F-2008-51-2170-46.jpg 960w, https://thumb.wikimedia.org/wikipedia/commons/thumb/1/15/Plantstudie_Urformen_der_Kunst_%28serietitel%29%2C_RP-F-2008-51-2170-46.jpg/1280px-Plantstudie_Urformen_der_Kunst_%28serietitel%29%2C_RP-F-2008-51-2170-46.jpg 1280w, https://thumb.wikimedia.org/wikipedia/commons/thumb/1/15/Plantstudie_Urformen_der_Kunst_%28serietitel%29%2C_RP-F-2008-51-2170-46.jpg/1920px-Plantstudie_Urformen_der_Kunst_%28serietitel%29%2C_RP-F-2008-51-2170-46.jpg 1920w" sizes="(max-width:820px) 90vw, 44vw" width="4230" height="5272" alt="Struthiopteris germanica, plate 46 of Urformen der Kunst, enlarged 8 times" decoding="async" loading="lazy" style="aspect-ratio:4230/5272"></div>
+    <figcaption><p class="sp"><i>Struthiopteris germanica</i><span>German ostrich fern · a young frond</span></p><p class="meta"><span>Plate 46</span><span>Enlarged 8 times</span></p></figcaption>
+    <div class="own" aria-hidden="true"><i></i><b></b></div></figure>
+  <figure class="plate"><div class="art"><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/3/39/Plantstudie_Urformen_der_Kunst_%28serietitel%29%2C_RP-F-2008-51-2170-64.jpg/1280px-Plantstudie_Urformen_der_Kunst_%28serietitel%29%2C_RP-F-2008-51-2170-64.jpg" srcset="https://thumb.wikimedia.org/wikipedia/commons/thumb/3/39/Plantstudie_Urformen_der_Kunst_%28serietitel%29%2C_RP-F-2008-51-2170-64.jpg/960px-Plantstudie_Urformen_der_Kunst_%28serietitel%29%2C_RP-F-2008-51-2170-64.jpg 960w, https://thumb.wikimedia.org/wikipedia/commons/thumb/3/39/Plantstudie_Urformen_der_Kunst_%28serietitel%29%2C_RP-F-2008-51-2170-64.jpg/1280px-Plantstudie_Urformen_der_Kunst_%28serietitel%29%2C_RP-F-2008-51-2170-64.jpg 1280w, https://thumb.wikimedia.org/wikipedia/commons/thumb/3/39/Plantstudie_Urformen_der_Kunst_%28serietitel%29%2C_RP-F-2008-51-2170-64.jpg/1920px-Plantstudie_Urformen_der_Kunst_%28serietitel%29%2C_RP-F-2008-51-2170-64.jpg 1920w" sizes="(max-width:820px) 90vw, 44vw" width="4254" height="5384" alt="Michauxia campanuloides, plate 64 of Urformen der Kunst, enlarged 8 times" decoding="async" loading="lazy" style="aspect-ratio:4254/5384"></div>
+    <figcaption><p class="sp"><i>Michauxia campanuloides</i><span>Michaux's bellflower · a bud</span></p><p class="meta"><span>Plate 64</span><span>Enlarged 8 times</span></p></figcaption>
+    <div class="own" aria-hidden="true"><i></i><b></b></div></figure>
+  <figure class="plate"><div class="art"><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d3/Plantstudie_Urformen_der_Kunst_%28serietitel%29%2C_RP-F-2008-51-2170-77.jpg/1280px-Plantstudie_Urformen_der_Kunst_%28serietitel%29%2C_RP-F-2008-51-2170-77.jpg" srcset="https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d3/Plantstudie_Urformen_der_Kunst_%28serietitel%29%2C_RP-F-2008-51-2170-77.jpg/960px-Plantstudie_Urformen_der_Kunst_%28serietitel%29%2C_RP-F-2008-51-2170-77.jpg 960w, https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d3/Plantstudie_Urformen_der_Kunst_%28serietitel%29%2C_RP-F-2008-51-2170-77.jpg/1280px-Plantstudie_Urformen_der_Kunst_%28serietitel%29%2C_RP-F-2008-51-2170-77.jpg 1280w, https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d3/Plantstudie_Urformen_der_Kunst_%28serietitel%29%2C_RP-F-2008-51-2170-77.jpg/1920px-Plantstudie_Urformen_der_Kunst_%28serietitel%29%2C_RP-F-2008-51-2170-77.jpg 1920w" sizes="(max-width:820px) 90vw, 44vw" width="4254" height="5382" alt="Cephalaria, plate 77 of Urformen der Kunst, enlarged 10 times" decoding="async" loading="lazy" style="aspect-ratio:4254/5382"></div>
+    <figcaption><p class="sp"><i>Cephalaria</i><span>Small teasel · a flower head</span></p><p class="meta"><span>Plate 77</span><span>Enlarged 10 times</span></p></figcaption>
+    <div class="own" aria-hidden="true"><i></i><b></b></div></figure>
+  <figure class="plate"><div class="art"><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e2/Plantstudie_Urformen_der_Kunst_%28serietitel%29%2C_RP-F-2008-51-2170-84.jpg/1280px-Plantstudie_Urformen_der_Kunst_%28serietitel%29%2C_RP-F-2008-51-2170-84.jpg" srcset="https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e2/Plantstudie_Urformen_der_Kunst_%28serietitel%29%2C_RP-F-2008-51-2170-84.jpg/960px-Plantstudie_Urformen_der_Kunst_%28serietitel%29%2C_RP-F-2008-51-2170-84.jpg 960w, https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e2/Plantstudie_Urformen_der_Kunst_%28serietitel%29%2C_RP-F-2008-51-2170-84.jpg/1280px-Plantstudie_Urformen_der_Kunst_%28serietitel%29%2C_RP-F-2008-51-2170-84.jpg 1280w, https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e2/Plantstudie_Urformen_der_Kunst_%28serietitel%29%2C_RP-F-2008-51-2170-84.jpg/1920px-Plantstudie_Urformen_der_Kunst_%28serietitel%29%2C_RP-F-2008-51-2170-84.jpg 1920w" sizes="(max-width:820px) 90vw, 44vw" width="4254" height="5378" alt="Cirsium canum, plate 84 of Urformen der Kunst, enlarged 12 times" decoding="async" loading="lazy" style="aspect-ratio:4254/5378"></div>
+    <figcaption><p class="sp"><i>Cirsium canum</i><span>Thistle · a flower head</span></p><p class="meta"><span>Plate 84</span><span>Enlarged 12 times</span></p></figcaption>
+    <div class="own" aria-hidden="true"><i></i><b></b></div></figure>
+  <figure class="plate"><div class="art"><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ec/Plantstudie_Urformen_der_Kunst_%28serietitel%29%2C_RP-F-2008-51-2170-111.jpg/1280px-Plantstudie_Urformen_der_Kunst_%28serietitel%29%2C_RP-F-2008-51-2170-111.jpg" srcset="https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ec/Plantstudie_Urformen_der_Kunst_%28serietitel%29%2C_RP-F-2008-51-2170-111.jpg/960px-Plantstudie_Urformen_der_Kunst_%28serietitel%29%2C_RP-F-2008-51-2170-111.jpg 960w, https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ec/Plantstudie_Urformen_der_Kunst_%28serietitel%29%2C_RP-F-2008-51-2170-111.jpg/1280px-Plantstudie_Urformen_der_Kunst_%28serietitel%29%2C_RP-F-2008-51-2170-111.jpg 1280w, https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ec/Plantstudie_Urformen_der_Kunst_%28serietitel%29%2C_RP-F-2008-51-2170-111.jpg/1920px-Plantstudie_Urformen_der_Kunst_%28serietitel%29%2C_RP-F-2008-51-2170-111.jpg 1920w" sizes="(max-width:820px) 90vw, 44vw" width="4254" height="5366" alt="Campanula alliariifolia, plate 111 of Urformen der Kunst, enlarged 10 times" decoding="async" loading="lazy" style="aspect-ratio:4254/5366"></div>
+    <figcaption><p class="sp"><i>Campanula alliariifolia</i><span>Bellflower · a flower</span></p><p class="meta"><span>Plate 111</span><span>Enlarged 10 times</span></p></figcaption>
+    <div class="own" aria-hidden="true"><i></i><b></b></div></figure>
+  <figure class="plate"><div class="art"><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/3/38/Plantstudie_Urformen_der_Kunst_%28serietitel%29%2C_RP-F-2008-51-2170-115.jpg/1280px-Plantstudie_Urformen_der_Kunst_%28serietitel%29%2C_RP-F-2008-51-2170-115.jpg" srcset="https://thumb.wikimedia.org/wikipedia/commons/thumb/3/38/Plantstudie_Urformen_der_Kunst_%28serietitel%29%2C_RP-F-2008-51-2170-115.jpg/960px-Plantstudie_Urformen_der_Kunst_%28serietitel%29%2C_RP-F-2008-51-2170-115.jpg 960w, https://thumb.wikimedia.org/wikipedia/commons/thumb/3/38/Plantstudie_Urformen_der_Kunst_%28serietitel%29%2C_RP-F-2008-51-2170-115.jpg/1280px-Plantstudie_Urformen_der_Kunst_%28serietitel%29%2C_RP-F-2008-51-2170-115.jpg 1280w, https://thumb.wikimedia.org/wikipedia/commons/thumb/3/38/Plantstudie_Urformen_der_Kunst_%28serietitel%29%2C_RP-F-2008-51-2170-115.jpg/1920px-Plantstudie_Urformen_der_Kunst_%28serietitel%29%2C_RP-F-2008-51-2170-115.jpg 1920w" sizes="(max-width:820px) 90vw, 44vw" width="4254" height="5342" alt="Asclepias syriaca, plate 115 of Urformen der Kunst, enlarged 6 times" decoding="async" loading="lazy" style="aspect-ratio:4254/5342"></div>
+    <figcaption><p class="sp"><i>Asclepias syriaca</i><span>Milkweed · an umbel</span></p><p class="meta"><span>Plate 115</span><span>Enlarged 6 times</span></p></figcaption>
+    <div class="own" aria-hidden="true"><i></i><b></b></div></figure>
+  <figure class="plate"><div class="art"><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/3/36/Plantstudie_Urformen_der_Kunst_%28serietitel%29%2C_RP-F-2008-51-2170-119.jpg/1280px-Plantstudie_Urformen_der_Kunst_%28serietitel%29%2C_RP-F-2008-51-2170-119.jpg" srcset="https://thumb.wikimedia.org/wikipedia/commons/thumb/3/36/Plantstudie_Urformen_der_Kunst_%28serietitel%29%2C_RP-F-2008-51-2170-119.jpg/960px-Plantstudie_Urformen_der_Kunst_%28serietitel%29%2C_RP-F-2008-51-2170-119.jpg 960w, https://thumb.wikimedia.org/wikipedia/commons/thumb/3/36/Plantstudie_Urformen_der_Kunst_%28serietitel%29%2C_RP-F-2008-51-2170-119.jpg/1280px-Plantstudie_Urformen_der_Kunst_%28serietitel%29%2C_RP-F-2008-51-2170-119.jpg 1280w, https://thumb.wikimedia.org/wikipedia/commons/thumb/3/36/Plantstudie_Urformen_der_Kunst_%28serietitel%29%2C_RP-F-2008-51-2170-119.jpg/1920px-Plantstudie_Urformen_der_Kunst_%28serietitel%29%2C_RP-F-2008-51-2170-119.jpg 1920w" sizes="(max-width:820px) 90vw, 44vw" width="4254" height="5366" alt="Achillea clypeolata, plate 119 of Urformen der Kunst, enlarged 15 times" decoding="async" loading="lazy" style="aspect-ratio:4254/5366"></div>
+    <figcaption><p class="sp"><i>Achillea clypeolata</i><span>Yarrow · a flower cluster</span></p><p class="meta"><span>Plate 119</span><span>Enlarged 15 times</span></p></figcaption>
+    <div class="own" aria-hidden="true"><i></i><b></b></div></figure>
+</section>
+
+<section class="after">
+  <h2>Pacing becomes <em>editorial</em></h2>
+  <p>When one scroll value drives every animation, everything arrives on the same beat and the reader stops noticing arrival. Give each element its own passage and rhythm becomes something you write: a dense plate can hold longer, a turn can land faster, and <b>nothing on this page waits for anything else</b>.</p>
+</section>
+
+<footer>
+  <span>Photography — Karl Blossfeldt, Urformen der Kunst, 1928. Rijksmuseum (CC0) and the J. Paul Getty Museum (public domain).<br>Names and enlargements from the plate descriptions of the 1929 English edition, Art Forms in Nature.</span>
+  <span><a href="index.html">← All seven exhibits</a></span>
+</footer>
+
+</div>
+
+</body>
+</html>

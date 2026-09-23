@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Orrery — Mocubix</title>
+<meta name="description" content="A working orrery that opens on today, every planet where it actually is, and runs at their true pace. Pull it apart and the ecliptic, the orbits, the bodies and the names lift into separate layers while it keeps turning.">
+
+<link rel="preconnect" href="https://api.fontshare.com">
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="preconnect" href="https://thumb.wikimedia.org">
+<!-- One request per family. A combined f[] request silently delivers only the first. -->
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f%5B%5D=rowan@400,401&display=swap">
+<!-- Rowan: a calm classical serif with a true italic for a running model of the heavens. -->
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f%5B%5D=switzer@400,500,600&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource-variable/geist-mono/index.css">
+<link rel="stylesheet" href="house.css">
+<script src="house.js"></script>
+
+<style>
+:root{--display:'Rowan',Georgia,serif} /* guest display face for this exhibit */
+/* ── material ─────────────────────────────────────────────────
+   The model hangs in its own dark sky in both palettes: the planets are
+   photographs against space, and the sky is part of the object. The side
+   panel follows the switch. */
+.view{--sky:#030304;--sky-ink:#F2EDE5;--sky-mid:#B4ABA0;--sky-dim:#7E766D;--sky-sig:#6E86B8;--sky-acc:#D4673F;
+  --sky-line:color-mix(in srgb,#F2EDE5 16%,transparent)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ground);color:var(--ink);font:15px/1.55 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{display:block}
+h1,p,dl,dd,ul{margin:0}
+h1{font-weight:400}
+button{font:inherit}
+.back{position:fixed;top:22px;left:clamp(16px,4vw,40px);z-index:80;font-family:var(--mono);font-size:10px;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--dim)}
+.back:hover{color:var(--ink)}
+
+.stage{min-height:100svh;display:grid;grid-template-columns:minmax(320px,400px) minmax(0,1fr)}
+
+/* ── the side panel: title, controls, the layers, the label ── */
+.side{padding:clamp(64px,10vh,96px) clamp(20px,3vw,40px) 32px;display:flex;flex-direction:column;gap:28px;border-right:1px solid var(--line)}
+.eyebrow{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--dim);margin-bottom:14px}
+h1{font-family:var(--display);font-size:clamp(40px,4.6vw,62px);line-height:.96;letter-spacing:-.02em}
+h1 em{font-style:italic;color:var(--accent)}
+.intro{font-size:14px;line-height:1.65;color:var(--mid);margin-top:-10px;max-width:40ch;text-wrap:pretty}
+.intro b{color:var(--ink);font-weight:500}
+.ctl{display:grid;gap:14px;border-top:1px solid var(--line);padding-top:16px}
+.ctl .row{display:flex;justify-content:space-between;align-items:baseline;gap:16px;font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--dim)}
+.ctl .row b{font-weight:400;font-size:14px;letter-spacing:0;color:var(--indigo);font-variant-numeric:tabular-nums;text-transform:none}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:2px;background:color-mix(in srgb,var(--ink) 16%,transparent);outline:none;cursor:ew-resize;margin:6px 0}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:16px;height:16px;border-radius:50%;background:var(--accent);cursor:ew-resize}
+input[type=range]:focus-visible::-webkit-slider-thumb{box-shadow:0 0 0 4px color-mix(in srgb,var(--accent) 30%,transparent)}
+.clock{display:grid;grid-template-columns:1fr 1fr;gap:10px 16px}
+.clock div{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--dim)}
+.clock dd{margin-top:4px;font-size:15px;letter-spacing:0;text-transform:none;color:var(--indigo);font-variant-numeric:tabular-nums}
+.buttons{display:flex;gap:8px}
+.buttons button{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--mid);background:transparent;
+  border:1px solid var(--line);padding:8px 12px;cursor:pointer;transition:color .35s var(--settle),border-color .35s var(--settle)}
+.buttons button:hover,.buttons button:focus-visible{color:var(--ink);border-color:color-mix(in srgb,var(--ink) 30%,transparent);outline:none}
+.layers{list-style:none;padding:0;display:grid;gap:9px}
+.layers li{display:grid;grid-template-columns:20px 1fr;gap:10px;align-items:baseline;font-size:12.5px;color:var(--ink)}
+.layers li b{font-family:var(--mono);font-weight:400;font-size:9px;letter-spacing:.14em;color:var(--accent)}
+.layers li span{display:block;color:var(--dim);font-size:11.5px}
+.label{margin-top:auto;border-top:1px solid var(--line);padding-top:14px;font-size:12px;line-height:1.65;color:var(--dim);max-width:42ch}
+.label b{font-family:var(--mono);font-weight:400;display:block;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:6px}
+
+/* ── the orrery ────────────────────────────────────────────── */
+.view{position:relative;display:grid;place-items:center;overflow:hidden;background:var(--sky);color:var(--sky-ink);
+  perspective:1900px;min-height:100svh;padding:clamp(40px,8vh,90px) 20px}
+.stack{--size:min(62vmin,600px);--gap:calc(var(--size) * .15);--x:0;position:relative;width:var(--size);aspect-ratio:1;transform-style:preserve-3d;
+  transform:translateY(calc(var(--x) * var(--gap) * 1.05)) rotateX(calc(var(--x) * 57deg)) rotateZ(calc(var(--x) * -28deg));
+  transition:transform 1s var(--settle)}
+.layer{position:absolute;inset:0;transform-style:preserve-3d;transform:translateZ(calc(var(--i) * var(--x) * var(--gap)));transition:transform 1s var(--settle)}
+.layer svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+/* every layer has a plate you only see once it is lifted off the others */
+.plate{fill:color-mix(in srgb,var(--sky-ink) 3%,transparent);stroke:var(--sky-line);stroke-width:.3;opacity:var(--x);transition:opacity .8s var(--settle)}
+.ecl .plate{opacity:1;fill:color-mix(in srgb,var(--sky-ink) 2.5%,transparent)}
+.deg{stroke:color-mix(in srgb,var(--sky-ink) 42%,transparent);stroke-width:.25}
+.deg.major{stroke:color-mix(in srgb,var(--sky-ink) 70%,transparent);stroke-width:.35}
+.deglab{font-family:var(--mono);font-size:3.2px;letter-spacing:.06em;fill:var(--sky-mid);text-anchor:middle;dominant-baseline:central}
+.arieslab{dominant-baseline:central}
+.aries{stroke:var(--sky-acc);stroke-width:.3;stroke-dasharray:1.2 1.2}
+.arieslab{font-family:var(--mono);font-size:2.8px;letter-spacing:.12em;fill:var(--sky-acc);text-transform:uppercase}
+.orbit{fill:none;stroke:color-mix(in srgb,var(--sky-ink) 26%,transparent);stroke-width:.28}
+/* bodies */
+.sun,.p{position:absolute;left:50%;top:50%}
+.sun{width:10%;aspect-ratio:1;translate:-50% -50%;border-radius:50%;overflow:hidden;
+  box-shadow:0 0 calc(var(--size) * .05) color-mix(in srgb,#ff9a3c 45%,transparent)}
+.sun img{width:100%;height:100%;object-fit:cover;scale:1.02}
+.p{width:var(--w);aspect-ratio:1;margin:calc(var(--w) / -2) 0 0 calc(var(--w) / -2);border-radius:50%;overflow:hidden;will-change:translate;
+  box-shadow:0 0 0 1px color-mix(in srgb,var(--sky-ink) 10%,transparent)}
+.p img{width:100%;height:100%;object-fit:cover}
+.p.ringed{width:calc(var(--w) * 2.3);aspect-ratio:8888/4544;margin:calc(var(--w) * -2.3 / 1.956 / 2) 0 0 calc(var(--w) * -1.15);border-radius:0;overflow:visible;box-shadow:none}
+.p.ringed img{object-fit:contain;-webkit-mask-image:radial-gradient(50% 50% at 50% 50%,#000 78%,transparent 100%);mask-image:radial-gradient(50% 50% at 50% 50%,#000 78%,transparent 100%)}
+/* names ride above their planets and turn to face you when the model tilts */
+.n{position:absolute;left:50%;top:50%;will-change:translate;transform-style:preserve-3d}
+.n span{display:block;translate:-50% -50%;font-family:var(--mono);font-size:clamp(8.5px,.95vmin,10px);letter-spacing:.14em;text-transform:uppercase;white-space:nowrap;
+  color:var(--sky-mid);transform:rotateZ(calc(var(--x) * 28deg)) rotateX(calc(var(--x) * -57deg));transition:transform 1s var(--settle)}
+.n.earth span{color:var(--sky-ink)}
+/* each layer's tag, at its left edge, facing you */
+.tag{position:absolute;left:0;top:50%;display:flex;align-items:baseline;gap:10px;white-space:nowrap;transform-style:preserve-3d;
+  translate:calc(-100% - 22px) -50%;opacity:clamp(0,var(--x) * 1.6 - .25,1);transition:opacity .7s var(--settle);pointer-events:none}
+.tag > span{display:flex;align-items:baseline;gap:10px;transform:rotateZ(calc(var(--x) * 28deg)) rotateX(calc(var(--x) * -57deg));transition:transform 1s var(--settle)}
+.tag b{font-family:var(--mono);font-weight:400;font-size:9px;letter-spacing:.14em;color:var(--sky-acc)}
+.tag i{font-style:normal;font-size:11.5px;color:var(--sky-ink)}
+/* leaders drop from each name to its planet once the layers part */
+.stem{position:absolute;left:50%;top:50%;width:1px;height:calc(var(--gap) * var(--x));margin-left:-.5px;will-change:translate;
+  background:linear-gradient(color-mix(in srgb,var(--sky-ink) 40%,transparent),color-mix(in srgb,var(--sky-ink) 8%,transparent));
+  transform-origin:50% 0;transform:rotateX(-90deg);transition:height 1s var(--settle)}
+
+@media (max-width:900px){
+  .stage{grid-template-columns:1fr}
+  .side{display:contents}
+  .head{order:1;padding:64px 20px 18px}
+  .view{order:2;min-height:0;padding:clamp(36px,7vh,56px) 0 clamp(48px,9vh,72px);perspective:1100px}
+  .stack{--size:min(76vw,420px)}
+  .panel{order:3;padding:24px 20px 0;display:grid;gap:24px}
+  .intro{order:4;margin:24px 20px 0;font-size:15px}
+  .label{order:5;margin:24px 20px 40px}
+  .tag{translate:calc(-100% - 10px) -50%}
+  .tag i{display:none}
+  .n span{font-size:8px;letter-spacing:.1em}
+}
+@media (prefers-reduced-motion:reduce){ .stack,.layer,.plate,.tag,.tag > *,.n span{transition:none} }
+</style>
+</head>
+<body>
+
+<a class="back" href="index.html">← Mocubix</a>
+
+<div class="stage">
+  <aside class="side">
+    <div class="head">
+      <p class="eyebrow">Mocubix · Exhibit 06 · A running model, taken apart</p>
+      <h1>The solar system, <em>exploded</em></h1>
+    </div>
+    <p class="intro">A working orrery. It opens on today, with <b>every planet where it actually is</b>, and runs at their true pace: one Earth year every four seconds, so Mercury laps while Neptune barely moves. Drag the slider and it comes apart into its layers without stopping.</p>
+    <div class="panel">
+      <div class="ctl">
+        <div class="row"><label for="x">Separation</label><b id="xOut">0%</b></div>
+        <input id="x" type="range" min="0" max="100" value="0" step="1">
+        <dl class="clock">
+          <div><dt>Model date</dt><dd id="date">—</dd></div>
+          <div><dt>Earth years run</dt><dd id="yrs">0.0</dd></div>
+        </dl>
+        <div class="buttons"><button id="run" type="button" aria-pressed="true">Pause</button><button id="today" type="button">Back to today</button></div>
+      </div>
+      <ul class="layers">
+        <li><b>L0</b><div>The ecliptic<span>the plane they move in, marked in degrees</span></div></li>
+        <li><b>L1</b><div>The orbits<span>eight rings; distances not to scale</span></div></li>
+        <li><b>L2</b><div>The bodies<span>the Sun and eight planets, photographed</span></div></li>
+        <li><b>L3</b><div>The names<span>riding above their planets</span></div></li>
+      </ul>
+    </div>
+    <p class="label"><b>Wall label</b>One slider, one number; every layer takes its own distance from it. A teardown that freezes its subject is a diagram. This one stays a machine: the planets keep their true periods while they hang in the air. Directions and periods are real; sizes and distances are not.</p>
+  </aside>
+
+  <div class="view" id="view">
+    <div class="stack" id="stack" role="img" aria-label="Orrery of the Sun and the eight planets, placed where they are on the model date">
+      <div class="layer ecl" style="--i:0">
+        <svg viewBox="-100 -100 200 200" aria-hidden="true">
+          <circle class="plate" r="99"/>
+          <line class="deg major" x1="92.00" y1="-0.00" x2="98.00" y2="-0.00"/><line class="deg" x1="93.06" y1="-16.41" x2="96.51" y2="-17.02"/><line class="deg" x1="88.80" y1="-32.32" x2="92.09" y2="-33.52"/><line class="deg major" x1="79.67" y1="-46.00" x2="84.87" y2="-49.00"/><line class="deg" x1="72.39" y1="-60.74" x2="75.07" y2="-62.99"/><line class="deg" x1="60.74" y1="-72.39" x2="62.99" y2="-75.07"/><line class="deg major" x1="46.00" y1="-79.67" x2="49.00" y2="-84.87"/><line class="deg" x1="32.32" y1="-88.80" x2="33.52" y2="-92.09"/><line class="deg" x1="16.41" y1="-93.06" x2="17.02" y2="-96.51"/><line class="deg major" x1="0.00" y1="-92.00" x2="0.00" y2="-98.00"/><line class="deg" x1="-16.41" y1="-93.06" x2="-17.02" y2="-96.51"/><line class="deg" x1="-32.32" y1="-88.80" x2="-33.52" y2="-92.09"/><line class="deg major" x1="-46.00" y1="-79.67" x2="-49.00" y2="-84.87"/><line class="deg" x1="-60.74" y1="-72.39" x2="-62.99" y2="-75.07"/><line class="deg" x1="-72.39" y1="-60.74" x2="-75.07" y2="-62.99"/><line class="deg major" x1="-79.67" y1="-46.00" x2="-84.87" y2="-49.00"/><line class="deg" x1="-88.80" y1="-32.32" x2="-92.09" y2="-33.52"/><line class="deg" x1="-93.06" y1="-16.41" x2="-96.51" y2="-17.02"/><line class="deg major" x1="-92.00" y1="-0.00" x2="-98.00" y2="-0.00"/><line class="deg" x1="-93.06" y1="16.41" x2="-96.51" y2="17.02"/><line class="deg" x1="-88.80" y1="32.32" x2="-92.09" y2="33.52"/><line class="deg major" x1="-79.67" y1="46.00" x2="-84.87" y2="49.00"/><line class="deg" x1="-72.39" y1="60.74" x2="-75.07" y2="62.99"/><line class="deg" x1="-60.74" y1="72.39" x2="-62.99" y2="75.07"/><line class="deg major" x1="-46.00" y1="79.67" x2="-49.00" y2="84.87"/><line class="deg" x1="-32.32" y1="88.80" x2="-33.52" y2="92.09"/><line class="deg" x1="-16.41" y1="93.06" x2="-17.02" y2="96.51"/><line class="deg major" x1="-0.00" y1="92.00" x2="-0.00" y2="98.00"/><line class="deg" x1="16.41" y1="93.06" x2="17.02" y2="96.51"/><line class="deg" x1="32.32" y1="88.80" x2="33.52" y2="92.09"/><line class="deg major" x1="46.00" y1="79.67" x2="49.00" y2="84.87"/><line class="deg" x1="60.74" y1="72.39" x2="62.99" y2="75.07"/><line class="deg" x1="72.39" y1="60.74" x2="75.07" y2="62.99"/><line class="deg major" x1="79.67" y1="46.00" x2="84.87" y2="49.00"/><line class="deg" x1="88.80" y1="32.32" x2="92.09" y2="33.52"/><line class="deg" x1="93.06" y1="16.41" x2="96.51" y2="17.02"/><text class="deglab" x="0.00" y="-103.50">90°</text><text class="deglab" x="-103.50" y="-0.00">180°</text><text class="deglab" x="-0.00" y="103.50">270°</text>
+          <line class="aries" x1="6" y1="0" x2="107" y2="0"/>
+          <text class="arieslab" x="108.5" y="-2.2">♈ vernal</text><text class="arieslab" x="108.5" y="1.8">equinox</text>
+        </svg>
+        <p class="tag"><span><b>L0</b><i>The ecliptic</i></span></p>
+      </div>
+      <div class="layer orbits" style="--i:1">
+        <svg viewBox="-100 -100 200 200" aria-hidden="true">
+          <circle class="plate" r="99"/>
+          <circle class="orbit" r="15"/><circle class="orbit" r="22"/><circle class="orbit" r="29"/><circle class="orbit" r="36"/><circle class="orbit" r="50"/><circle class="orbit" r="62"/><circle class="orbit" r="74"/><circle class="orbit" r="86"/>
+        </svg>
+        <p class="tag"><span><b>L1</b><i>The orbits</i></span></p>
+      </div>
+      <div class="layer bodies" style="--i:2">
+        <svg viewBox="-100 -100 200 200" aria-hidden="true"><circle class="plate" r="99"/></svg>
+        <div class="sun"><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/0/01/SDO_20240810_000000_4096_HMIIC_%28HMI%29.jpg/960px-SDO_20240810_000000_4096_HMIIC_%28HMI%29.jpg" width="4096" height="4096" alt="The Sun" decoding="async"></div>
+        <div class="p" style="--w:1.7%"><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d9/Mercury_in_color_-_Prockter07-edit1.jpg/960px-Mercury_in_color_-_Prockter07-edit1.jpg" width="1950" height="1950" alt="Mercury" decoding="async"></div>
+        <div class="p" style="--w:2.6%"><img src="https://upload.wikimedia.org/wikipedia/commons/e/e5/Venus-real_color.jpg" width="480" height="480" alt="Venus" decoding="async"></div>
+        <div class="p" style="--w:2.8%"><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/9/97/The_Earth_seen_from_Apollo_17.jpg/960px-The_Earth_seen_from_Apollo_17.jpg" width="3000" height="3002" alt="Earth" decoding="async"></div>
+        <div class="p" style="--w:2.0%"><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/0/02/OSIRIS_Mars_true_color.jpg/960px-OSIRIS_Mars_true_color.jpg" width="2205" height="2205" alt="Mars" decoding="async"></div>
+        <div class="p" style="--w:6.2%"><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9c/Jupiter%2C_image_taken_by_NASA%27s_Hubble_Space_Telescope%2C_June_2019.png/960px-Jupiter%2C_image_taken_by_NASA%27s_Hubble_Space_Telescope%2C_June_2019.png" width="1999" height="2000" alt="Jupiter" decoding="async"></div>
+        <div class="p ringed" style="--w:5.0%"><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e3/Saturn_from_Cassini_Orbiter_%282004-10-06%29.jpg/960px-Saturn_from_Cassini_Orbiter_%282004-10-06%29.jpg" width="8888" height="4544" alt="Saturn" decoding="async"></div>
+        <div class="p" style="--w:3.7%"><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3d/Uranus2.jpg/960px-Uranus2.jpg" width="1720" height="1720" alt="Uranus" decoding="async"></div>
+        <div class="p" style="--w:3.6%"><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9f/Neptune_1.jpg/960px-Neptune_1.jpg" width="3000" height="3000" alt="Neptune" decoding="async"></div>
+        <p class="tag"><span><b>L2</b><i>The bodies</i></span></p>
+      </div>
+      <div class="layer names" style="--i:3">
+        <svg viewBox="-100 -100 200 200" aria-hidden="true"><circle class="plate" r="99"/></svg>
+        <i class="stem"></i><div class="n"><span>Mercury</span></div>
+        <i class="stem"></i><div class="n"><span>Venus</span></div>
+        <i class="stem"></i><div class="n earth"><span>Earth</span></div>
+        <i class="stem"></i><div class="n"><span>Mars</span></div>
+        <i class="stem"></i><div class="n"><span>Jupiter</span></div>
+        <i class="stem"></i><div class="n"><span>Saturn</span></div>
+        <i class="stem"></i><div class="n"><span>Uranus</span></div>
+        <i class="stem"></i><div class="n"><span>Neptune</span></div>
+        <p class="tag"><span><b>L3</b><i>The names</i></span></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer style="padding:30px clamp(20px,5vw,72px) 70px;display:flex;flex-wrap:wrap;gap:12px 44px;justify-content:space-between;font-family:var(--mono);font-size:10px;letter-spacing:.04em;color:var(--dim);line-height:1.8;border-top:1px solid var(--line)">
+  <span>Sun — NASA SDO, visible light, 10 August 2024. Mercury — MESSENGER; Venus — Mariner 10 (processing Ricardo Nunes); Earth — Apollo 17; Jupiter — Hubble; Saturn — Cassini; Uranus and Neptune — Voyager 2: NASA, public domain. Mars — ESA/Rosetta OSIRIS, CC BY-SA 3.0 IGO.<br>Positions from JPL's approximate planetary elements.</span>
+  <span><a href="index.html">← All seven exhibits</a></span>
+</footer>
+
+<script>
+(() => {
+  /* ── the planets ─────────────────────────────────────────────
+     JPL's approximate Keplerian elements (Standish, valid 1800–2050):
+     eccentricity, mean longitude L and longitude of perihelion ϖ at J2000
+     with their rates per Julian century. Heliocentric longitude comes from
+     Kepler's equation; the orbital planes' small tilts are ignored. */
+  const P = [
+    { e: .20563593, L: 252.25032350, dL: 149472.67411175, w:  77.45779628, dw:  .16047689 },
+    { e: .00677672, L: 181.97909950, dL:  58517.81538729, w: 131.60246718, dw:  .00268329 },
+    { e: .01671123, L: 100.46457166, dL:  35999.37244981, w: 102.93768193, dw:  .32327364 },
+    { e: .09339410, L:  -4.55343205, dL:  19140.30268499, w: -23.94362959, dw:  .44441088 },
+    { e: .04838624, L:  34.39644051, dL:   3034.74612775, w:  14.72847983, dw:  .21252668 },
+    { e: .05386179, L:  49.95424423, dL:   1222.49362201, w:  92.59887831, dw: -.41897216 },
+    { e: .04725744, L: 313.23810451, dL:    428.48202785, w: 170.95427630, dw:  .40805281 },
+    { e: .00859048, L: -55.12002969, dL:    218.45945325, w:  44.96476227, dw: -.32241464 },
+  ];
+  const R = [15, 22, 29, 36, 50, 62, 74, 86];          /* orbit radii, in the plate's 200-unit frame: not to scale */
+  const rad = Math.PI / 180, DAY = 86400000, YEAR = 365.25 * DAY;
+  const PACE = YEAR / 4000;                            /* model milliseconds per real millisecond: a year every four seconds */
+
+  function longitude(p, T){
+    const M = ((p.L + p.dL * T) - (p.w + p.dw * T)) * rad;
+    let E = M;
+    for (let k = 0; k < 6; k++) E -= (E - p.e * Math.sin(E) - M) / (1 - p.e * Math.cos(E));
+    const nu = 2 * Math.atan2(Math.sqrt(1 + p.e) * Math.sin(E / 2), Math.sqrt(1 - p.e) * Math.cos(E / 2));
+    return nu + (p.w + p.dw * T) * rad;
+  }
+
+  const stack = document.getElementById('stack'), bodies = [...stack.querySelectorAll('.p')], names = [...stack.querySelectorAll('.n')], stems = [...stack.querySelectorAll('.stem')];
+  const out = { date: document.getElementById('date'), yrs: document.getElementById('yrs') };
+  const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let half = 0, size = [], today = Date.now(), model = today, running = !still, last = performance.now();
+  let lab = [];
+  function measure(){ half = stack.offsetWidth / 2; size = bodies.map(b => b.offsetWidth); lab = names.map(n => n.firstElementChild.offsetWidth / 2); }
+  new ResizeObserver(() => { measure(); draw(); }).observe(stack);
+  measure();
+
+  const fmt = new Intl.DateTimeFormat('en-US', { month: 'short', year: 'numeric' });
+  function draw(){
+    const T = (model / DAY + 2440587.5 - 2451545) / 36525;
+    P.forEach((p, i) => {
+      const a = longitude(p, T), r = R[i] / 100 * half, c = Math.cos(a), s = -Math.sin(a);
+      bodies[i].style.translate = stems[i].style.translate = `${(r * c).toFixed(1)}px ${(r * s).toFixed(1)}px`;
+      const lift = r + size[i] * (i === 5 ? .9 : .5) + 7 + Math.abs(c) * lab[i] + Math.abs(s) * 5;   /* clear the planet, however the label leans */
+      names[i].style.translate = `${(lift * c).toFixed(1)}px ${(lift * s).toFixed(1)}px`;
+    });
+    out.date.textContent = fmt.format(model);
+    out.yrs.textContent = ((model - today) / YEAR).toFixed(1);
+  }
+  function tick(t){
+    if (running) model += (t - last) * PACE;
+    last = t; draw();
+    if (running) requestAnimationFrame(tick);
+  }
+  draw();
+  if (running) requestAnimationFrame(tick);
+
+  const run = document.getElementById('run');
+  function label(){ run.textContent = running ? 'Pause' : 'Run'; run.setAttribute('aria-pressed', running); }
+  run.addEventListener('click', () => { running = !running; label(); if (running){ last = performance.now(); requestAnimationFrame(tick); } });
+  document.getElementById('today').addEventListener('click', () => { model = today = Date.now(); draw(); });
+  label();
+
+  /* the teardown: one number, every layer its own distance */
+  const x = document.getElementById('x'), xOut = document.getElementById('xOut');
+  x.addEventListener('input', () => { stack.style.setProperty('--x', x.value / 100); xOut.textContent = x.value + '%'; });
+})();
+</script>
+
+</body>
+</html>

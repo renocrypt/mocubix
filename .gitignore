@@ -1,0 +1,8 @@
+# macOS
+.DS_Store
+
+# local agent settings
+.claude/
+
+# working screenshots: large, kept on the machine that took them
+notes/evidence/

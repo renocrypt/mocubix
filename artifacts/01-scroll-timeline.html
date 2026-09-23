@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Annie G. — Mocubix</title>
+<meta name="description" content="Eadweard Muybridge photographed a galloping mare sixteen times in one stride, 1887. Scroll and the stills run; scroll back and she runs backwards, frame for frame. Where you are on the scrollbar is which frame you are on.">
+
+<link rel="preconnect" href="https://api.fontshare.com">
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="preconnect" href="https://thumb.wikimedia.org">
+<!-- One request per family. A combined f[] request silently delivers only the first. -->
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f%5B%5D=boska@400,401&display=swap">
+<!-- Boska: Didone bones for an 1887 plate; true italics carry the stride names. -->
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f%5B%5D=switzer@400,500,600&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource-variable/geist-mono/index.css">
+<link rel="stylesheet" href="house.css">
+<script src="house.js"></script>
+
+<style>
+:root{--display:'Boska',Georgia,serif} /* guest display face for this exhibit */
+/* The frame index, 0–15. Set by scroll, read by the counter and the stride label. */
+@property --i { syntax: '<integer>'; inherits: true; initial-value: 0 }
+
+*{box-sizing:border-box}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.55;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{display:block}
+h1,h2{font-weight:400;margin:0}
+.back{position:fixed;top:22px;left:clamp(16px,4vw,40px);z-index:80;font-family:var(--mono);font-size:10px;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--dim)}
+.back:hover{color:var(--ink)}
+
+/* ── the run ───────────────────────────────────────────────────
+   One pinned stage, one view timeline on the runway. The first 14% of the
+   pin turns the opening (label + plate) into the run (projection + index):
+   the label leaves by 7%, the plate settles to index size by 14%, and the
+   projection and readouts arrive between 8% and 14%;
+   the frames step from 14% to 92%; the last frame rests until the release. */
+.runway{--pin:6400px;--gap:clamp(28px,4vw,56px);--k0:1.45;
+  --w1:min(440px,30vw,calc((100svh - 170px) * .89));
+  height:calc(100svh + var(--pin));view-timeline:--run block}
+.stage{position:sticky;top:0;height:100svh;overflow:clip;
+  display:grid;grid-template-columns:minmax(0,1fr) var(--w1);gap:var(--gap);align-items:center;
+  padding:clamp(64px,9vh,84px) clamp(20px,5vw,72px) clamp(24px,4vh,44px);
+  animation:idx steps(16,jump-none) both;animation-timeline:--run;animation-range:contain 14% contain 92%}
+@keyframes idx{from{--i:0}to{--i:15}}
+.left{display:grid;grid-template-areas:'a';align-items:center;min-width:0}
+.left>*{grid-area:a}
+
+/* the label: on stage at the opening, gone by 7% */
+.label{max-width:min(640px,calc(100% - var(--w1) * (var(--k0) - 1) - 24px));
+  animation:out linear both;animation-timeline:--run;animation-range:contain 0% contain 7%}
+@keyframes out{to{opacity:0;translate:0 -28px}}
+.eyebrow{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--dim);margin:0 0 22px}
+h1{font-family:var(--display);font-size:clamp(54px,6.8vw,100px);line-height:.9;letter-spacing:-.02em;text-wrap:balance}
+h1 em{font-style:italic;color:var(--accent)}
+.lede{font-size:clamp(15px,1.5vw,18px);color:var(--mid);max-width:44ch;margin:24px 0 0;text-wrap:pretty}
+.lede b{color:var(--ink);font-weight:500}
+.cue{margin:26px 0 0;font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim);display:flex;align-items:center;gap:12px}
+.cue i{width:36px;height:1px;background:var(--accent);display:block;transform-origin:0 50%;animation:cue 2.6s var(--settle) infinite}
+@keyframes cue{0%{transform:scaleX(0)}55%{transform:scaleX(1)}100%{transform:scaleX(0)}}
+
+/* the run: projection and readouts, in by 14% */
+.run{--pw:min(100%,calc((100svh - 250px) * 1.44));display:grid;gap:clamp(14px,2.2vh,22px);justify-items:start;
+  opacity:0;translate:-18px 0;animation:in linear both;animation-timeline:--run;animation-range:contain 8% contain 14%}
+@keyframes in{to{opacity:1;translate:0 0}}
+/* The gate. Each frame is cut from the plate at its own measured box and fills
+   the gate's height, left-aligned. The sixteen frames are not the same width
+   on the printed sheet, so a frame narrower than the gate is clipped on the
+   right rather than showing its neighbour's edge. */
+.proj{width:var(--pw);aspect-ratio:1.44;background-color:var(--lift);background-repeat:no-repeat;
+  background-image:url("https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c9/Eadweard_Muybridge%2C_Animal_Locomotion%2C_Plate_626%2C_1887%2C_NGA_136536.jpg/1920px-Eadweard_Muybridge%2C_Animal_Locomotion%2C_Plate_626%2C_1887%2C_NGA_136536.jpg");
+  box-shadow:inset 0 0 0 1px var(--line);
+  animation:frames steps(1,jump-end) both;animation-timeline:--run;animation-range:contain 14% contain 92%}
+@keyframes frames{
+  0%{background-size:402.778% 441.071%;background-position:1.732% 3.054%;clip-path:inset(0 5.179% 0 0)}
+  6.25%{background-size:402.778% 441.071%;background-position:33.118% 3.054%;clip-path:inset(0 1.613% 0 0)}
+  12.5%{background-size:402.778% 441.071%;background-position:65.682% 3.054%;clip-path:inset(0 1.194% 0 0)}
+  18.75%{background-size:402.778% 441.071%;background-position:98.385% 3.054%;clip-path:inset(0 3.082% 0 0)}
+  25%{background-size:415.133% 454.601%;background-position:1.715% 35.381%;clip-path:inset(0 2.271% 0 0)}
+  31.25%{background-size:409.382% 454.601%;background-position:32.943% 35.381%;clip-path:inset(0 0% 0 0)}
+  37.5%{background-size:407.643% 454.601%;background-position:65.424% 35.381%;clip-path:inset(0 0% 0 0)}
+  43.75%{background-size:415.133% 454.601%;background-position:97.427% 35.381%;clip-path:inset(0 0.109% 0 0)}
+  50%{background-size:424.242% 464.577%;background-position:1.704% 66.638%;clip-path:inset(0 0.126% 0 0)}
+  56.25%{background-size:411.796% 464.577%;background-position:32.975% 66.638%;clip-path:inset(0 0% 0 0)}
+  62.5%{background-size:411.796% 464.577%;background-position:65.374% 66.638%;clip-path:inset(0 0% 0 0)}
+  68.75%{background-size:415.584% 464.577%;background-position:97.394% 66.638%;clip-path:inset(0 0% 0 0)}
+  75%{background-size:421.599% 461.682%;background-position:1.707% 97.761%;clip-path:inset(0 0.749% 0 0)}
+  81.25%{background-size:409.382% 461.682%;background-position:32.943% 97.761%;clip-path:inset(0 0% 0 0)}
+  87.5%{background-size:409.230% 461.682%;background-position:65.405% 97.761%;clip-path:inset(0 0% 0 0)}
+  93.75%{background-size:415.584% 461.682%;background-position:97.394% 97.761%;clip-path:inset(0 0% 0 0)}
+  100%{background-size:415.584% 461.682%;background-position:97.394% 97.761%;clip-path:inset(0 0% 0 0)}
+}
+.reads{width:var(--pw);display:flex;justify-content:space-between;align-items:end;gap:24px}
+.fr{display:grid;gap:7px}
+.fr b{font-family:var(--mono);font-weight:400;font-size:clamp(34px,4.6vw,60px);line-height:1;letter-spacing:-.04em;color:var(--indigo);font-variant-numeric:tabular-nums}
+.fr b::before{counter-reset:fr calc(var(--i) + 1);content:counter(fr,decimal-leading-zero)}
+.fr b small{font-size:.42em;color:var(--dim);letter-spacing:0;margin-left:6px}
+.fr>span{font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim)}
+.ph{display:grid;justify-items:end;gap:9px;text-align:right}
+.ph>small{font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim)}
+.ph .stack{display:grid;grid-template-areas:'s';justify-items:end}
+.ph .stack span{grid-area:s;display:grid;justify-items:end;gap:7px;
+  opacity:clamp(0,1 - max(var(--a) - var(--i),var(--i) - var(--b)),1)}
+.ph .stack i{font-family:var(--display);font-style:italic;font-size:clamp(26px,3.1vw,44px);line-height:.95;letter-spacing:-.01em;color:var(--mid);white-space:nowrap}
+.ph .stack span.hot i{color:var(--accent)}
+.ph .stack small{font-family:var(--mono);font-size:9.5px;letter-spacing:.06em;color:var(--dim);white-space:nowrap}
+
+/* the plate: the object at the opening, the index during the run */
+.plate{margin:0;position:relative;width:var(--w1);justify-self:end;transform-origin:100% 50%;
+  animation:settle linear both;animation-timeline:--run;animation-range:contain 0% contain 14%}
+@keyframes settle{from{scale:var(--k0)}to{scale:1}}
+.sheet{position:relative;overflow:hidden;background:var(--lift);box-shadow:0 0 0 1px var(--line)}
+.sheet img{width:100%;height:auto}
+.gate{position:absolute;border:2px solid var(--accent);box-shadow:0 0 0 200vmax transparent;
+  animation:gate steps(1,jump-end) both,scrim linear both;animation-timeline:--run,--run;
+  animation-range:contain 14% contain 92%,contain 8% contain 14%}
+@keyframes scrim{to{box-shadow:0 0 0 200vmax color-mix(in srgb,var(--ground) 42%,transparent)}}
+@keyframes gate{
+  0%{left:1.302%;top:2.362%;width:23.542%;height:22.672%}
+  6.25%{left:24.896%;top:2.362%;width:24.427%;height:22.672%}
+  12.5%{left:49.375%;top:2.362%;width:24.531%;height:22.672%}
+  18.75%{left:73.958%;top:2.362%;width:24.062%;height:22.672%}
+  25%{left:1.302%;top:27.598%;width:23.542%;height:21.997%}
+  31.25%{left:24.896%;top:27.598%;width:24.427%;height:21.997%}
+  37.5%{left:49.375%;top:27.598%;width:24.531%;height:21.997%}
+  43.75%{left:73.958%;top:27.598%;width:24.062%;height:21.997%}
+  50%{left:1.302%;top:52.294%;width:23.542%;height:21.525%}
+  56.25%{left:24.896%;top:52.294%;width:24.427%;height:21.525%}
+  62.5%{left:49.375%;top:52.294%;width:24.531%;height:21.525%}
+  68.75%{left:73.958%;top:52.294%;width:24.062%;height:21.525%}
+  75%{left:1.302%;top:76.586%;width:23.542%;height:21.660%}
+  81.25%{left:24.896%;top:76.586%;width:24.427%;height:21.660%}
+  87.5%{left:49.375%;top:76.586%;width:24.531%;height:21.660%}
+  93.75%{left:73.958%;top:76.586%;width:24.062%;height:21.660%}
+  100%{left:73.958%;top:76.586%;width:24.062%;height:21.660%}
+}
+.below{position:absolute;left:0;right:0;top:100%;margin-top:10px}
+.plate figcaption{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);line-height:1.6}
+.legend{margin:12px 0 0;padding:12px 0 0;list-style:none;border-top:1px solid var(--line);
+  display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 14px;
+  font-family:var(--mono);font-size:9.5px;letter-spacing:.04em;color:var(--dim);line-height:1.5;
+  opacity:0;translate:0 6px;animation:in linear both;animation-timeline:--run;animation-range:contain 8% contain 14%}
+/* the row for the stride on screen now lights, and only that one */
+.legend li{display:contents;
+  --on:max(clamp(0,1 - max(var(--a) - var(--i),var(--i) - var(--b)),1),clamp(0,1 - max(var(--a2,99) - var(--i),var(--i) - var(--b2,99)),1))}
+.legend b{font-weight:400;white-space:nowrap;font-variant-numeric:tabular-nums;color:color-mix(in srgb,var(--accent) calc(var(--on) * 100%),var(--mid))}
+.legend span{color:color-mix(in srgb,var(--accent) calc(var(--on) * 100%),var(--dim))}
+
+/* ── after the run ─────────────────────────────────────────── */
+.bet{padding:clamp(70px,11vh,130px) clamp(20px,5vw,72px) clamp(60px,10vh,120px);border-top:1px solid var(--line);
+  display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,5vw,80px);align-items:center}
+.bet figure{margin:0}
+.bet img{width:100%;height:auto;aspect-ratio:5694/3510;display:block}
+.bet figcaption{margin-top:10px;font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim)}
+.bet h2{font-family:var(--display);font-size:clamp(34px,5vw,72px);line-height:1;letter-spacing:-.02em;text-wrap:balance}
+.bet h2 em{font-style:italic;color:var(--accent)}
+.bet p{color:var(--mid);max-width:46ch;margin:18px 0 0;text-wrap:pretty}
+.bet p b{color:var(--ink);font-weight:500}
+footer{padding:0 clamp(20px,5vw,72px) 70px;display:flex;flex-wrap:wrap;gap:12px 44px;justify-content:space-between;
+  font-family:var(--mono);font-size:10px;letter-spacing:.04em;color:var(--dim);line-height:1.8}
+
+@media (max-width:820px){
+  .runway{--pin:5200px;--k0:1;--w1:min(100%,calc((100svh - 470px) * 1.295))}
+  .stage{grid-template-columns:1fr;gap:22px;align-content:center;padding:60px 20px 24px}
+  .label{max-width:none}
+  h1{font-size:clamp(46px,15vw,72px)}
+  .lede{font-size:15px}
+  .run{--pw:100%;gap:14px}
+  .fr b{font-size:34px}
+  .ph .stack i{font-size:24px}
+  .plate{justify-self:start}
+  .legend{display:none}
+  .bet{grid-template-columns:1fr;gap:28px}
+}
+@media (prefers-reduced-motion:reduce){
+  .cue i{animation:none}
+  /* a cut instead of a move: the opening switches to the run 2% into the pin.
+     jump-end, not jump-start — with fill both, jump-start applies the end value at progress 0. */
+  .label,.plate,.run,.legend{animation-timing-function:steps(1,jump-end);animation-range:contain 0% contain 2%}
+  .gate{animation-timing-function:steps(1,jump-end),steps(1,jump-end);animation-range:contain 14% contain 92%,contain 0% contain 2%}
+}
+</style>
+</head>
+<body>
+
+<a class="back" href="index.html">← Mocubix</a>
+
+<div class="runway">
+  <div class="stage">
+
+    <div class="left">
+      <header class="label">
+        <p class="eyebrow">Mocubix · Exhibit 01 · Eadweard Muybridge, 1887</p>
+        <h1>Sixteen frames of <em>Annie G.</em></h1>
+        <p class="lede">A battery of cameras caught a galloping mare sixteen times in one stride. Scroll, and the stills run. Scroll back, and she runs backwards, frame for frame: <b>where you are on the scrollbar is which frame you are on</b>.</p>
+        <p class="cue"><i></i>Scroll to run her</p>
+      </header>
+
+      <div class="run">
+        <div class="proj" role="img" aria-label="The current frame of Annie G. galloping, cut from plate 626"></div>
+        <div class="reads">
+          <p class="fr"><b><small>/ 16</small></b><span>Frame</span></p>
+          <div class="ph"><small>The stride</small>
+            <div class="stack">
+              <span style="--a:0;--b:0"><i>Pushing off</i><small>the last forehoof leaves the ground</small></span>
+              <span style="--a:1;--b:3" class="hot"><i>Airborne</i><small>all four hooves off the ground</small></span>
+              <span style="--a:4;--b:5"><i>A hind hoof lands</i><small>the first touch after the flight</small></span>
+              <span style="--a:6;--b:7"><i>Both hinds down</i><small>the hind legs carry the weight</small></span>
+              <span style="--a:8;--b:10"><i>Hind and fore</i><small>the weight crosses to the front</small></span>
+              <span style="--a:11;--b:14"><i>On the forelegs</i><small>one forehoof, then the other</small></span>
+              <span style="--a:15;--b:15"><i>Pushing off</i><small>the last forehoof leaves the ground</small></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <figure class="plate">
+      <div class="sheet">
+        <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c9/Eadweard_Muybridge%2C_Animal_Locomotion%2C_Plate_626%2C_1887%2C_NGA_136536.jpg/1920px-Eadweard_Muybridge%2C_Animal_Locomotion%2C_Plate_626%2C_1887%2C_NGA_136536.jpg" width="1920" height="1482" alt="Plate 626: Annie G. galloping, sixteen frames in four rows of four" decoding="async" loading="eager" fetchpriority="high">
+        <i class="gate" aria-hidden="true"></i>
+      </div>
+      <div class="below">
+        <figcaption>Plate 626 · Animal Locomotion, 1887 · National Gallery of Art, CC0</figcaption>
+        <ul class="legend" aria-label="The stride, frame by frame">
+          <li style="--a:0;--b:0;--a2:15;--b2:15"><b>1 · 16</b><span>Pushing off</span></li>
+          <li style="--a:1;--b:3"><b>2 – 4</b><span>Airborne, all four hooves off the ground</span></li>
+          <li style="--a:4;--b:5"><b>5 – 6</b><span>A hind hoof lands</span></li>
+          <li style="--a:6;--b:7"><b>7 – 8</b><span>Both hind hooves down</span></li>
+          <li style="--a:8;--b:10"><b>9 – 11</b><span>Hind and fore</span></li>
+          <li style="--a:11;--b:14"><b>12 – 15</b><span>On the forelegs</span></li>
+        </ul>
+      </div>
+    </figure>
+
+  </div>
+</div>
+
+<section class="bet">
+  <figure><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d2/The_Horse_in_Motion_high_res.jpg/1280px-The_Horse_in_Motion_high_res.jpg" srcset="https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d2/The_Horse_in_Motion_high_res.jpg/960px-The_Horse_in_Motion_high_res.jpg 960w, https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d2/The_Horse_in_Motion_high_res.jpg/1280px-The_Horse_in_Motion_high_res.jpg 1280w, https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d2/The_Horse_in_Motion_high_res.jpg/1920px-The_Horse_in_Motion_high_res.jpg 1920w" sizes="(max-width:820px) 100vw, 50vw" width="5694" height="3510" alt="The Horse in Motion, 1878: twelve frames of Sallie Gardner galloping" decoding="async" loading="lazy" style="aspect-ratio:5694/3510"><figcaption>The Horse in Motion, 1878 · Sallie Gardner at Palo Alto · public domain</figcaption></figure>
+  <div>
+    <h2>The bet that started <em>cinema</em></h2>
+    <p>In 1878 Leland Stanford wanted to know whether a galloping horse ever has all four hooves off the ground. Muybridge lined a track with twelve cameras tripped by wires, and the card he printed puts it plainly: the negatives were made <b>“at intervals of twenty-seven inches of distance, and about the twenty-fifth part of a second of time.”</b></p>
+    <p>Nine years later, at the University of Pennsylvania, he shot Annie G. with the cameras that made the plate above, and it answers Stanford twice over. In frames two, three and four she is airborne, and her legs are gathered beneath her, not stretched out fore and aft the way painters had always drawn a gallop.</p>
+    <p>Reading a plate like this is exactly the gesture this page hangs on: you move, the animal moves; you stop, it stops; you go back, it goes back.</p>
+  </div>
+</section>
+
+<footer>
+  <span>Plates — Eadweard Muybridge. Plate 626 via the National Gallery of Art (CC0); The Horse in Motion via Wikimedia Commons (public domain).</span>
+  <span><a href="index.html">← All seven exhibits</a></span>
+</footer>
+
+</body>
+</html>

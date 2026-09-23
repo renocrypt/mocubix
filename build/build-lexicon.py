@@ -1,0 +1,452 @@
+# -*- coding: utf-8 -*-
+"""Generate the Lexicon.
+
+Every image URL comes from assets/curated.json, which holds only URLs the
+Wikimedia API actually returned. No URL is ever hand-typed or width-rewritten.
+"""
+import json, io
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+
+works = json.load(open(ROOT / 'assets/curated.json', encoding='utf-8'))
+sekka = [w for w in works if w['kind'] == 'sekka']
+atkins = [w for w in works if w['kind'] == 'atkins']
+
+def js_plates(items):
+    out = []
+    for w in items:
+        out.append({
+            'label': w['label'],
+            'src': w['default'],
+            'srcset': w['srcset'],
+            'w': w['w'], 'h': w['h'],
+            'license': w['license'],
+            'href': w['descurl'],
+        })
+    return json.dumps(out, ensure_ascii=False)
+
+SPECS = [
+  # (family, name, aka, gloss, api, note, stage_html, tag)
+  # The gloss says what the visitor is looking at and what to do. The note is
+  # the practitioner's line and may be technical; vocabulary is its job.
+  ("scroll", "Scroll Progress Timeline",
+   "scroll-linked animation · page progress",
+   "How far you have scrolled is how far the animation has played. The hairline across the top of this page is one.",
+   "animation-timeline: scroll(root);",
+   "The animation's progress <em>is</em> the scroll container's progress. Zero JavaScript, and it runs off the main thread — so it cannot jank even while the main thread is busy.",
+   '<div class="dial"><div class="ring"><div class="hand"></div><span class="pct" id="pctOut">0%</span></div></div>',
+   "scroll the page"),
+
+  ("scroll", "View Progress Timeline",
+   "view timeline · element-in-viewport progress",
+   "Every row times its own animation by its own trip across the screen, so no two are at the same point at the same moment.",
+   "view-timeline-name: --plate;\nanimation-timeline: --plate;\nanimation-range: entry 0% cover 45%;",
+   "Each element measures <em>its own</em> passage through the viewport, so several different values exist at once. <code>animation-range</code> is the part most people miss — it decides which slice of that passage the animation occupies.",
+   '<div class="plates" id="plates"></div>',
+   "scroll the page"),
+
+  ("scroll", "Pinning &amp; Scrub",
+   "sticky section · pinned stage · ScrollTrigger pin + scrub",
+   "The picture holds still while the page keeps moving, and your scrolling becomes the playhead. Scroll back up and it plays backwards.",
+   "position: sticky; top: 0;\n/* GSAP */ ScrollTrigger({ pin: true, scrub: 1 })",
+   "<b>Pin</b> holds the stage still while the page keeps scrolling. <b>Scrub</b> is the separate idea that progress follows scroll position rather than elapsed time, which is why it reverses exactly. Most “cinematic” sites are these two words.",
+   '<div class="pinrun"><div class="pinstage"><div class="frame"><img id="pinImg" alt=""><div class="cover" id="pinCover"></div><span class="flabel">Scrub to wipe</span></div></div></div>',
+   "scroll the page"),
+
+  ("scroll", "Parallax",
+   "differential scroll · multiplane",
+   "The layers move at different rates, and the difference between the rates is the part you read as distance.",
+   "@keyframes drift { from { transform: translateY(-10%) } to { transform: translateY(10%) } }\nanimation: drift linear both; animation-timeline: view();\n/* each layer gets its own distance; the difference is the depth */",
+   "The oldest trick here and the easiest to overdo. It reads as depth only when the rates differ by a little; large offsets read as broken layout. Built on a view progress timeline it costs no JavaScript.",
+   '<div class="para" id="para"><div class="lyr l1" id="paraL1"></div><div class="lyr l2" id="paraL2"></div><div class="pcap">Depth is a rate difference</div></div>',
+   "scroll the page"),
+
+  ("scroll", "Horizontal Scroll Section",
+   "pinned horizontal scroll · sideways gallery",
+   "You scroll down; the content travels sideways. A list you ranked becomes a row you compare across.",
+   "/* --travel is the track's overflow, measured from its content */\ntransform: translateX(calc(-1 * var(--travel)));",
+   "Changing the axis changes what the content means: a stack implies rank, a track implies comparison. Travel must be measured from real content — a track that barely overflows reads as a glitch, not a journey.",
+   '<div class="hrun"><div class="hstage"><div class="htrack" id="htrack"></div></div></div>',
+   "scroll the page"),
+
+  ("scroll", "Scroll Snap",
+   "snap points · scroll snapping",
+   "Scrolling comes to rest on a whole item instead of halfway between two. It feels like turning pages.",
+   "scroll-snap-type: y mandatory;\nscroll-snap-align: start;",
+   "Two properties, and it inherits the platform's real scroll physics — momentum, rubber-banding, trackpad feel. Every JavaScript reimplementation is worse.",
+   '<div class="snap"><div><span>Snap 01</span></div><div><span>Snap 02</span></div><div><span>Snap 03</span></div><div><span>Snap 04</span></div></div>',
+   "scroll inside ↓"),
+
+  ("scroll", "Sticky Stacking Cards",
+   "card stack · sticky stack",
+   "Cards catch at the top one after another and pile over each other as you keep going.",
+   "li { position: sticky; top: 76px; }",
+   "One property on a list. Each item sticks at the same offset so later items slide over earlier ones and the stack builds itself. No library, no measurement, no scroll listener.",
+   '<ul class="stackrun" id="stackrun"></ul>',
+   "scroll the page"),
+
+  ("scroll", "Scroll Velocity Skew",
+   "skew on scroll · velocity distortion · momentum skew",
+   "It reads how fast you are scrolling rather than where you have got to. Throw the page and the picture leans, then settles.",
+   "v += (target - v) * (target > v ? 0.34 : 0.055);\ntransform: skewY(calc(var(--vel) * -4deg));",
+   "Velocity is a genuinely separate signal from position. The asymmetry is the craft: it rises about six times faster than it falls, which is what makes it read as momentum rather than twitch.",
+   '<div class="skew"><div class="skewinner" id="skewinner"></div></div><p class="velout">velocity <span id="velOut">0.00</span></p>',
+   "throw the page"),
+
+  ("scroll", "Sticky State Query",
+   "stuck detection · scroll-state container query · sticky-aware header",
+   "The moment the bar catches at the top of its panel, it knows, and changes itself.",
+   "container-type: scroll-state;\n@container scroll-state(stuck: top) { … }",
+   "Until this shipped, every “shrink the header once it sticks” needed a scroll listener and a hand-picked pixel threshold that broke under zoom. Now the element is simply told what it <em>is</em>.",
+   '<div class="ssq"><div class="ssqhead"><div class="ssqbar"><span>Momoyogusa · plate index</span><b>stuck</b></div></div><div class="ssqbody" id="ssqbody"></div></div><span class="supp" data-f="ss"></span>',
+   "scroll inside ↓"),
+
+  ("scroll", "Snapped State Query",
+   "snapped detection · active-slide styling · scroll-state(snapped)",
+   "Whichever slide is parked at the centre knows it is the one you are looking at, and lights up.",
+   "scroll-snap-align: center;\n@container scroll-state(snapped: block) { … }",
+   "The companion query. A carousel always needed to know which slide is <em>current</em>, and every hand-rolled version computed it from offsets and got the edges wrong. This is the browser answering the question itself.",
+   '<ul class="snapq" id="snapq"></ul><span class="supp" data-f="ss"></span>',
+   "scroll inside ↓"),
+
+  ("scroll", "Scroll Markers",
+   "::scroll-marker · CSS-only carousel dots · scroll-marker-group",
+   "The dots under the strip are made by the strip itself, and follow wherever you are in it.",
+   "scroll-marker-group: after;\nli::scroll-marker { content: '' }\nli::scroll-marker:target-current { … }",
+   "The dots are generated <em>by</em> the list and track it for free — including keyboard traversal and focus order, which hand-built dot navigation almost never gets right.",
+   '<ul class="cml" id="cml"></ul><span class="supp" data-f="sm"></span>',
+   "drag · or click a dot"),
+
+  ("scroll", "Scroll Buttons",
+   "::scroll-button() · generated prev/next · CSS-only controls",
+   "The back and forward arrows come out of the row of items itself, and go grey when there is nothing left that way.",
+   "ul::scroll-button(left)  { content: '←' }\nul::scroll-button(right) { content: '→' }\nul::scroll-button(*):disabled { opacity: .25 }",
+   "The same idea as the markers, for the arrows — and the <code>:disabled</code> state at each end arrives free, which is the part hand-rolled carousels forget. No JavaScript, and each one is a real button to a screen reader.",
+   '<div class="csbwrap"><ul class="csb" id="csb"></ul></div><span class="supp" data-f="sb"></span>',
+   "press the arrows"),
+
+  ("scroll", "Timeline Scope",
+   "timeline-scope · remote timeline · cross-tree driving",
+   "A figure far down the panel drives the bar at the top of it. One element's passage moves something it sits nowhere near.",
+   "timeline-scope: --plate;\n/* on a child   */ view-timeline-name: --plate;\n/* on a sibling */ animation-timeline: --plate;",
+   "A scroll timeline is normally visible only to the element's own descendants. <code>timeline-scope</code> lifts it onto a shared ancestor, so a bar at the top can be driven by a figure far below it — something that previously required JavaScript by definition.",
+   '<div class="tsc"><div class="tschead"><span>bar driven by the figure below</span><div class="tscbar"><i></i></div></div><div class="tscpad">keep scrolling ↓</div><div class="tscbox" id="tscbox"></div><div class="tscpad">— end —</div></div><span class="supp" data-f="ts"></span>',
+   "scroll inside ↓"),
+
+  ("scroll", "Path Drawing",
+   "stroke-dashoffset scrub · line draw · SVG path reveal",
+   "The line draws itself as you arrive, as though someone were tracing it in front of you.",
+   'path { pathLength: 1; stroke-dasharray: 1; stroke-dashoffset: 1 }\nanimation-timeline: view();\nanimation-range: entry 5% cover 50%;',
+   'The robustness trick is <code>pathLength="1"</code>: it normalises any path to a length of one, so the same two lines of CSS draw any shape without measuring it in JavaScript first.',
+   '<div class="pdraw"><svg viewBox="0 0 320 152" fill="none" aria-hidden="true"><path class="p1" pathLength="1" d="M6 98C48 98 54 46 98 46s50 52 94 52 50-52 94-52c20 0 28 12 28 24"/><path class="p2" pathLength="1" d="M6 122C54 122 62 82 110 82s50 40 98 40 52-40 100-40"/><path class="p3" pathLength="1" d="M98 46c8-15 22-23 36-19M286 46c8-15 22-23 30-18"/></svg><p class="pdcap">Draws as you arrive</p></div>',
+   "scroll the page"),
+
+  ("scroll", "Word Scrub",
+   "read-along highlight · per-word reveal · text scrub",
+   "The sentence lights up a word at a time, and how much of it has arrived is how far you have come down the page.",
+   "/* per word, i = its index */\nanimation-range: cover calc(var(--i) * 1.5%)\n                 cover calc(var(--i) * 1.5% + 26%);",
+   "Each word owns a <em>different slice</em> of one timeline, so the sentence resolves left to right as you descend. The overlap is the entire craft: too little and it strobes word by word, too much and the sentence arrives all at once.",
+   '<div class="wscrub" id="wscrub"></div>',
+   "scroll the page"),
+
+  ("scroll", "Direction State",
+   "auto-hide header · direction-aware nav · scroll-up reveal",
+   "Going down puts the bar away so you can read. Going back up brings it straight back.",
+   'dir = y > last ? "down" : "up";\n[data-dir="down"] .bar { transform: translateY(-100%) }',
+   "Position says where you are; direction says what you want. Descending reads as “reading, leave me alone”, ascending as “looking for something”. A few pixels of dead zone are mandatory, or a trackpad makes it flicker.",
+   '<div class="dirs" id="dirs"><div class="dirshead"><span>Momoyogusa</span><b id="dirOut">up</b></div><div class="dirsbody" id="dirsbody"></div></div>',
+   "scroll inside ↕"),
+
+  ("scroll", "Curtain Overlap",
+   "panel slide-over · curtain reveal · section overlap",
+   "The next panel covers the one before it rather than pushing it out of the way.",
+   ".a { position: sticky; top: 0 }\n.b { position: relative; z-index: 2 }",
+   "Two rules and nothing else. The outgoing panel stays pinned while the incoming one rides over it, so the change reads as depth rather than travel. Note what is absent: no animation, no timeline, no measurement.",
+   '<div class="curt"><div class="curtA" id="curtA"><span>01 — stays put</span></div><div class="curtB"><span>02 — rides over</span></div></div>',
+   "scroll the page"),
+
+  ("scroll", "Depth of Field",
+   "focus falloff · viewport-centre focus · scroll blur",
+   "Only the band across the middle of the screen is sharp. Everything above and below it falls out of focus.",
+   "@keyframes focusband {\n  0%, 100% { filter: blur(4.5px); opacity: .34 }\n  46%, 54% { filter: blur(0);    opacity: 1 }\n}",
+   "A camera metaphor applied to a list: attention is a narrow band, and everything outside it recedes. Keep the blur under about 6px — past that it stops reading as focus and starts reading as a rendering fault.",
+   '<div class="dof" id="dof"></div>',
+   "scroll the page"),
+
+  ("scroll", "Infinite Loop Scroll",
+   "endless scroll · recycled list · seamless wrap",
+   "The list has no end. Keep going and it carries on, with no seam to catch on.",
+   "el.append(el.firstElementChild);\nel.scrollTop -= rowHeight;   /* same frame, or it jumps */",
+   "The correction must happen in the <em>same</em> frame as the move or the seam shows as a jump. Done right the list has no beginning and no end — and the scrollbar stops telling you where you are, which is the price.",
+   '<div class="loopx" id="loopx"></div>',
+   "never ends ↓"),
+
+  ("scroll", "Kinetic Drag",
+   "drag-to-scroll · inertial scrolling · momentum decay",
+   "Grab it and throw it. It keeps going after you let go, then slows to a stop as though it had weight.",
+   "v *= 0.94;                    /* per frame */\nif (Math.abs(v) < 0.1) stop();",
+   "Everything lives in the decay constant. 0.90 stops abruptly and feels cheap; 0.98 slides forever and feels broken. Around <b>0.94</b> is where it starts feeling like an object with mass.",
+   '<div class="kin" id="kin"><div class="kintrack" id="kintrack"></div></div>',
+   "grab and throw"),
+
+  ("scroll", "Scroll-Triggered Count",
+   "odometer · number roll · stat counter",
+   "The figures wait until they are on screen, then run up to their value — once, not every time you pass.",
+   "font-variant-numeric: tabular-nums;\nnew IntersectionObserver(fn, { threshold: 0.6 })",
+   "The tabular figures matter more than the easing — proportional numerals change width as they count and the whole row twitches. It fires <b>once</b>: a counter that replays on every pass is a tell that nobody checked it twice.",
+   '<div class="cnt" id="cnt"></div><button class="btn" id="cntBtn">Replay</button>',
+   "plays once"),
+
+  ("scroll", "Scrollspy",
+   "section tracking · active-anchor highlight · reading position",
+   "Whatever has reached eye level is the thing the index marks as where you are.",
+   "new IntersectionObserver(fn, {\n  rootMargin: '-45% 0px -45% 0px'\n})",
+   "That <code>rootMargin</code> collapses the viewport to a thin band across its middle, so “current” means <em>what is at eye level</em> rather than what merely happens to be on screen. The index pinned to the top of this page is one.",
+   '<div class="spy" id="spy"><div class="spyrail" id="spyrail"></div><div class="spybody" id="spybody"></div></div>',
+   "scroll inside ↓"),
+
+  ("scroll", "Overscroll Containment",
+   "scroll chaining · overscroll-behavior · gesture trapping",
+   "Push both panels past their last line. One hands your gesture on to the page behind it; the other keeps it.",
+   "overscroll-behavior: contain;",
+   "One property, and it is the whole difference between a panel that feels solid and one that feels like a leak. The chaining default is right for a document and wrong for almost every overlay.",
+   '<div class="osb"><div><p class="osbcap">default — chains</p><div class="osbpane chain" id="osbA"></div></div><div><p class="osbcap">contain — absorbs</p><div class="osbpane keep" id="osbB"></div></div></div>',
+   "scroll both to the end"),
+
+  ("scroll", "Snap Stop",
+   "scroll-snap-stop · no-skip snapping · mandatory stop",
+   "Flick both tracks hard. The top one skips three or four items in one go; the bottom one stops at the very next one.",
+   "scroll-snap-stop: always;",
+   "Use it when every item must actually be seen, and leave it off for browsing. It is the difference between a catalogue and a queue.",
+   '<div class="snst"><p class="osbcap">normal — a hard flick skips</p><ul class="snstrack" id="snstA"></ul><p class="osbcap">always — one at a time</p><ul class="snstrack stop" id="snstB"></ul></div>',
+   "flick both"),
+
+  ("image", "Blur-up (LQIP)",
+   "low-quality image placeholder · progressive loading",
+   "A small blurred stand-in appears at once and the real picture fades in over it — in a box that was already the right size, so nothing jumps.",
+   "figure { aspect-ratio: 3 / 2 }   /* the box is reserved before the file lands */\n.placeholder { filter: blur(18px); transform: scale(1.1) }\n.full { opacity: 0; transition: opacity .9s }   /* → 1 once loaded */",
+   "Two jobs at once: something to look at immediately, and a reserved box so nothing shifts when the real file lands. Layout shift is a ranked Core Web Vital, so the <code>aspect-ratio</code> is not decoration.",
+   '<div class="lqip" id="lqip"></div><button class="btn" id="lqipBtn">Replay load</button>',
+   "watch it load"),
+
+  ("image", "Ken Burns",
+   "slow pan and zoom · documentary pan",
+   "A still photograph is given a slow drift and a slow push in — just enough to feel like time passing.",
+   "@keyframes kb { to { transform: scale(1.14) translate(-2%, 1.5%) } }\nanimation: kb 18s ease-in-out infinite alternate;",
+   "Named for the documentarian who made a career of it. The rule is that the move must be slower than the viewer's attention — if they notice the motion starting, it is too fast.",
+   '<div class="kb" id="kb"></div>',
+   "runs by itself"),
+
+  ("image", "Duotone",
+   "two-tone mapping · bichromate",
+   "Any photograph, whatever it arrived wearing, comes out in one colour. Drag back to see what it came in as.",
+   "background: var(--accent);\nmix-blend-mode: color;  /* over a grayscale base */",
+   "A brand-colour treatment that survives any source image. Grayscale the base, then lay a single hue over it with <code>mix-blend-mode</code>.",
+   '<div class="duo" id="duo"><div class="duoBase"></div><div class="duoTint"></div></div><input class="rng" id="duoRange" type="range" min="0" max="100" value="100" aria-label="Duotone amount">',
+   "drag the slider"),
+
+  ("image", "Progressive Blur",
+   "gradient blur · layered blur · tapered blur",
+   "The picture softens towards the bottom, so the caption sits on something readable without a black bar laid across it.",
+   "backdrop-filter: blur(Npx);\nmask-image: linear-gradient(to top, #000, transparent);",
+   "Stacked layers, each blurring more than the last, each masked to a different band. Far more elegant than a scrim because the image stays legible while the text still reads.",
+   '<div class="pblur" id="pblur"><div class="pbImg"></div><div class="pbL" style="--b:2px;--s:62%"></div><div class="pbL" style="--b:6px;--s:78%"></div><div class="pbL" style="--b:14px;--s:88%"></div><p class="pbTxt">Text sits on light</p></div>',
+   "read the caption"),
+
+  ("image", "Ordered Dithering",
+   "Bayer dithering · halftone · posterize",
+   "The picture is cut down to a handful of tones, and the ones that are missing are made up out of a regular grain. Drag to take more away.",
+   "const BAYER8 = [...];  // 8×8 threshold matrix\nv = v + (BAYER8[y%8][x%8]/64 - 0.5) * spread;",
+   "Real pixel work — it needs <code>crossorigin=\"anonymous\"</code> and a CORS-clean host, otherwise the canvas is tainted and <code>getImageData</code> throws. Wikimedia sends the header; most museum CDNs do not.",
+   '<div class="dith"><canvas id="dithCv"></canvas></div><input class="rng" id="dithRange" type="range" min="2" max="16" value="4" aria-label="Levels">',
+   "drag the slider"),
+
+  ("image", "Clip-path Reveal",
+   "mask reveal · wipe · shape reveal",
+   "The picture is uncovered by an edge travelling across it, not by fading up underneath.",
+   "clip-path: inset(0 100% 0 0)  →  inset(0 0 0 0);\ntransition: clip-path .9s cubic-bezier(.16,.84,.24,1);",
+   "A wipe has a direction and an edge; a fade has neither. That edge is what makes the reveal feel authored rather than merely delayed.",
+   '<div class="clipr" id="clipr"><div class="clipImg"></div><div class="clipImg alt"></div></div>',
+   "hover"),
+
+  ("image", "Image Comparison Slider",
+   "before/after · juxtapose",
+   "Two versions of the same frame, one laid over the other. Drag the divider across to compare them.",
+   "clip-path: inset(0 calc(100% - var(--x)) 0 0);",
+   "One image clipped over another, the clip driven by pointer position. Keep both layers exactly registered or the comparison lies.",
+   '<div class="cmp" id="cmp"><div class="cmpA"></div><div class="cmpB"></div><div class="cmpBar"></div></div>',
+   "drag across"),
+
+  ("type", "Split Text Reveal",
+   "staggered line reveal · line mask · SplitText",
+   "The lines rise up out of the page one after another, each a beat behind the last.",
+   ".line { overflow: hidden }\n.line span { transform: translateY(110%) → none }",
+   "The mask is what matters: a wrapper with <code>overflow:hidden</code> and a translated inner. That makes text rise <em>out of</em> the page instead of fading in on top of it.",
+   '<div class="reveal" id="reveal"><div class="ln"><span>A name you can say</span></div><div class="ln"><span>is a thing you can ask</span></div><div class="ln"><span>someone else to build.</span></div></div>',
+   "plays once"),
+
+  ("type", "Variable Font Animation",
+   "axis interpolation · variable axes",
+   "Weight is a dial here, not a set of steps. Drag it and the letterforms thicken without ever swapping to another file.",
+   "font-variation-settings: 'wght' 340;\ntransition: font-variation-settings .6s;",
+   "A variable font exposes continuous axes rather than fixed cuts, so weight can be animated instead of swapped. One file, the whole family, and no flash between weights.",
+   '<div class="vf"><p id="vfLine">Weight is a continuous axis</p><input class="rng" id="vfRange" type="range" min="100" max="900" value="400" aria-label="Weight"></div>',
+   "drag the slider"),
+
+  ("type", "Text Mask",
+   "knockout text · background-clip · image-in-type",
+   "The picture shows only through the letters. The type is the window, not the caption.",
+   "background-image: url(…);\nbackground-clip: text;\ncolor: transparent;",
+   "The type becomes an aperture onto the image. It needs real weight to work — thin letterforms leave too little opening for the picture to read.",
+   '<div class="tmask"><h3 id="tmaskTxt">MOMOYOGUSA</h3></div>',
+   "look through the letters"),
+
+  ("type", "Vertical Writing Mode",
+   "竖排 · tate-gumi · vertical typesetting",
+   "Set down the page instead of across it, the way Chinese, Japanese and Korean have always been set. Each column is written downward, and they arrive right to left. Latin and figures turn sideways to follow — all but the year, held upright in a single square.",
+   "writing-mode: vertical-rl;\ntext-orientation: mixed;\n.year { text-combine-upright: all }   /* 縦中横 */",
+   "Native in CSS and correct for CJK — the browser rotates Latin runs and places the punctuation itself. <code>text-combine-upright</code> is the piece almost nobody reaches for: it sets a two- to four-character number upright inside one em box, which is how a printed vertical page has always handled a date. This is the experimental lane: the writing here is material to look at, never the interface.",
+   '<div class="vert"><p class="vt1">滚动即时间轴</p><p class="vt2">名は体を表す</p>'
+   '<p class="vt3">이름이 곧 형태다</p>'
+   '<p class="vt4">神坂雪佳　百々世草　<span class="tcy">1909</span></p></div>',
+   "scroll the page"),
+
+  ("type", "Marquee",
+   "ticker · infinite scroller · running band",
+   "A band of text running sideways under its own power, whether or not you touch the page. Hover to stop it.",
+   ".row { width: max-content; animation: slide 26s linear infinite }\n@keyframes slide { to { transform: translateX(-50%) } }\n/* the content is duplicated once, so -50% lands exactly on the seam */",
+   "The one effect here that ignores scroll entirely — it gives a page a pulse when nothing else moves. Duplicate the content exactly once and travel <code>-50%</code>; that is what makes the loop seamless.",
+   '<div class="marq"><div class="marqrow" id="marqrow"></div></div>',
+   "runs by itself"),
+
+  ("colour", "Token Interpolation",
+   "scroll-driven theme · animated custom properties · palette rotation",
+   "Every colour on the card is held to one dial. Scroll, and they all turn together, in step, never landing on a combination nobody chose.",
+   "@property --rot { syntax: '<angle>'; inherits: true }\n--accent: oklch(0.637 0.145 calc(40.2deg + var(--rot)));",
+   "The whole palette is one number. <code>@property</code> is what makes it animatable at all — an unregistered custom property has no interpolable type. Every token keeps its lightness and chroma and shares the angle, so nothing can drift out of step.",
+   '<div class="ti" id="ti"><div class="tiface"><span class="tieye">Ledger</span><b>Momoyogusa</b><p>Twelve plates, one angle.</p><span class="tibtn">Open</span></div><div class="tibar"></div></div>',
+   "scroll the page"),
+
+  ("colour", "Scoped Rotation",
+   "custom property invalidation · style recalc scope",
+   "The same colour change, asked of a few elements or of a great many. Press the switch and watch the counter beside it.",
+   ".stage { --rot: 0deg; animation: turn linear both; animation-timeline: scroll(root) }\n/* declared on .stage, not :root — only this subtree re-resolves each frame */",
+   "Where the angle is declared decides what it costs. On the root, every element on the page re-resolves its colours each frame; on the stage, only the stage does. Scope is the whole difference between a palette that animates for free and one that eats the frame budget.",
+   '<div class="sc" id="sc"><div class="scgrid" id="scgrid"></div><button class="btn" id="scBtn">24 consumers</button><p class="scout"><span id="scMs">--</span> · <span id="scN">0</span> consumers</p></div>',
+   "press the switch"),
+
+  ("colour", "Gamut Arc",
+   "hue path · chroma preservation · colour interpolation",
+   "Two ways to get from terra to blue. The left field goes round the outside and is a full colour the whole way; the right one goes straight across and turns to mud halfway.",
+   "/* round the outside */\nbackground: oklch(0.637 0.148 calc(40.2deg + var(--t) * -135.8deg));\n/* straight across — what you get by default */\nbackground: color-mix(in srgb, <end> calc(var(--t) * 100%), <start>);",
+   "How much colour a screen can hold changes with hue: the space bulges towards violet and pinches near cyan, so it is not a cylinder. That makes the route between two colours a gamut question rather than a matter of taste — and the default route, a straight line through the middle of the space, is the one that passes closest to grey. The strips under each field are the whole journey at once.",
+   '<div class="ga" id="ga">'
+   '<div class="gacol"><div class="gafield rim"></div><div class="gapath rim"></div>'
+   '<p class="galab">along the rim<i>full colour the whole way</i></p></div>'
+   '<div class="gacol"><div class="gafield chord"></div><div class="gapath chord"></div>'
+   '<p class="galab">straight across<i>grey in the middle</i></p></div></div>',
+   "scroll the page"),
+
+  ("colour", "Difference Inversion",
+   "mix-blend-mode · invert on crossing · self-inverting overlay",
+   "The words turn themselves into the opposite of whatever passes behind them, so they stay readable over a photograph, over white and over black — and then vanish over one particular grey.",
+   "mix-blend-mode: difference;",
+   "One property, no JavaScript, and the overlay never has to know what is behind it. What it cannot survive is mid-grey, where inverting a value returns very nearly the value you started from. Plan for that band rather than discovering it on the one slide that has it.",
+   '<div class="di"><div class="dirun" id="dirun"></div><p class="ditxt">Legible on anything</p></div>',
+   "watch it cross the grey"),
+
+  ("colour", "Threshold Flip",
+   "section theming · discrete palette swap · data-theme",
+   "At one point on the way down, the whole panel changes its colours at once rather than easing between them.",
+   "new IntersectionObserver(fn, { rootMargin: '-45% 0px -45% 0px' })\n.flip { transition: background-color .7s var(--settle) }\n/* these three palettes are unrelated by design, so they are written out\n   rather than derived from the house tokens */",
+   "The common form, and the honest one when two palettes are unrelated rather than a rotation apart. Everything rests on the transition: without one it strobes, and much past a second it lags the scroll and reads as a bug.",
+   '<div class="tf" id="tf"><div class="tfpanels" id="tfpanels"></div></div>',
+   "scroll inside ↓"),
+]
+
+FAMILIES = [("scroll", "Scroll"), ("image", "Image"),
+            ("type", "Type"), ("colour", "Colour")]
+
+
+# Specimens that a full exhibit develops further. Keyed by name as in SPECS.
+EXHIBITS = {
+    "Pinning &amp; Scrub":        ("01-scroll-timeline.html", "Exhibit 01 · Annie G."),
+    "Horizontal Scroll Section":  ("02-horizontal.html",      "Exhibit 02 · Night side"),
+    "Scroll Velocity Skew":       ("03-velocity.html",        "Exhibit 03 · Florence"),
+    "View Progress Timeline":     ("04-view-progress.html",   "Exhibit 04 · Urformen"),
+    "Token Interpolation":        ("07-theme-rotation.html",  "Exhibit 07 · Kīlauea"),
+    "Threshold Flip":             ("07-theme-rotation.html",  "Exhibit 07 · Kīlauea"),
+}
+
+def render_specs():
+    buf = io.StringIO()
+    n = 0
+    for fam, fam_en in FAMILIES:
+        items = [s for s in SPECS if s[0] == fam]
+        buf.write(f'\n<div class="famhead" id="fam-{fam}">'
+                  f'<h2>{fam_en}</h2>'
+                  f'<p>{len(items)} named effects</p></div>\n')
+        for (_, name, aka, gloss, api, note, stage, tag) in items:
+            n += 1
+            idx = f"{n:02d}"
+            akas = ' · '.join(f'<i>{a.strip()}</i>' for a in aka.split('·'))
+            # api is code, never markup — <angle> must survive as text
+            api = api.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;')
+            href, label = EXHIBITS.get(name, (None, None))
+            deeper = (f'<a class="deeper" href="{href}">{label}</a>' if href else '')
+            buf.write(f'''
+<section class="spec" id="s{idx}">
+  <div class="meta">
+    <span class="idx">{idx} / {fam}</span>
+    <h3 class="name">{name}</h3>
+    <p class="gloss">{gloss}</p>
+    <p class="aka">also called {akas}</p>
+    <p class="note">{note}</p>
+    <details class="how"><summary>How it is built</summary><code class="api">{api}</code></details>
+    {deeper}
+  </div>
+  <div class="stage"><span class="tag">{tag}</span>{stage}</div>
+</section>''')
+    return buf.getvalue()
+
+def render_nav():
+    """The pinned bar: one line of family jumps and a count. The full list is
+    render_index(), in the header."""
+    out = []
+    for fam, fam_en in FAMILIES:
+        n = len([s for s in SPECS if s[0] == fam])
+        out.append(f'<a class="navfam" href="#fam-{fam}">{fam_en}<i>{n}</i></a>')
+    out.append(f'<span class="navtail">{len(SPECS)} named effects</span>')
+    return ''.join(out)
+
+
+def render_index():
+    """The catalogue contents, in the header. Every name is a real DOM link —
+    this is the page's vocabulary, so it has to be readable and indexable."""
+    out = ['<div class="index">']
+    n = 0
+    for fam, fam_en in FAMILIES:
+        items = [s for s in SPECS if s[0] == fam]
+        wide = ' wide' if len(items) > 12 else ''   # a big family splits into two columns
+        out.append(f'<div class="idxcol{wide}"><h4>{fam_en}'
+                   f'<em>{len(items)}</em></h4><ol>')
+        for s in items:
+            n += 1
+            out.append(f'<li><a href="#s{n:02d}"><b>{n:02d}</b><span>{s[1]}</span></a></li>')
+        out.append('</ol></div>')
+    out.append('</div>')
+    return ''.join(out)
+
+TEMPLATE = open(ROOT / 'build/lexicon.template.html', encoding='utf-8').read()
+html = (TEMPLATE
+        .replace('/*__SPECS__*/', render_specs())
+        .replace('/*__NAV__*/', render_nav())
+        .replace('/*__INDEX__*/', render_index())
+        .replace('/*__SEKKA__*/', js_plates(sekka))
+        .replace('/*__ATKINS__*/', js_plates(atkins))
+        .replace('__COUNT__', str(len(SPECS))))
+
+open(ROOT / 'artifacts/lexicon.html', 'w', encoding='utf-8').write(html)
+print("wrote lexicon.html —", len(html), "bytes,", len(SPECS), "named effects,",
+      len(sekka), "Sekka plates,", len(atkins), "cyanotypes")

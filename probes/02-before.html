@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Night Side — Mocubix</title>
+<meta name="description" content="Nine night passes of the International Space Station stitched into one window. Scroll down and the window moves sideways: vertical distance becomes horizontal travel.">
+
+<link rel="preconnect" href="https://api.fontshare.com">
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="preconnect" href="https://upload.wikimedia.org">
+<!-- One request per family. A combined f[] request silently delivers only the first. -->
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f%5B%5D=panchang@400,700&display=swap">
+<!-- Panchang: an extra-wide, engineered face for a window that travels sideways; no italic, so the accent is colour alone. -->
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f%5B%5D=switzer@400,500,600&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource-variable/geist-mono/index.css">
+<link rel="stylesheet" href="../artifacts/house.css">
+<script src="../artifacts/house.js"></script>
+
+<style>
+:root{--display:'Panchang',Arial,sans-serif} /* guest display face for this exhibit */
+/* This piece is the night side of the planet: it stays dark in both palettes,
+   and only its chrome follows the switch. */
+:root{--space:#050506;--glass:color-mix(in srgb,#050506 55%,transparent)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--space);color:#F2EDE5;font-family:var(--sans);font-size:15px;line-height:1.55;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{display:block}
+h1,h2{font-weight:400;margin:0}
+.back{position:fixed;top:22px;left:clamp(16px,4vw,40px);z-index:80;font-family:var(--mono);font-size:10px;
+  letter-spacing:.14em;text-transform:uppercase;color:#B4ABA0}
+.theme{color:#B4ABA0}
+
+/* ── hero ──────────────────────────────────────────────────── */
+.hero{position:relative;min-height:100svh;display:grid;align-content:end;padding:0 clamp(20px,5vw,72px) clamp(40px,7vh,80px);isolation:isolate}
+.hero .pic{position:absolute;inset:0;z-index:-1;overflow:hidden}
+.hero .pic img{width:100%;height:100%;object-fit:cover;object-position:50% 40%}
+.hero .pic::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,var(--space) 100%)}
+.eyebrow{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#B4ABA0;margin:0 0 18px}
+h1{font-family:var(--display);font-size:clamp(46px,8.2vw,122px);line-height:.9;letter-spacing:-.01em}
+h1 em{font-style:normal;color:var(--indigo)}
+.lede{font-size:clamp(15px,1.8vw,20px);color:#B4ABA0;max-width:46ch;margin:24px 0 0;text-wrap:pretty}
+.lede b{color:#F2EDE5;font-weight:500}
+.cue{margin-top:28px;font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#7E766D;display:flex;align-items:center;gap:12px}
+.cue i{width:36px;height:1px;background:var(--indigo);display:block;transform-origin:0 50%;animation:cue 2.6s var(--settle) infinite}
+@keyframes cue{0%{transform:scaleX(0)}55%{transform:scaleX(1)}100%{transform:scaleX(0)}}
+
+/* ── the window: vertical scroll, horizontal travel ────────── */
+.runway{height:900vh;position:relative}
+.stage{position:sticky;top:0;height:100svh;overflow:clip;display:flex;align-items:center}
+.track{display:flex;gap:clamp(18px,2.5vw,40px);padding-inline:clamp(20px,5vw,72px);will-change:transform;
+  animation:slide linear both;animation-timeline:scroll(root);animation-range:contain 0% contain 100%}
+@keyframes slide{from{transform:translateX(0)}to{transform:translateX(calc(-1 * var(--travel,0px)))}}
+.pass{flex:none;height:min(74svh,760px);position:relative}
+.pass img{height:100%;width:auto;display:block}
+.pass.tall img{height:100%;width:auto}
+.pass figcaption{position:absolute;left:0;bottom:-30px;font-family:var(--mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:#7E766D;white-space:nowrap}
+
+/* the readouts sit on the window glass */
+.hud{position:absolute;left:clamp(20px,5vw,72px);bottom:clamp(24px,4vh,40px);z-index:5;display:grid;gap:10px;pointer-events:none}
+.hud .place{font-family:var(--display);font-style:normal;font-size:clamp(30px,4.6vw,72px);line-height:.95;letter-spacing:-.01em;
+  color:#F2EDE5;text-shadow:0 2px 30px rgba(0,0,0,.6)}
+.hud .place small{display:block;font-style:normal;font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#B4ABA0;margin-bottom:12px}
+.hud dl{margin:0;display:flex;gap:26px;font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#7E766D}
+.hud dl div{display:flex;gap:8px;align-items:baseline}
+.hud dd{margin:0;color:var(--indigo);font-size:14px;letter-spacing:-.01em;font-variant-numeric:tabular-nums;text-transform:none}
+
+.orbit{position:absolute;right:clamp(20px,5vw,72px);top:clamp(64px,9vh,88px);z-index:5;width:74px;height:74px;pointer-events:none}
+.orbit svg{width:100%;height:100%;overflow:visible}
+.orbit circle.ring{fill:none;stroke:rgba(242,237,229,.22);stroke-width:1}
+.orbit circle.dot{fill:var(--indigo)}
+.orbit .g{transform-origin:37px 37px;animation:turn linear both;animation-timeline:scroll(root);animation-range:contain 0% contain 100%}
+@keyframes turn{to{transform:rotate(360deg)}}
+.meter{position:absolute;left:0;right:0;bottom:0;height:2px;background:rgba(242,237,229,.14);z-index:5}
+.meter i{position:absolute;inset:0;background:var(--indigo);display:block;transform-origin:0 50%;transform:scaleX(0);
+  animation:grow linear both;animation-timeline:scroll(root);animation-range:contain 0% contain 100%}
+@keyframes grow{to{transform:scaleX(1)}}
+
+/* ── after the window ──────────────────────────────────────── */
+.after{padding:clamp(60px,10vh,120px) clamp(20px,5vw,72px);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,5vw,80px);align-items:end;border-top:1px solid rgba(242,237,229,.12)}
+.after h2{font-family:var(--display);font-size:clamp(28px,3.6vw,54px);line-height:1;letter-spacing:-.01em}
+.after h2 em{font-style:normal;color:var(--indigo)}
+.after p{margin:0;color:#B4ABA0;max-width:46ch;font-size:clamp(14px,1.5vw,17px);text-wrap:pretty}
+.after p b{color:#F2EDE5;font-weight:500}
+footer{padding:0 clamp(20px,5vw,72px) 70px;display:flex;flex-wrap:wrap;gap:12px 44px;justify-content:space-between;
+  font-family:var(--mono);font-size:10px;letter-spacing:.04em;color:#7E766D;line-height:1.8}
+
+@media (max-width:820px){
+  .runway{height:700vh}
+  .pass{height:min(58svh,520px)}
+  .hud .place{font-size:clamp(26px,7.5vw,44px)}
+  .hud dl{gap:14px;flex-wrap:wrap}
+  .orbit{width:54px;height:54px;top:60px}
+  .orbit .g{transform-origin:27px 27px}
+  .after{grid-template-columns:1fr;gap:20px}
+}
+@media (prefers-reduced-motion:reduce){
+  .runway{height:auto}.stage{position:static;height:auto;overflow-x:auto;padding-block:40px}
+  .track{animation:none;transform:none}.orbit,.meter,.cue i{display:none}
+}
+</style>
+</head>
+<body>
+
+<a class="back" href="../artifacts/index.html">← Mocubix</a>
+
+<header class="hero">
+  <div class="pic" aria-hidden="true"><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f1/ISS-66_City_lights_of_Northern_Europe.jpg/1280px-ISS-66_City_lights_of_Northern_Europe.jpg" srcset="https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f1/ISS-66_City_lights_of_Northern_Europe.jpg/960px-ISS-66_City_lights_of_Northern_Europe.jpg 960w, https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f1/ISS-66_City_lights_of_Northern_Europe.jpg/1280px-ISS-66_City_lights_of_Northern_Europe.jpg 1280w, https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f1/ISS-66_City_lights_of_Northern_Europe.jpg/1920px-ISS-66_City_lights_of_Northern_Europe.jpg 1920w" sizes="100vw" width="5568" height="3712" alt="Northern Europe" decoding="async" loading="eager" fetchpriority="high"></div>
+  <p class="eyebrow">Mocubix · Exhibit 02 · From the station window</p>
+  <h1>Night <em>side</em></h1>
+  <p class="lede">Nine night passes of the International Space Station, stitched into one window. <b>Scroll down and the window moves sideways</b>: the distance you cover with your thumb becomes distance over the ground.</p>
+  <p class="cue"><i></i>Scroll</p>
+</header>
+
+<div class="runway">
+  <div class="stage">
+    <div class="track" id="track">
+      <figure class="pass" data-place="New York" data-sub="Pass 01 · Expedition 53"><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4c/ISS-53_New_York_City%2C_Night_Lights.jpg/1280px-ISS-53_New_York_City%2C_Night_Lights.jpg" srcset="https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4c/ISS-53_New_York_City%2C_Night_Lights.jpg/960px-ISS-53_New_York_City%2C_Night_Lights.jpg 960w, https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4c/ISS-53_New_York_City%2C_Night_Lights.jpg/1280px-ISS-53_New_York_City%2C_Night_Lights.jpg 1280w, https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4c/ISS-53_New_York_City%2C_Night_Lights.jpg/1920px-ISS-53_New_York_City%2C_Night_Lights.jpg 1920w" sizes="110vh" width="5568" height="3712" alt="New York" decoding="async" loading="eager"><figcaption>01 · New York</figcaption></figure>
+      <figure class="pass" data-place="Northern Europe" data-sub="Pass 02 · Expedition 66"><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f1/ISS-66_City_lights_of_Northern_Europe.jpg/1280px-ISS-66_City_lights_of_Northern_Europe.jpg" srcset="https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f1/ISS-66_City_lights_of_Northern_Europe.jpg/960px-ISS-66_City_lights_of_Northern_Europe.jpg 960w, https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f1/ISS-66_City_lights_of_Northern_Europe.jpg/1280px-ISS-66_City_lights_of_Northern_Europe.jpg 1280w, https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f1/ISS-66_City_lights_of_Northern_Europe.jpg/1920px-ISS-66_City_lights_of_Northern_Europe.jpg 1920w" sizes="110vh" width="5568" height="3712" alt="Northern Europe" decoding="async" loading="lazy" style="aspect-ratio:5568/3712"><figcaption>02 · Northern Europe</figcaption></figure>
+      <figure class="pass" data-place="Moscow" data-sub="Pass 03 · Expedition 71"><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c3/Iss071e695407_%28Sept_16%2C_2024%29_---_The_city_lights_of_Moscow%2C_Russia%2C_dotted_by_its_surrounding_suburbs%2C_are_pictured_from_the_International_Space_Station_as_it_orbited_264_miles_above_just_west_of_the_Volga_River.jpg/1280px-thumbnail.jpg" srcset="https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c3/Iss071e695407_%28Sept_16%2C_2024%29_---_The_city_lights_of_Moscow%2C_Russia%2C_dotted_by_its_surrounding_suburbs%2C_are_pictured_from_the_International_Space_Station_as_it_orbited_264_miles_above_just_west_of_the_Volga_River.jpg/960px-thumbnail.jpg 960w, https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c3/Iss071e695407_%28Sept_16%2C_2024%29_---_The_city_lights_of_Moscow%2C_Russia%2C_dotted_by_its_surrounding_suburbs%2C_are_pictured_from_the_International_Space_Station_as_it_orbited_264_miles_above_just_west_of_the_Volga_River.jpg/1280px-thumbnail.jpg 1280w, https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c3/Iss071e695407_%28Sept_16%2C_2024%29_---_The_city_lights_of_Moscow%2C_Russia%2C_dotted_by_its_surrounding_suburbs%2C_are_pictured_from_the_International_Space_Station_as_it_orbited_264_miles_above_just_west_of_the_Volga_River.jpg/1920px-thumbnail.jpg 1920w" sizes="110vh" width="8256" height="5504" alt="Moscow" decoding="async" loading="lazy" style="aspect-ratio:8256/5504"><figcaption>03 · Moscow</figcaption></figure>
+      <figure class="pass" data-place="Central Asia" data-sub="Pass 04 · Aurora on the horizon"><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/4/41/Iss071e695419_%28Sept_16%2C_2024%29_---_The_city_lights_of_central_Asia_and_an_aurora_crowning_Earth%27s_horizon_are_pictured_in_this_photograph_from_the_International_Space_Station_as_it_orbited_264_miles_above_western_Kazak.jpg/1280px-thumbnail.jpg" srcset="https://thumb.wikimedia.org/wikipedia/commons/thumb/4/41/Iss071e695419_%28Sept_16%2C_2024%29_---_The_city_lights_of_central_Asia_and_an_aurora_crowning_Earth%27s_horizon_are_pictured_in_this_photograph_from_the_International_Space_Station_as_it_orbited_264_miles_above_western_Kazak.jpg/960px-thumbnail.jpg 960w, https://thumb.wikimedia.org/wikipedia/commons/thumb/4/41/Iss071e695419_%28Sept_16%2C_2024%29_---_The_city_lights_of_central_Asia_and_an_aurora_crowning_Earth%27s_horizon_are_pictured_in_this_photograph_from_the_International_Space_Station_as_it_orbited_264_miles_above_western_Kazak.jpg/1280px-thumbnail.jpg 1280w, https://thumb.wikimedia.org/wikipedia/commons/thumb/4/41/Iss071e695419_%28Sept_16%2C_2024%29_---_The_city_lights_of_central_Asia_and_an_aurora_crowning_Earth%27s_horizon_are_pictured_in_this_photograph_from_the_International_Space_Station_as_it_orbited_264_miles_above_western_Kazak.jpg/1920px-thumbnail.jpg 1920w" sizes="110vh" width="8256" height="5504" alt="Central Asia, aurora" decoding="async" loading="lazy" style="aspect-ratio:8256/5504"><figcaption>04 · Central Asia</figcaption></figure>
+      <figure class="pass" data-place="India" data-sub="Pass 05 · Expedition 62"><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/9/99/ISS-62_City_lights_of_western_India_and_Pakistan.jpg/1280px-ISS-62_City_lights_of_western_India_and_Pakistan.jpg" srcset="https://thumb.wikimedia.org/wikipedia/commons/thumb/9/99/ISS-62_City_lights_of_western_India_and_Pakistan.jpg/960px-ISS-62_City_lights_of_western_India_and_Pakistan.jpg 960w, https://thumb.wikimedia.org/wikipedia/commons/thumb/9/99/ISS-62_City_lights_of_western_India_and_Pakistan.jpg/1280px-ISS-62_City_lights_of_western_India_and_Pakistan.jpg 1280w, https://thumb.wikimedia.org/wikipedia/commons/thumb/9/99/ISS-62_City_lights_of_western_India_and_Pakistan.jpg/1920px-ISS-62_City_lights_of_western_India_and_Pakistan.jpg 1920w" sizes="110vh" width="5568" height="3712" alt="India and Pakistan" decoding="async" loading="lazy" style="aspect-ratio:5568/3712"><figcaption>05 · India and Pakistan</figcaption></figure>
+      <figure class="pass" data-place="The Nile" data-sub="Pass 06 · Expedition 73"><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/6/66/Egypt%E2%80%99s_Nile_River_stretches_is_pictured_at_night_from_the_International_Space_Station_%28iss073e0422279%29.jpg/1280px-Egypt%E2%80%99s_Nile_River_stretches_is_pictured_at_night_from_the_International_Space_Station_%28iss073e0422279%29.jpg" srcset="https://thumb.wikimedia.org/wikipedia/commons/thumb/6/66/Egypt%E2%80%99s_Nile_River_stretches_is_pictured_at_night_from_the_International_Space_Station_%28iss073e0422279%29.jpg/960px-Egypt%E2%80%99s_Nile_River_stretches_is_pictured_at_night_from_the_International_Space_Station_%28iss073e0422279%29.jpg 960w, https://thumb.wikimedia.org/wikipedia/commons/thumb/6/66/Egypt%E2%80%99s_Nile_River_stretches_is_pictured_at_night_from_the_International_Space_Station_%28iss073e0422279%29.jpg/1280px-Egypt%E2%80%99s_Nile_River_stretches_is_pictured_at_night_from_the_International_Space_Station_%28iss073e0422279%29.jpg 1280w, https://thumb.wikimedia.org/wikipedia/commons/thumb/6/66/Egypt%E2%80%99s_Nile_River_stretches_is_pictured_at_night_from_the_International_Space_Station_%28iss073e0422279%29.jpg/1920px-Egypt%E2%80%99s_Nile_River_stretches_is_pictured_at_night_from_the_International_Space_Station_%28iss073e0422279%29.jpg 1920w" sizes="110vh" width="8256" height="5504" alt="The Nile" decoding="async" loading="lazy" style="aspect-ratio:8256/5504"><figcaption>06 · The Nile</figcaption></figure>
+      <figure class="pass" data-place="Malaysia" data-sub="Pass 07 · Boat lights in the strait"><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f7/ISS-62_City_lights_and_boat_lights_in_Malaysia_and_Indonesia.jpg/1280px-ISS-62_City_lights_and_boat_lights_in_Malaysia_and_Indonesia.jpg" srcset="https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f7/ISS-62_City_lights_and_boat_lights_in_Malaysia_and_Indonesia.jpg/960px-ISS-62_City_lights_and_boat_lights_in_Malaysia_and_Indonesia.jpg 960w, https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f7/ISS-62_City_lights_and_boat_lights_in_Malaysia_and_Indonesia.jpg/1280px-ISS-62_City_lights_and_boat_lights_in_Malaysia_and_Indonesia.jpg 1280w, https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f7/ISS-62_City_lights_and_boat_lights_in_Malaysia_and_Indonesia.jpg/1920px-ISS-62_City_lights_and_boat_lights_in_Malaysia_and_Indonesia.jpg 1920w" sizes="110vh" width="5568" height="3712" alt="Malaysia and Indonesia" decoding="async" loading="lazy" style="aspect-ratio:5568/3712"><figcaption>07 · Malaysia and Indonesia</figcaption></figure>
+      <figure class="pass" data-place="Melbourne" data-sub="Pass 08 · Expedition 72"><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/3/30/Iss072e034554_%28Oct_9%2C_2024%29_---_The_city_lights_of_Melbourne_on_Port_Phillip_in_Australia%27s_state_of_Victoria_are_pictured_from_the_International_Space_Station_as_it_orbited_271_miles_above.jpg/1280px-thumbnail.jpg" srcset="https://thumb.wikimedia.org/wikipedia/commons/thumb/3/30/Iss072e034554_%28Oct_9%2C_2024%29_---_The_city_lights_of_Melbourne_on_Port_Phillip_in_Australia%27s_state_of_Victoria_are_pictured_from_the_International_Space_Station_as_it_orbited_271_miles_above.jpg/960px-thumbnail.jpg 960w, https://thumb.wikimedia.org/wikipedia/commons/thumb/3/30/Iss072e034554_%28Oct_9%2C_2024%29_---_The_city_lights_of_Melbourne_on_Port_Phillip_in_Australia%27s_state_of_Victoria_are_pictured_from_the_International_Space_Station_as_it_orbited_271_miles_above.jpg/1280px-thumbnail.jpg 1280w, https://thumb.wikimedia.org/wikipedia/commons/thumb/3/30/Iss072e034554_%28Oct_9%2C_2024%29_---_The_city_lights_of_Melbourne_on_Port_Phillip_in_Australia%27s_state_of_Victoria_are_pictured_from_the_International_Space_Station_as_it_orbited_271_miles_above.jpg/1920px-thumbnail.jpg 1920w" sizes="110vh" width="8256" height="5504" alt="Melbourne" decoding="async" loading="lazy" style="aspect-ratio:8256/5504"><figcaption>08 · Melbourne</figcaption></figure>
+      <figure class="pass" data-place="A storm" data-sub="Pass 09 · Lightning, brighter than the cities"><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bf/A_flash_of_lightning_shines_brighter_than_the_lights_of_nearby_cities_in_this_Oct_29%2C_2024%2C_image_taken_by_astronaut_Don_Pettit_while_aboard_the_International_Space_Station_%28lightning-in-southeast-asia%29.jpg/1280px-thumbnail.jpg" srcset="https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bf/A_flash_of_lightning_shines_brighter_than_the_lights_of_nearby_cities_in_this_Oct_29%2C_2024%2C_image_taken_by_astronaut_Don_Pettit_while_aboard_the_International_Space_Station_%28lightning-in-southeast-asia%29.jpg/960px-thumbnail.jpg 960w, https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bf/A_flash_of_lightning_shines_brighter_than_the_lights_of_nearby_cities_in_this_Oct_29%2C_2024%2C_image_taken_by_astronaut_Don_Pettit_while_aboard_the_International_Space_Station_%28lightning-in-southeast-asia%29.jpg/1280px-thumbnail.jpg 1280w, https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bf/A_flash_of_lightning_shines_brighter_than_the_lights_of_nearby_cities_in_this_Oct_29%2C_2024%2C_image_taken_by_astronaut_Don_Pettit_while_aboard_the_International_Space_Station_%28lightning-in-southeast-asia%29.jpg/1920px-thumbnail.jpg 1920w" sizes="110vh" width="8256" height="5504" alt="Lightning" decoding="async" loading="lazy" style="aspect-ratio:8256/5504"><figcaption>09 · Lightning</figcaption></figure>
+    </div>
+
+    <div class="hud">
+      <p class="place"><small id="sub">Pass 01 · Expedition 53</small><span id="place">New York</span></p>
+      <dl><div><dt>Elapsed</dt><dd id="clock">T+00:00</dd></div><div><dt>Altitude</dt><dd>419 km</dd></div><div><dt>Speed</dt><dd>7.66 km/s</dd></div></dl>
+    </div>
+    <div class="orbit" aria-hidden="true"><svg viewBox="0 0 74 74"><circle class="ring" cx="37" cy="37" r="36"/><g class="g"><circle class="dot" cx="37" cy="1" r="3.5"/></g></svg></div>
+    <div class="meter" aria-hidden="true"><i></i></div>
+  </div>
+</div>
+
+<section class="after">
+  <h2>A list stacks.<br>A window <em>passes</em>.</h2>
+  <p>Laid down the page these would read as nine separate pictures. Laid across it, sharing one horizon and crossing the same point, they read as <b>one journey</b> — which is what the axis change is for.</p>
+</section>
+
+<footer>
+  <span>Photography — NASA / International Space Station crews, public domain.<br>Altitude and speed are the station's typical values; the clock follows your scroll.</span>
+  <span><a href="../artifacts/index.html">← All seven exhibits</a></span>
+</footer>
+
+<script>
+(function(){
+  var track = document.getElementById('track'), runway = document.querySelector('.runway');
+  var passes = [].slice.call(track.children), place = document.getElementById('place'), sub = document.getElementById('sub'), clock = document.getElementById('clock');
+  var TOTAL = 92 * 60 + 40;   /* one orbit, in seconds */
+  function measure(){ track.style.setProperty('--travel', Math.max(0, track.scrollWidth - innerWidth) + 'px'); }
+  var queued = false, cur = -1;
+  function frame(){
+    queued = false;
+    var r = runway.getBoundingClientRect();
+    var p = Math.min(1, Math.max(0, -r.top / (r.height - innerHeight)));
+    var s = Math.round(p * TOTAL);
+    clock.textContent = 'T+' + String(s / 60 | 0).padStart(2, '0') + ':' + String(s % 60).padStart(2, '0');
+    /* the pass whose centre is nearest the middle of the window names the place */
+    var best = 0, bd = Infinity;
+    passes.forEach(function(f, i){ var b = f.getBoundingClientRect(); var d = Math.abs(b.left + b.width / 2 - innerWidth / 2); if (d < bd){ bd = d; best = i; } });
+    if (best !== cur){ cur = best; place.textContent = passes[best].dataset.place; sub.textContent = passes[best].dataset.sub; }
+  }
+  addEventListener('scroll', function(){ if (!queued){ queued = true; requestAnimationFrame(frame); } }, { passive: true });
+  addEventListener('resize', function(){ measure(); frame(); }, { passive: true });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(measure);
+  passes.forEach(function(f){ var im = f.querySelector('img'); if (!im.complete) im.addEventListener('load', measure, { once: true }); });
+  measure(); frame();
+})();
+</script>
+
+</body>
+</html>

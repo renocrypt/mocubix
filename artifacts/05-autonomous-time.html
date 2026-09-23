@@ -1,0 +1,567 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Departures — Mocubix</title>
+<meta name="description" content="An evening at Secaucus Junction on the split-flap boards that still hang there. The hall keeps its own time: trains board and leave whether you scroll or not, and every change turns through the drums one flap at a time.">
+
+<link rel="preconnect" href="https://api.fontshare.com">
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="preconnect" href="https://thumb.wikimedia.org">
+<!-- One request per family. A combined f[] request silently delivers only the first. -->
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f%5B%5D=khand@400,500&display=swap">
+<!-- Khand: condensed and engineered, the cadence of station signage; the boards themselves letter in Switzer, as Solari's flaps lettered in Helvetica. No italic, so no accent slant. -->
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f%5B%5D=switzer@400,500,600&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource-variable/geist-mono/index.css">
+<!-- DSEG7 Classic: the hall clock is a seven-segment LED, and this face is those segments. -->
+<link rel="preload" as="font" type="font/woff2" crossorigin href="https://cdn.jsdelivr.net/npm/dseg@0.46.0/fonts/DSEG7-Classic/DSEG7Classic-Italic.woff2">
+<link rel="stylesheet" href="house.css">
+<script src="house.js"></script>
+<script src="parts/split-flap.js"></script>
+
+<style>
+:root{--display:'Khand','Arial Narrow',sans-serif} /* guest display face for this exhibit */
+@font-face{font-family:'DSEG7 Classic';font-style:italic;font-weight:400;font-display:block;
+  src:url(https://cdn.jsdelivr.net/npm/dseg@0.46.0/fonts/DSEG7-Classic/DSEG7Classic-Italic.woff2) format('woff2')}
+
+/* ── material ─────────────────────────────────────────────────
+   The boards' own enamel, sampled from the Secaucus photographs and lifted
+   out of their shade. These are the object's colours, not the page's: they
+   stay put when the page switches palette. */
+[data-line]{--housing:#25272c;--header:#1b1c20;--letter:#f5f3ee;--cast:#000;--shade:50%;
+  --msg-face:#141518;--led:#ff4b33;--led-off:#260a07}
+:root[data-theme=day] [data-line]{--shade:24%}
+[data-line=morristown]{--enamel:#3e999d;--print:#f7f5f0}
+[data-line=nec]{--enamel:#c8473b;--print:#f7f5f0}
+[data-line=njcl]{--enamel:#3f80c9;--print:#f7f5f0}
+[data-line=main]{--enamel:#dbcf37;--print:#17171a}
+[data-line=pascack]{--enamel:#8b4094;--print:#f7f5f0}
+
+*{box-sizing:border-box}
+body{margin:0;background:var(--ground);color:var(--ink);font:15px/1.55 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{display:block}
+h1,h2,h3,p,figure{margin:0}
+h1,h2,h3{font-weight:400}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.pad{padding-inline:clamp(20px,5vw,72px)}
+.back{position:fixed;top:22px;left:clamp(16px,4vw,40px);z-index:80;font-family:var(--mono);font-size:10px;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--dim)}
+.back:hover{color:var(--ink)}
+.eyebrow{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--dim)}
+h2{font-family:var(--display);font-size:clamp(40px,5.2vw,76px);line-height:.92;letter-spacing:-.005em}
+h2 em{font-style:normal;color:var(--accent)}
+
+/* ── opening: the board as the object ──────────────────────── */
+.open{min-height:100svh;display:grid;grid-template-rows:1fr auto;gap:clamp(28px,5vh,52px);
+  padding-block:clamp(84px,12vh,120px) clamp(40px,7vh,72px)}
+.title{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,39ch);gap:clamp(24px,4vw,72px);align-items:end}
+.title .eyebrow{margin-bottom:clamp(14px,2vh,22px)}
+h1{font-family:var(--display);font-size:clamp(86px,13vw,200px);line-height:.78;letter-spacing:-.012em;margin-left:-.035em}
+.lede{font-size:clamp(15px,1.3vw,18px);color:var(--mid);text-wrap:pretty}
+.lede b{color:var(--ink);font-weight:500}
+
+/* ── a board ───────────────────────────────────────────────── */
+.board{container:board / inline-size}
+.housing{--u:calc(100cqi / 50);position:relative;background:var(--housing);border-radius:calc(var(--u) * .2);
+  padding:0 calc(var(--u) * .5) calc(var(--u) * .5);
+  box-shadow:0 calc(var(--u) * 1.4) calc(var(--u) * 3) color-mix(in srgb,var(--cast) var(--shade),transparent),
+             inset 0 1px 0 color-mix(in srgb,var(--letter) 7%,transparent);
+  --cols:calc(var(--u) * 4.3) calc(var(--u) * 8.6) calc(var(--u) * 2.3) calc(var(--u) * 4.9) calc(var(--u) * 4.34) calc(var(--u) * 9.4) minmax(0,1fr)}
+.bh{display:flex;align-items:center;gap:calc(var(--u) * .8);block-size:calc(var(--u) * 3.2);padding-inline:calc(var(--u) * .3)}
+.icon{flex:none;inline-size:calc(var(--u) * 2.05);aspect-ratio:1;background:var(--enamel);display:grid;place-items:center}
+.icon svg{inline-size:76%;fill:none;stroke:var(--print);stroke-width:1.35;stroke-linecap:round;stroke-linejoin:round}
+.bh h3{font:500 calc(var(--u) * 1.5)/1 var(--sans);color:var(--letter);letter-spacing:-.01em;white-space:nowrap}
+.bh h3 small{font-size:.5em;font-weight:500;margin-left:.7em;letter-spacing:0}
+.led{margin-left:auto;position:relative;font:italic 400 calc(var(--u) * 1.2)/1 'DSEG7 Classic',var(--mono);color:var(--led);
+  background:var(--led-off);padding:calc(var(--u) * .3) calc(var(--u) * .4);border-radius:calc(var(--u) * .08);
+  text-shadow:0 0 calc(var(--u) * .3) color-mix(in srgb,var(--led) 55%,transparent)}
+.led i{position:absolute;inset:calc(var(--u) * .3) calc(var(--u) * .4);font-style:inherit;opacity:.1;text-shadow:none}
+.led .c{animation:blink 1s steps(1,end) infinite}
+@keyframes blink{50%{opacity:.1}}
+.held .led .c{animation:none}
+
+.sheet{display:grid;gap:calc(var(--u) * .12)}
+.cols{display:grid;grid-template-columns:var(--cols);column-gap:calc(var(--u) * .8);align-items:center;padding-inline:calc(var(--u) * .55)}
+.hd{background:var(--enamel);block-size:calc(var(--u) * 1.5);align-items:end;padding-block-end:calc(var(--u) * .24)}
+.hd span{font:500 calc(var(--u) * .56)/1 var(--sans);text-transform:uppercase;letter-spacing:.03em;color:var(--print);
+  text-decoration:underline;text-decoration-thickness:max(1px,calc(var(--u) * .05));text-underline-offset:.25em;white-space:nowrap}
+.row{background:var(--enamel);block-size:calc(var(--u) * 2.05)}
+.row > span{display:flex;gap:calc(var(--u) * .08);min-width:0}
+.row > .dep{gap:calc(var(--u) * .1)}
+.row > .trk{justify-content:center}
+
+.board split-flap{--flap-font:var(--sans);--flap-weight:500;--flap-ink:var(--print);
+  --flap-face:color-mix(in oklab,var(--enamel),var(--cast) 6%);
+  --flap-axle:color-mix(in oklab,var(--enamel),var(--cast) 58%);
+  --flap-split:max(1px,calc(var(--u) * .05));--flap-radius:calc(var(--u) * .05);--flap-shift:calc(var(--u) * .03);
+  block-size:calc(var(--u) * 1.72);
+  box-shadow:0 0 0 max(1px,calc(var(--u) * .045)) color-mix(in oklab,var(--enamel),var(--cast) 32%)}
+.f-hr{inline-size:calc(var(--u) * 2.1);font-size:calc(var(--u) * 1.3);--flap-justify:end;--flap-pad:calc(var(--u) * .14)}
+.f-d{inline-size:calc(var(--u) * 1.02);font-size:calc(var(--u) * 1.3)}
+.f-w{inline-size:100%;font-size:calc(var(--u) * .86);--flap-justify:start;--flap-pad:calc(var(--u) * .3);--flap-track:-.01em}
+
+.msg{display:flex;gap:calc(var(--u) * .07);padding:calc(var(--u) * .34) calc(var(--u) * .55) calc(var(--u) * .12);--cap:46}
+.board .msg split-flap{inline-size:calc(var(--u) * .95);block-size:calc(var(--u) * 1.48);font-size:calc(var(--u) * 1.02);
+  --flap-face:var(--msg-face);--flap-ink:var(--letter);--flap-axle:var(--cast);box-shadow:none;flex:none}
+.maker{position:absolute;left:calc(var(--u) * 1.05);bottom:calc(var(--u) * .06);font:600 calc(var(--u) * .36)/1 var(--sans);
+  letter-spacing:.02em;color:color-mix(in srgb,var(--letter) 55%,transparent);text-transform:lowercase}
+
+/* a narrow board keeps what a traveller needs: when, where, which track */
+@container board (max-width:600px){
+  .housing{--u:calc(100cqi / 24.2);--cols:calc(var(--u) * 4.3) minmax(0,1fr) calc(var(--u) * 2.3) calc(var(--u) * 4.9)}
+  .cols > :nth-child(n+5){display:none}
+  .bh h3{font-size:calc(var(--u) * 1.25)}
+  .bh h3 small{display:none}
+  .msg{--cap:22}
+  .msg split-flap:nth-child(n+23){display:none}
+}
+
+/* ── the drum ──────────────────────────────────────────────── */
+.drum{padding-block:clamp(70px,12vh,140px);border-top:1px solid var(--line)}
+.drum-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,46ch);gap:clamp(24px,4vw,72px);align-items:end;margin-bottom:clamp(36px,6vh,64px)}
+.drum-head .eyebrow{margin-bottom:18px}
+.drum-head p:not(.eyebrow){color:var(--mid);text-wrap:pretty}
+.bench{container-type:inline-size}
+.bench split-flap{inline-size:100cqi;block-size:calc(100cqi * .22);font-size:calc(100cqi * .088);
+  --flap-font:var(--sans);--flap-weight:500;--flap-ink:var(--print);--flap-justify:start;--flap-pad:.42em;--flap-track:-.015em;
+  --flap-face:color-mix(in oklab,var(--enamel),var(--cast) 6%);--flap-axle:color-mix(in oklab,var(--enamel),var(--cast) 58%);
+  --flap-split:max(2px,calc(100cqi * .003));--flap-radius:calc(100cqi * .004);--flap-shift:.02em;
+  box-shadow:0 0 0 calc(100cqi * .007) color-mix(in oklab,var(--enamel),var(--cast) 32%),
+             0 calc(100cqi * .02) calc(100cqi * .05) color-mix(in srgb,var(--cast) 45%,transparent)}
+.readout{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,46ch);gap:clamp(24px,4vw,72px);margin-top:clamp(22px,3vw,34px);align-items:start}
+.count{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);line-height:1.7}
+.count b{font-weight:400;color:var(--indigo)}
+.count span{color:var(--ink)}
+.order .eyebrow{display:block;margin-bottom:10px}
+.order ol{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:3px 0;font-size:13px;line-height:1.5}
+.order li{white-space:nowrap;color:color-mix(in srgb,var(--dim) 70%,transparent);transition:color .3s var(--settle)}
+.order li:not(:last-child)::after{content:'·';margin:0 .5em;color:color-mix(in srgb,var(--dim) 60%,transparent)}
+.order li.ahead{color:var(--mid)}
+.order li.past{color:var(--dim);text-decoration:line-through;text-decoration-color:color-mix(in srgb,var(--dim) 60%,transparent)}
+.order li.now{color:var(--ink)}
+.order li.goal{color:var(--accent)}
+
+/* ── the concourse ─────────────────────────────────────────── */
+.hall{padding-block:clamp(70px,12vh,140px);border-top:1px solid var(--line)}
+.hall-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,46ch);gap:clamp(24px,4vw,72px);align-items:end;margin-bottom:clamp(36px,6vh,64px)}
+.hall-head .eyebrow{margin-bottom:18px}
+.hall-head p:not(.eyebrow){color:var(--mid);text-wrap:pretty}
+.wall{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(28px,3.4vw,52px) clamp(20px,2.6vw,40px);align-items:start}
+
+/* ── the real boards ───────────────────────────────────────── */
+.real{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:clamp(32px,5vw,90px);align-items:start;
+  padding-block:clamp(70px,12vh,140px);border-top:1px solid var(--line)}
+.real .copy{position:sticky;top:clamp(80px,14vh,140px)}
+.real .copy p{color:var(--mid);margin-top:22px;max-width:40ch;text-wrap:pretty}
+.real .copy p b{color:var(--ink);font-weight:500}
+.pics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.pics img{width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;background:var(--raise)}
+.pics .wide{grid-column:1/-1}
+.pics figcaption{grid-column:1/-1;margin-top:4px;font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;color:var(--dim);line-height:1.6}
+footer{padding-block:0 90px;display:flex;flex-wrap:wrap;gap:12px 44px;justify-content:space-between;
+  font-family:var(--mono);font-size:10px;letter-spacing:.04em;color:var(--dim);line-height:1.8}
+
+/* ── the hall's controls ───────────────────────────────────── */
+.dock{position:fixed;right:clamp(16px,4vw,40px);bottom:18px;z-index:85;display:flex;gap:6px;transition:opacity .45s var(--settle),translate .45s var(--settle)}
+.dock.away{opacity:0;translate:0 8px;pointer-events:none}
+.dock button{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--mid);background:color-mix(in srgb,var(--ground) 82%,transparent);backdrop-filter:blur(8px);
+  border:1px solid var(--line);padding:8px 12px;cursor:pointer;transition:color .35s var(--settle),border-color .35s var(--settle)}
+.dock button:hover,.dock button:focus-visible{color:var(--ink);border-color:color-mix(in srgb,var(--ink) 30%,transparent);outline:none}
+.dock button i{width:6px;height:6px;border-radius:50%;background:var(--dim);transition:background .35s var(--settle)}
+.dock button[aria-pressed="true"] i{background:var(--accent)}
+
+@media (max-width:820px){
+  .title{grid-template-columns:1fr;gap:22px;align-content:end}
+  h1{font-size:clamp(76px,22vw,120px)}
+  .real,.hall-head,.drum-head,.readout{grid-template-columns:1fr}
+  .real .copy{position:static}
+  .wall{grid-template-columns:1fr}
+  .pics{grid-template-columns:1fr}
+
+  .dock{bottom:12px}
+}
+@media (prefers-reduced-motion:reduce){ .led .c{animation:none} }
+</style>
+</head>
+<body>
+
+<a class="back" href="index.html">← Mocubix</a>
+
+<header class="open pad">
+  <div class="title">
+    <div>
+      <p class="eyebrow">Mocubix · Exhibit 05 · Secaucus Junction, New Jersey</p>
+      <h1>Departures</h1>
+    </div>
+    <p class="lede">An evening at Secaucus, on the boards that still hang there. The hall keeps its own time, a minute every two seconds, and it is not waiting for you: trains board and leave whether you scroll or not, and <b>every change turns through the drums one flap at a time.</b></p>
+  </div>
+
+  <figure class="board" data-line="morristown">
+    <div class="housing">
+      <div class="bh">
+        <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="9.5" rx="7" ry="2.4"/><path d="M5 9.5v7.2c0 1.3 3.1 2.4 7 2.4s7-1.1 7-2.4V9.5"/><path d="M5.6 11.4l3.1 6.4 3.3-6.4 3.3 6.4 3.1-6.4"/><path d="M9.6 7.4L5.4 3.2M14.4 7.4l4.2-4.2"/><circle cx="5" cy="2.8" r=".7"/><circle cx="19" cy="2.8" r=".7"/></svg></span>
+        <h3>Morristown Line</h3>
+        <span class="led" role="timer" aria-label="Hall clock"><i aria-hidden="true">88:88</i><b aria-hidden="true"></b><span class="sr"></span></span>
+      </div>
+      <div class="sheet" role="table" aria-label="Morristown Line departures">
+        <div class="cols hd" role="row"><span role="columnheader">Departs</span><span role="columnheader">To</span><span role="columnheader">Track</span><span role="columnheader">Status</span><span role="columnheader">Train</span><span role="columnheader">First stop</span><span role="columnheader">Second stop</span></div>
+        <div class="rows sheet" role="rowgroup"></div>
+      </div>
+      <p class="msg"></p>
+      <span class="maker" aria-hidden="true">solari udine</span>
+    </div>
+  </figure>
+</header>
+
+<section class="drum pad" aria-labelledby="drum-h">
+  <div class="drum-head">
+    <div>
+      <p class="eyebrow">One module</p>
+      <h2 id="drum-h">It only turns <em>forward</em></h2>
+    </div>
+    <p>Every module is a drum of printed flaps on its own small motor, and it cannot skip. To get from Summit to Dover it has to show every name printed in between, each flap dropping under its own weight. Give a whole board new trains at once and every module sets off on a different journey, so the change never lands in one piece. It arrives the way rain does.</p>
+  </div>
+  <div class="bench" data-line="morristown">
+    <split-flap id="big" drum="morristown" step="520" ticks depth>Summit</split-flap>
+  </div>
+  <div class="readout">
+    <p class="count"><span id="from">Summit</span> → <span id="to">Summit</span><br><span id="left">stopped</span></p>
+    <div class="order"><span class="eyebrow">The drum, in order</span><ol id="order"></ol></div>
+  </div>
+</section>
+
+<section class="hall pad" aria-labelledby="hall-h">
+  <div class="hall-head">
+    <div>
+      <p class="eyebrow">The concourse</p>
+      <h2 id="hall-h">One colour to a line</h2>
+    </div>
+    <p>Secaucus is where New Jersey’s railroads cross, and every line keeps a board of its own: red for the Northeast Corridor, blue for the Coast, yellow for the Main Line, purple for Pascack Valley. They share one clock and nothing else, so each settles on its own beat.</p>
+  </div>
+  <div class="wall">
+    <figure class="board" data-line="nec">
+      <div class="housing">
+        <div class="bh">
+          <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3.5 20.5h17M5 20.5v-6h14v6M8 14.5v6M12 14.5v6M16 14.5v6M4.5 14.5h15"/><path d="M6.5 14.5c0-3.4 2.5-6.2 5.5-6.2s5.5 2.8 5.5 6.2"/><path d="M12 8.3V5.2M10.6 5.2h2.8M12 5.2V2.6"/></svg></span>
+          <h3>Northeast Corridor Line</h3>
+        </div>
+        <div class="sheet" role="table" aria-label="Northeast Corridor Line departures">
+          <div class="cols hd" role="row"><span role="columnheader">Departs</span><span role="columnheader">To</span><span role="columnheader">Track</span><span role="columnheader">Status</span><span role="columnheader">Train</span><span role="columnheader">First stop</span><span role="columnheader">Second stop</span></div>
+          <div class="rows sheet" role="rowgroup"></div>
+        </div>
+        <p class="msg"></p>
+        <span class="maker" aria-hidden="true">solari udine</span>
+      </div>
+    </figure>
+    <figure class="board" data-line="njcl">
+      <div class="housing">
+        <div class="bh">
+          <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2.8v14.4"/><path d="M12.8 3.6l6 12.2h-6z"/><path d="M11.2 6.4l-5 9.4h5z"/><path d="M3.5 18.2h17l-2.4 3H5.9z"/></svg></span>
+          <h3>No. Jersey Coast Line</h3>
+          <span class="led" role="timer" aria-label="Hall clock"><i aria-hidden="true">88:88</i><b aria-hidden="true"></b><span class="sr"></span></span>
+        </div>
+        <div class="sheet" role="table" aria-label="North Jersey Coast Line departures">
+          <div class="cols hd" role="row"><span role="columnheader">Departs</span><span role="columnheader">To</span><span role="columnheader">Track</span><span role="columnheader">Status</span><span role="columnheader">Train</span><span role="columnheader">First stop</span><span role="columnheader">Second stop</span></div>
+          <div class="rows sheet" role="rowgroup"></div>
+        </div>
+        <p class="msg"></p>
+        <span class="maker" aria-hidden="true">solari udine</span>
+      </div>
+    </figure>
+    <figure class="board" data-line="main">
+      <div class="housing">
+        <div class="bh">
+          <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="10" r="6.2"/><circle cx="12" cy="10" r="1.2"/><path d="M12 3.8v12.4M5.8 10h12.4M7.6 5.6l8.8 8.8M16.4 5.6l-8.8 8.8"/><path d="M2.8 19.6c1.5-1 3-1 4.6 0s3 1 4.6 0 3-1 4.6 0 3 1 4.6 0"/></svg></span>
+          <h3>Main Line <small>Includes Port Jervis Trains</small></h3>
+        </div>
+        <div class="sheet" role="table" aria-label="Main Line departures">
+          <div class="cols hd" role="row"><span role="columnheader">Departs</span><span role="columnheader">To</span><span role="columnheader">Track</span><span role="columnheader">Status</span><span role="columnheader">Train</span><span role="columnheader">First stop</span><span role="columnheader">Second stop</span></div>
+          <div class="rows sheet" role="rowgroup"></div>
+        </div>
+        <p class="msg"></p>
+        <span class="maker" aria-hidden="true">solari udine</span>
+      </div>
+    </figure>
+    <figure class="board" data-line="pascack">
+      <div class="housing">
+        <div class="bh">
+          <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2.6l-4.4 6h2.6L6.4 13.8h3L5.6 19h12.8l-3.8-5.2h3l-3.8-5.2h2.6z"/><path d="M12 19v2.6"/></svg></span>
+          <h3>Pascack Valley Line</h3>
+          <span class="led" role="timer" aria-label="Hall clock"><i aria-hidden="true">88:88</i><b aria-hidden="true"></b><span class="sr"></span></span>
+        </div>
+        <div class="sheet" role="table" aria-label="Pascack Valley Line departures">
+          <div class="cols hd" role="row"><span role="columnheader">Departs</span><span role="columnheader">To</span><span role="columnheader">Track</span><span role="columnheader">Status</span><span role="columnheader">Train</span><span role="columnheader">First stop</span><span role="columnheader">Second stop</span></div>
+          <div class="rows sheet" role="rowgroup"></div>
+        </div>
+        <p class="msg"></p>
+        <span class="maker" aria-hidden="true">solari udine</span>
+      </div>
+    </figure>
+  </div>
+</section>
+
+<section class="real pad" aria-labelledby="real-h">
+  <div class="copy">
+    <h2 id="real-h">The last <em>split&#8209;flap</em> boards</h2>
+    <p>Solari di Udine made boards like these for stations and airports from the 1950s on, and a hall full of them sounded like rain. Most have since been replaced by screens. At Secaucus Junction they still hang over the concourse, <b>and the boards on this page are drawn from them, flap for flap.</b></p>
+  </div>
+  <figure class="pics">
+    <img class="wide" src="https://thumb.wikimedia.org/wikipedia/commons/thumb/6/66/NJT_Morristown_Line_Solari_board_at_Secaucus_Junction_June_2026.jpg/1280px-NJT_Morristown_Line_Solari_board_at_Secaucus_Junction_June_2026.jpg" srcset="https://thumb.wikimedia.org/wikipedia/commons/thumb/6/66/NJT_Morristown_Line_Solari_board_at_Secaucus_Junction_June_2026.jpg/960px-NJT_Morristown_Line_Solari_board_at_Secaucus_Junction_June_2026.jpg 960w, https://thumb.wikimedia.org/wikipedia/commons/thumb/6/66/NJT_Morristown_Line_Solari_board_at_Secaucus_Junction_June_2026.jpg/1280px-NJT_Morristown_Line_Solari_board_at_Secaucus_Junction_June_2026.jpg 1280w, https://thumb.wikimedia.org/wikipedia/commons/thumb/6/66/NJT_Morristown_Line_Solari_board_at_Secaucus_Junction_June_2026.jpg/1920px-NJT_Morristown_Line_Solari_board_at_Secaucus_Junction_June_2026.jpg 1920w" sizes="(max-width:820px) 100vw, 62vw" width="8256" height="5504" alt="The Morristown Line board at Secaucus Junction: teal flaps, four trains to Dover, a row of blank message flaps beneath" decoding="async" loading="lazy" style="aspect-ratio:8256/5504">
+    <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/9/93/NJT_Main_Line_Solari_board_at_Secaucus_Junction_detail_June_2026.jpg/1280px-NJT_Main_Line_Solari_board_at_Secaucus_Junction_detail_June_2026.jpg" srcset="https://thumb.wikimedia.org/wikipedia/commons/thumb/9/93/NJT_Main_Line_Solari_board_at_Secaucus_Junction_detail_June_2026.jpg/960px-NJT_Main_Line_Solari_board_at_Secaucus_Junction_detail_June_2026.jpg 960w, https://thumb.wikimedia.org/wikipedia/commons/thumb/9/93/NJT_Main_Line_Solari_board_at_Secaucus_Junction_detail_June_2026.jpg/1280px-NJT_Main_Line_Solari_board_at_Secaucus_Junction_detail_June_2026.jpg 1280w, https://thumb.wikimedia.org/wikipedia/commons/thumb/9/93/NJT_Main_Line_Solari_board_at_Secaucus_Junction_detail_June_2026.jpg/1920px-NJT_Main_Line_Solari_board_at_Secaucus_Junction_detail_June_2026.jpg 1920w" sizes="(max-width:820px) 100vw, 31vw" width="8256" height="5504" alt="Close on the Main Line board: yellow flaps reading 12:53 Middletown NY and 12:57 Waldwick" decoding="async" loading="lazy" style="aspect-ratio:8256/5504">
+    <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/2/22/NJT_Pascack_Valley_Line_Solari_board_at_Secaucus_Junction_June_2026.jpg/1280px-NJT_Pascack_Valley_Line_Solari_board_at_Secaucus_Junction_June_2026.jpg" srcset="https://thumb.wikimedia.org/wikipedia/commons/thumb/2/22/NJT_Pascack_Valley_Line_Solari_board_at_Secaucus_Junction_June_2026.jpg/960px-NJT_Pascack_Valley_Line_Solari_board_at_Secaucus_Junction_June_2026.jpg 960w, https://thumb.wikimedia.org/wikipedia/commons/thumb/2/22/NJT_Pascack_Valley_Line_Solari_board_at_Secaucus_Junction_June_2026.jpg/1280px-NJT_Pascack_Valley_Line_Solari_board_at_Secaucus_Junction_June_2026.jpg 1280w, https://thumb.wikimedia.org/wikipedia/commons/thumb/2/22/NJT_Pascack_Valley_Line_Solari_board_at_Secaucus_Junction_June_2026.jpg/1920px-NJT_Pascack_Valley_Line_Solari_board_at_Secaucus_Junction_June_2026.jpg 1920w" sizes="(max-width:820px) 100vw, 31vw" width="8256" height="5504" alt="The Pascack Valley Line board in purple, its red LED clock reading 11:49 and a message row about transfers in Hoboken" decoding="async" loading="lazy" style="aspect-ratio:8256/5504">
+    <figcaption>Secaucus Junction, New Jersey, June 2026 · the Morristown, Main and Pascack Valley line boards</figcaption>
+  </figure>
+</section>
+
+<footer class="pad">
+  <span>Photographs — 4300streetcar, via Wikimedia Commons, CC BY 4.0.<br>The trains are invented; the boards, lines and stations are Secaucus’s own.</span>
+  <span><a href="index.html">← All seven exhibits</a></span>
+</footer>
+
+<div class="dock" role="group" aria-label="The hall">
+  <button id="sound" type="button" aria-pressed="false"><i aria-hidden="true"></i>Sound</button>
+  <button id="hold" type="button" aria-pressed="false"><i aria-hidden="true"></i>Pause</button>
+</div>
+
+<script>
+(() => {
+  /* ── hall time ─────────────────────────────────────────────
+     The hall runs thirty times faster than the visitor: a minute every two
+     seconds. It opens at 5:44 so the first train leaves within seconds. */
+  const SPEED = 30, OPEN = (17 * 60 + 44) * 60;
+  let hall0 = OPEN, real0 = performance.now(), held = false;
+  const now = () => held ? hall0 : hall0 + (performance.now() - real0) / 1000 * SPEED;
+
+  /* ── the lines ─────────────────────────────────────────────
+     Each board's drum holds its line's stations; the timetable is a clock-face
+     pattern that repeats hourly. A field given as [a, b] alternates by hour. */
+  const LINES = {
+    morristown: { seed: 11, base: 6601, msgs: ['ALL TRAINS STOP AT NEWARK BROAD STREET', 'TRANSFER AT SUMMIT FOR GLADSTONE BRANCH'],
+      stations: ['Dover', 'Summit', 'Hackettstown', 'Morristown', 'Madison', 'Chatham', 'Denville', 'Mount Olive', 'Netcong', 'Lake Hopatcong', 'Mount Tabor', 'Convent Station', 'Millburn', 'Short Hills', 'Maplewood', 'South Orange', 'Orange', 'Newark (Broad Street)', 'Brick Church', 'East Orange', 'Highland Avenue', 'Mountain Station', 'Gladstone', 'Bernardsville'],
+      pattern: [
+        { m: 4,  to: 'Dover', a: 'Newark (Broad Street)', b: 'Brick Church', trk: 'B' },
+        { m: 19, to: 'Summit', a: 'Newark (Broad Street)', b: 'East Orange', trk: 'B' },
+        { m: 34, to: ['Hackettstown', 'Dover'], a: 'Newark (Broad Street)', b: 'Brick Church', trk: 'B' },
+        { m: 49, to: ['Dover', 'Summit'], a: 'Newark (Broad Street)', b: ['Brick Church', 'East Orange'], trk: 'B' } ] },
+    nec: { seed: 23, base: 3801, msgs: ['TRANSFER IN TRENTON TO RIVER LINE AND SEPTA'],
+      stations: ['Trenton', 'New Brunswick', 'Jersey Avenue', 'Princeton Jct.', 'Hamilton', 'Metropark', 'Metuchen', 'Edison', 'Rahway', 'Linden', 'Elizabeth', 'North Elizabeth', 'Newark Airport-EWR', 'Newark (Penn Sta.)', 'New York Penn'],
+      pattern: [
+        { m: 2,  to: 'Trenton', a: 'Newark (Penn Sta.)', b: 'Newark Airport-EWR', trk: 'B' },
+        { m: 14, to: 'Jersey Avenue', a: 'Newark (Penn Sta.)', b: 'Newark Airport-EWR', trk: 'B' },
+        { m: 26, to: 'Trenton', a: 'Newark (Penn Sta.)', b: 'Metropark', trk: 'B' },
+        { m: 38, to: 'New Brunswick', a: 'Newark (Penn Sta.)', b: 'Newark Airport-EWR', trk: 'B' },
+        { m: 50, to: ['Trenton', 'Princeton Jct.'], a: 'Newark (Penn Sta.)', b: 'Newark Airport-EWR', trk: 'B' } ] },
+    njcl: { seed: 37, base: 3231, msgs: ['TRANSFER IN LONG BRANCH FOR SHORE CONNECTIONS'],
+      stations: ['Long Branch', 'Bay Head', 'Red Bank', 'Matawan', 'South Amboy', 'Perth Amboy', 'Woodbridge', 'Rahway', 'Elizabeth', 'Newark Airport-EWR', 'Newark (Penn Sta.)', 'Asbury Park', 'Point Pleasant Beach', 'Middletown', 'Hazlet', 'Little Silver'],
+      pattern: [
+        { m: 10, to: 'Long Branch', a: 'Newark (Penn Sta.)', b: 'Newark Airport-EWR', trk: 'B' },
+        { m: 31, to: ['Bay Head', 'Long Branch'], a: 'Newark (Penn Sta.)', b: 'Newark Airport-EWR', trk: 'B' },
+        { m: 47, to: 'Long Branch', a: 'Newark (Penn Sta.)', b: 'Rahway', trk: 'A' } ] },
+    main: { seed: 41, base: 1101, msgs: [],
+      stations: ['Suffern', 'Waldwick', 'Middletown NY', 'Port Jervis', 'Ridgewood', 'Lyndhurst', 'Delawanna', 'Route 17', 'Mahwah', 'Ramsey', 'Allendale', 'Ho-Ho-Kus', 'Hawthorne', 'Paterson', 'Clifton', 'Passaic', 'Kingsland'],
+      pattern: [
+        { m: 8,  to: 'Suffern', a: 'Lyndhurst', b: 'Delawanna', trk: 'F' },
+        { m: 31, to: 'Waldwick', a: 'Ridgewood', b: 'Route 17', trk: 'F' },
+        { m: 53, to: ['Middletown NY', 'Port Jervis'], a: 'Lyndhurst', b: 'Delawanna', trk: 'G' } ] },
+    pascack: { seed: 53, base: 1611, msgs: ['TRANSFER IN HOBOKEN TO HBLR AND NY WATERWAY'],
+      stations: ['Spring Valley', 'New Bridge Landing', 'Nanuet', 'Pearl River', 'Montvale', 'Park Ridge', 'Woodcliff Lake', 'Hillsdale', 'Westwood', 'Emerson', 'Oradell', 'River Edge', 'Anderson Street', 'Essex Street', 'Teterboro', 'Wood-Ridge'],
+      pattern: [
+        { m: 16, to: 'Spring Valley', a: 'Wood-Ridge', b: 'Teterboro', trk: 'H' },
+        { m: 46, to: ['New Bridge Landing', 'Spring Valley'], a: ['Wood-Ridge', 'River Edge'], b: ['Teterboro', 'Oradell'], trk: 'H' } ] },
+  };
+
+  SplitFlap.drum('hours', Array.from({ length: 12 }, (_, i) => `${i + 1} :`));
+  SplitFlap.drum('tens', [...'012345']);
+  SplitFlap.drum('tracks', [...'ABCDEFGH']);
+  SplitFlap.drum('status', ['Boarding', 'All Aboard', 'Delayed', 'Cancelled']);
+  for (const k in LINES) SplitFlap.drum(k, LINES[k].stations);
+
+  /* ── the timetable ───────────────────────────────────────── */
+  const hash = n => { n = Math.imul(n ^ (n >>> 16), 0x45d9f3b); n = Math.imul(n ^ (n >>> 16), 0x45d9f3b); return ((n ^ (n >>> 16)) >>> 0) / 4294967296; };
+  const alt = (v, h) => Array.isArray(v) ? v[h % v.length] : v;
+
+  function trains(L, t, count){
+    const out = [], per = L.pattern.length;
+    for (let h = Math.floor(t / 3600) - 1; out.length < count + per; h++){
+      L.pattern.forEach((p, k) => {
+        const idx = h * per + k, r = hash(idx * 131 + L.seed), dep = h * 3600 + p.m * 60;
+        const cancelled = r < 0.025, delay = !cancelled && r < 0.13 ? (3 + Math.floor(hash(idx + L.seed * 977) * 7)) * 60 : 0;
+        const leave = dep + delay;
+        if (leave > t) out.push({ dep, leave, delay, cancelled, to: alt(p.to, h), a: alt(p.a, h), b: alt(p.b, h), trk: p.trk,
+          no: String(L.base + (idx % 48) * 2).padStart(4, '0') });
+      });
+    }
+    return out.sort((x, y) => x.dep - y.dep).slice(0, count);
+  }
+
+  function cells(tr, t){
+    const h = Math.floor(tr.dep / 3600) % 12 || 12, m = Math.floor(tr.dep / 60) % 60, d = (tr.leave - t) / 60;
+    const st = tr.cancelled ? 'Cancelled' : d <= 1 ? 'All Aboard' : d <= 4 ? 'Boarding' : tr.delay ? 'Delayed' : '';
+    return [`${h} :`, String(m / 10 | 0), String(m % 10), tr.to, tr.trk, st, ...tr.no, tr.a, tr.b];
+  }
+  const clock = t => { const h = Math.floor(t / 3600) % 12 || 12, m = Math.floor(t / 60) % 60; return [h, String(m).padStart(2, '0')]; };
+
+  /* ── building a board ────────────────────────────────────── */
+  function flap(parent, drum, cls, step, ticks){
+    const f = document.createElement('split-flap');
+    f.setAttribute('drum', drum); f.className = cls;
+    if (step) f.setAttribute('step', step);
+    if (ticks) f.setAttribute('ticks', '');
+    parent.appendChild(f);
+    return f;
+  }
+
+  function build(fig){
+    const key = fig.dataset.line, L = LINES[key], rows = fig.querySelector('.rows'), R = [];
+    for (let r = 0; r < 4; r++){
+      const row = document.createElement('div');
+      row.className = 'row cols'; row.setAttribute('role', 'row');
+      const cell = (cls, label) => { const c = document.createElement('span'); c.setAttribute('role', 'cell'); if (cls) c.className = cls; row.appendChild(c); return c; };
+      const dep = cell('dep'), to = cell(), trk = cell('trk'), st = cell(), num = cell(), a = cell(), b = cell();
+      const mods = [
+        flap(dep, 'hours', 'f-hr', 85), flap(dep, 'tens', 'f-d'), flap(dep, 'digits', 'f-d'),
+        flap(to, key, 'f-w', 95, true), flap(trk, 'tracks', 'f-d'), flap(st, 'status', 'f-w', 95, true),
+        flap(num, 'digits', 'f-d'), flap(num, 'digits', 'f-d'), flap(num, 'digits', 'f-d'), flap(num, 'digits', 'f-d'),
+        flap(a, key, 'f-w', 95, true), flap(b, key, 'f-w', 95, true)];
+      for (const c of [dep, num]) for (const f of c.children) f.setAttribute('aria-hidden', 'true');
+      rows.appendChild(row);
+      R.push({ mods, dep, num });
+    }
+    const msg = fig.querySelector('.msg'), said = document.createElement('span'), M = [];
+    said.className = 'sr'; msg.appendChild(said);
+    for (let i = 0; i < 46; i++){ const f = flap(msg, 'chars', 'f-c', 62); f.setAttribute('aria-hidden', 'true'); M.push(f); }
+    const led = fig.querySelector('.led');
+    return { fig, L, R, M, said, led: led && led.querySelector('b'), ledSaid: led && led.querySelector('.sr'), cap: 46, shown: '', awake: false };
+  }
+
+  function lines(text, cap){
+    const out = [];
+    for (const w of text.split(' ')){
+      const last = out[out.length - 1];
+      if (last && (last + ' ' + w).length <= cap) out[out.length - 1] = last + ' ' + w; else out.push(w);
+    }
+    return out;
+  }
+
+  /* One pass: set every module to what the hall says now. Modules that
+     change together start in a wave, top row first, left to right.
+     A board wakes the first time it is seen: every flap starts blank and
+     turns to its value, so the first thing the visitor sees is the board
+     arriving. Until then it stays dark. */
+  function update(B, t, waking, lag = 0){
+    if (B.led){
+      const [h, m] = clock(t), lit = `${h < 10 ? '!' : ''}${h}<span class="c">:</span>${m}`;
+      if (B.led.dataset.t !== lit){ B.led.innerHTML = lit; B.led.dataset.t = lit; B.ledSaid.textContent = `${h}:${m}`; }
+    }
+    if (!B.awake) return;
+
+    const list = trains(B.L, t, 4);
+    B.R.forEach((row, r) => {
+      const v = list[r] ? cells(list[r], t) : Array(12).fill('');
+      row.mods.forEach((m, c) => {
+        if (waking) m.wake(lag + r * 110 + c * 32 + Math.random() * 60, v[c]);
+        else if (m.value !== v[c]) m.set(v[c], { delay: r * 90 + c * 24 + Math.random() * 40 });
+      });
+      row.dep.setAttribute('aria-label', list[r] ? v[0].replace(' ', '') + v[1] + v[2] : '');
+      row.num.setAttribute('aria-label', list[r] ? list[r].no : '');
+    });
+
+    let text = B.L.msgs.length ? B.L.msgs[Math.floor(t / 1200) % B.L.msgs.length] : '';
+    if (text.length > B.cap){ const ls = lines(text, B.cap); text = ls[Math.floor(t / 480) % ls.length]; }
+    if (text !== B.shown || waking){
+      B.shown = text; B.said.textContent = text;
+      B.M.forEach((m, i) => {
+        const ch = text[i] && text[i] !== ' ' ? text[i] : '';
+        if (waking) m.wake(lag + 520 + i * 18, ch);
+        else if (m.value !== ch) m.set(ch, { delay: 120 + i * 17 });
+      });
+    }
+  }
+
+  const boards = [...document.querySelectorAll('.board')].map(build);
+  boards.forEach(B => update(B, now()));
+
+  /* Boards that come into view together wake one after another. */
+  const first = new IntersectionObserver(es => {
+    let lag = 0;
+    es.forEach(e => {
+      if (!e.isIntersecting) return;
+      const B = boards.find(b => b.fig === e.target);
+      first.unobserve(e.target);
+      B.awake = true;
+      update(B, now(), true, lag);
+      lag += 750;
+    });
+  }, { threshold: 0.25 });
+  boards.forEach(B => first.observe(B.fig));
+
+  /* A narrow board has fewer message flaps; long messages then turn in lines. */
+  const fit = new ResizeObserver(es => es.forEach(e => {
+    const B = boards.find(b => b.fig === e.target), msg = B.fig.querySelector('.msg');
+    const cap = parseInt(getComputedStyle(msg).getPropertyValue('--cap'), 10) || 46;
+    if (cap !== B.cap){ B.cap = cap; B.shown = null; }
+  }));
+  boards.forEach(B => fit.observe(B.fig));
+
+  setInterval(() => { if (!held){ const t = now(); boards.forEach(B => update(B, t)); } }, 200);
+
+  /* ── the bench: one module, slowed down ──────────────────── */
+  const big = document.getElementById('big'), order = document.getElementById('order');
+  const names = ['', ...LINES.morristown.stations];
+  order.innerHTML = names.map(n => `<li>${n || 'blank'}</li>`).join('');
+  const items = [...order.children], out = { from: document.getElementById('from'), to: document.getElementById('to'), left: document.getElementById('left') };
+  let at = names.indexOf(big.showing), start = at, goal = at, benchOn = false, benchTimer = 0;
+
+  /* the journey: flaps already passed, the one showing, those still to fall, the goal */
+  function mark(){
+    const n = names.length, span = (goal - start + n) % n, done = (at - start + n) % n, left = (goal - at + n) % n;
+    items.forEach((li, i) => {
+      const k = (i - start + n) % n, on = span > 0 && k <= span;
+      li.className = i === at ? 'now' : i === goal ? 'goal' : on && k < done ? 'past' : on ? 'ahead' : '';
+    });
+    out.left.innerHTML = left ? `<b>${left}</b> ${left === 1 ? 'flap' : 'flaps'} to go` : 'stopped';
+  }
+  big.onflap = (v, i) => { at = i; mark(); };
+  function next(){
+    clearTimeout(benchTimer);
+    if (!benchOn) return;
+    const n = names.length;
+    at = names.indexOf(big.showing);
+    let g; do { g = 1 + Math.floor(Math.random() * (n - 1)); } while (((g - at + n) % n) < 4 || ((g - at + n) % n) > 15);
+    start = at; goal = g;
+    out.from.textContent = names[at] || 'blank'; out.to.textContent = names[goal];
+    mark();
+    big.value = names[goal];
+  }
+  big.addEventListener('settle', () => { benchTimer = setTimeout(next, 1700); });
+  new IntersectionObserver(es => {
+    benchOn = es[0].isIntersecting;
+    clearTimeout(benchTimer);
+    if (benchOn) benchTimer = setTimeout(next, 500);
+  }, { threshold: 0.4 }).observe(big);
+  mark();
+
+  /* ── the dock ──────────────────────────────────────────────
+     It belongs to the hall: shown while a board or the bench is on screen. */
+  const dock = document.querySelector('.dock'), live = new Set();
+  const near = new IntersectionObserver(es => {
+    es.forEach(e => e.isIntersecting ? live.add(e.target) : live.delete(e.target));
+    dock.classList.toggle('away', !live.size && !dock.contains(document.activeElement));
+  });
+  document.querySelectorAll('.board, .bench').forEach(el => near.observe(el));
+  const snd = document.getElementById('sound'), hold = document.getElementById('hold');
+  snd.addEventListener('click', () => snd.setAttribute('aria-pressed', SplitFlap.sound(snd.getAttribute('aria-pressed') !== 'true')));
+  hold.addEventListener('click', () => {
+    if (!held){ hall0 = now(); held = true; } else { real0 = performance.now(); held = false; }
+    hold.setAttribute('aria-pressed', held);
+    hold.lastChild.textContent = held ? 'Resume' : 'Pause';
+    document.documentElement.classList.toggle('held', held);
+  });
+})();
+</script>
+
+</body>
+</html>
