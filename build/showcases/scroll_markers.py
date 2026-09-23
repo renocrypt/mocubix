@@ -36,6 +36,8 @@ STOPS = [
 FRAME = {'Jupiter': ('contain', '72% 50%'), 'Southern Ring Nebula': ('contain', '72% 50%'), 'Cassiopeia A': ('contain', '72% 50%'),
          'Cartwheel Galaxy': ('contain', '72% 50%'), 'Pillars of Creation': ('cover', '50% 40%')}
 
+MATERIAL = 'Material — NASA, ESA, CSA, STScI: images from the James Webb Space Telescope · public domain'
+
 HOW = """.reel { scroll-snap-type: x mandatory; scroll-marker-group: after }
 .stop::scroll-marker { content: attr(data-far); background: var(--thumb) }
 .stop::scroll-marker:target-current { /* the stop on screen */ }

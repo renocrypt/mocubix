@@ -849,3 +849,33 @@ and one code comment drew as boxes: the system's Han fallback is missing on
 this macOS 27 install (even Latin in "PingFang SC" drew boxes). The Lexicon's
 sans and mono stacks now fall to its own Source Han Serif webfont before the
 generic family, loading only the ranges used.
+
+## The second showcase: Word Scrub, endless forms, 2026-09-23
+
+**The idea.** The closing paragraph of *On the Origin of Species* (first
+edition, 1859, p. 490, checked against Wikisource), lit a word at a time by
+the scroll. Its four sentences take turns in one pinned place. Some words
+call up a plate from Haeckel's *Kunstformen der Natur*: the black-ground
+engravings are screened into the dark so only the forms stay (lichens and
+fungi entangle at "entangled bank"; diatoms, ammonites at "Extinction";
+crabs, then antelopes inverted to silver at "higher animals"; radiolarians
+at "grandeur"). From "endless" on, every word brings one of twelve colour
+plates, arriving in silver and blooming. The famous phrase keeps its light.
+Material the site had not touched: a text, and lithographs.
+
+**How it is built.** No script. The build wraps each word in a span and
+writes where each sentence sits in the reading (`--a`, `--b`); one view
+timeline spans the run; each word's slice comes from `sibling-index()` and
+`sibling-count()`, and a plate keyed to a word carries the same numbers.
+The pace (`--pace`, per word) and the overlap (`--w`, five words) are CSS
+knobs. Without motion, the paragraph is set whole beside the colour plates.
+Nineteen public-domain plates, curated like everything else; Tafel numbers
+checked against the scans.
+
+**Along the way.** The Lexicon's bar is one line everywhere now: where it
+is narrow, the pillars slide under the brand and the current one starts in
+view (`scroll-initial-target`). Its height is one value, `--bar`, which every
+pinned stage reads. Showcases name their own material in the footer and can
+add a credit line. `curate.py` also asks Commons for 330 and 500 px, so small
+tiles stop downloading 960 px files. Chrome paints the whole reading at 120
+fps with a p99 frame of about 10 ms.

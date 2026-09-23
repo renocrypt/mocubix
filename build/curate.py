@@ -12,6 +12,101 @@ UA = {'User-Agent': 'Mocubix/1.0 (https://github.com/renocrypt/mocubix)'}
 
 WORKS = [
  [
+  "haeckel",
+  "Lichenes",
+  "File:Haeckel Lichenes.jpg"
+ ],
+ [
+  "haeckel",
+  "Basimycetes",
+  "File:Haeckel Basimycetes.jpg"
+ ],
+ [
+  "haeckel",
+  "Diatomea",
+  "File:Haeckel Diatomea.jpg"
+ ],
+ [
+  "haeckel",
+  "Ammonitida",
+  "File:Haeckel Ammonitida.jpg"
+ ],
+ [
+  "haeckel",
+  "Decapoda",
+  "File:Haeckel Decapoda.jpg"
+ ],
+ [
+  "haeckel",
+  "Antilopina",
+  "File:Haeckel Antilopina.jpg"
+ ],
+ [
+  "haeckel",
+  "Spumellaria",
+  "File:Haeckel Spumellaria.jpg"
+ ],
+ [
+  "haeckel",
+  "Actiniae",
+  "File:Haeckel Actiniae.jpg"
+ ],
+ [
+  "haeckel",
+  "Discomedusae",
+  "File:Haeckel Discomedusae 8.jpg"
+ ],
+ [
+  "haeckel",
+  "Trochilidae",
+  "File:Haeckel Trochilidae.jpg"
+ ],
+ [
+  "haeckel",
+  "Orchidae",
+  "File:Haeckel Orchidae.jpg"
+ ],
+ [
+  "haeckel",
+  "Siphonophorae",
+  "File:Haeckel Siphonophorae.jpg"
+ ],
+ [
+  "haeckel",
+  "Nepenthaceae",
+  "File:Haeckel Nepenthaceae.jpg"
+ ],
+ [
+  "haeckel",
+  "Chaetopoda",
+  "File:Haeckel Chaetopoda.jpg"
+ ],
+ [
+  "haeckel",
+  "Batrachia",
+  "File:Haeckel Batrachia.jpg"
+ ],
+ [
+  "haeckel",
+  "Lacertilia",
+  "File:Haeckel Lacertilia.jpg"
+ ],
+ [
+  "haeckel",
+  "Chelonia",
+  "File:Haeckel Chelonia.jpg"
+ ],
+ [
+  "haeckel",
+  "Muscinae",
+  "File:Haeckel Muscinae.jpg"
+ ],
+ [
+  "haeckel",
+  "Ostraciontes",
+  "File:Haeckel Ostraciontes.jpg"
+ ],
+ [
   "webb",
   "Jupiter",
   "File:Jupiter (NIRCam Image) (2023-147).png"
@@ -418,7 +513,7 @@ if ONLY: WORKS = [w for w in WORKS if w[0] in ONLY]
 WIDE = {'webb'}
 
 recs = {}
-for width in (640, 1024, 1600, 1920, 3840):
+for width in (330, 500, 640, 1024, 1600, 1920, 3840):   # 330, 500: tiles, thumbnails, pictures shown small
     titles = [w[2] for w in WORKS if width <= 1600 or w[0] in WIDE]
     if not titles: continue
     for i in range(0, len(titles), 4):

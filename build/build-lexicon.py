@@ -427,7 +427,11 @@ SHOWCASES = {slug(t[2][1]): importlib.import_module(slug(t[2][1]).replace('-', '
 SHOW = ' <i class="shows" title="Has a full showcase"></i>'
 
 
-def shell(title, desc, path, rel, body, current=None, head=''):
+MATERIAL = ('Material — Kamisaka Sekka 神坂雪佳, <i>Momoyogusa</i> 百々世草, 1909–10<br>'
+            'Rijksmuseum scans via Wikimedia Commons, CC0. Anna Atkins cyanotypes, 1843.')
+
+
+def shell(title, desc, path, rel, body, current=None, head='', material=MATERIAL):
     url = BASE + path
     nav = ''
     for k, n, _, _ in PILLARS:
@@ -436,7 +440,7 @@ def shell(title, desc, path, rel, body, current=None, head=''):
         nav += f'<a class="navfam" href="{rel}lexicon/{k}/"{mark}>{n}<i>{count}</i></a>'
     return (SHELL.replace('__TITLE__', title).replace('__TITLE_ATTR__', attr(title)).replace('__DESC__', attr(desc))
             .replace('__URL__', url).replace('__NAV__', nav).replace('__COUNT__', str(len(TERMS)))
-            .replace('__BODY__', body).replace('__HEAD__', head).replace('__REL__', rel))
+            .replace('__BODY__', body).replace('__HEAD__', head).replace('__MATERIAL__', material).replace('__REL__', rel))
 
 
 SHELL = """<!doctype html>
@@ -484,7 +488,7 @@ __HEAD__</head>
 <nav class="topnav">
   <div class="inner">
     <a class="brand" href="__REL__">Mocubix</a><a class="brand" href="__REL__lexicon/"><i>Lexicon</i></a>
-    __NAV__
+    <div class="navfams">__NAV__</div>
     <span class="navtail">__COUNT__ named effects</span>
     <span data-theme-slot></span>
   </div>
@@ -493,7 +497,7 @@ __HEAD__</head>
 <div class="wrap">
 __BODY__
 <footer>
-  <span>Material — Kamisaka Sekka 神坂雪佳, <i>Momoyogusa</i> 百々世草, 1909–10<br>Rijksmuseum scans via Wikimedia Commons, CC0. Anna Atkins cyanotypes, 1843.</span>
+  <span>__MATERIAL__</span>
   <span>Type — Melodrama · Switzer · Geist · Geist Mono · 思源宋体</span>
   <span><a href="__REL__">The seven exhibits</a></span>
 </footer>
@@ -614,6 +618,7 @@ def term_page(i):
                   f'    <p class="aka">also called {akas}</p>\n'
                   f'    <p class="note">{note} {sc.NOTE}</p>\n'
                   f'    <details class="how" open><summary>How it is built</summary><code class="api">{how}</code></details>\n'
+                  + (f'    <p class="credit">{sc.credit(works)}</p>\n' if hasattr(sc, 'credit') else '') +
                   f'  </div>')
     else:
         feature, detail = '', spec_html(pname, s, rel)
@@ -629,7 +634,8 @@ def term_page(i):
             f'</div>\n'
             f'<nav class="pager" aria-label="Previous and next term">{pager}</nav>')
     head = '<link rel="stylesheet" href="showcase.css">\n' if sc else ''
-    return shell(f'{plain(name)} — Mocubix Lexicon', plain(s[3]), f'lexicon/{slug(name)}/', rel, body, current=pkey, head=head)
+    return shell(f'{plain(name)} — Mocubix Lexicon', plain(s[3]), f'lexicon/{slug(name)}/', rel, body, current=pkey, head=head,
+                 material=getattr(sc, 'MATERIAL', MATERIAL))
 
 
 out = ROOT / 'site' / 'lexicon'

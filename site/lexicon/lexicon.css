@@ -28,11 +28,13 @@ h1,h2,h3{font-weight:400}
 @keyframes track{to{transform:scaleX(1)}}
 
 /* ── sticky index ──────────────────────────────────────────── */
+/* the bar's height is one number: stages that pin under it read the same --bar */
+:root{--bar:46px}
 .topnav{position:sticky;top:0;z-index:70;
   background:color-mix(in srgb,var(--ground) 86%,transparent);
   backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
-.topnav .inner{max-width:1380px;margin:0 auto;padding:9px clamp(18px,4.5vw,64px);
-  display:flex;align-items:center;gap:10px 26px;flex-wrap:wrap}
+.topnav .inner{max-width:1380px;margin:0 auto;padding:0 clamp(18px,4.5vw,64px);height:calc(var(--bar) - 1px);box-sizing:border-box;
+  display:flex;align-items:center;gap:10px 26px}
 .brand{font-family:var(--display);font-size:17px;letter-spacing:-.01em;margin-right:6px;transition:color .3s var(--settle)}
 .brand:hover{color:var(--accent)}
 .brand i{font-style:italic;color:var(--accent)}
@@ -688,8 +690,6 @@ footer a:hover{color:var(--accent)}
   .spec{grid-template-columns:minmax(0,1fr);gap:20px}
   .meta{position:static}
   .plate{grid-template-columns:62px minmax(0,1fr)}
-  .topnav .inner{gap:7px 16px}
-  .navgrp a{font-size:9px}
   .index{grid-template-columns:1fr;gap:26px}
   .osb{grid-template-columns:1fr}
   .cnt{grid-template-columns:1fr;gap:24px;padding-block:26px 48px}
@@ -790,7 +790,7 @@ footer a:hover{color:var(--accent)}
 
 /* ── the entrance: one screen; the vocabulary is the page ───── */
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
-.entrance{min-height:calc(100svh - 46px);display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);
+.entrance{min-height:calc(100svh - var(--bar));display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);
   column-gap:clamp(28px,5vw,84px);align-content:start;padding-block:clamp(30px,6.5vh,76px) clamp(18px,3vh,30px)}
 .entrance .kicker{margin-bottom:18px}
 .entrance h1{font-size:clamp(46px,6.2vw,98px);line-height:.86}
@@ -842,6 +842,34 @@ footer a:hover{color:var(--accent)}
 .meta .deeper + .deeper{margin-left:18px}
 .entrance .keys{margin-top:clamp(10px,2vh,30px)}
 @media (max-width:760px){.navtail{display:none}}
+/* the pillars keep to the bar's one line; where it is narrow they slide under the brand, the current one in view */
+.navfams{display:contents}
+@media (max-width:1100px){
+  .navtail{display:none}
+  .topnav .inner{gap:0 4px}
+  .brand + .brand{margin-left:2px}
+  .navfams{display:flex;align-items:center;align-self:stretch;gap:20px;flex:1;min-width:0;padding-inline:12px 26px;scroll-padding-inline:12px 26px;
+    overflow-x:auto;scrollbar-width:none;overscroll-behavior-x:contain;
+    -webkit-mask-image:linear-gradient(90deg,transparent,#000 12px,#000 calc(100% - 26px),transparent);
+    mask-image:linear-gradient(90deg,transparent,#000 12px,#000 calc(100% - 26px),transparent)}
+  .navfam{flex:none}
+  .navfam[aria-current]{scroll-initial-target:nearest}
+}
+@media (max-width:760px){.topnav .theme span{display:none}}
+/* a showcase page: the term and what it is about, side by side above its stage */
+.showhead{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,5vw,80px);align-items:end;
+  padding-block:0 clamp(18px,3vh,30px)}
+.showhead .name{font-family:var(--display);font-weight:400;font-size:clamp(40px,5.4vw,78px);line-height:.9;letter-spacing:-.025em;margin:0}
+.showhead .gloss{margin:14px 0 0;max-width:40ch;font-size:16.5px;line-height:1.52;text-wrap:pretty}
+.showhead .journey h2{font-family:var(--display);font-weight:400;font-size:clamp(22px,2.4vw,32px);line-height:1;letter-spacing:-.02em;margin:0;color:var(--accent)}
+.showhead .journey p{margin:10px 0 0;color:var(--mid);font-size:14.5px;line-height:1.55;max-width:54ch;text-wrap:pretty}
+/* the stage ends the showcase; the notes on it begin after a breath */
+.showhead + .stage{margin-bottom:clamp(40px,8vh,96px)}
+.showmeta .credit{margin:22px 0 0;font-size:12.5px;line-height:1.6;color:var(--dim);max-width:78ch;text-wrap:pretty}
+.showmeta .credit a{color:var(--mid);border-bottom:1px solid var(--line);transition:color .3s var(--settle),border-color .3s var(--settle)}
+.showmeta .credit a:hover{color:var(--accent);border-bottom-color:var(--accent)}
+@media (max-width:760px){.showhead{grid-template-columns:minmax(0,1fr)}}
+
 /* a term with a full showcase carries a small terracotta dot */
 .shows{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--accent);margin-left:9px;vertical-align:.2em}
 .keys .shows{margin:0 7px 0 0}

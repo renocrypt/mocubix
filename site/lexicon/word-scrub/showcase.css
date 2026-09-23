@@ -1,0 +1,116 @@
+/* Word Scrub, in full: Darwin's closing paragraph, read a word at a time.
+   One view timeline, --read, spans the run. Each word takes its own slice of it
+   from its place among its siblings; a plate called up by a word takes that
+   word's slice. The build only wraps the words; nothing here runs a script. */
+
+.read{position:relative;width:100vw;margin-inline:calc(50% - 50vw);border:0;border-radius:0;background:#0B0C0A;color:var(--ink)}
+
+/* the run is as long as the reading: a pace per word, the sentence positions come from the build */
+.run{--u:calc(100 / var(--units));--w:calc(5 * var(--u));--pace:2.3svh;
+  height:calc(var(--units) * var(--pace) + 100svh - var(--bar));
+  view-timeline:--read block;view-timeline-inset:var(--bar) 0px}
+/* the screen that holds still while the run goes by; it carries the ground so the plates can blend into it */
+.pin{position:sticky;top:var(--bar);height:calc(100svh - var(--bar));box-sizing:border-box;overflow:clip;background:#0B0C0A;
+  display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:clamp(24px,4.5vw,80px);
+  padding:clamp(22px,5.5vh,64px) clamp(20px,5vw,72px)}
+
+/* ── the paragraph: its four sentences take turns in the same place ── */
+.passage{margin:0;align-self:center;display:grid;gap:clamp(18px,3.4vh,34px)}
+.passage blockquote{margin:0}
+.passage p{margin:0;display:grid}
+.passage .s{grid-area:1/1;align-self:center;font-family:var(--display);
+  font-size:calc(var(--fs) * clamp(19px,min(2.45vw,4.7svh),40px));line-height:1.17;letter-spacing:-.012em;text-wrap:pretty}
+.passage figcaption{font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim)}
+.passage cite{font-style:italic}
+
+/* each word: unlit, then a flush of warm light as it arrives, then ink */
+.passage .s > span{--k:sibling-index();--n:sibling-count();
+  --at:calc(var(--a) + (var(--b) - var(--a)) * (var(--k) - 1) / var(--n));
+  color:rgb(242 237 229 / .13);
+  animation:lit linear both;animation-timeline:--read;
+  animation-range:contain calc(var(--at) * 1%) contain calc((var(--at) + var(--w)) * 1%)}
+@keyframes lit{
+  from{color:rgb(242 237 229 / .13)}
+  30%{color:#F4B08C;text-shadow:0 0 .5em rgb(212 103 63 / .6)}
+  to{color:#F2EDE5;text-shadow:0 0 .5em rgb(212 103 63 / 0)}
+}
+/* the last line's famous phrase keeps its light */
+.passage .s > .em{animation-name:lit-em}
+@keyframes lit-em{
+  from{color:rgb(242 237 229 / .13)}
+  35%{color:#FFD9C2;text-shadow:0 0 .6em rgb(212 103 63 / .9)}
+  to{color:#EC8A5E;text-shadow:0 0 .7em rgb(212 103 63 / .3)}
+}
+
+/* a sentence arrives from below just before its first word and leaves upward once it is all lit */
+.passage .s{animation:s-in linear both,s-out linear forwards;animation-timeline:--read,--read;
+  animation-range:contain calc((var(--a) - 4 * var(--u)) * 1%) contain calc(var(--a) * 1%),
+                  contain calc((var(--b) + 8 * var(--u)) * 1%) contain calc((var(--b) + 12 * var(--u)) * 1%)}
+.passage .s:first-child{animation:s-out linear forwards;animation-timeline:--read;
+  animation-range:contain calc((var(--b) + 8 * var(--u)) * 1%) contain calc((var(--b) + 12 * var(--u)) * 1%)}
+.passage .s:last-child{animation:s-in linear both;animation-timeline:--read;
+  animation-range:contain calc((var(--a) - 4 * var(--u)) * 1%) contain calc(var(--a) * 1%)}
+@keyframes s-in{from{opacity:0;translate:0 .5em}}
+@keyframes s-out{to{opacity:0;translate:0 -.5em}}
+
+/* ── the field: silver plates called up by words, then the colour ── */
+.field{position:relative;min-height:0}
+.specimen{position:absolute;inset:0;margin:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;
+  padding-bottom:1.9em;box-sizing:border-box;font-size:9px;
+  mix-blend-mode:screen;
+  --at:calc(var(--a) + (var(--b) - var(--a)) * (var(--k) - 1) / var(--n));
+  animation:p-in linear both,s-out linear forwards;animation-timeline:--read,--read;
+  animation-range:contain calc(var(--at) * 1%) contain calc((var(--at) + 7 * var(--u)) * 1%),
+                  contain calc((var(--b) + 8 * var(--u)) * 1%) contain calc((var(--b) + 12 * var(--u)) * 1%)}
+.specimen.last{--out:calc(var(--a) + (var(--b) - var(--a)) * (var(--kout) - 1) / var(--n));
+  animation-range:contain calc(var(--at) * 1%) contain calc((var(--at) + 7 * var(--u)) * 1%),
+                  contain calc((var(--out) - 2 * var(--u)) * 1%) contain calc((var(--out) + 3 * var(--u)) * 1%)}
+@keyframes p-in{from{opacity:0;scale:1.08}}
+/* engraved on black, the plates' paper crushes to the ground and only the forms stay; white-ground ones are inverted */
+.specimen img{flex:0 1 auto;min-height:0;max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;filter:contrast(1.25) brightness(.95);
+  -webkit-mask-image:radial-gradient(closest-side,#000 72%,transparent);mask-image:radial-gradient(closest-side,#000 72%,transparent)}
+.specimen.inv img{filter:invert(1) contrast(1.25) brightness(.95)}
+.specimen figcaption{flex:none;font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim)}
+.specimen figcaption i{font-style:normal;color:var(--mid)}
+.specimen.also figcaption{translate:0 1.9em}
+
+/* before the first word: where to go */
+.cue{position:absolute;left:50%;top:50%;translate:-50% -50%;margin:0;display:grid;justify-items:center;gap:14px;
+  font-family:var(--mono);font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--dim);
+  animation:cue-out linear forwards;animation-timeline:--read;animation-range:contain 0% contain calc(6 * var(--u) * 1%)}
+.cue::after{content:'';width:1px;height:46px;background:linear-gradient(var(--dim),transparent)}
+@keyframes cue-out{to{opacity:0}}
+
+/* from "endless" on, each word brings a colour plate: it arrives in silver and blooms */
+.tiles{position:absolute;inset:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-template-rows:repeat(3,minmax(0,1fr));
+  gap:clamp(12px,2vh,22px) clamp(10px,1.2vw,18px)}
+.tile{margin:0;min-height:0;display:grid;grid-template-rows:minmax(0,1fr) auto;gap:7px;justify-items:center;
+  --at:calc(var(--a) + (var(--b) - var(--a)) * (var(--k) - 1) / var(--n));
+  animation:t-in linear both;animation-timeline:--read;
+  animation-range:contain calc(var(--at) * 1%) contain calc((var(--at) + 6 * var(--u)) * 1%)}
+.tile img{min-height:0;max-height:100%;max-width:100%;width:auto;height:auto;align-self:end;box-shadow:0 12px 34px rgb(0 0 0 / .5)}
+.tile figcaption{font-family:var(--mono);font-size:8.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);white-space:nowrap}
+.tile figcaption i{font-style:normal;color:var(--mid)}
+@keyframes t-in{from{opacity:0;scale:.88;filter:grayscale(1) brightness(1.7)}40%{opacity:1;filter:grayscale(1) brightness(1.25)}}
+
+@media (max-width:760px){
+  .run{--pace:2.1svh}
+  .pin{grid-template-columns:minmax(0,1fr);grid-template-rows:minmax(0,1fr) auto;gap:16px;padding:16px 18px 22px}
+  .field{order:-1}
+  .passage .s{font-size:calc(var(--fs) * clamp(15px,4.3vw,19px))}
+  .tile figcaption{display:none}
+  .tiles{grid-template-rows:repeat(3,auto);align-content:center}
+}
+
+/* without motion: the paragraph whole and lit, the colour plates beside it */
+@media (prefers-reduced-motion:reduce){
+  .run{height:auto}
+  .pin{position:relative;top:auto;height:auto;min-height:calc(100svh - var(--bar))}
+  .passage p{display:block}
+  .passage .s{display:inline;font-size:clamp(17px,1.5vw,23px)}
+  .passage .s,.passage .s:first-child,.passage .s:last-child,.passage .s > span,.passage .s > .em,
+  .specimen,.specimen.last,.tile,.cue{animation:none}
+  .passage .s > span{color:var(--ink)}
+  .passage .s > .em{color:#EC8A5E}
+  .specimen,.cue{display:none}
+}

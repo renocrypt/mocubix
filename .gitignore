@@ -6,3 +6,6 @@
 
 # working screenshots: large, kept on the machine that took them
 notes/evidence/
+
+# Python's bytecode caches, made when the build imports the showcase modules
+__pycache__/

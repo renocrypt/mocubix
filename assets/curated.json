@@ -1627,5 +1627,385 @@
   },
   "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bf/Webb%27s_First_Deep_Field.jpg/960px-Webb%27s_First_Deep_Field.jpg 960w, https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bf/Webb%27s_First_Deep_Field.jpg/1280px-Webb%27s_First_Deep_Field.jpg 1280w, https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bf/Webb%27s_First_Deep_Field.jpg/1920px-Webb%27s_First_Deep_Field.jpg 1920w, https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bf/Webb%27s_First_Deep_Field.jpg/3840px-Webb%27s_First_Deep_Field.jpg 3840w",
   "default": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bf/Webb%27s_First_Deep_Field.jpg/1920px-Webb%27s_First_Deep_Field.jpg"
+ },
+ {
+  "title": "File:Haeckel Ammonitida.jpg",
+  "label": "Ammonitida",
+  "kind": "haeckel",
+  "w": 2284,
+  "h": 3244,
+  "license": "Public domain",
+  "artist": "Ernst Haeckel",
+  "credit": "Kunstformen der Natur (1904), plate 44: Ammonitida (see here, here, here and her",
+  "descurl": "https://commons.wikimedia.org/wiki/File:Haeckel_Ammonitida.jpg",
+  "sources": {
+   "330": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/da/Haeckel_Ammonitida.jpg/330px-Haeckel_Ammonitida.jpg",
+   "500": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/da/Haeckel_Ammonitida.jpg/500px-Haeckel_Ammonitida.jpg",
+   "960": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/da/Haeckel_Ammonitida.jpg/960px-Haeckel_Ammonitida.jpg",
+   "1280": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/da/Haeckel_Ammonitida.jpg/1280px-Haeckel_Ammonitida.jpg",
+   "1920": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/da/Haeckel_Ammonitida.jpg/1920px-Haeckel_Ammonitida.jpg"
+  },
+  "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/da/Haeckel_Ammonitida.jpg/330px-Haeckel_Ammonitida.jpg 330w, https://thumb.wikimedia.org/wikipedia/commons/thumb/d/da/Haeckel_Ammonitida.jpg/500px-Haeckel_Ammonitida.jpg 500w, https://thumb.wikimedia.org/wikipedia/commons/thumb/d/da/Haeckel_Ammonitida.jpg/960px-Haeckel_Ammonitida.jpg 960w, https://thumb.wikimedia.org/wikipedia/commons/thumb/d/da/Haeckel_Ammonitida.jpg/1280px-Haeckel_Ammonitida.jpg 1280w, https://thumb.wikimedia.org/wikipedia/commons/thumb/d/da/Haeckel_Ammonitida.jpg/1920px-Haeckel_Ammonitida.jpg 1920w",
+  "default": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/da/Haeckel_Ammonitida.jpg/960px-Haeckel_Ammonitida.jpg"
+ },
+ {
+  "title": "File:Haeckel Basimycetes.jpg",
+  "label": "Basimycetes",
+  "kind": "haeckel",
+  "w": 2314,
+  "h": 3281,
+  "license": "Public domain",
+  "artist": "Ernst Haeckel",
+  "credit": "Kunstformen der Natur (1904), plate 63: Basimycetes (see here, here, here and he",
+  "descurl": "https://commons.wikimedia.org/wiki/File:Haeckel_Basimycetes.jpg",
+  "sources": {
+   "330": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e6/Haeckel_Basimycetes.jpg/330px-Haeckel_Basimycetes.jpg",
+   "500": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e6/Haeckel_Basimycetes.jpg/500px-Haeckel_Basimycetes.jpg",
+   "960": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e6/Haeckel_Basimycetes.jpg/960px-Haeckel_Basimycetes.jpg",
+   "1280": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e6/Haeckel_Basimycetes.jpg/1280px-Haeckel_Basimycetes.jpg",
+   "1920": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e6/Haeckel_Basimycetes.jpg/1920px-Haeckel_Basimycetes.jpg"
+  },
+  "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e6/Haeckel_Basimycetes.jpg/330px-Haeckel_Basimycetes.jpg 330w, https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e6/Haeckel_Basimycetes.jpg/500px-Haeckel_Basimycetes.jpg 500w, https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e6/Haeckel_Basimycetes.jpg/960px-Haeckel_Basimycetes.jpg 960w, https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e6/Haeckel_Basimycetes.jpg/1280px-Haeckel_Basimycetes.jpg 1280w, https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e6/Haeckel_Basimycetes.jpg/1920px-Haeckel_Basimycetes.jpg 1920w",
+  "default": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e6/Haeckel_Basimycetes.jpg/960px-Haeckel_Basimycetes.jpg"
+ },
+ {
+  "title": "File:Haeckel Diatomea.jpg",
+  "label": "Diatomea",
+  "kind": "haeckel",
+  "w": 2327,
+  "h": 3276,
+  "license": "Public domain",
+  "artist": "Ernst Haeckel",
+  "credit": "Kunstformen der Natur (1904), plate 84: Diatomeae (see here, here, here and here",
+  "descurl": "https://commons.wikimedia.org/wiki/File:Haeckel_Diatomea.jpg",
+  "sources": {
+   "330": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e9/Haeckel_Diatomea.jpg/330px-Haeckel_Diatomea.jpg",
+   "500": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e9/Haeckel_Diatomea.jpg/500px-Haeckel_Diatomea.jpg",
+   "960": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e9/Haeckel_Diatomea.jpg/960px-Haeckel_Diatomea.jpg",
+   "1280": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e9/Haeckel_Diatomea.jpg/1280px-Haeckel_Diatomea.jpg",
+   "1920": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e9/Haeckel_Diatomea.jpg/1920px-Haeckel_Diatomea.jpg"
+  },
+  "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e9/Haeckel_Diatomea.jpg/330px-Haeckel_Diatomea.jpg 330w, https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e9/Haeckel_Diatomea.jpg/500px-Haeckel_Diatomea.jpg 500w, https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e9/Haeckel_Diatomea.jpg/960px-Haeckel_Diatomea.jpg 960w, https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e9/Haeckel_Diatomea.jpg/1280px-Haeckel_Diatomea.jpg 1280w, https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e9/Haeckel_Diatomea.jpg/1920px-Haeckel_Diatomea.jpg 1920w",
+  "default": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e9/Haeckel_Diatomea.jpg/960px-Haeckel_Diatomea.jpg"
+ },
+ {
+  "title": "File:Haeckel Lichenes.jpg",
+  "label": "Lichenes",
+  "kind": "haeckel",
+  "w": 2364,
+  "h": 3294,
+  "license": "Public domain",
+  "artist": "Ernst Haeckel",
+  "credit": "Kunstformen der Natur (1904), plate 83: Lichenes (see here, here, here and here)",
+  "descurl": "https://commons.wikimedia.org/wiki/File:Haeckel_Lichenes.jpg",
+  "sources": {
+   "330": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/39/Haeckel_Lichenes.jpg/330px-Haeckel_Lichenes.jpg",
+   "500": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/39/Haeckel_Lichenes.jpg/500px-Haeckel_Lichenes.jpg",
+   "960": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/39/Haeckel_Lichenes.jpg/960px-Haeckel_Lichenes.jpg",
+   "1280": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/39/Haeckel_Lichenes.jpg/1280px-Haeckel_Lichenes.jpg",
+   "1920": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/39/Haeckel_Lichenes.jpg/1920px-Haeckel_Lichenes.jpg"
+  },
+  "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/39/Haeckel_Lichenes.jpg/330px-Haeckel_Lichenes.jpg 330w, https://thumb.wikimedia.org/wikipedia/commons/thumb/3/39/Haeckel_Lichenes.jpg/500px-Haeckel_Lichenes.jpg 500w, https://thumb.wikimedia.org/wikipedia/commons/thumb/3/39/Haeckel_Lichenes.jpg/960px-Haeckel_Lichenes.jpg 960w, https://thumb.wikimedia.org/wikipedia/commons/thumb/3/39/Haeckel_Lichenes.jpg/1280px-Haeckel_Lichenes.jpg 1280w, https://thumb.wikimedia.org/wikipedia/commons/thumb/3/39/Haeckel_Lichenes.jpg/1920px-Haeckel_Lichenes.jpg 1920w",
+  "default": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/39/Haeckel_Lichenes.jpg/960px-Haeckel_Lichenes.jpg"
+ },
+ {
+  "title": "File:Haeckel Actiniae.jpg",
+  "label": "Actiniae",
+  "kind": "haeckel",
+  "w": 3289,
+  "h": 4615,
+  "license": "Public domain",
+  "artist": "Ernst Haeckel",
+  "credit": "Kunstformen der Natur (1904), plate/planche 49: Actiniae (see here, here, here a",
+  "descurl": "https://commons.wikimedia.org/wiki/File:Haeckel_Actiniae.jpg",
+  "sources": {
+   "330": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a9/Haeckel_Actiniae.jpg/330px-Haeckel_Actiniae.jpg",
+   "500": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a9/Haeckel_Actiniae.jpg/500px-Haeckel_Actiniae.jpg",
+   "960": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a9/Haeckel_Actiniae.jpg/960px-Haeckel_Actiniae.jpg",
+   "1280": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a9/Haeckel_Actiniae.jpg/1280px-Haeckel_Actiniae.jpg",
+   "1920": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a9/Haeckel_Actiniae.jpg/1920px-Haeckel_Actiniae.jpg"
+  },
+  "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a9/Haeckel_Actiniae.jpg/330px-Haeckel_Actiniae.jpg 330w, https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a9/Haeckel_Actiniae.jpg/500px-Haeckel_Actiniae.jpg 500w, https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a9/Haeckel_Actiniae.jpg/960px-Haeckel_Actiniae.jpg 960w, https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a9/Haeckel_Actiniae.jpg/1280px-Haeckel_Actiniae.jpg 1280w, https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a9/Haeckel_Actiniae.jpg/1920px-Haeckel_Actiniae.jpg 1920w",
+  "default": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a9/Haeckel_Actiniae.jpg/960px-Haeckel_Actiniae.jpg"
+ },
+ {
+  "title": "File:Haeckel Antilopina.jpg",
+  "label": "Antilopina",
+  "kind": "haeckel",
+  "w": 2378,
+  "h": 3344,
+  "license": "Public domain",
+  "artist": "Ernst Haeckel",
+  "credit": "Kunstformen der Natur (1904), plate 100: Antilopina (see here, here and here)",
+  "descurl": "https://commons.wikimedia.org/wiki/File:Haeckel_Antilopina.jpg",
+  "sources": {
+   "330": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/96/Haeckel_Antilopina.jpg/330px-Haeckel_Antilopina.jpg",
+   "500": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/96/Haeckel_Antilopina.jpg/500px-Haeckel_Antilopina.jpg",
+   "960": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/96/Haeckel_Antilopina.jpg/960px-Haeckel_Antilopina.jpg",
+   "1280": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/96/Haeckel_Antilopina.jpg/1280px-Haeckel_Antilopina.jpg",
+   "1920": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/96/Haeckel_Antilopina.jpg/1920px-Haeckel_Antilopina.jpg"
+  },
+  "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/96/Haeckel_Antilopina.jpg/330px-Haeckel_Antilopina.jpg 330w, https://thumb.wikimedia.org/wikipedia/commons/thumb/9/96/Haeckel_Antilopina.jpg/500px-Haeckel_Antilopina.jpg 500w, https://thumb.wikimedia.org/wikipedia/commons/thumb/9/96/Haeckel_Antilopina.jpg/960px-Haeckel_Antilopina.jpg 960w, https://thumb.wikimedia.org/wikipedia/commons/thumb/9/96/Haeckel_Antilopina.jpg/1280px-Haeckel_Antilopina.jpg 1280w, https://thumb.wikimedia.org/wikipedia/commons/thumb/9/96/Haeckel_Antilopina.jpg/1920px-Haeckel_Antilopina.jpg 1920w",
+  "default": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/96/Haeckel_Antilopina.jpg/960px-Haeckel_Antilopina.jpg"
+ },
+ {
+  "title": "File:Haeckel Decapoda.jpg",
+  "label": "Decapoda",
+  "kind": "haeckel",
+  "w": 2428,
+  "h": 3372,
+  "license": "Public domain",
+  "artist": "Ernst Haeckel",
+  "credit": "Kunstformen der Natur (1904), plate 86: Decapoda (see here, here and here)",
+  "descurl": "https://commons.wikimedia.org/wiki/File:Haeckel_Decapoda.jpg",
+  "sources": {
+   "330": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/44/Haeckel_Decapoda.jpg/330px-Haeckel_Decapoda.jpg",
+   "500": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/44/Haeckel_Decapoda.jpg/500px-Haeckel_Decapoda.jpg",
+   "960": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/44/Haeckel_Decapoda.jpg/960px-Haeckel_Decapoda.jpg",
+   "1280": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/44/Haeckel_Decapoda.jpg/1280px-Haeckel_Decapoda.jpg",
+   "1920": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/44/Haeckel_Decapoda.jpg/1920px-Haeckel_Decapoda.jpg"
+  },
+  "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/44/Haeckel_Decapoda.jpg/330px-Haeckel_Decapoda.jpg 330w, https://thumb.wikimedia.org/wikipedia/commons/thumb/4/44/Haeckel_Decapoda.jpg/500px-Haeckel_Decapoda.jpg 500w, https://thumb.wikimedia.org/wikipedia/commons/thumb/4/44/Haeckel_Decapoda.jpg/960px-Haeckel_Decapoda.jpg 960w, https://thumb.wikimedia.org/wikipedia/commons/thumb/4/44/Haeckel_Decapoda.jpg/1280px-Haeckel_Decapoda.jpg 1280w, https://thumb.wikimedia.org/wikipedia/commons/thumb/4/44/Haeckel_Decapoda.jpg/1920px-Haeckel_Decapoda.jpg 1920w",
+  "default": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/44/Haeckel_Decapoda.jpg/960px-Haeckel_Decapoda.jpg"
+ },
+ {
+  "title": "File:Haeckel Spumellaria.jpg",
+  "label": "Spumellaria",
+  "kind": "haeckel",
+  "w": 2344,
+  "h": 3324,
+  "license": "Public domain",
+  "artist": "Ernst Haeckel",
+  "credit": "Kunstformen der Natur (1904), plate 91: Spumellaria (see here, here, here and he",
+  "descurl": "https://commons.wikimedia.org/wiki/File:Haeckel_Spumellaria.jpg",
+  "sources": {
+   "330": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0c/Haeckel_Spumellaria.jpg/330px-Haeckel_Spumellaria.jpg",
+   "500": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0c/Haeckel_Spumellaria.jpg/500px-Haeckel_Spumellaria.jpg",
+   "960": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0c/Haeckel_Spumellaria.jpg/960px-Haeckel_Spumellaria.jpg",
+   "1280": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0c/Haeckel_Spumellaria.jpg/1280px-Haeckel_Spumellaria.jpg",
+   "1920": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0c/Haeckel_Spumellaria.jpg/1920px-Haeckel_Spumellaria.jpg"
+  },
+  "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0c/Haeckel_Spumellaria.jpg/330px-Haeckel_Spumellaria.jpg 330w, https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0c/Haeckel_Spumellaria.jpg/500px-Haeckel_Spumellaria.jpg 500w, https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0c/Haeckel_Spumellaria.jpg/960px-Haeckel_Spumellaria.jpg 960w, https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0c/Haeckel_Spumellaria.jpg/1280px-Haeckel_Spumellaria.jpg 1280w, https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0c/Haeckel_Spumellaria.jpg/1920px-Haeckel_Spumellaria.jpg 1920w",
+  "default": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0c/Haeckel_Spumellaria.jpg/960px-Haeckel_Spumellaria.jpg"
+ },
+ {
+  "title": "File:Haeckel Discomedusae 8.jpg",
+  "label": "Discomedusae",
+  "kind": "haeckel",
+  "w": 2300,
+  "h": 3300,
+  "license": "Public domain",
+  "artist": "Original: Ernst Haeckel. Scan: Ragesoss. Cleanup: Ilmari Karonen.",
+  "credit": "Kunstformen der Natur (1904), plate 8: Discomedusae",
+  "descurl": "https://commons.wikimedia.org/wiki/File:Haeckel_Discomedusae_8.jpg",
+  "sources": {
+   "330": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/de/Haeckel_Discomedusae_8.jpg/330px-Haeckel_Discomedusae_8.jpg",
+   "500": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/de/Haeckel_Discomedusae_8.jpg/500px-Haeckel_Discomedusae_8.jpg",
+   "960": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/de/Haeckel_Discomedusae_8.jpg/960px-Haeckel_Discomedusae_8.jpg",
+   "1280": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/de/Haeckel_Discomedusae_8.jpg/1280px-Haeckel_Discomedusae_8.jpg",
+   "1920": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/de/Haeckel_Discomedusae_8.jpg/1920px-Haeckel_Discomedusae_8.jpg"
+  },
+  "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/de/Haeckel_Discomedusae_8.jpg/330px-Haeckel_Discomedusae_8.jpg 330w, https://thumb.wikimedia.org/wikipedia/commons/thumb/d/de/Haeckel_Discomedusae_8.jpg/500px-Haeckel_Discomedusae_8.jpg 500w, https://thumb.wikimedia.org/wikipedia/commons/thumb/d/de/Haeckel_Discomedusae_8.jpg/960px-Haeckel_Discomedusae_8.jpg 960w, https://thumb.wikimedia.org/wikipedia/commons/thumb/d/de/Haeckel_Discomedusae_8.jpg/1280px-Haeckel_Discomedusae_8.jpg 1280w, https://thumb.wikimedia.org/wikipedia/commons/thumb/d/de/Haeckel_Discomedusae_8.jpg/1920px-Haeckel_Discomedusae_8.jpg 1920w",
+  "default": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/de/Haeckel_Discomedusae_8.jpg/960px-Haeckel_Discomedusae_8.jpg"
+ },
+ {
+  "title": "File:Haeckel Orchidae.jpg",
+  "label": "Orchidae",
+  "kind": "haeckel",
+  "w": 2360,
+  "h": 3324,
+  "license": "Public domain",
+  "artist": "Ernst Haeckel",
+  "credit": "Kunstformen der Natur (1904), plate 74: Orchidae (see here, here, here and here)",
+  "descurl": "https://commons.wikimedia.org/wiki/File:Haeckel_Orchidae.jpg",
+  "sources": {
+   "330": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/21/Haeckel_Orchidae.jpg/330px-Haeckel_Orchidae.jpg",
+   "500": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/21/Haeckel_Orchidae.jpg/500px-Haeckel_Orchidae.jpg",
+   "960": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/21/Haeckel_Orchidae.jpg/960px-Haeckel_Orchidae.jpg",
+   "1280": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/21/Haeckel_Orchidae.jpg/1280px-Haeckel_Orchidae.jpg",
+   "1920": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/21/Haeckel_Orchidae.jpg/1920px-Haeckel_Orchidae.jpg"
+  },
+  "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/21/Haeckel_Orchidae.jpg/330px-Haeckel_Orchidae.jpg 330w, https://thumb.wikimedia.org/wikipedia/commons/thumb/2/21/Haeckel_Orchidae.jpg/500px-Haeckel_Orchidae.jpg 500w, https://thumb.wikimedia.org/wikipedia/commons/thumb/2/21/Haeckel_Orchidae.jpg/960px-Haeckel_Orchidae.jpg 960w, https://thumb.wikimedia.org/wikipedia/commons/thumb/2/21/Haeckel_Orchidae.jpg/1280px-Haeckel_Orchidae.jpg 1280w, https://thumb.wikimedia.org/wikipedia/commons/thumb/2/21/Haeckel_Orchidae.jpg/1920px-Haeckel_Orchidae.jpg 1920w",
+  "default": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/21/Haeckel_Orchidae.jpg/960px-Haeckel_Orchidae.jpg"
+ },
+ {
+  "title": "File:Haeckel Siphonophorae.jpg",
+  "label": "Siphonophorae",
+  "kind": "haeckel",
+  "w": 2318,
+  "h": 3234,
+  "license": "Public domain",
+  "artist": "Ernst Haeckel",
+  "credit": "Kunstformen der Natur (1904), plate 17: Siphonophorae (see here, here and here)",
+  "descurl": "https://commons.wikimedia.org/wiki/File:Haeckel_Siphonophorae.jpg",
+  "sources": {
+   "330": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6a/Haeckel_Siphonophorae.jpg/330px-Haeckel_Siphonophorae.jpg",
+   "500": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6a/Haeckel_Siphonophorae.jpg/500px-Haeckel_Siphonophorae.jpg",
+   "960": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6a/Haeckel_Siphonophorae.jpg/960px-Haeckel_Siphonophorae.jpg",
+   "1280": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6a/Haeckel_Siphonophorae.jpg/1280px-Haeckel_Siphonophorae.jpg",
+   "1920": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6a/Haeckel_Siphonophorae.jpg/1920px-Haeckel_Siphonophorae.jpg"
+  },
+  "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6a/Haeckel_Siphonophorae.jpg/330px-Haeckel_Siphonophorae.jpg 330w, https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6a/Haeckel_Siphonophorae.jpg/500px-Haeckel_Siphonophorae.jpg 500w, https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6a/Haeckel_Siphonophorae.jpg/960px-Haeckel_Siphonophorae.jpg 960w, https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6a/Haeckel_Siphonophorae.jpg/1280px-Haeckel_Siphonophorae.jpg 1280w, https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6a/Haeckel_Siphonophorae.jpg/1920px-Haeckel_Siphonophorae.jpg 1920w",
+  "default": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6a/Haeckel_Siphonophorae.jpg/960px-Haeckel_Siphonophorae.jpg"
+ },
+ {
+  "title": "File:Haeckel Trochilidae.jpg",
+  "label": "Trochilidae",
+  "kind": "haeckel",
+  "w": 2359,
+  "h": 3308,
+  "license": "Public domain",
+  "artist": "Ernst Haeckel",
+  "credit": "Kunstformen der Natur (1904), plate 99: Trochilidae (see here, here and here and",
+  "descurl": "https://commons.wikimedia.org/wiki/File:Haeckel_Trochilidae.jpg",
+  "sources": {
+   "330": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8e/Haeckel_Trochilidae.jpg/330px-Haeckel_Trochilidae.jpg",
+   "500": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8e/Haeckel_Trochilidae.jpg/500px-Haeckel_Trochilidae.jpg",
+   "960": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8e/Haeckel_Trochilidae.jpg/960px-Haeckel_Trochilidae.jpg",
+   "1280": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8e/Haeckel_Trochilidae.jpg/1280px-Haeckel_Trochilidae.jpg",
+   "1920": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8e/Haeckel_Trochilidae.jpg/1920px-Haeckel_Trochilidae.jpg"
+  },
+  "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8e/Haeckel_Trochilidae.jpg/330px-Haeckel_Trochilidae.jpg 330w, https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8e/Haeckel_Trochilidae.jpg/500px-Haeckel_Trochilidae.jpg 500w, https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8e/Haeckel_Trochilidae.jpg/960px-Haeckel_Trochilidae.jpg 960w, https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8e/Haeckel_Trochilidae.jpg/1280px-Haeckel_Trochilidae.jpg 1280w, https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8e/Haeckel_Trochilidae.jpg/1920px-Haeckel_Trochilidae.jpg 1920w",
+  "default": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8e/Haeckel_Trochilidae.jpg/960px-Haeckel_Trochilidae.jpg"
+ },
+ {
+  "title": "File:Haeckel Batrachia.jpg",
+  "label": "Batrachia",
+  "kind": "haeckel",
+  "w": 2323,
+  "h": 3284,
+  "license": "Public domain",
+  "artist": "Ernst Haeckel",
+  "credit": "Kunstformen der Natur (1904), plate 68: Batrachia (see here, here and here)",
+  "descurl": "https://commons.wikimedia.org/wiki/File:Haeckel_Batrachia.jpg",
+  "sources": {
+   "330": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/af/Haeckel_Batrachia.jpg/330px-Haeckel_Batrachia.jpg",
+   "500": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/af/Haeckel_Batrachia.jpg/500px-Haeckel_Batrachia.jpg",
+   "960": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/af/Haeckel_Batrachia.jpg/960px-Haeckel_Batrachia.jpg",
+   "1280": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/af/Haeckel_Batrachia.jpg/1280px-Haeckel_Batrachia.jpg",
+   "1920": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/af/Haeckel_Batrachia.jpg/1920px-Haeckel_Batrachia.jpg"
+  },
+  "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/af/Haeckel_Batrachia.jpg/330px-Haeckel_Batrachia.jpg 330w, https://thumb.wikimedia.org/wikipedia/commons/thumb/a/af/Haeckel_Batrachia.jpg/500px-Haeckel_Batrachia.jpg 500w, https://thumb.wikimedia.org/wikipedia/commons/thumb/a/af/Haeckel_Batrachia.jpg/960px-Haeckel_Batrachia.jpg 960w, https://thumb.wikimedia.org/wikipedia/commons/thumb/a/af/Haeckel_Batrachia.jpg/1280px-Haeckel_Batrachia.jpg 1280w, https://thumb.wikimedia.org/wikipedia/commons/thumb/a/af/Haeckel_Batrachia.jpg/1920px-Haeckel_Batrachia.jpg 1920w",
+  "default": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/af/Haeckel_Batrachia.jpg/960px-Haeckel_Batrachia.jpg"
+ },
+ {
+  "title": "File:Haeckel Chaetopoda.jpg",
+  "label": "Chaetopoda",
+  "kind": "haeckel",
+  "w": 2356,
+  "h": 3303,
+  "license": "Public domain",
+  "artist": "Ernst Haeckel",
+  "credit": "Kunstformen der Natur (1904), plate 96: Chaetopoda (see here, here and here)",
+  "descurl": "https://commons.wikimedia.org/wiki/File:Haeckel_Chaetopoda.jpg",
+  "sources": {
+   "330": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4d/Haeckel_Chaetopoda.jpg/330px-Haeckel_Chaetopoda.jpg",
+   "500": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4d/Haeckel_Chaetopoda.jpg/500px-Haeckel_Chaetopoda.jpg",
+   "960": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4d/Haeckel_Chaetopoda.jpg/960px-Haeckel_Chaetopoda.jpg",
+   "1280": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4d/Haeckel_Chaetopoda.jpg/1280px-Haeckel_Chaetopoda.jpg",
+   "1920": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4d/Haeckel_Chaetopoda.jpg/1920px-Haeckel_Chaetopoda.jpg"
+  },
+  "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4d/Haeckel_Chaetopoda.jpg/330px-Haeckel_Chaetopoda.jpg 330w, https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4d/Haeckel_Chaetopoda.jpg/500px-Haeckel_Chaetopoda.jpg 500w, https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4d/Haeckel_Chaetopoda.jpg/960px-Haeckel_Chaetopoda.jpg 960w, https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4d/Haeckel_Chaetopoda.jpg/1280px-Haeckel_Chaetopoda.jpg 1280w, https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4d/Haeckel_Chaetopoda.jpg/1920px-Haeckel_Chaetopoda.jpg 1920w",
+  "default": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4d/Haeckel_Chaetopoda.jpg/960px-Haeckel_Chaetopoda.jpg"
+ },
+ {
+  "title": "File:Haeckel Lacertilia.jpg",
+  "label": "Lacertilia",
+  "kind": "haeckel",
+  "w": 2378,
+  "h": 3320,
+  "license": "Public domain",
+  "artist": "Ernst Haeckel",
+  "credit": "Kunstformen der Natur (1904), plate 79: Lacertilia (see here, here and here)",
+  "descurl": "https://commons.wikimedia.org/wiki/File:Haeckel_Lacertilia.jpg",
+  "sources": {
+   "330": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7a/Haeckel_Lacertilia.jpg/330px-Haeckel_Lacertilia.jpg",
+   "500": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7a/Haeckel_Lacertilia.jpg/500px-Haeckel_Lacertilia.jpg",
+   "960": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7a/Haeckel_Lacertilia.jpg/960px-Haeckel_Lacertilia.jpg",
+   "1280": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7a/Haeckel_Lacertilia.jpg/1280px-Haeckel_Lacertilia.jpg",
+   "1920": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7a/Haeckel_Lacertilia.jpg/1920px-Haeckel_Lacertilia.jpg"
+  },
+  "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7a/Haeckel_Lacertilia.jpg/330px-Haeckel_Lacertilia.jpg 330w, https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7a/Haeckel_Lacertilia.jpg/500px-Haeckel_Lacertilia.jpg 500w, https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7a/Haeckel_Lacertilia.jpg/960px-Haeckel_Lacertilia.jpg 960w, https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7a/Haeckel_Lacertilia.jpg/1280px-Haeckel_Lacertilia.jpg 1280w, https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7a/Haeckel_Lacertilia.jpg/1920px-Haeckel_Lacertilia.jpg 1920w",
+  "default": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7a/Haeckel_Lacertilia.jpg/960px-Haeckel_Lacertilia.jpg"
+ },
+ {
+  "title": "File:Haeckel Nepenthaceae.jpg",
+  "label": "Nepenthaceae",
+  "kind": "haeckel",
+  "w": 2344,
+  "h": 3360,
+  "license": "Public domain",
+  "artist": "Ernst Haeckel",
+  "credit": "Kunstformen der Natur (1904), plate 62: Nepenthaceae (see here, here and here an",
+  "descurl": "https://commons.wikimedia.org/wiki/File:Haeckel_Nepenthaceae.jpg",
+  "sources": {
+   "330": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/74/Haeckel_Nepenthaceae.jpg/330px-Haeckel_Nepenthaceae.jpg",
+   "500": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/74/Haeckel_Nepenthaceae.jpg/500px-Haeckel_Nepenthaceae.jpg",
+   "960": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/74/Haeckel_Nepenthaceae.jpg/960px-Haeckel_Nepenthaceae.jpg",
+   "1280": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/74/Haeckel_Nepenthaceae.jpg/1280px-Haeckel_Nepenthaceae.jpg",
+   "1920": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/74/Haeckel_Nepenthaceae.jpg/1920px-Haeckel_Nepenthaceae.jpg"
+  },
+  "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/74/Haeckel_Nepenthaceae.jpg/330px-Haeckel_Nepenthaceae.jpg 330w, https://thumb.wikimedia.org/wikipedia/commons/thumb/7/74/Haeckel_Nepenthaceae.jpg/500px-Haeckel_Nepenthaceae.jpg 500w, https://thumb.wikimedia.org/wikipedia/commons/thumb/7/74/Haeckel_Nepenthaceae.jpg/960px-Haeckel_Nepenthaceae.jpg 960w, https://thumb.wikimedia.org/wikipedia/commons/thumb/7/74/Haeckel_Nepenthaceae.jpg/1280px-Haeckel_Nepenthaceae.jpg 1280w, https://thumb.wikimedia.org/wikipedia/commons/thumb/7/74/Haeckel_Nepenthaceae.jpg/1920px-Haeckel_Nepenthaceae.jpg 1920w",
+  "default": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/74/Haeckel_Nepenthaceae.jpg/960px-Haeckel_Nepenthaceae.jpg"
+ },
+ {
+  "title": "File:Haeckel Chelonia.jpg",
+  "label": "Chelonia",
+  "kind": "haeckel",
+  "w": 2342,
+  "h": 3285,
+  "license": "Public domain",
+  "artist": "Ernst Haeckel",
+  "credit": "Kunstformen der Natur (1904), plate 89: Chelonia (see here, here and here)",
+  "descurl": "https://commons.wikimedia.org/wiki/File:Haeckel_Chelonia.jpg",
+  "sources": {
+   "330": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a6/Haeckel_Chelonia.jpg/330px-Haeckel_Chelonia.jpg",
+   "500": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a6/Haeckel_Chelonia.jpg/500px-Haeckel_Chelonia.jpg",
+   "960": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a6/Haeckel_Chelonia.jpg/960px-Haeckel_Chelonia.jpg",
+   "1280": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a6/Haeckel_Chelonia.jpg/1280px-Haeckel_Chelonia.jpg",
+   "1920": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a6/Haeckel_Chelonia.jpg/1920px-Haeckel_Chelonia.jpg"
+  },
+  "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a6/Haeckel_Chelonia.jpg/330px-Haeckel_Chelonia.jpg 330w, https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a6/Haeckel_Chelonia.jpg/500px-Haeckel_Chelonia.jpg 500w, https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a6/Haeckel_Chelonia.jpg/960px-Haeckel_Chelonia.jpg 960w, https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a6/Haeckel_Chelonia.jpg/1280px-Haeckel_Chelonia.jpg 1280w, https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a6/Haeckel_Chelonia.jpg/1920px-Haeckel_Chelonia.jpg 1920w",
+  "default": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a6/Haeckel_Chelonia.jpg/960px-Haeckel_Chelonia.jpg"
+ },
+ {
+  "title": "File:Haeckel Muscinae.jpg",
+  "label": "Muscinae",
+  "kind": "haeckel",
+  "w": 2346,
+  "h": 3281,
+  "license": "Public domain",
+  "artist": "Ernst Haeckel",
+  "credit": "Kunstformen der Natur (1904), plate 72: Muscinae (see here, here, here and here)",
+  "descurl": "https://commons.wikimedia.org/wiki/File:Haeckel_Muscinae.jpg",
+  "sources": {
+   "330": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ee/Haeckel_Muscinae.jpg/330px-Haeckel_Muscinae.jpg",
+   "500": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ee/Haeckel_Muscinae.jpg/500px-Haeckel_Muscinae.jpg",
+   "960": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ee/Haeckel_Muscinae.jpg/960px-Haeckel_Muscinae.jpg",
+   "1280": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ee/Haeckel_Muscinae.jpg/1280px-Haeckel_Muscinae.jpg",
+   "1920": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ee/Haeckel_Muscinae.jpg/1920px-Haeckel_Muscinae.jpg"
+  },
+  "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ee/Haeckel_Muscinae.jpg/330px-Haeckel_Muscinae.jpg 330w, https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ee/Haeckel_Muscinae.jpg/500px-Haeckel_Muscinae.jpg 500w, https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ee/Haeckel_Muscinae.jpg/960px-Haeckel_Muscinae.jpg 960w, https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ee/Haeckel_Muscinae.jpg/1280px-Haeckel_Muscinae.jpg 1280w, https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ee/Haeckel_Muscinae.jpg/1920px-Haeckel_Muscinae.jpg 1920w",
+  "default": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ee/Haeckel_Muscinae.jpg/960px-Haeckel_Muscinae.jpg"
+ },
+ {
+  "title": "File:Haeckel Ostraciontes.jpg",
+  "label": "Ostraciontes",
+  "kind": "haeckel",
+  "w": 2466,
+  "h": 3637,
+  "license": "Public domain",
+  "artist": "Ernst Haeckel",
+  "credit": "Kunstformen der Natur (1904), plate 42: Ostraciontes (see here, here and here",
+  "descurl": "https://commons.wikimedia.org/wiki/File:Haeckel_Ostraciontes.jpg",
+  "sources": {
+   "330": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ad/Haeckel_Ostraciontes.jpg/330px-Haeckel_Ostraciontes.jpg",
+   "500": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ad/Haeckel_Ostraciontes.jpg/500px-Haeckel_Ostraciontes.jpg",
+   "960": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ad/Haeckel_Ostraciontes.jpg/960px-Haeckel_Ostraciontes.jpg",
+   "1280": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ad/Haeckel_Ostraciontes.jpg/1280px-Haeckel_Ostraciontes.jpg",
+   "1920": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ad/Haeckel_Ostraciontes.jpg/1920px-Haeckel_Ostraciontes.jpg"
+  },
+  "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ad/Haeckel_Ostraciontes.jpg/330px-Haeckel_Ostraciontes.jpg 330w, https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ad/Haeckel_Ostraciontes.jpg/500px-Haeckel_Ostraciontes.jpg 500w, https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ad/Haeckel_Ostraciontes.jpg/960px-Haeckel_Ostraciontes.jpg 960w, https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ad/Haeckel_Ostraciontes.jpg/1280px-Haeckel_Ostraciontes.jpg 1280w, https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ad/Haeckel_Ostraciontes.jpg/1920px-Haeckel_Ostraciontes.jpg 1920w",
+  "default": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ad/Haeckel_Ostraciontes.jpg/960px-Haeckel_Ostraciontes.jpg"
  }
 ]
