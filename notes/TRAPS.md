@@ -29,6 +29,7 @@ Each of these cost time once. One line each, the way out after the dash. When a 
 - The site scrolls smoothly: a scripted per-frame `scrollTo` keeps restarting and scroll triggers never fire in a test — pass `behavior: 'instant'` (a test artefact, not a page bug).
 - `effect.getTiming().easing` is always `linear` for a CSS animation — the real curve is per keyframe, in `getKeyframes()`.
 - A `fullPage` screenshot of a scroll-driven page captures everything below the fold at scroll zero and looks broken — screenshot the viewport at chosen scroll positions.
+- `scroll-state(scrolled: …)` answers only relative scrolls: `scrollBy()` and the keyboard set it, while `scrollTo()` and `scrollIntoView()` leave it unmatched — drive a test with `scrollBy()` or real keys.
 
 ## Custom properties and colour
 

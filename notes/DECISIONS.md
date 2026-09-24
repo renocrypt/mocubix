@@ -1940,3 +1940,24 @@ facts. The reserve is then three lines at 1324 wide (70 px) and four at 1000
 **Checked.** All 41 terms pointed at in turn, and some typing, at 1324×725,
 1000×505 (scrolled, as the owner saw it) and 390×844 (by focus): the index's
 top stays exactly where it is. No overflow; console clean.
+
+## Chrome's scroll-state queries, measured, 2026-09-24
+
+**Why.** The native scroll terms come next, so before building on them each
+was measured in Chrome 154, in a blank page: a matching query sets a colour,
+read back from the computed style, beside a control query with an invented
+feature (`scroll-state(bogus: top)`), which parses but never matches.
+Parsing proves nothing here: an unknown feature inside `scroll-state()`
+still serialises as written.
+
+**What holds.** `stuck: top` matches on a sticky element once it catches;
+`snapped: y` matches only the page at rest on its snap position (scrolled
+to the third of four: `0010`); `scrollable: top` matches once there is
+somewhere to go back to. `scrolled: bottom` and `scrolled: top` give the
+direction of the last scroll, so Direction State no longer needs a script,
+but only relative scrolls set it: `scrollBy()`, Page Down and the arrow keys
+do; `scrollTo()` and `scrollIntoView()` do not. `::scroll-button()`,
+`::scroll-marker`, `scroll-target-group`, `scroll-initial-target`,
+`animation-trigger`, `sibling-index()` and `if()` are all supported.
+`NEXT.md` now orders the native terms accordingly, and the trap is in
+`TRAPS.md`.
