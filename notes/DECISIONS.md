@@ -1893,3 +1893,27 @@ patent grant. The pictures are not ours to license and keep their own, as
 the README says, and the typefaces are only loaded. Machines are told too:
 each page's `SoftwareSourceCode` carries the licence, and `llms.txt` states
 it after the paragraph on sources.
+
+## Scoped Rotation draws its scope, 2026-09-24
+
+**Why.** The owner clicked through the choices and asked whether it was
+broken: on the swatches and on the root it looked the same. That sameness is
+the lesson, but nothing on the stage said so. The only things that moved were 24
+small swatches (7% of the painting's area, most of them greys, creams and
+darks, where a turning hue barely shows), and every change of choice restarted
+the turn at nought, so the colours jumped just when they should have carried on.
+
+**What changed.** A terra frame (the sparkline's `#B4502A`, as `--scoped`)
+draws the scope: an outline around the swatches or the painting, and a frame
+around the whole viewport for the root (the stage's fixed `::after`, shown
+only while the stage is in view, as the angle is). Every `turn` animation
+has its `startTime` set to 0 when the choice changes, so all of them run on the
+document timeline's clock. From the swatches to the root the colours now carry
+on unbroken (measured: 253.5° before the switch, 253.5° after), and only the
+frame and the counter move (120 → 30 frames a second on this machine). The
+lede now says so. In a panel just over 900 px wide, a choice's name had
+wrapped ("on the / root"); now the note beside it wraps instead.
+
+**Also.** `build-lexicon.py` wrote every page on every run, so every mtime,
+and with it every date in the sitemap, moved to the day of the build. It now
+writes only what changed.
