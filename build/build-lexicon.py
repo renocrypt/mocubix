@@ -307,7 +307,7 @@ SPECS = [
 
   ("type", "Vertical Writing Mode",
    "竖排 · tate-gumi · vertical typesetting",
-   "Set down the page instead of across it, the way Chinese, Japanese and Korean have always been set. Each column is written downward, and they arrive right to left. Latin and figures turn sideways to follow — all but the year, held upright in a single square.",
+   "Written down the page, as Chinese, Japanese and Korean always have been: the columns arrive right to left, Latin turns sideways, and a year stands upright in one square.",
    "writing-mode: vertical-rl;\ntext-orientation: mixed;\n.year { text-combine-upright: all }   /* 縦中横 */",
    "Native in CSS and correct for CJK — the browser rotates Latin runs and places the punctuation itself. <code>text-combine-upright</code> is the piece almost nobody reaches for: it sets a two- to four-character number upright inside one em box, which is how a printed vertical page has always handled a date. This is the experimental lane: the writing here is material to look at, never the interface.",
    '<div class="vert"><p class="vt1">滚动即时间轴</p><p class="vt2">名は体を表す</p>'
@@ -353,7 +353,7 @@ SPECS = [
 
   ("colour", "Difference Inversion",
    "mix-blend-mode · invert on crossing · self-inverting overlay",
-   "The words turn themselves into the opposite of whatever passes behind them, so they stay readable over a photograph, over white and over black — and then vanish over one particular grey.",
+   "The words turn into the opposite of whatever passes behind them, readable over a photograph, over white and over black — and gone over one particular grey.",
    "mix-blend-mode: difference;",
    "One property, no JavaScript, and the overlay never has to know what is behind it. What it cannot survive is mid-grey, where inverting a value returns very nearly the value you started from. Plan for that band rather than discovering it on the one slide that has it.",
    '<div class="di"><div class="dirun" id="dirun"></div><p class="ditxt">Legible on anything</p></div>',

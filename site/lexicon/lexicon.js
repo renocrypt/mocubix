@@ -669,12 +669,26 @@ function indexRow(w, i, cls){
   var starts = function(text, q){ var w = text.split(' '); return q.split(' ').every(function(t){ return w.some(function(x){ return x.indexOf(t) === 0; }); }); };
   var words = links.map(function(a){ return { a: a, name: norm(a.querySelector('span').textContent),
     aka: a.dataset.aka.split('·').map(function(x){ return x.trim(); }) }; });
-  function label(a){
-    caption.textContent = a ? '' : rest;
+  function say(el, a){
+    el.textContent = a ? '' : rest;
     if (!a) return;
     var b = document.createElement('b'); b.textContent = a.querySelector('span').textContent;
-    caption.append(b, ' — ' + a.dataset.gloss);
+    el.append(b, ' — ' + a.dataset.gloss);
   }
+  function label(a){ say(caption, a); }
+  /* The caption keeps the height of the longest thing it can say, measured at its own width on a silent copy, so
+     pointing at a term never moves the index under the pointer (it did, and the pointer then met the next term). */
+  function hold(){
+    var probe = caption.cloneNode(), tallest = 0;
+    probe.removeAttribute('aria-live'); probe.setAttribute('aria-hidden', 'true');
+    probe.style.cssText = 'position:absolute;visibility:hidden;min-height:0;width:' + caption.clientWidth + 'px';
+    caption.after(probe);
+    [null].concat(links).forEach(function(a){ say(probe, a); tallest = Math.max(tallest, probe.getBoundingClientRect().height); });
+    probe.remove();
+    caption.style.minHeight = Math.ceil(tallest) + 'px';
+  }
+  new ResizeObserver(hold).observe(input);    /* the field's width is the column's */
+  document.fonts.ready.then(hold);
   function hits(){ return links.filter(function(a){ return a.classList.contains('hit'); }); }
   function choose(i){
     links.forEach(function(a){ a.classList.remove('on'); });

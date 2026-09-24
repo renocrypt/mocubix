@@ -1917,3 +1917,26 @@ wrapped ("on the / root"); now the note beside it wraps instead.
 **Also.** `build-lexicon.py` wrote every page on every run, so every mtime,
 and with it every date in the sitemap, moved to the day of the build. It now
 writes only what changed.
+
+## The Lexicon's entrance holds still under the pointer, 2026-09-24
+
+**Why.** The owner saw the index shake under the pointer in a short window.
+Pointing at a term writes its gloss into the caption under the field, and the
+glosses run from two lines to five (48 to 117 px at 1000 wide), so the index
+below moved. That moved another term under the pointer, whose gloss moved the
+index again, and so on in a loop. The caption's `min-height: 3.2em` held two
+lines.
+
+**What changed.** The caption keeps the height of the longest thing it can
+say: `hold()` in `lexicon.js` sets every text it can show on a silent copy at
+the caption's own width, takes the tallest, and runs again when the field's
+width changes and once the fonts are in. The copy has no `aria-live`, so a
+screen reader hears nothing. Two glosses ran far past the rest and past a
+meta description's length (Vertical Writing Mode 257 characters, Difference
+Inversion 186), so they were tightened to 169 and 155 characters with the same
+facts. The reserve is then three lines at 1324 wide (70 px) and four at 1000
+(93 px), and the entrance still fits one screen at 1324×725.
+
+**Checked.** All 41 terms pointed at in turn, and some typing, at 1324×725,
+1000×505 (scrolled, as the owner saw it) and 390×844 (by focus): the index's
+top stays exactly where it is. No overflow; console clean.
