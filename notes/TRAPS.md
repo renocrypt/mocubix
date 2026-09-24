@@ -79,3 +79,5 @@ Each of these cost time once. One line each, the way out after the dash. When a 
 - `pip` fails its certificate check inside the sandbox (OSStatus -26276) while `curl` works — take the wheel's URL from `https://pypi.org/pypi/<name>/json`, fetch it with curl and install the file.
 - zsh expands an unquoted `--include=*.html` as a glob and aborts with "no matches found" — quote the pattern.
 - When script evaluation in the browser is blocked, two channels still work: probe pages that write their results into the DOM (read back from a page snapshot), and 1:1 screenshots analysed locally with PIL.
+- `build/sitemap.py` dates each page by its file's mtime, so a build that rewrites unchanged files moves every date to today; a build writes a file only when its content changed (`write()` in `build-lexicon.py`).
+- A CSS animation starts at nought each time a rule applies it, so moving one animation between elements (a change of scope) makes it jump; set each one's `startTime` to 0 and they all share the document's clock.

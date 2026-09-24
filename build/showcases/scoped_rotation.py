@@ -8,16 +8,18 @@ leaves are the cost, the painting of it almost free. On the swatches the page ke
 falls to about a fifth, for the same visible change; on the painting every dot takes the angle. showcase.js samples
 the painting into the dots (Wikimedia serves its images to canvases), mirrors the choice into data-scope (an
 attribute: a :has() in the dots' selectors made their style work five times dearer) and declares the angle nowhere
-while the stage is out of view. The swatches are the painting's 24 most representative colours (palette.py
-swatches, octree).
+while the stage is out of view. A frame draws the scope, around the swatches, the painting or the whole page, and
+every turn keeps one clock, so from the swatches to the root the colours carry on and only the frame and the counter
+move. The swatches are the painting's 24 most representative colours (palette.py swatches, octree).
 """
 import html, json
 from pathlib import Path
 
 TITLE = 'Where the angle lives'
 LEDE = ('Seurat’s <i>A Sunday on La Grande Jatte</i>, redrawn as 3,456 dots, and its palette as 24 swatches. One '
-        'turning angle can be declared on the swatches, on the root of the page, or on the painting. Choose, and watch '
-        'the counter: the same change costs what its scope costs.')
+        'turning angle can be declared on the swatches, on the root of the page, or on the painting. Choose, and a frame '
+        'draws the scope. On the swatches and on the root the same colours turn; watch the counter: the same change costs '
+        'what its scope costs.')
 
 SWATCHES = ('Grande Jatte', 24)          # palette.py swatches: the painting's most representative colours
 GRID = (72, 48)                          # the dots, 3 : 2; each re-resolving element costs, and more dots made the

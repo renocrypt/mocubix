@@ -41,6 +41,8 @@ for (const stage of document.querySelectorAll('.scope')) {
     const where = on ? stage.querySelector('.where input:checked').value : 'still';
     stage.dataset.scope = where;
     document.documentElement.dataset.scope = where === 'root' ? 'root' : '';
+    // every turn on one clock: a turn declared anew starts where the last one was, not at nought
+    for (const a of document.getAnimations()) if (a.animationName === 'turn') a.startTime = 0;
   };
   stage.addEventListener('change', scope);
 
