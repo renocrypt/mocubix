@@ -81,3 +81,4 @@ Each of these cost time once. One line each, the way out after the dash. When a 
 - When script evaluation in the browser is blocked, two channels still work: probe pages that write their results into the DOM (read back from a page snapshot), and 1:1 screenshots analysed locally with PIL.
 - `build/sitemap.py` dates each page by its file's mtime, so a build that rewrites unchanged files moves every date to today; a build writes a file only when its content changed (`write()` in `build-lexicon.py`).
 - A CSS animation starts at nought each time a rule applies it, so moving one animation between elements (a change of scope) makes it jump; set each one's `startTime` to 0 and they all share the document's clock.
+- Hover that changes layout can loop: the change moves another element under the pointer, which changes it again. Hover only paints; text that swaps on hover lives in a box held at the height of its longest text (`hold()` in `lexicon.js`).
