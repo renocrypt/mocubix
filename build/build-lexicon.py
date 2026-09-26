@@ -443,7 +443,9 @@ MATERIAL = ('Material — Kamisaka Sekka 神坂雪佳, <i>Momoyogusa</i> 百々�
 def ld(title, url, source):
     """For machines: what the page is, and the folder of the repository it is served from."""
     return json.dumps({'@context': 'https://schema.org', '@type': 'WebPage', 'name': plain(title), 'url': url,
-                       'isPartOf': {'@type': 'WebSite', 'name': 'Mocubix', 'url': BASE},
+                       'isPartOf': {'@type': 'WebSite', 'name': 'Mocubix',
+                                    'description': 'An exhibition of seven ways a page can move, and a lexicon of forty-one effects.',
+                                    'url': BASE},
                        'isBasedOn': {'@type': 'SoftwareSourceCode', 'url': source, 'codeRepository': REPO,
                                      'programmingLanguage': ['HTML', 'CSS', 'JavaScript'],
                                      'license': 'https://www.apache.org/licenses/LICENSE-2.0'}},
