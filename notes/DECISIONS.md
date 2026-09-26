@@ -1961,3 +1961,15 @@ do; `scrollTo()` and `scrollIntoView()` do not. `::scroll-button()`,
 `animation-trigger`, `sibling-index()` and `if()` are all supported.
 `NEXT.md` now orders the native terms accordingly, and the trap is in
 `TRAPS.md`.
+
+## The exhibition names itself, 2026-09-26
+
+The front door still introduced the work as “exhibition slice 01”, a label
+from when the index was a draft of a larger sequence. The seven rooms had
+already stopped using it: each eyebrow is “Mocubix · Exhibit 0N · …”. The
+door now says “Mocubix · the exhibition”.
+
+Every page’s site object carries the same sentence, so a machine that reads
+one room learns what the whole work is: an exhibition of seven ways a page
+can move, and a lexicon of forty-one effects. The pages stay part of that
+site, and the code stays the repository the source link already names.
